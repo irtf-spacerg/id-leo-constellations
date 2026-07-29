@@ -1,5 +1,110 @@
 [
  {
+  "name": "Amazon Leo Direct-to-Device",
+  "slug": "amazon-leo-d2d",
+  "family": "amazon-leo",
+  "aka": [
+   "Amazon Leo D2D",
+   "Kuiper direct-to-device"
+  ],
+  "operator": "Kuiper Systems LLC",
+  "parent": "Amazon.com, Inc.",
+  "country": "US",
+  "jurisdiction": [
+   "US"
+  ],
+  "system_class": "direct-to-device",
+  "status": "filed",
+  "status_detail": "Application filed with the FCC on 24 July 2026 for up to 5,105 satellites, using the L- and S-band spectrum held by Globalstar, whose acquisition by Amazon was announced in April 2026 and is expected to close in 2027. No grant. Service stated as no earlier than 2028.",
+  "status_asof": "2026-07",
+  "services": [
+   "direct-to-device",
+   "voice",
+   "messaging",
+   "broadband",
+   "iot"
+  ],
+  "orbit_regimes": [
+   "LEO"
+  ],
+  "dual_use": "civil",
+  "filing": {
+   "authority": "FCC",
+   "administration": "USA",
+   "document": "Kuiper Systems LLC application for the Amazon Leo direct-to-device system, filed 24 July 2026 (ICFS file number not retrieved)",
+   "src": "viasat-amazon-d2d-2026",
+   "note": "Filed six days before this record was written; the ICFS file number has not been retrieved and no FCC document has been read."
+  },
+  "counts": {
+   "filed": {
+    "value": 5105,
+    "asof": "2026-07-24",
+    "src": "viasat-amazon-d2d-2026"
+   }
+  },
+  "regulatory": [
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "application",
+    "action": "pending",
+    "date": "2026-07-24",
+    "satellites": 5105,
+    "scope": "Application for authority to deploy up to 5,105 LEO satellites between 510 and 580 km, with operational lifetimes of about 6 to 8 years, using Globalstar's existing L-band (around 1.6 GHz) and S-band (around 2.4 GHz) allocations. Services stated as voice, messaging, mobile broadband, emergency calling and IoT including fleet tracking, to unmodified 4G and 5G handsets, no earlier than 2028.",
+    "src": "viasat-amazon-d2d-2026"
+   }
+  ],
+  "shells": [
+   {
+    "label": "d2d-510-580",
+    "status": "proposed",
+    "geometry_kind": "unknown",
+    "code_status": "unknown",
+    "code_note": "Reported altitude range 510-580 km. No inclination, plane count or per-plane population traced; the application would give them.",
+    "src": "viasat-amazon-d2d-2026"
+   }
+  ],
+  "spectrum": [
+   "L",
+   "S"
+  ],
+  "spectrum_detail": "Globalstar's existing L-band (around 1.6 GHz) and S-band (around 2.4 GHz) allocations. This is the first record in the registry where the spectrum rationale is an acquisition rather than a processing round: Amazon is buying the spectrum position along with the operator that holds it.",
+  "isl": "unknown",
+  "target_completion_kind": "operator-target",
+  "sources": [
+   {
+    "id": "viasat-amazon-d2d-2026",
+    "grade": "secondary",
+    "kind": "trade-press",
+    "title": "Via Satellite, \"Amazon Leo Files for 5,105 Satellites in Globalstar Spectrum for D2D\"",
+    "url": "https://www.satellitetoday.com/connectivity/2026/07/27/amazon-leo-files-for-5105-satellites-in-globalstar-spectrum-for-d2d/",
+    "date": "2026-07-27",
+    "retrieved": "2026-07-30"
+   },
+   {
+    "id": "amazon-leo-d2d-explainer",
+    "grade": "secondary",
+    "kind": "operator-web",
+    "title": "Amazon, \"Amazon Leo direct-to-device satellite service explained\"",
+    "url": "https://www.aboutamazon.com/news/amazon-leo/amazon-leo-direct-to-device-satellite-service-explained",
+    "retrieved": "2026-07-30"
+   },
+   {
+    "id": "york-email-2026-07-29",
+    "grade": "secondary",
+    "kind": "presentation",
+    "title": "Dan York (Internet Society), correspondence with the registry maintainers, 29 July 2026, flagging this filing as post-dating the IETF 126 survey",
+    "url": "https://datatracker.ietf.org/rg/space/about/",
+    "date": "2026-07-29",
+    "retrieved": "2026-07-30"
+   }
+  ],
+  "notes": "Contributed by Dan York on 29 July 2026, having been filed after his IETF 126 survey was presented. The first entry in the registry to come from the community rather than the initial sweep. Provenance gap: no primary source. The ICFS file number, the orbital parameters and the exact band edges all need the application itself. This record and globalstar-c3 will need reconciling if the Amazon acquisition of Globalstar completes: two systems, one spectrum position, one eventual owner. Whether the D2D constellation supersedes the C-3 plan or runs alongside it is not yet stated anywhere this registry has found.",
+  "added": "2026-07",
+  "verified": "2026-07-30",
+  "contributor": "Dan York (Internet Society), via correspondence"
+ },
+ {
   "name": "Amazon Leo Gen1",
   "slug": "amazon-leo-gen1",
   "family": "amazon-leo",
@@ -527,6 +632,15 @@
     "retrieved": "2026-07-29"
    },
    {
+    "id": "mcdowell-conlist",
+    "grade": "secondary",
+    "kind": "tracker",
+    "title": "Jonathan McDowell, \"Jonathan's Space Report\" constellation list (enormous constellations, more than 1,000 satellites), planet4589.org",
+    "url": "https://planet4589.org/space/con/conlist.html",
+    "date": "2026-07-25",
+    "retrieved": "2026-07-30"
+   },
+   {
     "id": "york-ietf126",
     "grade": "secondary",
     "kind": "presentation",
@@ -542,7 +656,7 @@
     "claim": "~100 satellites planned",
     "claimed_by": "york-ietf126",
     "registry_value": "248 licensed",
-    "note": "The largest proportional gap found so far, and in the opposite direction to most: the deck understates by roughly a factor of two and a half. The 248-satellite authorisation was granted on 21 April 2026, three months before the talk. The \"~100\" figure appears to predate it."
+    "note": "Resolved. Dan York confirmed on 29 July 2026 that the \"~100\" on the slide has no source in his notes and was an error on his part; McDowell's tracker gave 243, close to the authorised 248. The 248-satellite authorisation was granted on 21 April 2026, three months before the talk. Recorded rather than removed because the registry's purpose is to make such things visible and correctable, and because this one was corrected by its own author within a week of being asked."
    }
   ],
   "notes": "This record is the registry's worked example of orbital geometry that the constellation code cannot express for a reason unrelated to phasing: every authorised shell here is elliptical, with apogee and perigee stated separately and a station-keeping tolerance attached. The code assumes a single circular altitude. Four of the five shells also fail the code's divisibility or plane-count assumptions independently. AST's satellites are physically very large, which is why the constellation size is small relative to its coverage ambition. Recording sat_mass_kg for this system would be valuable and has not been done.",
@@ -1590,6 +1704,15 @@
     "url": "https://www.itu.int/sns/ific10/ific3069.zip",
     "date": "2026-04-14",
     "retrieved": "2026-07-29"
+   },
+   {
+    "id": "mcdowell-conlist",
+    "grade": "secondary",
+    "kind": "tracker",
+    "title": "Jonathan McDowell, \"Jonathan's Space Report\" constellation list (enormous constellations, more than 1,000 satellites), planet4589.org",
+    "url": "https://planet4589.org/space/con/conlist.html",
+    "date": "2026-07-25",
+    "retrieved": "2026-07-30"
    },
    {
     "id": "york-ietf126",
@@ -3477,6 +3600,15 @@
     "retrieved": "2026-07-29"
    },
    {
+    "id": "mcdowell-conlist",
+    "grade": "secondary",
+    "kind": "tracker",
+    "title": "Jonathan McDowell, \"Jonathan's Space Report\" constellation list (enormous constellations, more than 1,000 satellites), planet4589.org",
+    "url": "https://planet4589.org/space/con/conlist.html",
+    "date": "2026-07-25",
+    "retrieved": "2026-07-30"
+   },
+   {
     "id": "york-ietf126",
     "grade": "secondary",
     "kind": "presentation",
@@ -3492,7 +3624,7 @@
     "claim": "1,198,120 satellites planned",
     "claimed_by": "york-ietf126",
     "registry_value": "1,000,000 requested (application ceiling)",
-    "note": "The application, as described in the FCC's own acceptance notice, is for \"up to one million satellites\". The slide's 1,198,120 is 198,120 higher and no source for the difference has been found; it may aggregate a separate filing or a tracker's arithmetic. This matters more than most discrepancies in the registry because this one application accounts for roughly half of the widely quoted 2.3 million aggregate, so a 198,120 error here is about 8 per cent of the headline number."
+    "note": "The application, as described in the FCC's own acceptance notice, is for \"up to one million satellites\". The 1,198,120 figure is Jonathan McDowell's, from his constellation list, as Dan York confirmed on 29 July 2026. The registry could not locate that specific entry on the page on 30 July 2026 and so cannot say how the figure was derived; it may aggregate shells or filings that the FCC's summary rounds. This matters more than most discrepancies here because the application accounts for roughly half of the widely quoted 2.3 million aggregate, so a 198,120 difference is about 8 per cent of the headline number. Resolving it properly needs the application's own Attachment A rather than either summary."
    }
   ],
   "notes": "Reported in the press as connected to the SpaceX/xAI merger. The application itself is for a communications authorisation; the compute payload is not what the FCC is licensing, which is worth remembering when reading the filing as evidence about data-centre capacity. Provenance gap: the application narrative and technical attachment (Attachment A) are cited in DA 26-113 but have not been read directly. They would give the shell structure, the satellite versions and the TT&C bands.",

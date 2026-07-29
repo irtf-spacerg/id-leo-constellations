@@ -1,10 +1,10 @@
 {
- "records": 32,
- "records_counted": 32,
+ "records": 33,
+ "records_counted": 33,
  "records_with_primary_source": 20,
  "total_launched": 14586,
  "total_licensed": 35753,
- "total_filed": 1637577,
+ "total_filed": 1642682,
  "total_announced": 25244,
  "totals_are_floors": true,
  "records_missing_filed": [
@@ -17,19 +17,19 @@
   "starshield",
   "telesat-lightspeed"
  ],
- "note": "Totals are floors, not estimates. They sum only what is recorded and sourced; records with an unrecorded count contribute zero. 8 of 32 records have no filed figure, so total_filed understates by an unknown amount, and a family's licensed total may exceed its filed total for that reason. Superseded records are excluded.",
+ "note": "Totals are floors, not estimates. They sum only what is recorded and sourced; records with an unrecorded count contribute zero. 8 of 33 records have no filed figure, so total_filed understates by an unknown amount, and a family's licensed total may exceed its filed total for that reason. Superseded records are excluded.",
  "filed_by_status": {
+  "filed": 1584298,
   "deploying": 41744,
   "licensed": 5778,
-  "filed": 1579193,
   "announced": 0,
   "operational": 10862
  },
  "by_family": {
   "amazon-leo": {
-   "records": 2,
+   "records": 3,
    "licensed": 7736,
-   "filed": 3236,
+   "filed": 8341,
    "filed_is_floor": true
   },
   "ast-spacemobile": {
