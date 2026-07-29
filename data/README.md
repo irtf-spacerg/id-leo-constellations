@@ -76,6 +76,21 @@ An entry should be:
    reference exists. Classified government systems and pre-filing
    announcements are legitimately in the second category; silence is not.
 
+**Scope: Internet-related systems.** The registry follows the scope of the
+IETF 126 survey it grew from. Dan York set that scope explicitly: LEO
+constellations providing Internet access, or Internet-related services such as
+orbital data centres. Constellations flown for imaging, remote sensing,
+navigation, or as pure IoT or sensor networks are out of scope, even though
+general trackers such as Jonathan McDowell's tables include them. This is why
+the registry's totals are smaller than those trackers' and should not be
+compared with them without saying so.
+
+The boundary is not always clean. Direct-to-device systems carrying messaging
+and IoT alongside voice are in scope because the service is connectivity.
+A constellation whose only purpose is Earth observation is not, even if it
+downlinks over the same bands. When in doubt, record it and say why in
+`notes:`.
+
 Cancelled and defunct systems stay in the registry with `status: cancelled` or
 `status: retired`. The point of the registry is partly historical: the ratio
 of announced to flown is itself a research result.

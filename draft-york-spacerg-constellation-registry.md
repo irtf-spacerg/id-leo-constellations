@@ -22,10 +22,6 @@ venue:
   mail: "space@irtf.org"
   github: "irtf-spacerg/id-leo-constellations"
 
-# TODO: authorship is provisional pending Dan York's agreement. The survey
-# this draft is built on is his; the registry and the analysis below are the
-# follow-up the chairs proposed at IETF 126. Draft name and docname change to
-# draft-york-* on confirmation.
 author:
  -
     fullname: "Dan York"
@@ -48,189 +44,197 @@ informative:
 
 --- abstract
 
-Aggregate figures for the number of satellites "planned" for low Earth orbit
-now exceed two million. Those figures combine four quantities that are not
+Aggregate figures for the number of satellites planned for low Earth orbit are
+widely quoted and rarely traceable. They combine quantities that are not
 comparable: satellites in orbit, satellites a national regulator has
-authorised, satellites applied for but not granted, and satellites merely
-announced. For a single system these differ by orders of magnitude.
+authorised, satellites applied for but not granted, and satellites announced
+without any filing at all. For a single system these differ by orders of
+magnitude, and the difference determines whether a figure describes
+infrastructure or intent.
 
-This document describes a community-maintained registry that keeps the four
-apart and requires every number to carry a citation and an evidence grade. It
-reports what the resulting data shows: across the systems recorded so far,
-under one per cent of the satellites described as planned are in orbit, and
-around one and a half per cent stand behind a national authorisation. The rest
-sit in ungranted applications and in early-stage ITU filings that confer no
-deployment obligation.
+This document describes a community-maintained registry that keeps those
+quantities apart and requires every number to carry a citation and an evidence
+grade. It sets out the data model, the taxonomy of regulatory commitment, the
+grading rules that distinguish primary regulatory sources from secondary
+reporting, and the criteria for inclusion.
 
 --- middle
 
 # Introduction
 
-At IETF 126 the SPACE Research Group heard a survey of satellite
-constellations that are launched, filed or announced, arriving at an aggregate
-above 2.3 million planned satellites. In discussion, participants asked how
-much of that total is real. The honest answer was that the question could not
-be settled from the sources available, because those sources do not
-distinguish between very different kinds of claim.
+Research on satellite networking rests on assumptions about how large future
+constellations will be, how many operators will share the spectrum, and how
+much coordination load the result will place on national regulators and on the
+International Telecommunication Union (ITU). Those assumptions are usually
+drawn from press coverage and from aggregate trackers.
 
-This document and its registry {{REGISTRY}} are the follow-up. The registry is
-not a market forecast and makes no prediction about what will fly. It is a
-research resource: it records what has been filed, by whom, with which
-regulator, at what stage, and it makes every number traceable to a document.
+The difficulty is not that such sources are careless. It is that the
+underlying quantities are genuinely different and are reported under one
+label. A constellation may have satellites in orbit, a national licence for a
+larger number, an application pending for a larger number still, an ITU filing
+declaring more again, and a press release describing something else entirely.
+All five are true statements. Presented as a single figure for "planned
+satellites", four of them disappear.
 
-## The four numbers problem
+This registry exists to keep them apart. It is not a market forecast and makes
+no prediction about what will be deployed. It records what has been filed, by
+whom, with which authority, at what stage of which process, and it makes every
+number traceable to a document.
 
-Press coverage, and much of the research literature that draws on it, reports
-these four quantities interchangeably:
+## The four quantities
 
-* how many satellites have been **launched**;
-* how many a regulator has **licensed**;
-* how many have been **filed** for and not granted;
-* how many have merely been **announced**.
+The registry distinguishes:
 
-Starlink is a worked example. As of January 2026 the FCC has authorised 4,408
-first-generation and 15,000 second-generation satellites, 19,408 in total,
-having expressly deferred action on the remaining 14,988 of the 29,988 Gen2
-satellites requested; a further 100,000 third-generation satellites were
-applied for in July 2026 and not granted. A single column labelled "planned"
-cannot carry that, and which number a reader takes changes any conclusion
-about topology scale by a factor of five.
+* **launched**, satellites placed in orbit, cumulative and including those
+  since deorbited;
+* **licensed**, satellites a national regulator has granted authority to
+  operate;
+* **filed**, satellites requested from a regulator or declared to the ITU,
+  whatever the outcome;
+* **announced**, satellites described publicly with no filing behind them that
+  can be found.
+
+Keeping these apart is the registry's principal design constraint, and most of
+the schema follows from it.
 
 ## Why a filing is not a plan
 
 A filing is a claim on spectrum priority. It is not a commitment to deploy,
-and the mechanisms that do create commitment are national rather than
-international. The FCC requires 50 per cent deployment within six years of
-grant and 100 per cent within nine, backed by a surety bond, with the
-authorisation reduced to the number actually in orbit on failure. The ITU
-process has no equivalent: an advance publication costs an administration
-almost nothing and confers no coordination priority at all.
+and the mechanisms that create commitment are national rather than
+international. Some administrations attach dated deployment milestones to an
+authorisation, with a financial instrument behind them and a defined
+consequence for failure. The ITU process has no equivalent: the earliest
+stage, advance publication, confers no coordination priority and costs an
+administration very little.
 
-This asymmetry is why aggregates that sum across jurisdictions and stages are
-adding quantities that do not mean the same thing.
+An aggregate that sums across jurisdictions and across stages is therefore
+adding quantities that do not mean the same thing. Whether that matters
+depends on the question being asked, which is precisely why the stage must
+travel with the number.
 
-# What the data shows
+# The registry
 
-Each record in the registry is placed at the strongest rung of regulatory
-commitment it has demonstrably reached. Over the {{RECORDS}} records
-collected so far:
+The registry is maintained in the repository that also hosts this document and
+published as a searchable page with JSON and CSV exports {{REGISTRY}}. It
+follows the contribution model of the SPACERG research infrastructure registry
+described in {{I-D.sastry-spacerg-space-research-infra-typology}}: one
+machine-readable record per entry, added and corrected by pull request, and
+validated automatically on submission.
 
-| Rung | Satellites | Records |
-|:-----|-----------:|--------:|
-| In orbit | 14,585 | 12 |
-| Authorised by a national regulator | 10,818 | 6 |
-| Applied for, not granted | 1,360,800 | 7 |
-| ITU coordination request only | 6,080 | 1 |
-| ITU advance publication only | 203,428 | 3 |
-| Announced, no filing found | 5,408 | 2 |
-{: #ladder title="Satellite counts by regulatory commitment, July 2026"}
+## One record, one authorisation
 
-Roughly 1.63 million satellites are described as planned across these records.
-Under one per cent are in orbit. About one and a half per cent stand behind a
-national authorisation with milestones attached. Eighty-three per cent sit in
-applications no regulator has granted, dominated by a single application for
-up to one million orbital data centre satellites. A further twelve per cent
-sit at the weakest ITU stage.
+A record describes an authorisation rather than a company or a brand. Where an
+operator holds several authorisations for successive generations of a system,
+each is a separate record anchored on its own filing reference, so that a
+reader checking a number has one document to open. Modifications, amendments,
+waivers and partial grants acting on the same authorisation are recorded as
+dated events within that record. Records carry a family identifier so that an
+operator-level view can be composed without the data model asserting that one
+licence is one company.
 
-These are floors, not estimates: a record whose count could not be sourced
-contributes zero. The table regenerates from the data as records improve.
+Systems with no public filing, such as constellations procured under
+classified government contracts, are recorded with an explicit statement of
+why no filing reference exists. That is a substantive category rather than
+missing data, and stating it is more useful than leaving the field empty.
 
-TODO: the analysis is currently a snapshot. Decide whether the draft carries
-numbers inline, as here, or points at the registry's generated export.
-
-# Evidence grading
+## Evidence grading
 
 Every field that asserts a fact carries a pointer to a source, and every
-source carries a grade fixed by its kind rather than chosen by the
-contributor.
+source carries a grade determined by the kind of document it is rather than
+chosen by the contributor.
 
-Primary sources are the filing or the regulator's own act: ITU records, FCC
-orders and applications, other national regulators' dockets, and operator
-technical documentation submitted to a regulator. Secondary sources are
-everything else, including operators' own web pages and press releases, trade
-press, trackers, encyclopaedias and conference slides. Secondary sources are
-permitted and are often all that exists, but they are marked, and they may not
-stand in for a filing that exists and has not been read.
+Primary sources are the filing itself or the regulator's own act: ITU records
+and publications, national regulator orders, applications and dockets, and
+operator technical documentation submitted to a regulator. Secondary sources
+are everything else, including operators' own web pages and press releases,
+trade press, tracker sites, encyclopaedias and conference presentations.
 
-The failure mode this is designed against is ordinary and hard to see: a
-number originating in a press release is quoted by a tracker, the tracker is
+Secondary sources are permitted, and for some jurisdictions they are all that
+exists. They must be marked as such, and they may not stand in for a filing
+that exists and has not been read. Where a primary source exists but has not
+been consulted, the record says so explicitly, so that the gap is visible and
+can be closed by a later contribution.
+
+The failure mode this is designed against is ordinary and difficult to see. A
+figure originating in a press release is quoted by a tracker, the tracker is
 cited by an encyclopaedia, the encyclopaedia is cited by a paper, and the
-figure arrives in the literature indistinguishable from a licensed one.
+number arrives in the literature indistinguishable from one that was
+authorised.
 
-# Observations on the ITU record
+## Regulatory commitment as a ladder
 
-The ITU Space Network List and the BR IFIC publications are public and
-queryable without an account, and appear to be little used outside the
-regulatory community. Reading them directly produced four observations that
-bear on how aggregate figures should be interpreted.
+Each record is placed at the strongest rung of regulatory commitment it has
+demonstrably reached: satellites in orbit; authorisation by a national
+regulator; an application pending before a national regulator; notification to
+the ITU; an ITU coordination request; ITU advance publication; and public
+announcement with no filing identified.
 
-**Stage is not a detail.** The same network can declare very different
-satellite counts at different stages. Guowang's GW-2 network declares a
-reported 6,912 satellites in its coordination request and 1,728 in the
-notification filed five years later.
+The ladder is what allows an aggregate to be reported without collapsing the
+distinction it exists to preserve. A total may be given per rung, and the
+shape of the distribution is more informative than its sum.
 
-**Declarations are envelopes.** The Globalstar C-3 system is described by the
-FCC as 48 satellites licensed by France. The ITU filing that backs it,
-AST-NG-C-3, declares 6,221 satellites across 401 orbital planes: a ratio of
-about 130 to 1 between the international declaration and the operational plan,
-on one instrument.
+## Orbital geometry
 
-**The notifying administration is often not the operator's country.** The ITU
-networks carrying Starlink are notified by Norway. Any jurisdiction tally
-built from ITU data alone attributes the largest constellation in orbit to
-Norway rather than to the United States.
+Where a system's orbital geometry is known, each shell is recorded with the
+parameters given in the filing, together with the notation defined in
+{{I-D.piraux-space-constellation-code}} where the geometry can be expressed in
+it. Each code records how much of it came from the cited source and what, if
+anything, was assumed, so that a consumer receives both the value and the
+basis for it.
 
-**Withdrawals are visible only in the ITU record.** In December 2025 the
-Russian administration suppressed both the advance publication and the
-coordination request for two of the three Rassvet networks, three weeks before
-the system's first production launch. No secondary source consulted mentions
-it.
+Applying that notation to filings has proved informative in both directions.
+Several classes of authorised geometry cannot be expressed in it: orbital
+parameters given as ranges or as envelopes rather than fixed values;
+elliptical orbits with station-keeping tolerances; shells whose satellite
+count is not divisible by their plane count; distinct plane groups sharing an
+altitude and inclination; and orbits whose defining property is a
+sun-synchronous local time, a repeating ground track, or formation flying.
+These cases are recorded as such rather than forced, and are reported back to
+the authors of that document.
 
-TODO: quantify the declaration-to-plan ratio across more systems. One case is
-an anecdote; a distribution would be a result.
+## Point-in-time observations
 
-# Relationship to other SPACE RG work
+Registry entries are observations at a date. Regulatory states move,
+applications are granted in part or deferred, licences are modified, ITU
+filings are suppressed, and operators are acquired. Each record therefore
+carries a last-verified date, and a record that has not been re-verified
+recently is flagged as such rather than silently trusted.
 
-The registry complements the tools and infrastructure typology of
-{{I-D.sastry-spacerg-space-research-infra-typology}}: that work catalogues
-what researchers can experiment with, this one what is being built. Both use
-the same contribution model.
+Corrections are as welcome as additions. The most valuable contribution is a
+provenance upgrade: taking a record that rests on secondary reporting, reading
+the filing it refers to, and replacing the source.
 
-Where a system's geometry is known, each orbital shell carries the notation of
-{{I-D.piraux-space-constellation-code}}, so the registry is directly
-consumable by tools that accept it. Encoding real filings surfaced limits in
-that notation, recorded in the affected records and summarised for that
-draft's authors: the mandatory phasing factor is essentially never present in
-a filing; modern authorisations describe envelopes rather than fixed Walker
-shells; filings state elliptical orbits where the code assumes circular ones;
-and sun-synchronous local time, repeating ground tracks and formation flying
-have no representation at all.
+## Scope
 
-# Open questions
+The registry covers constellations providing Internet access or
+Internet-related services, including orbital data centres. Systems flown for
+imaging, remote sensing, navigation, or purely as sensor networks are outside
+its scope, although general satellite trackers include them. Totals drawn from
+this registry are therefore not comparable with those trackers' totals without
+saying so, and the scope statement is part of what the registry publishes.
 
-TODO: this section is for the group, and is deliberately unfinished.
+# Relationship to other SPACERG work
 
-* Should the registry record ITU-declared and nationally authorised figures as
-  separate quantities everywhere, rather than only where both are known?
-* How should publicly procured systems be handled? IRIS2 has no spectrum
-  licence of its own; its defining instrument is a concession contract.
-* What is the right treatment of systems with no public filing at all, such as
-  classified government constellations?
-* Can the declaration-to-plan ratio be estimated well enough to correct
-  aggregate figures, or only to discredit them?
+This registry is complementary to the research infrastructure typology and
+registry of {{I-D.sastry-spacerg-space-research-infra-typology}}. That work
+catalogues what researchers can experiment with; this one catalogues what is
+being built and what has been claimed. The two use the same contribution
+model, the same validation approach and the same publication mechanics, and
+are intended to be usable together.
 
-# Contributing
+The orbital geometry recorded here is expressed, where possible, in the
+notation of {{I-D.piraux-space-constellation-code}}, so that entries can be
+consumed directly by tooling that accepts it.
 
-The registry is one YAML file per authorisation, contributed by pull request,
-with a validator that enforces the provenance rules described above. Field
-reference, taxonomy and inclusion criteria are in the repository. The most
-valuable contribution is a provenance upgrade: taking a record that rests on a
-press report, reading the filing it refers to, and replacing the source.
+# Conventions and Definitions
+
+{::boilerplate bcp14-tagged}
 
 # Security Considerations
 
 This document describes a registry of public information about satellite
-systems and introduces no protocol mechanisms.
+systems and introduces no protocol mechanisms. Records are compiled from
+public regulatory filings and public reporting.
 
 # IANA Considerations
 
@@ -241,9 +245,15 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-This work grew out of the talk "Beyond Starlink: Understanding the Coming
-Waves of LEO Satellite Deployments" presented at IETF 126 in Vienna, and the
-discussion that followed it in the SPACE Research Group.
+This registry grew out of a survey of announced and filed constellations
+presented to the SPACE Research Group at IETF 126 in Vienna, and the
+discussion that followed it.
 
-TODO: acknowledge IETF 126 discussion participants by name once the list is
-confirmed from the minutes.
+The initial data set was compiled with assistance from an AI coding assistant
+working under the direction of the maintainers, and the registry's provenance
+and validation rules are in part a response to that: every claim resolves to a
+declared source, source grades are fixed by document type, and the automated
+checks reject records that violate either. The repository documents this in
+full.
+
+TODO: acknowledge IETF 126 discussion participants by name once confirmed.

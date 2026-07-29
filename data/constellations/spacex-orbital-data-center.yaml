@@ -107,6 +107,15 @@ sources:
   url: https://docs.fcc.gov/public/attachments/DA-26-113A1.txt
   date: 2026-02-04
   retrieved: 2026-07-29
+- id: mcdowell-conlist
+  grade: secondary
+  kind: tracker
+  title: >-
+    Jonathan McDowell, "Jonathan's Space Report" constellation list
+    (enormous constellations, more than 1,000 satellites), planet4589.org
+  url: https://planet4589.org/space/con/conlist.html
+  date: 2026-07-25
+  retrieved: 2026-07-30
 - id: york-ietf126
   grade: secondary
   kind: presentation
@@ -124,12 +133,16 @@ discrepancies:
   registry_value: '1,000,000 requested (application ceiling)'
   note: >-
     The application, as described in the FCC's own acceptance notice, is for
-    "up to one million satellites". The slide's 1,198,120 is 198,120 higher
-    and no source for the difference has been found; it may aggregate a
-    separate filing or a tracker's arithmetic. This matters more than most
-    discrepancies in the registry because this one application accounts for
+    "up to one million satellites". The 1,198,120 figure is Jonathan
+    McDowell's, from his constellation list, as Dan York confirmed on
+    29 July 2026. The registry could not locate that specific entry on the
+    page on 30 July 2026 and so cannot say how the figure was derived; it may
+    aggregate shells or filings that the FCC's summary rounds. This matters
+    more than most discrepancies here because the application accounts for
     roughly half of the widely quoted 2.3 million aggregate, so a 198,120
-    error here is about 8 per cent of the headline number.
+    difference is about 8 per cent of the headline number. Resolving it
+    properly needs the application's own Attachment A rather than either
+    summary.
 
 notes: >-
   Reported in the press as connected to the SpaceX/xAI merger. The application

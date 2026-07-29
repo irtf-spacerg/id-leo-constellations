@@ -170,6 +170,15 @@ sources:
   url: https://www.itu.int/sns/ific10/ific3069.zip
   date: 2026-04-14
   retrieved: 2026-07-29
+- id: mcdowell-conlist
+  grade: secondary
+  kind: tracker
+  title: >-
+    Jonathan McDowell, "Jonathan's Space Report" constellation list
+    (enormous constellations, more than 1,000 satellites), planet4589.org
+  url: https://planet4589.org/space/con/conlist.html
+  date: 2026-07-25
+  retrieved: 2026-07-30
 - id: york-ietf126
   grade: secondary
   kind: presentation

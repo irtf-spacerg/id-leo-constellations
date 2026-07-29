@@ -172,6 +172,15 @@ sources:
   url: https://docs.fcc.gov/public/attachments/DA-26-391A1.pdf
   date: 2026-04-21
   retrieved: 2026-07-29
+- id: mcdowell-conlist
+  grade: secondary
+  kind: tracker
+  title: >-
+    Jonathan McDowell, "Jonathan's Space Report" constellation list
+    (enormous constellations, more than 1,000 satellites), planet4589.org
+  url: https://planet4589.org/space/con/conlist.html
+  date: 2026-07-25
+  retrieved: 2026-07-30
 - id: york-ietf126
   grade: secondary
   kind: presentation
@@ -188,10 +197,13 @@ discrepancies:
   claimed_by: york-ietf126
   registry_value: '248 licensed'
   note: >-
-    The largest proportional gap found so far, and in the opposite direction
-    to most: the deck understates by roughly a factor of two and a half. The
-    248-satellite authorisation was granted on 21 April 2026, three months
-    before the talk. The "~100" figure appears to predate it.
+    Resolved. Dan York confirmed on 29 July 2026 that the "~100" on the slide
+    has no source in his notes and was an error on his part; McDowell's
+    tracker gave 243, close to the authorised 248. The 248-satellite
+    authorisation was granted on 21 April 2026, three months before the talk.
+    Recorded rather than removed because the registry's purpose is to make
+    such things visible and correctable, and because this one was corrected by
+    its own author within a week of being asked.
 
 notes: >-
   This record is the registry's worked example of orbital geometry that the

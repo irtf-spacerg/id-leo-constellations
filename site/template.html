@@ -96,6 +96,7 @@
     display: flex; flex-direction: column; gap: 10px;
   }
   .row1 { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .row1 #expandAll { margin-left: auto; }
   #q {
     flex: 1 1 260px; max-width: 440px; padding: 8px 12px;
     border: 1px solid var(--line); border-radius: 7px;
@@ -105,7 +106,7 @@
   .count { color: var(--muted); font-size: 12.5px; }
   .count b { color: var(--ink); }
   #clear { border: none; background: none; color: var(--accent-ink); cursor: pointer; font: inherit; font-size: 12.5px; text-decoration: underline; padding: 2px 4px; }
-  #expandAll { margin-left: auto; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 7px; padding: 7px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+  #expandAll { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 7px; padding: 7px 14px; font: inherit; font-size: 13px; cursor: pointer; }
   #expandAll:hover { border-color: var(--accent); }
   .fgroups { display: flex; flex-wrap: wrap; gap: 14px 22px; }
   .fgroup { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
@@ -176,6 +177,38 @@
   .discbox .dq { color: var(--muted); }
   footer { padding: 0 28px 34px; color: var(--muted); font-size: 12px; max-width: 92ch; }
   footer .legend { margin-bottom: 12px; }
+
+  /* --- suggest-a-constellation panel (mirrors id-leo-tools) --- */
+  #suggest { border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 7px; padding: 7px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+  #suggest:hover { filter: brightness(1.08); }
+  #suggest:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  #panel { padding: 14px 28px 4px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 20px 22px; max-width: 980px; }
+  .card h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
+  .fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 18px; margin-top: 14px; }
+  .fcell { display: flex; flex-direction: column; gap: 4px; }
+  .fcell.wide { grid-column: 1 / -1; }
+  .fcell label { font-family: ui-monospace, Consolas, monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .fcell label .req { color: var(--bad); }
+  .fcell input, .fcell select, .fcell textarea { padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); color: var(--ink); font: inherit; font-size: 13px; }
+  .fcell input:focus, .fcell select:focus, .fcell textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .fcell input.err, .fcell textarea.err { border-color: var(--bad); }
+  .fcell textarea { resize: vertical; min-height: 54px; }
+  .fhint { font-size: 11.5px; color: var(--muted); }
+  .domchips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 16px; }
+  .btn { border: 1px solid var(--line); background: var(--panel2); color: var(--ink); border-radius: 7px; padding: 7px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn:hover { border-color: var(--accent); }
+  #smsg { font-size: 12.5px; color: var(--ok); }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 10px; }
+
+  /* --- shared SPACE RG brand strip (mirrored in both registries) --- */
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; position: relative; }
+  .brand img { width: 34px; height: 34px; border-radius: 7px; flex: none; }
+  .brand .eyebrow { margin: 0; }
+  .sibling { margin-top: 10px; font-size: 12.5px; color: var(--muted); position: relative; }
+  .sibling a { white-space: nowrap; }
   @media (prefers-reduced-motion: no-preference) { tr.item td { transition: background .12s ease; } }
 </style>
 
@@ -190,7 +223,10 @@
     <circle cx="330" cy="205" r="3.5" fill="var(--muted)" opacity=".6"/>
     <circle cx="86" cy="58" r="2.5" fill="var(--muted)" opacity=".6"/>
   </svg>
-  <div class="eyebrow"><a href="https://datatracker.ietf.org/rg/space/about/" target="_blank" rel="noopener">IETF / IRTF Space RG</a> &middot; constellation registry</div>
+  <div class="brand">
+    <img src="static/logo.png" alt="" aria-hidden="true">
+    <div class="eyebrow"><a href="https://datatracker.ietf.org/rg/space/about/" target="_blank" rel="noopener">IETF / IRTF Space RG</a> &middot; constellation registry</div>
+  </div>
   <h1>Announced, Filed and Deployed <span class="haccent">Satellite Constellations</span></h1>
   <p class="sub">Press coverage reports four different quantities interchangeably as &ldquo;planned satellites&rdquo;: how many have <b>launched</b>, how many a regulator has <b>licensed</b>, how many have been <b>filed</b> for, and how many have merely been <b>announced</b>. For the same system these differ by an order of magnitude. This registry keeps them apart and requires every number to carry a citation and an evidence grade. One record is one authorisation. Click any row for the filings, the orbital shells, the sources and the disagreements.</p>
   <div class="totals" id="totals"></div>
@@ -199,6 +235,7 @@
     <div class="provbar"><span class="p1" id="pb1"></span><span class="p2" id="pb2"></span></div>
     <div class="provlegend" id="provlegend"></div>
   </div>
+  <div class="sibling">Companion registry: <a href="https://irtf-spacerg.github.io/id-leo-tools/registry/">space networking tools, simulators, testbeds and datasets &rarr;</a></div>
 </header>
 
 <div class="controls">
@@ -207,6 +244,7 @@
     <span class="count"><b id="nShown">0</b> of <span id="nTotal">0</span> shown</span>
     <button id="clear">Clear filters</button>
     <button id="expandAll" aria-pressed="false">Expand all</button>
+    <button id="suggest" aria-expanded="false" aria-controls="panel">&#65291; Suggest a constellation</button>
   </div>
   <div class="fgroups">
     <div class="fgroup" id="f-status"><span class="flabel">Status</span></div>
@@ -215,6 +253,45 @@
     <div class="fgroup" id="f-prov"><span class="flabel">Evidence</span></div>
   </div>
 </div>
+
+
+<section id="panel" hidden>
+  <div class="card">
+    <h2>Suggest a constellation</h2>
+    <p class="sub">Fill in what you know; only the starred fields are required. The form composes a valid registry record, wiring every count to the source you give. Open a pull request adding it under <span class="mono">data/constellations/</span>, or open a prefilled issue and a maintainer will turn it into a PR. Field reference: <a href="__REPO_URL__/blob/main/data/README.md">data/README.md</a>.</p>
+    <div class="fgrid">
+      <div class="fcell"><label for="s-name">Constellation name <span class="req">*</span></label><input id="s-name" type="text" placeholder="e.g. Amazon Leo Gen2"><span class="fhint">Name this authorisation, not the company.</span></div>
+      <div class="fcell"><label for="s-operator">Operator / licensee <span class="req">*</span></label><input id="s-operator" type="text" placeholder="Legal entity on the filing"></div>
+      <div class="fcell"><label for="s-family">Family</label><input id="s-family" type="text" placeholder="groups generations; defaults to the slug"></div>
+      <div class="fcell"><label for="s-country">Country (ISO-2)</label><input id="s-country" type="text" maxlength="2" placeholder="US"></div>
+      <div class="fcell"><label for="s-status">Status <span class="req">*</span></label><select id="s-status"></select></div>
+      <div class="fcell"><label for="s-class">System class</label><select id="s-class"></select></div>
+      <div class="fcell wide"><label>Services</label><div class="domchips" id="s-svc"></div></div>
+
+      <div class="fcell"><label for="s-auth">Filing authority</label><select id="s-auth"></select></div>
+      <div class="fcell"><label for="s-file">Filing / file number</label><input id="s-file" type="text" placeholder="e.g. SAT-LOA-20260108-00016"><span class="fhint">Leave blank if no public filing exists.</span></div>
+
+      <div class="fcell"><label for="s-launched">Satellites launched</label><input id="s-launched" type="number" min="0"></div>
+      <div class="fcell"><label for="s-licensed">Satellites licensed</label><input id="s-licensed" type="number" min="0"></div>
+      <div class="fcell"><label for="s-filed">Satellites filed for</label><input id="s-filed" type="number" min="0"></div>
+      <div class="fcell"><label for="s-announced">Satellites announced</label><input id="s-announced" type="number" min="0"></div>
+
+      <div class="fcell wide"><label for="s-srcurl">Source URL <span class="req">*</span></label><input id="s-srcurl" type="url" placeholder="https://&hellip; the document the numbers come from"></div>
+      <div class="fcell wide"><label for="s-srctitle">Source title <span class="req">*</span></label><input id="s-srctitle" type="text" placeholder="Document title as it appears on the document"></div>
+      <div class="fcell"><label for="s-srckind">Source kind <span class="req">*</span></label><select id="s-srckind"></select><span class="fhint" id="s-gradehint"></span></div>
+      <div class="fcell"><label for="s-srcdate">Source date</label><input id="s-srcdate" type="text" placeholder="YYYY-MM-DD"></div>
+
+      <div class="fcell wide"><label for="s-notes">Notes (caveats, what you could not verify&hellip;)</label><textarea id="s-notes"></textarea></div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="s-copy">Copy as YAML</button>
+      <button class="btn" id="s-issue">Open a prefilled issue</button>
+      <button class="btn" id="s-cancel">Cancel</button>
+      <span id="smsg" role="status"></span>
+    </div>
+    <p class="hint">The grade of your source is set by its kind and cannot be chosen: filings and regulator orders are primary, everything else is secondary. That is the rule CI enforces, so the form applies it here rather than letting a record fail later.</p>
+  </div>
+</section>
 
 <main>
   <noscript><p class="sub" style="padding-bottom:14px">This page needs JavaScript to render the searchable table. The raw data is available as <a href="data/constellations.json">nested JSON</a>, <a href="data/constellations-summary.json">flat JSON</a> and <a href="data/constellations.csv">CSV</a>.</p></noscript>
@@ -539,6 +616,165 @@ ea.addEventListener("click", () => {
   ea.textContent = on ? "Expand all" : "Collapse all";
   render();
 });
+
+/* ---------- suggest a constellation ---------- */
+const STATUSES_SEL = ["operational","deploying","demonstrator","licensed","filed",
+  "announced","dormant","cancelled","retired"];
+const CLASSES_SEL = ["broadband","direct-to-device","iot-m2m","backhaul-trunking",
+  "orbital-compute","earth-observation","navigation","government-military",
+  "relay-data-transport","technology-demo","other"];
+const SERVICES_SEL = ["broadband","direct-to-device","iot","backhaul","orbital-compute",
+  "government-secure","military","voice","messaging","relay","earth-observation",
+  "navigation","other"];
+const AUTHORITIES_SEL = ["FCC","Ofcom","ANFR","BNetzA","AGCOM","IN-SPACe","MIIT",
+  "SASTIND","Roskomnadzor","ACMA","ISED","MIC","KCC","ANATEL","EUSPA","ESA","NTIA","other"];
+// kind -> grade. This mirrors KIND_GRADE in scripts/build_site.py exactly; if the
+// validator's mapping changes, change it here too or submissions will fail CI.
+const KIND_GRADE = {
+  "itu-filing":"primary","itu-publication":"primary","fcc-order":"primary",
+  "fcc-application":"primary","fcc-public-notice":"primary","regulator-docket":"primary",
+  "operator-technical":"primary","treaty-registry":"primary",
+  "operator-web":"secondary","trade-press":"secondary","tracker":"secondary",
+  "encyclopedia":"secondary","academic":"secondary","analyst":"secondary",
+  "presentation":"secondary",
+};
+
+function fillSelect(id, values) {
+  const el = document.getElementById(id);
+  values.forEach(v => { const o = document.createElement("option"); o.value = v; o.textContent = v; el.appendChild(o); });
+  return el;
+}
+fillSelect("s-status", STATUSES_SEL).value = "filed";
+fillSelect("s-class", CLASSES_SEL).value = "broadband";
+fillSelect("s-auth", AUTHORITIES_SEL).value = "FCC";
+const srcKind = fillSelect("s-srckind", Object.keys(KIND_GRADE));
+srcKind.value = "fcc-order";
+const svcSel = new Set(["broadband"]);
+(function () {
+  const box = document.getElementById("s-svc");
+  SERVICES_SEL.forEach(v => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip" + (svcSel.has(v) ? " on" : ""); b.textContent = v;
+    b.addEventListener("click", () => { svcSel.has(v) ? svcSel.delete(v) : svcSel.add(v); b.classList.toggle("on"); });
+    box.appendChild(b);
+  });
+})();
+function showGrade() {
+  document.getElementById("s-gradehint").textContent =
+    "grade: " + (KIND_GRADE[srcKind.value] || "?") + " (set by kind, not chosen)";
+}
+srcKind.addEventListener("change", showGrade); showGrade();
+
+const sval = id => document.getElementById(id).value.trim();
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const yq = s => "'" + String(s).replace(/'/g, "''") + "'";
+const today = () => new Date().toISOString().slice(0, 10);
+
+function checkRequired() {
+  let ok = true;
+  ["s-name", "s-operator", "s-srcurl", "s-srctitle"].forEach(id => {
+    const el = document.getElementById(id);
+    const bad = !el.value.trim() || !el.checkValidity();
+    el.classList.toggle("err", bad);
+    if (bad) ok = false;
+  });
+  document.getElementById("smsg").style.color = ok ? "" : "var(--bad)";
+  if (!ok) document.getElementById("smsg").textContent = "Fill the starred fields (with a valid source URL).";
+  return ok;
+}
+
+function toYaml() {
+  const slug = slugify(sval("s-name"));
+  const SRC = "submitted";
+  const L = [];
+  L.push("name: " + yq(sval("s-name")));
+  L.push("slug: " + slug);
+  L.push("family: " + (sval("s-family") ? slugify(sval("s-family")) : slug));
+  L.push("operator: " + yq(sval("s-operator")));
+  if (sval("s-country")) {
+    L.push("country: " + sval("s-country").toUpperCase());
+    L.push("jurisdiction:"); L.push("- " + sval("s-country").toUpperCase());
+  }
+  L.push("system_class: " + document.getElementById("s-class").value);
+  L.push("status: " + document.getElementById("s-status").value);
+  L.push("status_asof: " + today().slice(0, 7));
+  if (svcSel.size) { L.push("services:"); [...svcSel].forEach(v => L.push("- " + v)); }
+  L.push("");
+  if (sval("s-file")) {
+    L.push("filing:");
+    L.push("  authority: " + document.getElementById("s-auth").value);
+    L.push("  file_number: " + yq(sval("s-file")));
+    L.push("  src: " + SRC);
+  } else {
+    L.push("filing_absent: >-");
+    L.push("  No public filing reference was identified when this record was");
+    L.push("  submitted. Replace this with a filing: block if one is found.");
+  }
+  L.push("");
+  const counts = [["launched", "s-launched"], ["licensed", "s-licensed"],
+                  ["filed", "s-filed"], ["announced", "s-announced"]];
+  const present = counts.filter(([, id]) => sval(id) !== "");
+  if (present.length) {
+    L.push("counts:");
+    present.forEach(([k, id]) => {
+      L.push("  " + k + ":");
+      L.push("    value: " + sval(id));
+      L.push("    asof: " + today());
+      L.push("    src: " + SRC);
+    });
+    L.push("");
+  }
+  L.push("sources:");
+  L.push("- id: " + SRC);
+  L.push("  grade: " + KIND_GRADE[srcKind.value]);
+  L.push("  kind: " + srcKind.value);
+  L.push("  title: " + yq(sval("s-srctitle")));
+  L.push("  url: " + sval("s-srcurl"));
+  if (sval("s-srcdate")) L.push("  date: " + sval("s-srcdate"));
+  L.push("  retrieved: " + today());
+  L.push("");
+  if (sval("s-notes")) L.push("notes: " + yq(sval("s-notes").replace(/\s+/g, " ")));
+  L.push("added: " + today().slice(0, 7));
+  L.push("verified: " + today());
+  return L.join("\n") + "\n";
+}
+
+const panel = document.getElementById("panel");
+const suggestBtn = document.getElementById("suggest");
+suggestBtn.addEventListener("click", () => {
+  const open = panel.hasAttribute("hidden");
+  open ? panel.removeAttribute("hidden") : panel.setAttribute("hidden", "");
+  suggestBtn.setAttribute("aria-expanded", String(open));
+  if (open) document.getElementById("s-name").focus();
+});
+document.getElementById("s-cancel").addEventListener("click", () => {
+  panel.setAttribute("hidden", ""); suggestBtn.setAttribute("aria-expanded", "false");
+});
+document.getElementById("s-issue").addEventListener("click", () => {
+  if (!checkRequired()) return;
+  const slug = slugify(sval("s-name"));
+  const title = "New constellation: " + sval("s-name");
+  const body = "Proposed registry entry (to be added as `data/constellations/" + slug +
+    ".yaml`):\n\n```yaml\n" + toYaml() + "```\n";
+  window.open(REPO_URL + "/issues/new?title=" + encodeURIComponent(title) +
+              "&body=" + encodeURIComponent(body), "_blank", "noopener");
+  const m = document.getElementById("smsg");
+  m.style.color = ""; m.textContent = "Issue form opened in a new tab.";
+});
+document.getElementById("s-copy").addEventListener("click", async () => {
+  if (!checkRequired()) return;
+  const text = toYaml();
+  try { await navigator.clipboard.writeText(text); }
+  catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove();
+  }
+  const m = document.getElementById("smsg");
+  m.style.color = "";
+  m.textContent = "YAML copied. Commit it as data/constellations/" + slugify(sval("s-name")) + ".yaml in a pull request.";
+});
+
 document.querySelectorAll("thead th.sortable").forEach(th => {
   th.addEventListener("click", () => {
     const k = th.dataset.k;

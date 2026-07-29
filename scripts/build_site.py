@@ -711,11 +711,27 @@ def build(records, cfg, ttl_months, today, artifact_out=None):
                          "'const PAYLOAD = /*__DATA__*/{records: [], aggregates: {}};'")
     desc = cfg.get("description", "").replace("{n}", str(len(rows)))
     pages = cfg.get("pages_url", "").rstrip("/") + "/"
+    title = cfg["site_title"]
+    og_img = pages + "static/logo.png"
     head = (f'<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-            f'<title>{cfg["site_title"]}</title>\n'
+            f'<title>{title}</title>\n'
             f'<meta name="description" content="{desc}">\n'
-            f'<link rel="canonical" href="{pages}">\n')
+            f'<link rel="canonical" href="{pages}">\n'
+            f'<link rel="icon" type="image/png" href="static/favicon.png">\n'
+            f'<link rel="apple-touch-icon" href="static/favicon.png">\n'
+            f'<meta name="theme-color" content="#F6F7F9" media="(prefers-color-scheme: light)">\n'
+            f'<meta name="theme-color" content="#0F131B" media="(prefers-color-scheme: dark)">\n'
+            f'<meta property="og:type" content="website">\n'
+            f'<meta property="og:site_name" content="{title}">\n'
+            f'<meta property="og:title" content="{title}">\n'
+            f'<meta property="og:description" content="{desc}">\n'
+            f'<meta property="og:url" content="{pages}">\n'
+            f'<meta property="og:image" content="{og_img}">\n'
+            f'<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta name="twitter:title" content="{title}">\n'
+            f'<meta name="twitter:description" content="{desc}">\n'
+            f'<meta name="twitter:image" content="{og_img}">\n')
     (PUBLIC / "index.html").write_text(
         '<!doctype html>\n<html lang="en">\n<head>\n' + head
         + "</head>\n<body>\n" + body + "\n</body>\n</html>\n")
