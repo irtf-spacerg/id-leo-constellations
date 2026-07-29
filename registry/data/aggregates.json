@@ -1,10 +1,10 @@
 {
- "records": 31,
- "records_counted": 31,
- "records_with_primary_source": 18,
+ "records": 32,
+ "records_counted": 32,
+ "records_with_primary_source": 20,
  "total_launched": 14586,
  "total_licensed": 35753,
- "total_filed": 1634913,
+ "total_filed": 1637577,
  "total_announced": 25244,
  "totals_are_floors": true,
  "records_missing_filed": [
@@ -17,11 +17,11 @@
   "starshield",
   "telesat-lightspeed"
  ],
- "note": "Totals are floors, not estimates. They sum only what is recorded and sourced; records with an unrecorded count contribute zero. 8 of 31 records have no filed figure, so total_filed understates by an unknown amount, and a family's licensed total may exceed its filed total for that reason. Superseded records are excluded.",
+ "note": "Totals are floors, not estimates. They sum only what is recorded and sourced; records with an unrecorded count contribute zero. 8 of 32 records have no filed figure, so total_filed understates by an unknown amount, and a family's licensed total may exceed its filed total for that reason. Superseded records are excluded.",
  "filed_by_status": {
   "deploying": 41744,
   "licensed": 5778,
-  "filed": 1576529,
+  "filed": 1579193,
   "announced": 0,
   "operational": 10862
  },
@@ -43,6 +43,12 @@
    "licensed": 0,
    "filed": 51600,
    "filed_is_floor": true
+  },
+  "china-mobile": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 2664,
+   "filed_is_floor": false
   },
   "cowboy-space": {
    "records": 1,

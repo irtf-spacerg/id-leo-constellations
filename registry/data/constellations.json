@@ -765,6 +765,169 @@
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
+  "name": "China Mobile L1 and M1",
+  "slug": "china-mobile-l1",
+  "family": "china-mobile",
+  "aka": [
+   "CHINAMOBILE-L1",
+   "CHINAMOBILE-M1"
+  ],
+  "operator": "China Mobile",
+  "parent": "China Mobile Communications Group, state-owned",
+  "country": "CN",
+  "jurisdiction": [
+   "CN"
+  ],
+  "system_class": "broadband",
+  "status": "filed",
+  "status_detail": "Advance publication information received by the ITU on 30 December 2025 and published 14 April 2026, one day after the CTC-1 and CTC-2 filings and part of the same wave. API/A only: no coordination request, no national authorisation identified, nothing launched.",
+  "status_asof": "2026-07",
+  "services": [
+   "broadband",
+   "direct-to-device"
+  ],
+  "orbit_regimes": [
+   "VLEO",
+   "LEO",
+   "MEO"
+  ],
+  "dual_use": "unknown",
+  "filing": {
+   "authority": "other",
+   "administration": "CHN",
+   "file_number": "API/A 14312 (notice ID 125545461)",
+   "document": "BR IFIC 3069",
+   "src": "itu-snl-chinamobile-l1"
+  },
+  "counts": {
+   "filed": {
+    "value": 2664,
+    "asof": "2025-12-30",
+    "src": "itu-ific-3069-cm",
+    "breakdown": [
+     {
+      "label": "CHINAMOBILE-L1 (VLEO/LEO)",
+      "value": 2520,
+      "src": "itu-ific-3069-cm"
+     },
+     {
+      "label": "CHINAMOBILE-M1 (MEO)",
+      "value": 144,
+      "src": "itu-ific-3069-cm"
+     }
+    ],
+    "note": "Summed from the orbit table of BR IFIC 3069: 1,031 planes for L1 totalling 2,520 satellites, and 24 planes for M1 totalling 144."
+   }
+  },
+  "itu": [
+   {
+    "administration": "CHN",
+    "network_name": "CHINAMOBILE-L1",
+    "stage": "API",
+    "date": "2025-12-30",
+    "satellites": 2520,
+    "src": "itu-snl-chinamobile-l1",
+    "note": "API/A 14312, notice ID 125545461, received 30 December 2025, published in BR IFIC 3069 on 14 April 2026. No coordination request on file."
+   },
+   {
+    "administration": "CHN",
+    "network_name": "CHINAMOBILE-M1",
+    "stage": "API",
+    "date": "2025-12-30",
+    "satellites": 144,
+    "src": "itu-ific-3069-cm",
+    "note": "Notice ID 125545462, published in the same IFIC. Recorded here rather than as a separate record because the two were filed together as the LEO and MEO layers of one system; the schema's one-record-per-authorisation rule arguably wants them split, and that is worth revisiting."
+   }
+  ],
+  "shells": [
+   {
+    "label": "l1-vleo-251",
+    "status": "proposed",
+    "geometry_kind": "irregular",
+    "altitude_km": 251,
+    "inclination_deg": 55.0,
+    "planes": 960,
+    "sats_per_plane": 1,
+    "satellites": 960,
+    "code_status": "not-representable",
+    "code_note": "960 orbital planes carrying one satellite each at 251 km. A single satellite per plane is a degenerate Walker configuration, and 251 km is far below anything else in this registry: atmospheric drag at that altitude implies either continuous propulsion or a very short life.",
+    "src": "itu-ific-3069-cm"
+   },
+   {
+    "label": "l1-300",
+    "status": "proposed",
+    "geometry_kind": "walker",
+    "altitude_km": 300,
+    "inclination_deg": 55.0,
+    "planes": 36,
+    "sats_per_plane": 25,
+    "satellites": 900,
+    "code_status": "unknown",
+    "code_note": "Phasing factor not in the ITU declaration.",
+    "src": "itu-ific-3069-cm"
+   },
+   {
+    "label": "l1-650",
+    "status": "proposed",
+    "geometry_kind": "walker",
+    "altitude_km": 650,
+    "inclination_deg": 55.0,
+    "planes": 25,
+    "sats_per_plane": 24,
+    "satellites": 600,
+    "code_status": "unknown",
+    "src": "itu-ific-3069-cm"
+   },
+   {
+    "label": "l1-1250",
+    "status": "proposed",
+    "geometry_kind": "walker",
+    "altitude_km": 1250,
+    "inclination_deg": 55.0,
+    "planes": 10,
+    "sats_per_plane": 6,
+    "satellites": 60,
+    "code_status": "unknown",
+    "src": "itu-ific-3069-cm"
+   },
+   {
+    "label": "m1-meo",
+    "status": "proposed",
+    "geometry_kind": "irregular",
+    "inclination_deg": 55.0,
+    "planes": 24,
+    "satellites": 144,
+    "code_status": "not-representable",
+    "code_note": "Two MEO groups of 12 planes each carrying 6 satellites, at 8,200 km and 6,391 km, both at 55 degrees. Two distinct altitudes in one notice, and outside the LEO regime the constellation code is normally applied to.",
+    "src": "itu-ific-3069-cm"
+   }
+  ],
+  "isl": "unknown",
+  "sources": [
+   {
+    "id": "itu-snl-chinamobile-l1",
+    "grade": "primary",
+    "kind": "itu-filing",
+    "title": "ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing history for satellite network CHINAMOBILE-L1 (notifying administration CHN)",
+    "url": "https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=CHINAMOBILE-L1",
+    "retrieved": "2026-07-29"
+   },
+   {
+    "id": "itu-ific-3069-cm",
+    "grade": "primary",
+    "kind": "itu-publication",
+    "title": "ITU BR IFIC (Space Services) No. 3069, non-GSO notice data for CHINAMOBILE-L1 (notice ID 125545461) and CHINAMOBILE-M1 (notice ID 125545462), tables non_geo and orbit",
+    "url": "https://www.itu.int/sns/ific10/ific3069.zip",
+    "date": "2026-04-14",
+    "retrieved": "2026-07-29"
+   }
+  ],
+  "notes": "Found by scanning the non-GSO tables of the downloaded BR IFICs for Chinese networks with large plane counts, while looking for something else. It appears in no secondary source consulted for this registry and was not in the IETF 126 survey. A 2,664-satellite filing by the largest mobile operator in the world is not a marginal entry, and the fact that it surfaced only by reading the ITU publication directly is the clearest argument this registry has for doing so routinely. The 251 km shell is worth attention on its own: 960 satellites in 960 separate planes at an altitude where drag is severe. Whether that is a serious deployment plan or a spectrum placeholder is exactly the question the API/A stage cannot answer.",
+  "added": "2026-07",
+  "verified": "2026-07-29",
+  "contributor": "Juan A. Fraire (Inria)"
+ },
+ {
   "name": "Cowboy Space Stampede",
   "slug": "cowboy-space-stampede",
   "family": "cowboy-space",
@@ -2316,7 +2479,7 @@
   ],
   "system_class": "broadband",
   "status": "licensed",
-  "status_detail": "Granted in part by the FCC in early 2026 for K-, Q- and V-band operations, with parts of the higher-frequency request deferred or denied. Nothing launched.",
+  "status_detail": "Granted by the FCC on 30 January 2026 for 4,178 satellites in S-, Ka-, V- and E-band, together with a waiver of the processing round rules for a list of higher bands, conditioned on participating in a future processing round. Nothing launched.",
   "status_asof": "2026-07",
   "services": [
    "broadband",
@@ -2330,20 +2493,21 @@
   "filing": {
    "authority": "FCC",
    "administration": "USA",
-   "file_number": "SAT-LOA-20241030-00243",
-   "src": "spacenews-logos-2026"
+   "file_number": "SAT-LOA-20241030-00243 and SAT-AMD-20250328-00084",
+   "document": "Grant Stamp (SB Jan. 30, 2026), cited in DA 26-552",
+   "src": "fcc-processing-rounds-2026"
   },
   "counts": {
    "licensed": {
     "value": 4178,
-    "asof": "2026-02",
-    "src": "spacenews-logos-2026",
-    "note": "Disputed. See discrepancies: reports of the same grant give both 4,178 and 3,960. The registry records the higher figure because it matches the number applied for, and flags the conflict rather than picking a winner."
+    "asof": "2026-01-30",
+    "src": "fcc-processing-rounds-2026",
+    "note": "Resolved. The Space Bureau states that on 30 January 2026 it \"granted Logos Space Services, Inc. (Logos) authority to launch and operate a constellation of 4,178 satellites in certain S-, Ka-, V-, and E-band frequencies\". The competing 3,960 figure in trade press is wrong."
    },
    "filed": {
     "value": 4178,
     "asof": "2024-10-30",
-    "src": "spacenews-logos-2026"
+    "src": "fcc-processing-rounds-2026"
    }
   },
   "regulatory": [
@@ -2362,11 +2526,11 @@
     "authority": "FCC",
     "country": "US",
     "kind": "license-grant",
-    "file_number": "SAT-LOA-20241030-00243",
-    "action": "granted-in-part",
+    "file_number": "SAT-LOA-20241030-00243 and SAT-AMD-20250328-00084",
+    "action": "granted",
     "date": "2026-01-30",
     "satellites": 4178,
-    "scope": "Partial grant clearing operations in K-, Q- and V-band spectrum with conditions, while deferring and denying parts of the higher-frequency request. Deployment required by 2035 to maintain the licence.",
+    "scope": "Authority to launch and operate 4,178 satellites in certain S-, Ka-, V- and E-band frequencies, plus a waiver of the processing round rules for the 21.2-23.55, 25.5-27.0, 37.5-40.0, 40.0-42.0, 42.0-42.5, 47.0-47.2, 47.2-50.2 and 50.4-51.4 GHz bands. The waiver is conditioned on Logos participating in a future processing round for those bands, and the Bureau included Logos in the third processing round it opened in June 2026.",
     "milestones": [
      {
       "fraction": 1.0,
@@ -2375,7 +2539,7 @@
       "status": "pending"
      }
     ],
-    "src": "spacenews-logos-2026"
+    "src": "fcc-processing-rounds-2026"
    }
   ],
   "shells": [
@@ -2389,16 +2553,26 @@
    }
   ],
   "spectrum": [
-   "K",
-   "Q",
-   "V"
+   "S",
+   "Ka",
+   "V",
+   "E"
   ],
-  "spectrum_detail": "K-, Q- and V-band cleared with conditions; parts of the higher-frequency request deferred or denied. Exact ranges not recorded.",
+  "spectrum_detail": "S-, Ka-, V- and E-band per the grant. A processing-round waiver additionally covers 21.2-23.55, 25.5-27.0, 37.5-40.0, 40.0-42.0, 42.0-42.5, 47.0-47.2, 47.2-50.2 and 50.4-51.4 GHz, conditioned on participation in a future processing round.",
   "isl": "rf-planned",
   "isl_detail": "Inter-satellite service is part of what was applied for, alongside in-space data relay to satellites in lower orbits, which makes this system a potential backhaul provider for orbital data centres rather than only a broadband operator.",
   "target_completion": 2035,
   "target_completion_kind": "regulatory-milestone",
   "sources": [
+   {
+    "id": "fcc-processing-rounds-2026",
+    "grade": "primary",
+    "kind": "fcc-order",
+    "title": "FCC Space Bureau, Order, DA 26-552, \"Space Bureau Opens Processing Rounds\", which cites the Logos Authorization (Grant Stamp, ICFS SAT-LOA-20241030-00243 and SAT-AMD-20250328-00084, SB Jan. 30, 2026) and states the authorised satellite count and bands",
+    "url": "https://docs.fcc.gov/public/attachments/DA-26-552A1.pdf",
+    "date": "2026-06-05",
+    "retrieved": "2026-07-29"
+   },
    {
     "id": "spacenews-logos-2026",
     "grade": "secondary",
@@ -2432,18 +2606,18 @@
     "field": "counts.licensed",
     "claim": "3,960 satellites authorised",
     "claimed_by": "satnews-logos-2026",
-    "registry_value": "4,178 recorded, disputed",
-    "note": "Two trade outlets reporting the same partial grant within a week give 4,178 and 3,960. The gap of 218 is consistent with a partial grant in which some satellites were deferred alongside the deferred spectrum, in which case 3,960 would be the licensed figure and 4,178 the filed one. That is a hypothesis, not a finding. Because the registry cannot tell which is which without the order, both counts currently carry 4,178 and this note carries the doubt. Reading the order resolves it immediately."
+    "registry_value": "4,178 authorised",
+    "note": "Resolved against the FCC. Two trade outlets reported the same grant within a week as 4,178 and 3,960; the Space Bureau's own subsequent order says 4,178. The earlier guess in this registry, that 3,960 might be a licensed figure against a 4,178 request, was wrong: the grant is for the full number applied for. A good argument for reading the order rather than reasoning about which secondary source looks more plausible."
    },
    {
     "field": "counts.licensed",
     "claim": "4,178 planned, FCC-approved",
     "claimed_by": "york-ietf126",
-    "registry_value": "4,178, partial grant with deferrals and denials",
-    "note": "The count matches. What the deck's \"FCC-approved\" does not convey is that the grant is partial: parts of the spectrum request were deferred and parts denied."
+    "registry_value": "4,178 authorised 30 January 2026",
+    "note": "Correct on both count and status. One of the cleanest entries in the deck."
    }
   ],
-  "notes": "Provenance gap: this record has no primary source. The FCC order granting in part was not located at docs.fcc.gov during this pass, so the DA number is unknown and the satellite count is unresolved between two secondary reports that disagree. Reading the order would fix the count, the shells, the spectrum ranges and the milestone in one go. This is the highest-value outstanding lookup in the registry.",
+  "notes": "Provenance upgraded 2026-07-29. The grant stamp itself is not a published document with a DA number, but the Space Bureau restates its terms in DA 26-552, which is citable and is used here. Provenance gap: the orbital shells are still unknown. The grant stamp and the underlying application would give them.",
   "added": "2026-07",
   "verified": "2026-07-29",
   "contributor": "Juan A. Fraire (Inria)"
@@ -2814,7 +2988,7 @@
    "LEO"
   ],
   "dual_use": "unknown",
-  "filing_absent": "No filing reference has been established for this system. China's national authorisations are not published in a public docket comparable to the FCC's ICFS, and the ITU SNS records for the Chinese administration's filings have not been searched for a network matching this constellation. Unlike starshield, this is a gap in our work rather than a structural limit: a filing very probably exists and can be found.",
+  "filing_absent": "No filing reference established, and not for want of looking. The ITU Space Network List was queried on 2026-07-29 for QIANFAN, SSST, SPACESAIL, STARNET, THOUSANDSAILS, G60-STARLINK, CHINA-LEO, CHINASAT-LEO, SSST-GW, QIANFAN-1 and QF-1, all returning nothing; the SNL name search is exact, not substring, so a name we have not guessed will not surface. Scanning the non-GSO tables of six downloaded BR IFICs for Chinese networks turned up 100 or so names, none obviously this system. A filing almost certainly exists under a designation we do not know. China's national authorisations are separately not published in any docket comparable to the FCC's ICFS.",
   "counts": {
    "launched": {
     "value": 239,
@@ -2834,7 +3008,7 @@
     "stage": "API",
     "date": "2025-12",
     "src": "spacenews-china-itu-2026",
-    "note": "NOT CONFIRMED for this system specifically. China filed with the ITU in late 2025 for frequency and orbital resources covering on the order of 200,000 satellites across roughly 14 constellations. Whether and how much of that filing set covers Qianfan has not been checked against the ITU SNS database. This entry records the existence of the filing wave, not a Qianfan filing identity."
+    "note": "NOT CONFIRMED for this system. China filed with the ITU in late 2025 for frequency and orbital resources covering on the order of 200,000 satellites across roughly 14 constellations, and this registry has now identified four of those networks by name (CTC-1, CTC-2, CHINAMOBILE-L1 and CHINAMOBILE-M1). None of them is Qianfan. This entry records the existence of the wave, not a Qianfan filing identity, and should be deleted or replaced once the real network name is known."
    }
   ],
   "shells": [
@@ -2900,7 +3074,7 @@
     "note": "Both 15,000 and 16,000 circulate widely and neither has been traced to a filing in this revision. Recorded as announced, not filed, precisely because the discrepancy cannot currently be resolved against a document."
    }
   ],
-  "notes": "Provenance gap: this record has no primary source at all, and that is the point of keeping it in this state rather than filling the fields from press coverage. The primary sources that would fix it are (a) the ITU SNS/SRS records for the Chinese administration's filings covering this system, and (b) any MIIT authorisation document. Neither has been consulted. This record is the registry's worked example of the non-US jurisdiction problem: for FCC-licensed systems the filing, the geometry, the milestones and the spectrum are all in a public docket, and for most others they are not. Any aggregate satellite count that treats a Chinese or Russian figure as equivalent evidence to an FCC grant is comparing unlike things, and the registry should make that visible rather than smooth it over.",
+  "notes": "Provenance gap: this record still has no primary source, and after a systematic ITU search it is now the only major system in the registry in that position. See filing_absent for what was tried. The most likely routes in are: a Chinese-language source that gives the ITU designation directly; a full SNL export filtered by administration, which the ITU server currently returns a 500 for on date-range queries; or somebody in the group with access to the BR IFIC DVD-ROM, which would allow scanning publications outside the eighteen-month download window when the filing was most likely made. ASK THE LIST. This is a good first question to put to space@irtf.org once the registry is announced: a working constellation of 239 satellites whose ITU identity we cannot find is exactly the kind of gap a group is better at closing than an individual. This record is the registry's worked example of the non-US jurisdiction problem: for FCC-licensed systems the filing, the geometry, the milestones and the spectrum are all in a public docket, and for most others they are not. Any aggregate satellite count that treats a Chinese or Russian figure as equivalent evidence to an FCC grant is comparing unlike things, and the registry should make that visible rather than smooth it over.",
   "added": "2026-07",
   "verified": "2026-07-29",
   "contributor": "Juan A. Fraire (Inria)"
