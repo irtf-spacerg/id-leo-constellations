@@ -1,0 +1,174 @@
+{
+ "records": 31,
+ "records_counted": 31,
+ "records_with_primary_source": 18,
+ "total_launched": 14586,
+ "total_licensed": 35753,
+ "total_filed": 1634913,
+ "total_announced": 25244,
+ "totals_are_floors": true,
+ "records_missing_filed": [
+  "amazon-leo-gen2",
+  "blue-origin-terawave",
+  "globalstar-hibleo",
+  "iris2",
+  "project-suncatcher",
+  "qianfan",
+  "starshield",
+  "telesat-lightspeed"
+ ],
+ "note": "Totals are floors, not estimates. They sum only what is recorded and sourced; records with an unrecorded count contribute zero. 8 of 31 records have no filed figure, so total_filed understates by an unknown amount, and a family's licensed total may exceed its filed total for that reason. Superseded records are excluded.",
+ "filed_by_status": {
+  "deploying": 41744,
+  "licensed": 5778,
+  "filed": 1576529,
+  "announced": 0,
+  "operational": 10862
+ },
+ "by_family": {
+  "amazon-leo": {
+   "records": 2,
+   "licensed": 7736,
+   "filed": 3236,
+   "filed_is_floor": true
+  },
+  "ast-spacemobile": {
+   "records": 1,
+   "licensed": 248,
+   "filed": 248,
+   "filed_is_floor": false
+  },
+  "blue-origin": {
+   "records": 2,
+   "licensed": 0,
+   "filed": 51600,
+   "filed_is_floor": true
+  },
+  "cowboy-space": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 20000,
+   "filed_is_floor": false
+  },
+  "ctc": {
+   "records": 2,
+   "licensed": 0,
+   "filed": 193428,
+   "filed_is_floor": false
+  },
+  "oneweb": {
+   "records": 1,
+   "licensed": 716,
+   "filed": 6372,
+   "filed_is_floor": false
+  },
+  "globalstar": {
+   "records": 2,
+   "licensed": 48,
+   "filed": 6221,
+   "filed_is_floor": true
+  },
+  "guowang": {
+   "records": 2,
+   "licensed": 1728,
+   "filed": 12992,
+   "filed_is_floor": false
+  },
+  "honghu": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 10000,
+   "filed_is_floor": false
+  },
+  "iridium": {
+   "records": 1,
+   "licensed": 81,
+   "filed": 81,
+   "filed_is_floor": false
+  },
+  "iris2": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 0,
+   "filed_is_floor": true
+  },
+  "logos-space": {
+   "records": 1,
+   "licensed": 4178,
+   "filed": 4178,
+   "filed_is_floor": false
+  },
+  "lynk-global": {
+   "records": 1,
+   "licensed": 10,
+   "filed": 10,
+   "filed_is_floor": false
+  },
+  "orbital-compute": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 100000,
+   "filed_is_floor": false
+  },
+  "project-suncatcher": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 0,
+   "filed_is_floor": true
+  },
+  "qianfan": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 0,
+   "filed_is_floor": true
+  },
+  "rassvet": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 1350,
+   "filed_is_floor": false
+  },
+  "reliance-jio": {
+   "records": 1,
+   "licensed": 1600,
+   "filed": 1600,
+   "filed_is_floor": false
+  },
+  "spacex-orbital-compute": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 1000000,
+   "filed_is_floor": false
+  },
+  "spinlaunch": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 1200,
+   "filed_is_floor": false
+  },
+  "starcloud": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 88000,
+   "filed_is_floor": false
+  },
+  "starlink": {
+   "records": 3,
+   "licensed": 19408,
+   "filed": 134397,
+   "filed_is_floor": false
+  },
+  "starshield": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 0,
+   "filed_is_floor": true
+  },
+  "telesat-lightspeed": {
+   "records": 1,
+   "licensed": 0,
+   "filed": 0,
+   "filed_is_floor": true
+  }
+ }
+}
