@@ -1,0 +1,167 @@
+name: China Mobile L1 and M1
+slug: china-mobile-l1
+family: china-mobile
+aka:
+- CHINAMOBILE-L1
+- CHINAMOBILE-M1
+operator: China Mobile
+parent: China Mobile Communications Group, state-owned
+country: CN
+jurisdiction:
+- CN
+system_class: broadband
+status: filed
+status_detail: >-
+  Advance publication information received by the ITU on 30 December 2025 and
+  published 14 April 2026, one day after the CTC-1 and CTC-2 filings and part
+  of the same wave. API/A only: no coordination request, no national
+  authorisation identified, nothing launched.
+status_asof: 2026-07
+services:
+- broadband
+- direct-to-device
+orbit_regimes:
+- VLEO
+- LEO
+- MEO
+dual_use: unknown
+
+filing:
+  authority: other
+  administration: CHN
+  file_number: 'API/A 14312 (notice ID 125545461)'
+  document: BR IFIC 3069
+  src: itu-snl-chinamobile-l1
+
+counts:
+  filed:
+    value: 2664
+    asof: 2025-12-30
+    src: itu-ific-3069-cm
+    breakdown:
+    - {label: 'CHINAMOBILE-L1 (VLEO/LEO)', value: 2520, src: itu-ific-3069-cm}
+    - {label: 'CHINAMOBILE-M1 (MEO)', value: 144, src: itu-ific-3069-cm}
+    note: >-
+      Summed from the orbit table of BR IFIC 3069: 1,031 planes for L1
+      totalling 2,520 satellites, and 24 planes for M1 totalling 144.
+
+itu:
+- administration: CHN
+  network_name: CHINAMOBILE-L1
+  stage: API
+  date: 2025-12-30
+  satellites: 2520
+  src: itu-snl-chinamobile-l1
+  note: >-
+    API/A 14312, notice ID 125545461, received 30 December 2025, published in
+    BR IFIC 3069 on 14 April 2026. No coordination request on file.
+- administration: CHN
+  network_name: CHINAMOBILE-M1
+  stage: API
+  date: 2025-12-30
+  satellites: 144
+  src: itu-ific-3069-cm
+  note: >-
+    Notice ID 125545462, published in the same IFIC. Recorded here rather than
+    as a separate record because the two were filed together as the LEO and
+    MEO layers of one system; the schema's one-record-per-authorisation rule
+    arguably wants them split, and that is worth revisiting.
+
+shells:
+- label: l1-vleo-251
+  status: proposed
+  geometry_kind: irregular
+  altitude_km: 251
+  inclination_deg: 55.0
+  planes: 960
+  sats_per_plane: 1
+  satellites: 960
+  code_status: not-representable
+  code_note: >-
+    960 orbital planes carrying one satellite each at 251 km. A single
+    satellite per plane is a degenerate Walker configuration, and 251 km is
+    far below anything else in this registry: atmospheric drag at that
+    altitude implies either continuous propulsion or a very short life.
+  src: itu-ific-3069-cm
+- label: l1-300
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 300
+  inclination_deg: 55.0
+  planes: 36
+  sats_per_plane: 25
+  satellites: 900
+  code_status: unknown
+  code_note: Phasing factor not in the ITU declaration.
+  src: itu-ific-3069-cm
+- label: l1-650
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 650
+  inclination_deg: 55.0
+  planes: 25
+  sats_per_plane: 24
+  satellites: 600
+  code_status: unknown
+  src: itu-ific-3069-cm
+- label: l1-1250
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 1250
+  inclination_deg: 55.0
+  planes: 10
+  sats_per_plane: 6
+  satellites: 60
+  code_status: unknown
+  src: itu-ific-3069-cm
+- label: m1-meo
+  status: proposed
+  geometry_kind: irregular
+  inclination_deg: 55.0
+  planes: 24
+  satellites: 144
+  code_status: not-representable
+  code_note: >-
+    Two MEO groups of 12 planes each carrying 6 satellites, at 8,200 km and
+    6,391 km, both at 55 degrees. Two distinct altitudes in one notice, and
+    outside the LEO regime the constellation code is normally applied to.
+  src: itu-ific-3069-cm
+
+isl: unknown
+
+sources:
+- id: itu-snl-chinamobile-l1
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network CHINAMOBILE-L1 (notifying administration
+    CHN)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=CHINAMOBILE-L1
+  retrieved: 2026-07-29
+- id: itu-ific-3069-cm
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3069, non-GSO notice data for
+    CHINAMOBILE-L1 (notice ID 125545461) and CHINAMOBILE-M1 (notice ID
+    125545462), tables non_geo and orbit
+  url: https://www.itu.int/sns/ific10/ific3069.zip
+  date: 2026-04-14
+  retrieved: 2026-07-29
+
+notes: >-
+  Found by scanning the non-GSO tables of the downloaded BR IFICs for Chinese
+  networks with large plane counts, while looking for something else. It
+  appears in no secondary source consulted for this registry and was not in
+  the IETF 126 survey. A 2,664-satellite filing by the largest mobile operator
+  in the world is not a marginal entry, and the fact that it surfaced only by
+  reading the ITU publication directly is the clearest argument this registry
+  has for doing so routinely.
+  The 251 km shell is worth attention on its own: 960 satellites in 960
+  separate planes at an altitude where drag is severe. Whether that is a
+  serious deployment plan or a spectrum placeholder is exactly the question
+  the API/A stage cannot answer.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

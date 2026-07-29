@@ -18,7 +18,10 @@ LIBDIR := lib
 
 .PHONY: setup
 setup:
-	@if [ -f .gitmodules ] && grep -q "path *= *$(LIBDIR)" .gitmodules; then \
+	@if [ -f $(LIBDIR)/main.mk ]; then \
+	  echo "$(LIBDIR)/ is already present, nothing to do"; \
+	  echo "(to refresh it: rm -rf $(LIBDIR) && make setup)"; \
+	elif [ -f .gitmodules ] && grep -q "path *= *$(LIBDIR)" .gitmodules; then \
 	  git submodule sync && git submodule update --init; \
 	elif [ -n "$(ID_TEMPLATE_HOME)" ] && [ -d "$(ID_TEMPLATE_HOME)" ]; then \
 	  ln -sf "$(ID_TEMPLATE_HOME)" $(LIBDIR); \

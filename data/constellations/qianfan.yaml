@@ -27,12 +27,15 @@ orbit_regimes:
 dual_use: unknown
 
 filing_absent: >-
-  No filing reference has been established for this system. China's national
-  authorisations are not published in a public docket comparable to the FCC's
-  ICFS, and the ITU SNS records for the Chinese administration's filings have
-  not been searched for a network matching this constellation. Unlike
-  starshield, this is a gap in our work rather than a structural limit: a
-  filing very probably exists and can be found.
+  No filing reference established, and not for want of looking. The ITU Space
+  Network List was queried on 2026-07-29 for QIANFAN, SSST, SPACESAIL,
+  STARNET, THOUSANDSAILS, G60-STARLINK, CHINA-LEO, CHINASAT-LEO, SSST-GW,
+  QIANFAN-1 and QF-1, all returning nothing; the SNL name search is exact, not
+  substring, so a name we have not guessed will not surface. Scanning the
+  non-GSO tables of six downloaded BR IFICs for Chinese networks turned up 100
+  or so names, none obviously this system. A filing almost certainly exists
+  under a designation we do not know. China's national authorisations are
+  separately not published in any docket comparable to the FCC's ICFS.
 
 counts:
   launched:
@@ -55,12 +58,13 @@ itu:
   date: 2025-12
   src: spacenews-china-itu-2026
   note: >-
-    NOT CONFIRMED for this system specifically. China filed with the ITU in
-    late 2025 for frequency and orbital resources covering on the order of
-    200,000 satellites across roughly 14 constellations. Whether and how much
-    of that filing set covers Qianfan has not been checked against the ITU SNS
-    database. This entry records the existence of the filing wave, not a
-    Qianfan filing identity.
+    NOT CONFIRMED for this system. China filed with the ITU in late 2025 for
+    frequency and orbital resources covering on the order of 200,000
+    satellites across roughly 14 constellations, and this registry has now
+    identified four of those networks by name (CTC-1, CTC-2, CHINAMOBILE-L1
+    and CHINAMOBILE-M1). None of them is Qianfan. This entry records the
+    existence of the wave, not a Qianfan filing identity, and should be
+    deleted or replaced once the real network name is known.
 
 shells:
 - label: phase-1
@@ -128,11 +132,19 @@ discrepancies:
     because the discrepancy cannot currently be resolved against a document.
 
 notes: >-
-  Provenance gap: this record has no primary source at all, and that is the
-  point of keeping it in this state rather than filling the fields from press
-  coverage. The primary sources that would fix it are (a) the ITU SNS/SRS
-  records for the Chinese administration's filings covering this system, and
-  (b) any MIIT authorisation document. Neither has been consulted.
+  Provenance gap: this record still has no primary source, and after a
+  systematic ITU search it is now the only major system in the registry in
+  that position. See filing_absent for what was tried. The most likely routes
+  in are: a Chinese-language source that gives the ITU designation directly; a
+  full SNL export filtered by administration, which the ITU server currently
+  returns a 500 for on date-range queries; or somebody in the group with
+  access to the BR IFIC DVD-ROM, which would allow scanning publications
+  outside the eighteen-month download window when the filing was most likely
+  made.
+  ASK THE LIST. This is a good first question to put to space@irtf.org once
+  the registry is announced: a working constellation of 239 satellites whose
+  ITU identity we cannot find is exactly the kind of gap a group is better at
+  closing than an individual.
   This record is the registry's worked example of the non-US jurisdiction
   problem: for FCC-licensed systems the filing, the geometry, the milestones
   and the spectrum are all in a public docket, and for most others they are
