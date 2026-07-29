@@ -1,0 +1,156 @@
+name: Guowang GW-A59
+slug: guowang-gw-a59
+family: guowang
+aka:
+- GW-A59
+- Guowang low shell
+- 国网
+operator: China Satellite Network Group Co., Ltd. (China SatNet)
+parent: State-owned, established April 2021
+country: CN
+jurisdiction:
+- CN
+system_class: broadband
+status: filed
+status_detail: >-
+  The lower of Guowang's two ITU networks. Coordination request on file and
+  modified three times, most recently published in BR IFIC 3055 in September
+  2025. No notification (Part I-S) has been filed for this network, so nothing
+  under it has been brought into use in the ITU sense.
+status_asof: 2026-07
+services:
+- broadband
+- government-secure
+orbit_regimes:
+- VLEO
+- LEO
+dual_use: unknown
+
+filing:
+  authority: other
+  administration: CHN
+  file_number: 'CR/C 5448 (notice ID 120520170); API/A 12666'
+  document: BR IFIC 3055
+  src: itu-snl-gw-a59
+
+counts:
+  filed:
+    value: 6080
+    asof: 2024-07-17
+    src: itu-ific-3055
+    note: >-
+      Declared in the third modification of the coordination request. The
+      orbit table of BR IFIC 3055 lists 116 planes for notice 120520170 and
+      their per-plane populations sum to 6,080, matching the figure that
+      circulates in reporting.
+
+itu:
+- administration: CHN
+  network_name: GW-A59
+  stage: CR/C
+  date: 2020-09-11
+  satellites: 6080
+  src: itu-snl-gw-a59
+  note: >-
+    API/A 12666 and CR/C 5448 both received 11 September 2020. The API was
+    modified three times (latest received 21 April 2025, published BR IFIC
+    3052) and the coordination request three times (latest received
+    17 July 2024, published BR IFIC 3055 on 16 September 2025). CR/D 5336
+    followed in BR IFIC 3066, March 2026. No Part I-S notification.
+
+shells:
+- label: gw-a59-508
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 508
+  inclination_deg: 55.0
+  planes: 60
+  sats_per_plane: 60
+  satellites: 3600
+  code_status: unknown
+  code_note: >-
+    Phasing factor not in the ITU declaration, which carries right ascension
+    and argument of perigee per plane but no Walker phasing parameter.
+  src: itu-ific-3055
+- label: gw-a59-600
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 600
+  inclination_deg: 50.0
+  planes: 40
+  sats_per_plane: 50
+  satellites: 2000
+  code_status: unknown
+  src: itu-ific-3055
+- label: gw-a59-590
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 590
+  inclination_deg: 85.0
+  planes: 16
+  sats_per_plane: 30
+  satellites: 480
+  code_status: unknown
+  src: itu-ific-3055
+
+isl: unknown
+
+sources:
+- id: itu-snl-gw-a59
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network GW-A59 (notifying administration CHN)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=GW-A59
+  retrieved: 2026-07-29
+- id: itu-ific-3055
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3055, non-GSO notice data for GW-A59,
+    notice ID 120520170 (tables non_geo and orbit of the published database)
+  url: https://www.itu.int/sns/ific10/ific3055.zip
+  date: 2025-09-16
+  retrieved: 2026-07-29
+- id: spacenews-guowang-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "China adds new satellites to Guowang constellation, eyes
+    accelerated launch rate"
+  url: https://spacenews.com/china-adds-new-satellites-to-guowang-constellation-eyes-accelerated-launch-rate/
+  date: 2026
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '13,952 satellites planned (Guowang, both sub-constellations)'
+  claimed_by: york-ietf126
+  registry_value: '6,080 declared for GW-A59; see guowang-gw-2 for the other'
+  note: >-
+    Guowang is two separate ITU networks, GW-A59 and GW-2, and this registry
+    gives them a record each because they are separately filed and are at
+    different stages. The 6,080 figure for GW-A59 is confirmed from the ITU
+    publication. The commonly quoted 12,992 total and the deck's 13,952 differ
+    by 960; neither can be reconciled until GW-2's coordination request is
+    read, and that publication is outside the downloadable BR IFIC window.
+
+notes: >-
+  Provenance upgraded 2026-07-29 from trade press to the ITU filing and
+  publication. See scripts/itu_query.sh.
+  Launch reporting does not split Guowang launches between the two networks,
+  so counts.launched is recorded on guowang-gw-2 as a family-level figure
+  rather than duplicated here.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

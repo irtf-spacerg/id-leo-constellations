@@ -1,0 +1,52 @@
+# Two independent build paths in one repo, deliberately kept from colliding:
+#
+#   make                  builds the Internet-Draft, via martinthomson/i-d-template
+#   make registry-check   validates data/constellations/*.yaml (what CI runs)
+#   make registry-site    validates and builds public/
+#   make registry-serve   builds and serves the page on :8000
+#
+# The draft targets come from lib/main.mk, which i-d-template provides and
+# which defines its own `check::`, `clean::` and friends. Registry targets are
+# therefore prefixed rather than named `check`/`clean`, or make refuses to run
+# with "target file has both : and :: entries".
+#
+# Run `make setup` once, inside a git checkout, to fetch lib/.
+export UPLOAD_EMAIL ?= juan.fraire@inria.fr
+
+LIBDIR := lib
+-include $(LIBDIR)/main.mk
+
+.PHONY: setup
+setup:
+	@if [ -f .gitmodules ] && grep -q "path *= *$(LIBDIR)" .gitmodules; then \
+	  git submodule sync && git submodule update --init; \
+	elif [ -n "$(ID_TEMPLATE_HOME)" ] && [ -d "$(ID_TEMPLATE_HOME)" ]; then \
+	  ln -sf "$(ID_TEMPLATE_HOME)" $(LIBDIR); \
+	else \
+	  git clone -q --depth 10 -b main \
+	    https://github.com/martinthomson/i-d-template $(LIBDIR); \
+	fi
+
+# ---------------------------------------------------------------- registry --
+VENV := .venv
+PY   := $(VENV)/bin/python
+
+$(VENV):
+	python3 -m venv $(VENV)
+	$(VENV)/bin/pip install --quiet --upgrade pip pyyaml
+
+.PHONY: registry-check registry-site registry-serve registry-analyse registry-clean
+registry-check: $(VENV)
+	$(PY) scripts/build_site.py --check
+
+registry-site: $(VENV)
+	$(PY) scripts/build_site.py
+
+registry-serve: registry-site
+	cd public && python3 -m http.server 8000
+
+registry-analyse: $(VENV)
+	$(PY) scripts/analyse.py
+
+registry-clean:
+	rm -rf public $(VENV)

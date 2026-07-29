@@ -1,0 +1,148 @@
+name: Globalstar second generation
+slug: globalstar-hibleo
+family: globalstar
+aka:
+- HIBLEO-4
+- HIBLEO-X
+- Globalstar 2nd generation
+operator: Globalstar Licensee LLC; GUSA Licensee LLC
+parent: >-
+  Globalstar, Inc. (acquisition by Amazon.com, Inc. filed 26 May 2026;
+  pleading cycle open)
+country: US
+jurisdiction:
+- US
+- FR
+system_class: direct-to-device
+status: operational
+status_detail: >-
+  In commercial service, and the backbone of Apple's Emergency SOS. Operates
+  as one system across a US-licensed component (HIBLEO-4) and a
+  France-licensed component (HIBLEO-X) reached through a US market access
+  grant.
+status_asof: 2026-07
+services:
+- voice
+- messaging
+- iot
+- direct-to-device
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  document: >-
+    Globalstar Licensee LLC space station licence for HIBLEO-4, plus a US
+    market access grant for the France-licensed HIBLEO-X satellites (file
+    numbers not retrieved)
+  src: fcc-globalstar-amazon-2026
+  note: >-
+    Two authorisations under two administrations operating as one system, as
+    the FCC itself describes it. Neither file number has been retrieved; both
+    are listed in Exhibit A to the Amazon transfer application, which would be
+    the fastest way to get them.
+
+counts:
+  launched:
+    value: 97
+    asof: 2026-07
+    src: york-ietf126
+  announced:
+    value: 85
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      The deck's "~85 planned". Recorded as announced because no authorised
+      figure has been retrieved for either the HIBLEO-4 or HIBLEO-X licence.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  action: granted
+  scope: >-
+    Space station licence for the HIBLEO-4 satellites, plus fixed feeder link
+    earth station licences at six US gateway sites and a domestic section 214
+    authorisation. Globalstar Inc. separately holds an experimental licence
+    (File No. 0334-EX-CN-2026, granted 13 April 2026).
+  src: fcc-globalstar-amazon-2026
+- authority: FCC
+  country: US
+  kind: license-grant
+  action: granted
+  scope: >-
+    US market access grant allowing Globalstar's fixed and mobile earth
+    stations in the US and its territories to communicate with the HIBLEO-X
+    satellites, which are licensed by France. Not part of the Amazon transfer
+    application because prior consent is not required for such assignments.
+  src: fcc-globalstar-amazon-2026
+- authority: FCC
+  country: US
+  kind: application
+  file_number: ITC-T/C-20260417-00114
+  document: DA 26-550, GN Docket No. 26-134
+  action: pending
+  date: 2026-05-26
+  scope: >-
+    Application for consent to assign and transfer control of all Globalstar
+    licences and authorisations to Amazon. Petitions to deny were due
+    6 July 2026.
+  src: fcc-globalstar-amazon-2026
+
+shells:
+- label: hibleo
+  status: deployed
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Orbital parameters not retrieved. Globalstar's original architecture is
+    well documented in the literature but no primary source has been consulted
+    for this record, and the second-generation configuration differs from the
+    first.
+  src: fcc-globalstar-amazon-2026
+
+isl: none
+isl_detail: >-
+  Bent-pipe architecture with no inter-satellite links, which is why the
+  system needs a dense gateway network and is a useful contrast case against
+  Iridium in the same service class.
+
+sources:
+- id: fcc-globalstar-amazon-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC, Public Notice DA 26-550 (Globalstar/Amazon transfer of control,
+    GN Docket No. 26-134), description of Globalstar's authorisations
+  url: https://docs.fcc.gov/public/attachments/DA-26-550A1.pdf
+  date: 2026-06-04
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+notes: >-
+  Split from globalstar-c3 so that the operational system and the planned
+  next-generation system are not conflated: they have different satellite
+  counts, different licensing administrations and different regulatory
+  states. The deck's "~85 planned / 97 launched" belongs here and its
+  "1,946 (C-3) / 0" belongs on globalstar-c3.
+  Provenance gap: no file numbers for either the HIBLEO-4 licence or the
+  HIBLEO-X market access grant, and no orbital parameters. Exhibit A to the
+  Amazon transfer application lists every Globalstar authorisation and would
+  close most of this in one read.
+  If the Amazon transaction completes, this system and Amazon Leo come under
+  one owner, alongside Amazon's stated intention to file for a global
+  direct-to-device system. Worth tracking as a concentration question rather
+  than only a technical one.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

@@ -1,0 +1,144 @@
+name: Qianfan
+slug: qianfan
+family: qianfan
+aka:
+- Thousand Sails
+- G60 Starlink
+- Spacesail
+- 千帆
+operator: Shanghai Spacecom Satellite Technology (SSST) / Spacesail
+parent: >-
+  Backed by the Shanghai Municipal People's Government; Chinese Academy of
+  Sciences involvement reported
+country: CN
+jurisdiction:
+- CN
+system_class: broadband
+status: deploying
+status_detail: >-
+  Launching production satellites since August 2024; regional service targeted
+  for around 2026 and global service around 2030. Well short of the announced
+  phase targets.
+status_asof: 2026-07
+services:
+- broadband
+orbit_regimes:
+- LEO
+dual_use: unknown
+
+filing_absent: >-
+  No filing reference has been established for this system. China's national
+  authorisations are not published in a public docket comparable to the FCC's
+  ICFS, and the ITU SNS records for the Chinese administration's filings have
+  not been searched for a network matching this constellation. Unlike
+  starshield, this is a gap in our work rather than a structural limit: a
+  filing very probably exists and can be found.
+
+counts:
+  launched:
+    value: 239
+    asof: 2026-07
+    src: york-ietf126
+  announced:
+    value: 15000
+    asof: 2026-07
+    src: wikipedia-qianfan
+    note: >-
+      Company build-out target of roughly 15,000 satellites by 2030, in phases
+      of 648 (regional), 1,296 (global) and the remainder. The IETF 126 slide
+      gives 16,000; both figures circulate. No filing has been consulted that
+      substantiates either, so this sits under announced rather than filed.
+
+itu:
+- administration: CHN
+  stage: API
+  date: 2025-12
+  src: spacenews-china-itu-2026
+  note: >-
+    NOT CONFIRMED for this system specifically. China filed with the ITU in
+    late 2025 for frequency and orbital resources covering on the order of
+    200,000 satellites across roughly 14 constellations. Whether and how much
+    of that filing set covers Qianfan has not been checked against the ITU SNS
+    database. This entry records the existence of the filing wave, not a
+    Qianfan filing identity.
+
+shells:
+- label: phase-1
+  status: deploying
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Operational altitude around 1,160 km at roughly 85 deg inclination is
+    widely reported, but no plane count, satellites-per-plane or phasing has
+    been traced to a source good enough to record here. Left empty rather than
+    guessed.
+  src: wikipedia-qianfan
+
+isl: unknown
+
+first_launch: 2024-08-06
+target_completion: 2030
+target_completion_kind: operator-target
+launch:
+  providers:
+  - China Aerospace Science and Technology Corporation (CASC)
+  vehicles:
+  - Long March 6A
+  - Long March 8
+  - Long March 12
+  cadence: >-
+    Roughly 240 satellites in two years against a stated target of 15,000 by
+    2030. The implied required rate is the interesting number here.
+  src: york-ietf126
+
+sources:
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+- id: wikipedia-qianfan
+  grade: secondary
+  kind: encyclopedia
+  title: Wikipedia, "Qianfan"
+  url: https://en.wikipedia.org/wiki/Qianfan
+  retrieved: 2026-07-29
+- id: spacenews-china-itu-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "China files ITU paperwork for megaconstellations totaling
+    nearly 200,000 satellites"
+  url: https://spacenews.com/china-files-itu-paperwork-for-megaconstellations-totaling-nearly-200000-satellites/
+  date: 2026-06
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.announced
+  claim: '16,000 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '15,000 announced (company build-out target)'
+  note: >-
+    Both 15,000 and 16,000 circulate widely and neither has been traced to a
+    filing in this revision. Recorded as announced, not filed, precisely
+    because the discrepancy cannot currently be resolved against a document.
+
+notes: >-
+  Provenance gap: this record has no primary source at all, and that is the
+  point of keeping it in this state rather than filling the fields from press
+  coverage. The primary sources that would fix it are (a) the ITU SNS/SRS
+  records for the Chinese administration's filings covering this system, and
+  (b) any MIIT authorisation document. Neither has been consulted.
+  This record is the registry's worked example of the non-US jurisdiction
+  problem: for FCC-licensed systems the filing, the geometry, the milestones
+  and the spectrum are all in a public docket, and for most others they are
+  not. Any aggregate satellite count that treats a Chinese or Russian figure
+  as equivalent evidence to an FCC grant is comparing unlike things, and the
+  registry should make that visible rather than smooth it over.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

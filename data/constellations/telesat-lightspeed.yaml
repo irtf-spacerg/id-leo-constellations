@@ -1,0 +1,158 @@
+name: Telesat Lightspeed
+slug: telesat-lightspeed
+family: telesat-lightspeed
+aka:
+- Telesat LEO
+operator: Telesat Canada
+parent: Telesat Corporation
+country: CA
+jurisdiction:
+- CA
+- US
+system_class: broadband
+status: licensed
+status_detail: >-
+  Authorised by ISED in Canada, with US market access granted separately by
+  the FCC. 198 satellites contracted from MDA in August 2023, down from an
+  earlier 298. Telesat has stated it will not meet the current ISED milestones
+  and intends to seek an amendment. Nothing launched.
+status_asof: 2026-07
+services:
+- broadband
+- backhaul
+- government-secure
+orbit_regimes:
+- LEO
+dual_use: dual
+
+filing:
+  authority: ISED
+  administration: CAN
+  document: >-
+    ISED NGSO authorisation for the Telesat Lightspeed constellation
+    (identifier not retrieved)
+  src: telesat-20f-2023
+  note: >-
+    The Canadian authorisation is referenced in Telesat's own annual report
+    but its docket identifier has not been retrieved, and ISED does not
+    publish satellite authorisations in a searchable docket comparable to the
+    FCC's ICFS. The FCC market access grant is a separate act and is recorded
+    under regulatory: below.
+
+counts:
+  announced:
+    value: 198
+    asof: 2023-08
+    src: telesat-mda-2023
+    note: >-
+      Satellites contracted from MDA, reduced from an earlier 298. Recorded as
+      announced rather than licensed because the number authorised by ISED has
+      not been retrieved and may differ from the number ordered.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  action: granted
+  scope: >-
+    US market access for the Telesat Canada NGSO constellation, granted by
+    declaratory ruling. Date and document number not retrieved; a separate
+    petition covers Telesat's V-band constellation.
+  src: fcc-telesat-market-access
+- authority: ISED
+  country: CA
+  kind: license-grant
+  action: granted
+  scope: >-
+    Canadian authorisation with deployment milestones that Telesat has stated
+    it will not meet and intends to seek to amend.
+  src: telesat-20f-2023
+
+shells:
+- label: lightspeed
+  status: authorised
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Polar and inclined shells are described in secondary sources but no
+    altitude, inclination, plane count or per-plane population has been traced
+    to a source good enough to record. Left empty rather than guessed.
+  src: telesat-mda-2023
+
+spectrum:
+- Ka
+- V
+spectrum_detail: >-
+  Ka-band primary, with a separate V-band constellation petition at the FCC.
+  Mil-Ka defence spectrum reported as being added. Ranges not recorded.
+isl: optical
+isl_detail: Optical inter-satellite links; parameters not recorded.
+
+target_completion: 2028
+target_completion_kind: operator-target
+
+sources:
+- id: telesat-mda-2023
+  grade: secondary
+  kind: operator-web
+  title: >-
+    Telesat press release, "Telesat Contracts MDA as Prime Satellite
+    Manufacturer for Its Advanced Telesat Lightspeed Low Earth Orbit
+    Constellation" (198 satellites, ~USD 2.1bn)
+  url: https://www.telesat.com/press/press-releases/telesat-contracts-mda-as-prime-satellite-manufacturer-for-its-advanced-telesat-lightspeed-low-earth-orbit-constellation/
+  date: 2023-08
+  retrieved: 2026-07-29
+- id: telesat-20f-2023
+  grade: secondary
+  kind: operator-web
+  title: >-
+    Telesat Corporation, Form 20-F for fiscal year 2023 (US SEC), on ISED
+    regulation of the Lightspeed constellation and the intention to seek
+    amended milestones
+  url: https://www.sec.gov/Archives/edgar/data/0001845840/000121390024026869/f20f2023_telesatcorp.htm
+  date: 2024
+  retrieved: 2026-07-29
+- id: fcc-telesat-market-access
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC, "FCC Grants Market Access for Telesat Canada NGSO Constellation"
+  url: https://www.fcc.gov/document/fcc-grants-market-access-telesat-canada-ngso-constellation
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.announced
+  claim: '198? 300? 1,600?'
+  claimed_by: york-ietf126
+  registry_value: '198 contracted (2023); no authorised figure retrieved'
+  note: >-
+    The deck records three candidate figures with question marks, which is an
+    honest way to present an unresolved number and worth saying so. This
+    registry can partly resolve it: 198 is the number contracted from MDA in
+    August 2023, down from an earlier plan of 298 (probably the "300"). The
+    1,600 appears to be a much earlier ambition. What none of these is, yet,
+    is an authorised figure.
+
+notes: >-
+  Provenance gap: this record has no usable primary source for its counts. The
+  FCC market access grant is cited by landing page rather than by document
+  number and has not been read, and the ISED authorisation has not been
+  located at all.
+  This record is the registry's worked example of the non-US-but-Western
+  jurisdiction problem, which sits between the FCC case and the Chinese case:
+  the authorisation certainly exists and is not secret, but it is not
+  published in a form that can be cited, so the best available evidence is the
+  operator's own reporting. Any contributor with ISED experience could close
+  this quickly.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

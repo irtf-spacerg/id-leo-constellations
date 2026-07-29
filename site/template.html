@@ -1,0 +1,553 @@
+<!-- Body fragment. scripts/build_site.py wraps it in a full HTML document,
+     injects {records, aggregates} at /*__DATA__*/ and fills __MAINTAINER_EMAIL__ /
+     __REPO_URL__ / __BUILD_DATE__ from config.yaml.
+     Do not add <html>/<head>/<body> tags here. -->
+<style>
+  :root {
+    --bg: #F6F7F9; --panel: #FFFFFF; --panel2: #EFF2F6;
+    --ink: #1C2432; --muted: #5A6478; --line: #E3E7EE;
+    --accent: #0E7490; --accent-soft: #E0F0F5; --accent-ink: #0B5C73;
+    --ok: #178A50; --ok-bg: #E4F4EC; --warn: #9A6B12; --warn-bg: #FAF0D7;
+    --bad: #B23A2E; --bad-bg: #F9E6E3; --plan: #5F51B8; --plan-bg: #ECE8FA;
+    --unk: #6B7280; --unk-bg: #ECEEF2;
+    --shadow: 0 1px 2px rgba(20,28,45,.06), 0 4px 14px rgba(20,28,45,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F131B; --panel: #161C27; --panel2: #1C2432;
+      --ink: #E6EBF4; --muted: #8B96AB; --line: #242D3D;
+      --accent: #22B8CF; --accent-soft: #123642; --accent-ink: #7FD9E8;
+      --ok: #31C97E; --ok-bg: #12301F; --warn: #E2B93B; --warn-bg: #332A10;
+      --bad: #E5715F; --bad-bg: #391A15; --plan: #9D8CFF; --plan-bg: #241F41;
+      --unk: #8B96AB; --unk-bg: #1F2634;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 4px 14px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F7F9; --panel: #FFFFFF; --panel2: #EFF2F6;
+    --ink: #1C2432; --muted: #5A6478; --line: #E3E7EE;
+    --accent: #0E7490; --accent-soft: #E0F0F5; --accent-ink: #0B5C73;
+    --ok: #178A50; --ok-bg: #E4F4EC; --warn: #9A6B12; --warn-bg: #FAF0D7;
+    --bad: #B23A2E; --bad-bg: #F9E6E3; --plan: #5F51B8; --plan-bg: #ECE8FA;
+    --unk: #6B7280; --unk-bg: #ECEEF2;
+    --shadow: 0 1px 2px rgba(20,28,45,.06), 0 4px 14px rgba(20,28,45,.05);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F131B; --panel: #161C27; --panel2: #1C2432;
+    --ink: #E6EBF4; --muted: #8B96AB; --line: #242D3D;
+    --accent: #22B8CF; --accent-soft: #123642; --accent-ink: #7FD9E8;
+    --ok: #31C97E; --ok-bg: #12301F; --warn: #E2B93B; --warn-bg: #332A10;
+    --bad: #E5715F; --bad-bg: #391A15; --plan: #9D8CFF; --plan-bg: #241F41;
+    --unk: #8B96AB; --unk-bg: #1F2634;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 4px 14px rgba(0,0,0,.25);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 14px/1.45 "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace; font-variant-numeric: tabular-nums; }
+  header { padding: 30px 28px 18px; position: relative; overflow: hidden; }
+  header .orbits { position: absolute; right: -60px; top: 50%; transform: translateY(-50%); pointer-events: none; user-select: none; }
+  @media (max-width: 980px) { header .orbits { display: none; } }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); position: relative;
+  }
+  .eyebrow a { color: inherit; text-decoration: none; }
+  .eyebrow a:hover { text-decoration: underline; }
+  h1 { margin: 6px 0 8px; font-size: 26px; font-weight: 650; letter-spacing: -.015em; text-wrap: balance; position: relative; }
+  h1 .haccent { color: var(--accent-ink); }
+  .sub { color: var(--muted); max-width: 80ch; margin: 0; position: relative; }
+  a { color: var(--accent-ink); }
+
+  /* --- the four totals --- */
+  .totals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; position: relative; }
+  .total {
+    border: 1px solid var(--line); background: var(--panel); border-radius: 9px;
+    padding: 9px 14px; min-width: 132px; box-shadow: var(--shadow);
+  }
+  .total .tl {
+    font-family: ui-monospace, Consolas, monospace; font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  .total .tv { font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .total .th { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+  .total.t-filed .tv { color: var(--warn); }
+  .total.t-licensed .tv { color: var(--ok); }
+  .floors {
+    margin-top: 12px; border: 1px solid var(--warn); background: var(--warn-bg);
+    color: var(--warn); border-radius: 9px; padding: 10px 14px; font-size: 12.5px;
+    max-width: 88ch; position: relative;
+  }
+  .floors b { font-weight: 650; }
+
+  /* --- provenance bar --- */
+  .provwrap { margin-top: 14px; max-width: 560px; position: relative; }
+  .provbar { display: flex; height: 9px; border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+  .provbar span { display: block; height: 100%; }
+  .provbar .p1 { background: var(--ok); }
+  .provbar .p2 { background: var(--unk-bg); }
+  .provlegend { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  .controls {
+    position: sticky; top: 0; z-index: 5; background: var(--bg);
+    padding: 12px 28px 14px; border-bottom: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .row1 { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  #q {
+    flex: 1 1 260px; max-width: 440px; padding: 8px 12px;
+    border: 1px solid var(--line); border-radius: 7px;
+    background: var(--panel); color: var(--ink); font: inherit;
+  }
+  #q:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .count { color: var(--muted); font-size: 12.5px; }
+  .count b { color: var(--ink); }
+  #clear { border: none; background: none; color: var(--accent-ink); cursor: pointer; font: inherit; font-size: 12.5px; text-decoration: underline; padding: 2px 4px; }
+  #expandAll { margin-left: auto; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 7px; padding: 7px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+  #expandAll:hover { border-color: var(--accent); }
+  .fgroups { display: flex; flex-wrap: wrap; gap: 14px 22px; }
+  .fgroup { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .flabel { font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .chip { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 3px 11px; font-size: 12.5px; cursor: pointer; }
+  .chip:hover { border-color: var(--accent); }
+  .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip:focus-visible, #clear:focus-visible, #expandAll:focus-visible, tr.item:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  main { padding: 14px 28px 40px; }
+  .tablewrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; min-width: 1120px; }
+  thead th {
+    text-align: left; font-family: ui-monospace, Consolas, monospace;
+    font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+    color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line);
+    background: var(--panel2); position: sticky; top: 0; white-space: nowrap;
+  }
+  thead th.num { text-align: right; }
+  thead th.sortable { cursor: pointer; user-select: none; }
+  thead th.sortable:hover { color: var(--ink); }
+  thead th .arr { color: var(--accent-ink); }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.num .dash { color: var(--muted); opacity: .5; }
+  td.num.c-licensed { color: var(--ok); font-weight: 600; }
+  td.num.c-filed { color: var(--warn); }
+  tr.item { cursor: pointer; }
+  tr.item:hover td { background: var(--panel2); }
+  tr.item:last-child td, tr.detail:last-child td { border-bottom: none; }
+  .tname { font-weight: 600; }
+  .torg { color: var(--muted); font-size: 12px; margin-top: 1px; }
+  .fam { display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 10px; letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; margin-left: 6px; vertical-align: 1px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .s-operational { color: var(--ok); background: var(--ok-bg); }
+  .s-deploying { color: var(--ok); background: var(--ok-bg); }
+  .s-demonstrator { color: var(--plan); background: var(--plan-bg); }
+  .s-licensed { color: var(--plan); background: var(--plan-bg); }
+  .s-filed { color: var(--warn); background: var(--warn-bg); }
+  .s-announced { color: var(--unk); background: var(--unk-bg); }
+  .s-dormant, .s-cancelled, .s-retired { color: var(--bad); background: var(--bad-bg); }
+  .prov { display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 10px; letter-spacing: .08em; border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+  .prov.p-yes { color: var(--ok); background: var(--ok-bg); border: 1px solid transparent; }
+  .prov.p-no { color: var(--muted); border: 1px solid var(--line); }
+  .jur { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .disc { color: var(--bad); font-size: 12px; white-space: nowrap; }
+  .nofile { font-size: 12px; color: var(--warn); font-style: italic; white-space: nowrap; }
+
+  tr.detail td { background: var(--panel2); padding: 16px 18px 18px; }
+  .dsec { max-width: 1180px; }
+  .dsec + .dsec { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .dh { font-family: ui-monospace, Consolas, monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .dgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px 26px; }
+  .dcell .dl { font-family: ui-monospace, Consolas, monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .dcell .dv { font-size: 13px; overflow-wrap: anywhere; }
+  .dcell.wide { grid-column: 1 / -1; }
+  .dlist { margin: 0; padding: 0; list-style: none; font-size: 13px; }
+  .dlist li { padding: 5px 0; border-bottom: 1px dotted var(--line); }
+  .dlist li:last-child { border-bottom: none; }
+  .code { display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 12px; background: var(--accent-soft); color: var(--accent-ink); border-radius: 5px; padding: 1px 7px; }
+  .codebad { display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 11px; color: var(--warn); background: var(--warn-bg); border-radius: 5px; padding: 1px 7px; }
+  .gr { display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 9.5px; letter-spacing: .08em; border-radius: 4px; padding: 1px 5px; vertical-align: 1px; }
+  .gr.g-primary { color: var(--ok); background: var(--ok-bg); }
+  .gr.g-secondary { color: var(--warn); background: var(--warn-bg); }
+  .gapline { color: var(--bad); }
+  .discbox { border-left: 3px solid var(--bad); padding-left: 12px; margin-top: 8px; font-size: 13px; }
+  .discbox .dq { color: var(--muted); }
+  footer { padding: 0 28px 34px; color: var(--muted); font-size: 12px; max-width: 92ch; }
+  footer .legend { margin-bottom: 12px; }
+  @media (prefers-reduced-motion: no-preference) { tr.item td { transition: background .12s ease; } }
+</style>
+
+<header>
+  <svg class="orbits" width="420" height="240" viewBox="0 0 420 240" fill="none" aria-hidden="true">
+    <ellipse cx="230" cy="120" rx="180" ry="72" stroke="var(--accent)" stroke-width="1.5" opacity=".5" transform="rotate(-18 230 120)"/>
+    <ellipse cx="230" cy="120" rx="180" ry="72" stroke="var(--warn)" stroke-width="1" opacity=".35" transform="rotate(26 230 120)"/>
+    <ellipse cx="230" cy="120" rx="132" ry="50" stroke="var(--muted)" stroke-width="1" opacity=".22" transform="rotate(4 230 120)"/>
+    <circle cx="230" cy="120" r="24" fill="var(--panel2)" stroke="var(--muted)" stroke-width="1.2" opacity=".9"/>
+    <circle cx="371" cy="66" r="7" fill="var(--accent)" opacity=".85"/>
+    <circle cx="118" cy="196" r="5" fill="var(--warn)" opacity=".7"/>
+    <circle cx="330" cy="205" r="3.5" fill="var(--muted)" opacity=".6"/>
+    <circle cx="86" cy="58" r="2.5" fill="var(--muted)" opacity=".6"/>
+  </svg>
+  <div class="eyebrow"><a href="https://datatracker.ietf.org/rg/space/about/" target="_blank" rel="noopener">IETF / IRTF Space RG</a> &middot; constellation registry</div>
+  <h1>Announced, Filed and Deployed <span class="haccent">Satellite Constellations</span></h1>
+  <p class="sub">Press coverage reports four different quantities interchangeably as &ldquo;planned satellites&rdquo;: how many have <b>launched</b>, how many a regulator has <b>licensed</b>, how many have been <b>filed</b> for, and how many have merely been <b>announced</b>. For the same system these differ by an order of magnitude. This registry keeps them apart and requires every number to carry a citation and an evidence grade. One record is one authorisation. Click any row for the filings, the orbital shells, the sources and the disagreements.</p>
+  <div class="totals" id="totals"></div>
+  <div class="floors" id="floors"></div>
+  <div class="provwrap">
+    <div class="provbar"><span class="p1" id="pb1"></span><span class="p2" id="pb2"></span></div>
+    <div class="provlegend" id="provlegend"></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="row1">
+    <input id="q" type="search" placeholder="Search name, operator, filing number, notes&hellip;" aria-label="Search constellations">
+    <span class="count"><b id="nShown">0</b> of <span id="nTotal">0</span> shown</span>
+    <button id="clear">Clear filters</button>
+    <button id="expandAll" aria-pressed="false">Expand all</button>
+  </div>
+  <div class="fgroups">
+    <div class="fgroup" id="f-status"><span class="flabel">Status</span></div>
+    <div class="fgroup" id="f-class"><span class="flabel">Class</span></div>
+    <div class="fgroup" id="f-jur"><span class="flabel">Jurisdiction</span></div>
+    <div class="fgroup" id="f-prov"><span class="flabel">Evidence</span></div>
+  </div>
+</div>
+
+<main>
+  <noscript><p class="sub" style="padding-bottom:14px">This page needs JavaScript to render the searchable table. The raw data is available as <a href="data/constellations.json">nested JSON</a>, <a href="data/constellations-summary.json">flat JSON</a> and <a href="data/constellations.csv">CSV</a>.</p></noscript>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="sortable" data-k="name">Constellation <span class="arr"></span></th>
+          <th class="sortable" data-k="status">Status <span class="arr"></span></th>
+          <th>Jurisdiction</th>
+          <th class="sortable num" data-k="launched">Launched <span class="arr"></span></th>
+          <th class="sortable num" data-k="licensed">Licensed <span class="arr"></span></th>
+          <th class="sortable num" data-k="filed">Filed <span class="arr"></span></th>
+          <th class="sortable num" data-k="announced">Announced <span class="arr"></span></th>
+          <th>Anchoring filing</th>
+          <th class="sortable" data-k="has_primary">Evidence <span class="arr"></span></th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <div class="legend">
+    Status ladder, highest rung demonstrably reached:
+    <span class="pill s-operational">operational</span>
+    <span class="pill s-deploying">deploying</span>
+    <span class="pill s-licensed">licensed</span>
+    <span class="pill s-filed">filed</span>
+    <span class="pill s-announced">announced</span>.
+    A filing is a claim on spectrum priority, not a commitment to deploy.
+    <span class="prov p-yes">PRIMARY</span> means at least one source is an ITU record, a regulator&rsquo;s own act or an operator&rsquo;s technical submission; <span class="prov p-no">SECONDARY</span> means the record rests on trade press, trackers, encyclopaedias or conference slides.
+  </div>
+  Maintained by the IRTF Space Research Group. Built __BUILD_DATE__.
+  Data: <a href="data/constellations.json">nested JSON</a> &middot; <a href="data/constellations-summary.json">flat JSON</a> &middot; <a href="data/constellations.csv">CSV</a> &middot; <a href="data/aggregates.json">aggregates</a> &middot; <a href="__REPO_URL__">source repository</a>.
+  To add or correct an entry, open a pull request adding or editing a YAML file under <span class="mono">data/constellations/</span>, starting from <a href="__REPO_URL__/blob/main/data/TEMPLATE.yaml">data/TEMPLATE.yaml</a>. See <a href="__REPO_URL__/blob/main/data/README.md">data/README.md</a> for the field reference and the evidence-grading rules.
+  Provenance upgrades &mdash; replacing a secondary source with the filing it refers to &mdash; are the most welcome contribution of all; records needing one carry a <span class="gapline">provenance gap</span> line.
+  Questions: <a href="mailto:__MAINTAINER_EMAIL__">__MAINTAINER_EMAIL__</a>.
+</footer>
+
+<script>
+const PAYLOAD = /*__DATA__*/{records: [], aggregates: {}};
+const DATA = PAYLOAD.records || [];
+const AGG = PAYLOAD.aggregates || {};
+const REPO_URL = "__REPO_URL__";
+
+const STATUS_ORDER = ["operational", "deploying", "demonstrator", "licensed", "filed", "announced", "dormant", "cancelled", "retired"];
+const state = { q: "", status: new Set(), cls: new Set(), jur: new Set(), prov: new Set(), sortK: "filed", sortDir: -1, open: new Set() };
+
+const esc = s => (s == null ? "" : String(s)).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const num = v => (typeof v === "number" ? v.toLocaleString("en-US") : null);
+const cell = v => { const n = num(v); return n === null ? '<span class="dash">&mdash;</span>' : n; };
+
+/* ---------- header ---------- */
+function renderHeader() {
+  const t = [
+    ["launched", "Launched", AGG.total_launched, "cumulative, incl. deorbited"],
+    ["licensed", "Licensed", AGG.total_licensed, "granted by a regulator"],
+    ["filed", "Filed", AGG.total_filed, "requested, any outcome"],
+    ["announced", "Announced", AGG.total_announced, "no filing found"],
+  ];
+  document.getElementById("totals").innerHTML = t.map(([k, label, v, hint]) =>
+    `<div class="total t-${k}"><div class="tl">${label}</div><div class="tv">${num(v) || "&mdash;"}</div><div class="th">${hint}</div></div>`
+  ).join("");
+
+  const missing = (AGG.records_missing_filed || []).length;
+  document.getElementById("floors").innerHTML =
+    `<b>These totals are floors, not estimates.</b> They sum only what is recorded and sourced; a record with an unrecorded count contributes zero. ` +
+    `${missing} of ${AGG.records_counted} records carry no filed figure, so the filed total understates by an unknown amount, and a family&rsquo;s licensed total can exceed its filed total for that reason. Superseded records are excluded.`;
+
+  const prim = AGG.records_with_primary_source || 0, tot = AGG.records_counted || 1;
+  const pct = Math.round(prim / tot * 100);
+  document.getElementById("pb1").style.width = pct + "%";
+  document.getElementById("pb2").style.width = (100 - pct) + "%";
+  document.getElementById("provlegend").innerHTML =
+    `<b>${prim} of ${tot}</b> records (${pct}%) rest on at least one primary source &mdash; an ITU record, a regulator&rsquo;s own act, or an operator&rsquo;s technical submission. The rest rest on trade press, trackers and conference slides. How much of the global picture is publicly documented is itself a finding.`;
+}
+
+/* ---------- filters ---------- */
+const uniq = fn => [...new Set(DATA.flatMap(fn).filter(Boolean))].sort();
+
+function chips(elId, values, setName, labelFn) {
+  const el = document.getElementById(elId);
+  values.forEach(v => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = labelFn ? labelFn(v) : v; b.dataset.v = v;
+    b.addEventListener("click", () => {
+      state[setName].has(v) ? state[setName].delete(v) : state[setName].add(v);
+      b.classList.toggle("on"); render();
+    });
+    el.appendChild(b);
+  });
+}
+
+function match(r) {
+  if (state.status.size && !state.status.has(r.status)) return false;
+  if (state.cls.size && !state.cls.has(r.system_class)) return false;
+  if (state.jur.size && !(r.jurisdiction || "").split("; ").some(j => state.jur.has(j))) return false;
+  if (state.prov.size && !state.prov.has(r.has_primary === "yes" ? "primary" : "secondary")) return false;
+  if (state.q) {
+    const src = (r.sources || []).map(s => `${s.title} ${s.url}`).join(" ");
+    const h = [r.name, r.aka, r.operator, r.parent, r.notes, r.status_detail,
+      r.filing_number, r.filing_call_sign, r.filing_absent, r.constellation_code,
+      r.system_class, r.jurisdiction, src].join(" ").toLowerCase();
+    if (!h.includes(state.q)) return false;
+  }
+  return true;
+}
+
+/* ---------- detail rendering ---------- */
+function fmtFiling(r) {
+  if (r.filing_absent) {
+    return `<div class="dcell wide"><div class="dl">No public filing</div><div class="dv gapline">${esc(r.filing_absent)}</div></div>`;
+  }
+  const f = r.filing || {};
+  const bits = [
+    ["Authority", f.authority], ["Administration", f.administration],
+    ["File number", f.file_number], ["Call sign", f.call_sign],
+    ["Document", f.document],
+  ].filter(([, v]) => v).map(([k, v]) =>
+    `<div class="dcell"><div class="dl">${k}</div><div class="dv mono">${esc(v)}</div></div>`).join("");
+  const note = f.note ? `<div class="dcell wide"><div class="dl">Caveat</div><div class="dv">${esc(f.note)}</div></div>` : "";
+  return bits + note;
+}
+
+function fmtCounts(r) {
+  const c = r.counts || {};
+  const rows = ["launched", "in_orbit", "licensed", "filed", "announced"].filter(k => c[k]).map(k => {
+    const e = c[k];
+    const note = e.note ? `<div class="sub" style="font-size:12px;margin-top:2px">${esc(e.note)}</div>` : "";
+    const bd = (e.breakdown || []).map(b => `${esc(b.label)}: ${num(b.value)}`).join(" &middot; ");
+    return `<li><b>${k.replace("_", " ")}</b> <span class="mono">${num(e.value)}</span>
+      <span class="sub" style="font-size:12px">as of ${esc(e.asof)} &middot; source <span class="mono">${esc(e.src)}</span></span>
+      ${bd ? `<div class="sub" style="font-size:12px;margin-top:2px">${bd}</div>` : ""}${note}</li>`;
+  }).join("");
+  return rows ? `<ul class="dlist">${rows}</ul>` : `<div class="sub">No sourced counts.</div>`;
+}
+
+function fmtShells(r) {
+  const sh = r.shells || [];
+  if (!sh.length) return "";
+  const rows = sh.map(s => {
+    const geom = [
+      s.altitude_km != null ? `${s.altitude_km} km` : null,
+      s.inclination_deg != null ? `${s.inclination_deg}&deg;` : null,
+      s.planes != null ? `${s.planes} planes` : null,
+      s.sats_per_plane != null ? `${s.sats_per_plane}/plane` : null,
+      s.satellites != null ? `${num(s.satellites)} sats` : null,
+      s.max_planes != null ? `&le;${s.max_planes} planes` : null,
+      s.max_sats_per_plane != null ? `&le;${s.max_sats_per_plane}/plane` : null,
+    ].filter(Boolean).join(" &middot; ");
+    const code = s.code
+      ? `<span class="code">${esc(s.code)}</span> <span class="sub" style="font-size:11.5px">${esc(s.code_status)}</span>`
+      : `<span class="codebad">no code: ${esc(s.code_status || "unknown")}</span>`;
+    const assum = (s.code_assumptions || []).map(a =>
+      `<div class="sub" style="font-size:12px;margin-top:2px">assumed <span class="mono">${esc(a.element)}=${esc(a.value)}</span> &mdash; ${esc(a.basis)}</div>`).join("");
+    const note = s.code_note ? `<div class="sub" style="font-size:12px;margin-top:2px">${esc(s.code_note)}</div>` : "";
+    return `<li><b>${esc(s.label || "shell")}</b>
+      <span class="sub" style="font-size:12px">${esc(s.status || "")}${s.geometry_kind ? " &middot; " + esc(s.geometry_kind) : ""}</span>
+      ${geom ? `<div class="mono" style="font-size:12.5px;margin-top:2px">${geom}</div>` : ""}
+      <div style="margin-top:4px">${code}</div>${assum}${note}</li>`;
+  }).join("");
+  return `<div class="dsec"><div class="dh">Orbital shells and constellation codes</div><ul class="dlist">${rows}</ul></div>`;
+}
+
+function fmtRegulatory(r) {
+  const reg = r.regulatory || [];
+  if (!reg.length) return "";
+  const rows = reg.map(a => {
+    const ms = (a.milestones || []).map(m =>
+      `${Math.round((m.fraction || 0) * 100)}% ${m.count != null ? "(" + num(m.count) + ") " : ""}by ${esc(m.due)}${m.status ? " &mdash; " + esc(m.status) : ""}`).join("; ");
+    return `<li><b>${esc(a.authority)}</b> <span class="mono" style="font-size:12px">${esc(a.kind)} &middot; ${esc(a.action)}</span>
+      ${a.date ? `<span class="sub" style="font-size:12px"> &middot; ${esc(a.date)}</span>` : ""}
+      ${a.document ? `<span class="sub" style="font-size:12px"> &middot; ${esc(a.document)}</span>` : ""}
+      ${a.file_number ? `<div class="mono" style="font-size:12px">${esc(a.file_number)}</div>` : ""}
+      ${a.scope ? `<div style="margin-top:2px">${esc(a.scope)}</div>` : ""}
+      ${ms ? `<div class="sub" style="font-size:12px;margin-top:2px"><b>Milestones:</b> ${ms}</div>` : ""}</li>`;
+  }).join("");
+  return `<div class="dsec"><div class="dh">Regulatory acts</div><ul class="dlist">${rows}</ul></div>`;
+}
+
+function fmtItu(r) {
+  const itu = r.itu || [];
+  if (!itu.length) return "";
+  const rows = itu.map(i => `<li><b>${esc(i.administration)}</b>
+    ${i.network_name ? `<span class="mono">${esc(i.network_name)}</span>` : ""}
+    <span class="sub" style="font-size:12px">${esc(i.stage)}${i.date ? " &middot; " + esc(i.date) : ""}${i.satellites != null ? " &middot; " + num(i.satellites) + " sats" : ""}</span>
+    ${i.note ? `<div class="sub" style="font-size:12px;margin-top:2px">${esc(i.note)}</div>` : ""}</li>`).join("");
+  return `<div class="dsec"><div class="dh">ITU filings</div><ul class="dlist">${rows}</ul></div>`;
+}
+
+function fmtSources(r) {
+  const rows = (r.sources || []).map(s =>
+    `<li><span class="gr g-${esc(s.grade)}">${esc(s.grade).toUpperCase()}</span>
+      <span class="mono" style="font-size:11.5px">${esc(s.id)}</span> &middot; <span class="sub" style="font-size:12px">${esc(s.kind)}</span>
+      <div style="margin-top:2px"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></div>
+      <div class="sub" style="font-size:12px">${s.date ? "dated " + esc(s.date) + " &middot; " : ""}retrieved ${esc(s.retrieved)}</div></li>`).join("");
+  return `<div class="dsec"><div class="dh">Sources</div><ul class="dlist">${rows}</ul></div>`;
+}
+
+function fmtDisc(r) {
+  const d = r.discrepancies || [];
+  if (!d.length) return "";
+  const rows = d.map(x => `<div class="discbox">
+    <div><span class="mono" style="font-size:12px">${esc(x.field)}</span></div>
+    <div class="dq">claimed: &ldquo;${esc(x.claim)}&rdquo; <span class="mono" style="font-size:11.5px">(${esc(x.claimed_by)})</span></div>
+    <div><b>registry:</b> ${esc(x.registry_value)}</div>
+    ${x.note ? `<div class="sub" style="margin-top:3px">${esc(x.note)}</div>` : ""}</div>`).join("");
+  return `<div class="dsec"><div class="dh">Disagreements with circulating figures</div>${rows}</div>`;
+}
+
+function detail(r) {
+  const notes = (r.notes || "").split(/(?=Provenance gap:)/).map(p =>
+    p.trim().startsWith("Provenance gap:") ? `<div class="gapline">${esc(p.trim())}</div>` : `<div>${esc(p.trim())}</div>`
+  ).join("");
+  const meta = [
+    ["Operator", r.operator], ["Parent", r.parent], ["Also known as", r.aka],
+    ["Services", r.services], ["Orbit regimes", r.orbit_regimes], ["Spectrum", r.spectrum],
+    ["Inter-satellite links", r.isl], ["First launch", r.first_launch],
+    ["Service start", r.service_start],
+    ["Target completion", r.target_completion ? `${r.target_completion} (${r.target_completion_kind || "unstated basis"})` : ""],
+    ["Launch providers", r.launch_providers], ["Verified", r.verified + (r.stale === "yes" ? " &mdash; stale" : "")],
+  ].filter(([, v]) => v).map(([k, v]) => `<div class="dcell"><div class="dl">${k}</div><div class="dv">${esc(v)}</div></div>`).join("");
+
+  return `<div class="dsec">
+      <div class="dh">Anchoring filing</div>
+      <div class="dgrid">${fmtFiling(r)}</div>
+    </div>
+    <div class="dsec"><div class="dh">Counts, each with its source</div>${fmtCounts(r)}</div>
+    ${fmtShells(r)}
+    ${fmtRegulatory(r)}
+    ${fmtItu(r)}
+    ${fmtDisc(r)}
+    <div class="dsec"><div class="dh">Record</div><div class="dgrid">${meta}
+      ${r.status_detail ? `<div class="dcell wide"><div class="dl">Status detail</div><div class="dv">${esc(r.status_detail)}</div></div>` : ""}
+      ${r.spectrum_detail ? `<div class="dcell wide"><div class="dl">Spectrum detail</div><div class="dv">${esc(r.spectrum_detail)}</div></div>` : ""}
+      ${r.isl_detail ? `<div class="dcell wide"><div class="dl">ISL detail</div><div class="dv">${esc(r.isl_detail)}</div></div>` : ""}
+      ${notes ? `<div class="dcell wide"><div class="dl">Notes</div><div class="dv">${notes}</div></div>` : ""}
+      <div class="dcell wide"><div class="dv"><a href="${REPO_URL}/blob/main/data/constellations/${esc(r.slug)}.yaml" target="_blank" rel="noopener">View or edit this record on GitHub &rarr;</a></div></div>
+    </div></div>
+    ${fmtSources(r)}`;
+}
+
+/* ---------- table ---------- */
+function render() {
+  const tb = document.getElementById("tb");
+  const rows = DATA.filter(match).sort((a, b) => {
+    const k = state.sortK;
+    let x = a[k], y = b[k];
+    if (k === "status") { x = STATUS_ORDER.indexOf(a.status); y = STATUS_ORDER.indexOf(b.status); }
+    if (typeof x === "number" || typeof y === "number") {
+      const xv = typeof x === "number" ? x : -1, yv = typeof y === "number" ? y : -1;
+      return (xv - yv) * state.sortDir;
+    }
+    return String(x || "").localeCompare(String(y || "")) * state.sortDir;
+  });
+
+  tb.innerHTML = rows.map(r => {
+    const open = state.open.has(r.slug);
+    // Keep this cell narrow: a file number when we have one, otherwise a
+    // marker. The full document description is in the detail panel.
+    let filing;
+    if (r.filing_absent) {
+      filing = `<span class="nofile">no filing &mdash; stated</span>`;
+    } else if (r.filing_number) {
+      filing = `<span class="mono" style="font-size:12px">${esc(r.filing_number)}</span>` +
+        (r.filing_call_sign ? `<div class="sub" style="font-size:11.5px">${esc(r.filing_call_sign)}</div>` : "");
+    } else {
+      filing = `<span class="nofile">no file number retrieved</span>` +
+        `<div class="sub" style="font-size:11.5px">${esc(r.filing_authority || "")}</div>`;
+    }
+    return `<tr class="item" tabindex="0" data-slug="${esc(r.slug)}">
+      <td><div class="tname">${esc(r.name)}<span class="fam">${esc(r.family)}</span></div>
+          <div class="torg">${esc(r.operator)}</div>
+          ${r.n_discrepancies ? `<div class="disc">${r.n_discrepancies} disagreement${r.n_discrepancies > 1 ? "s" : ""} with circulating figures</div>` : ""}</td>
+      <td><span class="pill s-${esc(r.status)}">${esc(r.status)}</span></td>
+      <td class="jur">${esc(r.jurisdiction || r.country)}</td>
+      <td class="num">${cell(r.launched)}</td>
+      <td class="num c-licensed">${cell(r.licensed)}</td>
+      <td class="num c-filed">${cell(r.filed)}</td>
+      <td class="num">${cell(r.announced)}</td>
+      <td>${filing}</td>
+      <td><span class="prov p-${r.has_primary === "yes" ? "yes" : "no"}">${r.has_primary === "yes" ? "PRIMARY" : "SECONDARY"}</span></td>
+    </tr>` + (open ? `<tr class="detail"><td colspan="9">${detail(r)}</td></tr>` : "");
+  }).join("");
+
+  document.getElementById("nShown").textContent = rows.length;
+  document.getElementById("nTotal").textContent = DATA.length;
+
+  tb.querySelectorAll("tr.item").forEach(tr => {
+    const toggle = () => {
+      const s = tr.dataset.slug;
+      state.open.has(s) ? state.open.delete(s) : state.open.add(s);
+      render();
+    };
+    tr.addEventListener("click", toggle);
+    tr.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+  });
+}
+
+/* ---------- wiring ---------- */
+renderHeader();
+chips("f-status", STATUS_ORDER.filter(s => DATA.some(r => r.status === s)), "status");
+chips("f-class", uniq(r => [r.system_class]), "cls");
+chips("f-jur", uniq(r => (r.jurisdiction || "").split("; ")), "jur");
+chips("f-prov", ["primary", "secondary"], "prov",
+  v => v === "primary" ? "has a primary source" : "secondary only");
+
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.toLowerCase().trim(); render(); });
+document.getElementById("clear").addEventListener("click", () => {
+  state.q = ""; document.getElementById("q").value = "";
+  ["status", "cls", "jur", "prov"].forEach(k => state[k].clear());
+  document.querySelectorAll(".chip.on").forEach(c => c.classList.remove("on"));
+  render();
+});
+const ea = document.getElementById("expandAll");
+ea.addEventListener("click", () => {
+  const on = ea.getAttribute("aria-pressed") === "true";
+  state.open = on ? new Set() : new Set(DATA.filter(match).map(r => r.slug));
+  ea.setAttribute("aria-pressed", String(!on));
+  ea.textContent = on ? "Expand all" : "Collapse all";
+  render();
+});
+document.querySelectorAll("thead th.sortable").forEach(th => {
+  th.addEventListener("click", () => {
+    const k = th.dataset.k;
+    if (state.sortK === k) state.sortDir *= -1;
+    else { state.sortK = k; state.sortDir = ["launched", "licensed", "filed", "announced"].includes(k) ? -1 : 1; }
+    document.querySelectorAll("thead th .arr").forEach(a => a.textContent = "");
+    th.querySelector(".arr").textContent = state.sortDir > 0 ? "↑" : "↓";
+    render();
+  });
+});
+render();
+</script>

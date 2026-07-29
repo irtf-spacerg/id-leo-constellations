@@ -1,0 +1,142 @@
+name: Starcloud
+slug: starcloud
+family: starcloud
+aka:
+- Lumen Orbit
+operator: Starcloud, Inc.
+parent: Starcloud, Inc. (independent; Series A March 2026)
+country: US
+jurisdiction:
+- US
+system_class: orbital-compute
+status: filed
+status_detail: >-
+  One demonstrator on orbit (Starcloud-1, November 2025). The 88,000-satellite
+  system is an FCC application accepted for filing in March 2026; no grant.
+status_asof: 2026-07
+services:
+- orbital-compute
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20260202-00073
+  src: spacenews-starcloud-2026
+
+counts:
+  launched:
+    value: 1
+    asof: 2026-07
+    src: spacenews-starcloud-2026
+    note: >-
+      Starcloud-1, a 60 kg demonstrator carrying an NVIDIA H100, launched
+      2 November 2025. A second demonstrator was reported as planned for
+      October 2026.
+  filed:
+    value: 88000
+    asof: 2026-03-13
+    src: spacenews-starcloud-2026
+    note: >-
+      Requested in the application; nothing granted, so the whole figure is
+      filed and none of it licensed.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20260202-00073
+  action: pending
+  date: 2026-02-02
+  satellites: 88000
+  scope: >-
+    Application to operate up to 88,000 orbital data centre satellites in a
+    select set of narrow orbital shells between 600 and 850 km, each up to
+    50 km thick, in dusk-dawn sun-synchronous orbits. Requests Ka-band
+    spectrum for telemetry, tracking and command on a non-interference basis
+    only; bulk data movement is to rely on optical inter-satellite links to
+    third-party broadband constellations. Accepted for filing 13 March 2026.
+  src: spacenews-starcloud-2026
+
+shells:
+- label: proposed-sso-band
+  status: proposed
+  geometry_kind: sso-band
+  code_status: not-representable
+  code_note: >-
+    The application describes a *band* of dusk-dawn sun-synchronous shells
+    between 600 and 850 km, each up to 50 km thick, without a stated plane
+    count, satellites-per-plane or phasing. Sun-synchronous orbits also
+    require an altitude-dependent inclination that the code carries but does
+    not constrain, and the local-time-of-ascending-node that makes an orbit
+    "dusk-dawn" has no representation in the code at all. Nothing here is
+    expressible as a Walker triple.
+  src: spacenews-starcloud-2026
+
+spectrum:
+- Ka
+- optical
+spectrum_detail: >-
+  Ka-band requested for TT&C on a non-interference basis. No service spectrum
+  of its own: user data is to move over optical inter-satellite links to
+  Starlink, Amazon Leo and Blue Origin TeraWave.
+isl: optical
+isl_detail: >-
+  External dependency. The system as filed has no independent path to the
+  ground for bulk data and relies on crosslinks into constellations operated
+  by other companies, none of which has published an interconnection
+  interface. This is a governance and interoperability question for the group
+  as much as a technical one.
+
+first_launch: 2025-11-02
+
+sources:
+- id: spacenews-starcloud-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "Starcloud files plans for 88,000-satellite constellation"
+    (reports ICFS SAT-LOA-20260202-00073, filed 2 February 2026, accepted for
+    filing 13 March 2026)
+  url: https://spacenews.com/starcloud-files-plans-for-88000-satellite-constellation/
+  date: 2026-03
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '88,000 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '88,000 requested; application pending, no grant'
+  note: >-
+    The figure agrees with the application as reported. The disagreement is
+    about the axis, not the number: an accepted-for-filing application
+    establishes a place in a processing round, not an authorisation. This
+    record therefore contributes 88,000 to counts.filed and nothing to
+    counts.licensed.
+
+notes: >-
+  Provenance gap: this record has no primary source. Everything except the
+  demonstrator launch rests on one trade-press report of the FCC application.
+  The application itself (ICFS SAT-LOA-20260202-00073) is public and should be
+  read; the accepted-for-filing public notice would also be a primary source
+  for the date. Until then every number here is secondary and the record
+  should be read as such.
+  Kept in the registry despite the weak provenance because orbital data centre
+  filings are a large and fast-growing share of the aggregate satellite count,
+  and because this system as filed depends entirely on other operators'
+  optical crosslinks - which is exactly the kind of coupling the group should
+  be able to see.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

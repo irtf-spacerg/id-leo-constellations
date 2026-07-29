@@ -1,0 +1,150 @@
+name: IRIS2
+slug: iris2
+family: iris2
+aka:
+- IRIS²
+- Infrastructure for Resilience, Interconnectivity and Security by Satellite
+- EU Secure Connectivity Programme
+operator: SpaceRISE consortium (SES, Eutelsat, Hispasat)
+parent: European Commission (concession holder)
+country: EU
+jurisdiction:
+- EU
+system_class: government-military
+status: licensed
+status_detail: >-
+  A 12-year concession contract was signed with the European Commission on
+  16 December 2024, implemented with ESA support. Critical design review
+  planned for early 2028 and launches for 2029-2030. Nothing launched.
+status_asof: 2026-07
+services:
+- government-secure
+- broadband
+orbit_regimes:
+- LEO
+- MEO
+dual_use: dual
+
+filing:
+  authority: EUSPA
+  document: >-
+    SpaceRISE 12-year concession contract with the European Commission, signed
+    16 December 2024
+  src: ses-iris2-concession
+  note: >-
+    IRIS2 is procured rather than licensed: the anchoring instrument is a
+    concession contract with the European Commission, not a spectrum
+    authorisation. The ITU filings that will carry its spectrum are made by
+    member state administrations and have not been identified. This is a
+    genuinely different regulatory shape from every other record here and the
+    `filing:` block is stretched to accommodate it.
+
+counts:
+  announced:
+    value: 290
+    asof: 2024-12-16
+    src: ses-iris2-concession
+    breakdown:
+    - {label: 'LEO', value: 272, src: ses-iris2-concession}
+    - {label: 'MEO', value: 18, src: ses-iris2-concession}
+    note: >-
+      Recorded as announced rather than licensed because the concession
+      contract is a procurement instrument and no spectrum authorisation for
+      a specific satellite count has been traced.
+
+regulatory:
+- authority: EUSPA
+  country: EU
+  kind: license-grant
+  action: granted
+  date: 2024-12-16
+  satellites: 290
+  scope: >-
+    Twelve-year concession contract between the European Commission and the
+    SpaceRISE consortium (SES, Eutelsat, Hispasat) for the EU Secure
+    Connectivity Programme, implemented with the support of ESA. The
+    consortium contributes EUR 4.1bn. SES designs, delivers and operates the
+    18 MEO satellites.
+  src: ses-iris2-concession
+
+shells:
+- label: leo-high
+  status: proposed
+  geometry_kind: unknown
+  altitude_km: 1200
+  code_status: unknown
+  code_note: >-
+    Reported as about 1,200 km carrying 264 satellites with Ku- and Ka-band
+    service. No inclination or plane structure traced.
+  src: ses-iris2-concession
+- label: leo-low
+  status: proposed
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Ten or more satellites between 400 and 750 km, intended for incubation of
+    future technologies rather than service. An altitude range, and a count
+    given as a lower bound.
+  src: ses-iris2-concession
+- label: meo
+  status: proposed
+  geometry_kind: unknown
+  satellites: 18
+  code_status: unknown
+  code_note: >-
+    18 MEO satellites delivered and operated by SES. Altitude not traced;
+    likely related to SES's existing O3b mPOWER architecture, but that is an
+    inference and is not recorded as fact.
+  src: ses-iris2-concession
+
+isl: optical-planned
+
+target_completion: 2030
+target_completion_kind: operator-target
+
+sources:
+- id: ses-iris2-concession
+  grade: secondary
+  kind: operator-web
+  title: >-
+    SES, "SES-led SpaceRISE Signs Concession Contract With EC to Deliver
+    IRIS2"
+  url: https://www.ses.com/newsroom/ses-led-spacerise-signs-concession-contract-ec-deliver-iris2
+  date: 2024-12-16
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.announced
+  claim: '282 satellites (264 LEO + 18 MEO)'
+  claimed_by: york-ietf126
+  registry_value: '290 (272 LEO + 18 MEO)'
+  note: >-
+    Both figures are in circulation and both are internally consistent. The
+    difference is the "LEO Low" technology-incubation shell of ten or more
+    satellites: 264 counts only the LEO High service shell, 272 includes the
+    incubation satellites. Neither is wrong; they are counting different
+    things. A small, tractable example of why a satellite count is meaningless
+    without a stated scope.
+
+notes: >-
+  Provenance gap: no primary source. The concession contract itself, the
+  Commission's programme documentation and the member state ITU filings that
+  will carry the spectrum have none of them been consulted.
+  IRIS2 is the registry's worked example of a system that does not fit the
+  filing-centred model: it is a publicly procured programme whose defining
+  instrument is a concession contract, whose spectrum will come through member
+  state administrations, and whose satellite count is a design target rather
+  than an authorised ceiling. Worth discussing whether the schema should carry
+  a distinct instrument type for procured systems.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

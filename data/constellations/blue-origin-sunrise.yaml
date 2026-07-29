@@ -1,0 +1,143 @@
+name: Blue Origin Project Sunrise
+slug: blue-origin-sunrise
+family: blue-origin
+aka:
+- Project Sunrise
+- Blue Origin Orbital Data Center System
+operator: Blue Origin, LLC
+parent: Blue Origin, LLC
+country: US
+jurisdiction:
+- US
+system_class: orbital-compute
+status: filed
+status_detail: >-
+  Application filed 19 March 2026; no grant. NASA filed an objection in May
+  2026. Nothing launched.
+status_asof: 2026-07
+services:
+- orbital-compute
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  document: >-
+    Blue Origin application for the Project Sunrise orbital data center
+    system, filed 19 March 2026 (ICFS file number not retrieved)
+  src: geekwire-sunrise-2026
+  note: >-
+    The application is public and its filing date is consistently reported,
+    but its ICFS file number has not been retrieved in this pass. Recorded as
+    a document description so the record still anchors on a specific,
+    findable act.
+
+counts:
+  filed:
+    value: 51600
+    asof: 2026-03-19
+    src: geekwire-sunrise-2026
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  action: pending
+  date: 2026-03-19
+  satellites: 51600
+  scope: >-
+    Application for up to 51,600 orbital data centre satellites in
+    sun-synchronous orbits between 500 km and 1,800 km, with between 300 and
+    1,000 satellites per orbital plane. Ka-band requested for telemetry,
+    tracking and command; user data to move over optical inter-satellite links
+    into Blue Origin's TeraWave network and thence to the ground.
+  src: geekwire-sunrise-2026
+- authority: FCC
+  country: US
+  kind: application
+  action: pending
+  date: 2026-05
+  scope: >-
+    NASA filed an objection to the application. The grounds have not been
+    read; NASA objections to large constellations have historically concerned
+    conjunction risk with science missions and with the ISS.
+  src: satnews-nasa-sunrise-2026
+
+shells:
+- label: sso-500-1800
+  status: proposed
+  geometry_kind: sso-band
+  max_sats_per_plane: 1000
+  code_status: not-representable
+  code_note: >-
+    Sun-synchronous orbits from 500 to 1,800 km with 300 to 1,000 satellites
+    per plane. Both the altitude and the per-plane population are ranges, so
+    there is no (T, P, F) triple. Sun-synchronous orbits also carry a local
+    time of the ascending node that the code cannot express. Note the
+    per-plane figure: 1,000 satellites in a single plane is two orders of
+    magnitude beyond anything in the operational shells in this registry, and
+    worth flagging to anyone modelling intra-plane topology.
+  src: geekwire-sunrise-2026
+
+spectrum:
+- Ka
+- optical
+spectrum_detail: >-
+  Ka-band for TT&C only. No service spectrum of its own; user traffic is to
+  travel by optical link into TeraWave.
+isl: external
+isl_detail: >-
+  Optical links into Blue Origin's own TeraWave constellation, which is itself
+  only announced and has no filing reference in this registry. The compute
+  system's path to the ground therefore depends on a system whose existence is
+  not yet documented in a docket.
+
+sources:
+- id: geekwire-sunrise-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    GeekWire, "51,600 more satellites? Blue Origin adds another twist to the
+    data center space race with Project Sunrise"
+  url: https://www.geekwire.com/2026/blue-origin-data-center-space-race-project-sunrise/
+  date: 2026-03
+  retrieved: 2026-07-29
+- id: satnews-nasa-sunrise-2026
+  grade: secondary
+  kind: trade-press
+  title: SatNews, "NASA Objects to Blue Origin's Project Sunrise"
+  url: https://satnews.com/2026/05/05/nasa-objects-to-blue-origins-project-sunrise/
+  date: 2026-05-05
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '51,600 planned; FCC filing Mar 19, 2026'
+  claimed_by: york-ietf126
+  registry_value: '51,600 requested; application pending'
+  note: >-
+    Count and date both agree with the reporting. The registry adds only that
+    NASA has objected, which the deck does not mention and which is material
+    to whether the filing becomes an authorisation.
+
+notes: >-
+  Provenance gap: no primary source, and the ICFS file number has not been
+  retrieved. Reading the application would give the shell structure, the
+  satellite design and the basis for the 51,600 figure, and reading NASA's
+  objection would give the first documented instance in this registry of a
+  federal science agency contesting a constellation filing on operational
+  grounds. Both are worth doing.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

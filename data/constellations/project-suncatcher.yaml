@@ -1,0 +1,113 @@
+name: Project Suncatcher
+slug: project-suncatcher
+family: project-suncatcher
+aka:
+- Google Project Suncatcher
+operator: Google LLC
+parent: Alphabet Inc.
+country: US
+jurisdiction:
+- US
+system_class: orbital-compute
+status: announced
+status_detail: >-
+  A research programme, announced November 2025, to put Google TPUs in orbit.
+  Two prototype satellites are to be built and operated by Planet Labs for an
+  in-orbit demonstration in early 2027. No constellation size has been stated
+  and no filing has been identified.
+status_asof: 2026-07
+services:
+- orbital-compute
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing_absent: >-
+  No filing identified. The programme is presented as research with a
+  two-satellite demonstration, and the demonstration satellites are to be
+  built and operated by Planet Labs, so any near-term spectrum authority would
+  most likely sit under Planet's existing licences rather than a new Google
+  filing. There is nothing yet to file for: no constellation size has been
+  announced.
+
+shells:
+- label: compute-cluster
+  status: proposed
+  geometry_kind: irregular
+  code_status: not-representable
+  code_note: >-
+    The published concept is clusters of about 81 satellites flying in
+    formation within arrays roughly 1 km across, linked optically. That is a
+    formation-flying geometry, not an orbital shell: the parameter that
+    matters is inter-satellite separation within a cluster, which the
+    constellation code has no way to express at all. Of everything in this
+    registry, this is the design furthest from what the notation was built
+    for.
+  src: dcd-suncatcher-2025
+
+isl: optical
+isl_detail: >-
+  Optical inter-satellite links are central to the concept, used to distribute
+  machine-learning workloads across a tightly spaced cluster. Validating them
+  is one of the stated goals of the 2027 demonstration.
+
+first_launch: 2027
+target_completion_kind: operator-target
+launch:
+  providers:
+  - Planet Labs
+  cadence: Two prototype satellites planned for early 2027.
+  src: dcd-suncatcher-2025
+
+sources:
+- id: dcd-suncatcher-2025
+  grade: secondary
+  kind: trade-press
+  title: >-
+    Data Center Dynamics, "Project Suncatcher: Google to launch TPUs into
+    orbit with Planet Labs, envisions 1km arrays of 81-satellite compute
+    clusters"
+  url: https://www.datacenterdynamics.com/en/news/project-suncatcher-google-to-launch-tpus-into-orbit-with-planet-labs-envisions-1km-arrays-of-81-satellite-compute-clusters/
+  date: 2025-11
+  retrieved: 2026-07-29
+- id: google-suncatcher-2025
+  grade: secondary
+  kind: operator-web
+  title: >-
+    Google Research, "Exploring a space-based, scalable AI infrastructure
+    system design"
+  url: https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/
+  date: 2025-11
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts
+  claim: '? satellites planned; 2027 prototype?'
+  claimed_by: york-ietf126
+  registry_value: 'No count; two demonstration satellites in early 2027'
+  note: >-
+    The deck records the count as a question mark, which is right. This
+    registry does the same by leaving `counts` empty rather than writing zero,
+    and adds the one firm number available: two prototypes.
+
+notes: >-
+  Included with an empty `counts` block on purpose. An announced programme
+  from an operator of this size, with no stated constellation size, is a real
+  category and the honest representation of it is absence. Writing a
+  speculative number here would corrupt exactly the aggregate the registry is
+  meant to make trustworthy.
+  Provenance gap: the Google Research post describing the system design has
+  been cited but not read in detail; it would give the cluster geometry and
+  the power and thermal assumptions.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

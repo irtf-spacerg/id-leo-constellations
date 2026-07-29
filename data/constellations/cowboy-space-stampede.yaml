@@ -1,0 +1,112 @@
+name: Cowboy Space Stampede
+slug: cowboy-space-stampede
+family: cowboy-space
+aka:
+- Stampede
+operator: Cowboy Space
+parent: Cowboy Space (San Carlos, California)
+country: US
+jurisdiction:
+- US
+system_class: orbital-compute
+status: filed
+status_detail: >-
+  Application filed 14 May 2026. The company states the satellite design is
+  unfinished and that a licence modification will be needed before service,
+  which is unusually explicit about how provisional the filing is.
+status_asof: 2026-07
+services:
+- orbital-compute
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  document: >-
+    Cowboy Space application for the Stampede orbital data centre
+    constellation, filed 14 May 2026 (ICFS file number not retrieved)
+  src: spacenews-cowboy-2026
+  note: The ICFS file number has not been retrieved.
+
+counts:
+  filed:
+    value: 20000
+    asof: 2026-05-14
+    src: spacenews-cowboy-2026
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  action: pending
+  date: 2026-05-14
+  satellites: 20000
+  scope: >-
+    Application for up to 20,000 orbital data centre satellites in dawn-dusk
+    sun-synchronous orbits in shells between 700 and 1,000 km. The application
+    provides few details because the satellite design is not finished, and
+    states that a licence modification will be required before service.
+    Launches are said to begin in 2028.
+  src: spacenews-cowboy-2026
+
+shells:
+- label: dawn-dusk-700-1000
+  status: proposed
+  geometry_kind: sso-band
+  code_status: not-representable
+  code_note: >-
+    Dawn-dusk sun-synchronous shells between 700 and 1,000 km. Altitude range,
+    no plane structure, and a local time of the ascending node with no
+    representation in the code. The dawn-dusk choice is the whole point of the
+    design, since it maximises solar exposure, and it is precisely the
+    parameter the notation cannot carry.
+  src: spacenews-cowboy-2026
+
+isl: unknown
+
+first_launch: 2028
+target_completion_kind: operator-target
+
+sources:
+- id: spacenews-cowboy-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "Cowboy files plans for up to 20,000 orbital data centers"
+  url: https://spacenews.com/cowboy-files-plans-for-up-to-20000-orbital-data-centers/
+  date: 2026-05-15
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '20,000 planned; year started/planned operation unknown'
+  claimed_by: york-ietf126
+  registry_value: '20,000 requested 14 May 2026; launches stated to begin 2028'
+  note: >-
+    Count agrees, and the registry can fill in the timeline the deck left
+    blank.
+
+notes: >-
+  Provenance gap: no primary source and no file number.
+  This record is worth keeping in view for a reason beyond its size. The
+  company told the regulator that the satellite design is unfinished and that
+  a modification will be needed before service. That is a filing made to hold
+  a place in a processing round, stated as such, by the applicant. It is the
+  cleanest documented instance in this registry of the mechanism Dan York and
+  Nitinder Mohan discussed at IETF 126: filings as spectrum positioning rather
+  than deployment commitments. Recording it as `filed` and never as
+  `licensed` is exactly the distinction the registry exists to preserve.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

@@ -1,0 +1,139 @@
+name: SpinLaunch Meridian Space
+slug: spinlaunch-meridian
+family: spinlaunch
+aka:
+- Meridian Space
+operator: SpinLaunch, Inc.
+parent: SpinLaunch, Inc.
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: filed
+status_detail: >-
+  FCC application for roughly 1,200 satellites in Ka-, Ku- and V-band. 280
+  satellites contracted from Kongsberg NanoAvionics in April 2025. Nothing
+  launched.
+status_asof: 2026-07
+services:
+- broadband
+- backhaul
+- government-secure
+orbit_regimes:
+- LEO
+dual_use: dual
+
+filing:
+  authority: FCC
+  administration: USA
+  document: >-
+    SpinLaunch application for the Meridian Space constellation (ICFS file
+    number and date not retrieved)
+  src: spacenews-spinlaunch-2025
+  note: The ICFS file number and filing date have not been retrieved.
+
+counts:
+  filed:
+    value: 1200
+    asof: 2025
+    src: spacenews-spinlaunch-2025
+    note: >-
+      Reported as "about 1,200". The IETF 126 deck gives a precise 1,190,
+      which is plausibly the exact figure in the application; the registry
+      records the sourced approximation rather than adopting a precise number
+      it cannot trace.
+  announced:
+    value: 280
+    asof: 2025-04
+    src: spacenews-spinlaunch-2025
+    note: >-
+      Satellites contracted from Kongsberg NanoAvionics for EUR 122.5m. A
+      manufacturing commitment, not a regulatory figure, and much smaller than
+      the filing.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  action: pending
+  satellites: 1200
+  scope: >-
+    Application to deploy about 1,200 satellites operating in Ka-, Ku- and
+    V-band, at 830 km in an arrangement giving fixed ground tracks rather than
+    precessing ones, so that ground equipment need track in only one
+    dimension. Enterprise and government market rather than consumer.
+  src: spacenews-spinlaunch-2025
+
+shells:
+- label: repeating-ground-track-830
+  status: proposed
+  geometry_kind: irregular
+  altitude_km: 830
+  code_status: not-representable
+  code_note: >-
+    A repeating-ground-track constellation, chosen so that satellite passes
+    recur over fixed points and ground antennas can track in one dimension.
+    The code can express the altitude but has no way to state that the orbits
+    are selected for ground-track repetition, which is the design's defining
+    property and constrains altitude and inclination jointly. Plane count and
+    per-plane population not published.
+  src: spacenews-spinlaunch-2025
+
+spectrum:
+- Ku
+- Ka
+- V
+isl: unknown
+
+launch:
+  providers:
+  - SpinLaunch
+  cadence: >-
+    The company's kinetic launch system is still in development. The
+    constellation and the launch method are two independent bets, and the deck
+    is right to note that the second is unproven.
+  src: york-ietf126
+
+sources:
+- id: spacenews-spinlaunch-2025
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "SpinLaunch announces plans for broadband satellite
+    constellation"
+  url: https://spacenews.com/spinlaunch-announces-plans-for-broadband-satellite-constellation/
+  date: 2025
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '1,190 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: 'about 1,200 requested'
+  note: >-
+    The deck's 1,190 is more precise than anything this registry can source
+    and is very likely the exact figure in the application. Recorded as a
+    discrepancy not because the deck is wrong but because the registry cannot
+    yet confirm it, and adopting a precise unsourced number would be exactly
+    the laundering the grading rules exist to prevent. Reading the application
+    would let 1,190 replace "about 1,200" with a primary source behind it.
+
+notes: >-
+  Provenance gap: no primary source, no file number, no filing date.
+  Worth noting for anyone modelling this system: repeating ground tracks are
+  unusual among the constellations in this registry and change the contact
+  pattern seen by a fixed ground station substantially. It is a good test case
+  for the ground-station elements added in
+  draft-piraux-space-constellation-code-02.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

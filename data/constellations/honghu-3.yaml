@@ -1,0 +1,153 @@
+name: Honghu-3
+slug: honghu-3
+family: honghu
+aka:
+- Honghu
+- 鸿鹄-3
+operator: Shanghai Lanjian Hongqing Technology Company (Hongqing Technology)
+parent: LandSpace holds 48 per cent
+country: CN
+jurisdiction:
+- CN
+system_class: broadband
+status: filed
+status_detail: >-
+  Advance publication information received by the ITU on 8 September 2023 and
+  published 31 October 2023, with comments (API/B) published April 2024. No
+  coordination request has been filed. Nothing launched. The third Chinese
+  constellation of more than 10,000 satellites to be filed, after Guowang and
+  Qianfan.
+status_asof: 2026-07
+services:
+- broadband
+orbit_regimes:
+- LEO
+dual_use: unknown
+
+filing:
+  authority: other
+  administration: CHN
+  file_number: 'API/A 13448 (notice ID 123545296)'
+  document: BR IFIC 3008
+  src: itu-snl-honghu
+
+counts:
+  filed:
+    value: 10000
+    asof: 2023-09-08
+    src: spacenews-honghu-2024
+    note: >-
+      The count remains secondary. The ITU filing identity is confirmed, but
+      the publication that carries the declared satellite count, BR IFIC 3008
+      of October 2023, is outside the downloadable window. See notes.
+
+itu:
+- administration: CHN
+  network_name: HONGHU
+  stage: API
+  date: 2023-09-08
+  src: itu-snl-honghu
+  note: >-
+    API/A 13448, notice ID 123545296, received 8 September 2023 and published
+    in BR IFIC 3008 on 31 October 2023. Comments (API/B 2544) published in
+    BR IFIC 3019 on 16 April 2024. No coordination request on file, so this
+    network is at the first of the three ITU stages. The network name is
+    HONGHU, not Honghu-3.
+
+shells:
+- label: honghu-160-planes
+  status: proposed
+  geometry_kind: unknown
+  planes: 160
+  code_status: unknown
+  code_note: >-
+    10,000 satellites across 160 orbital planes, which would be 62.5 per plane
+    and therefore not evenly divisible. No altitude or inclination traced, so
+    no code can be built and the divisibility problem cannot be resolved.
+  src: spacenews-honghu-2024
+
+isl: unknown
+
+launch:
+  providers:
+  - LandSpace
+  cadence: >-
+    Vertically integrated in the SpaceX pattern: the launch provider owns 48
+    per cent of the constellation operator.
+  src: york-ietf126
+
+sources:
+- id: itu-snl-honghu
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network HONGHU (notifying administration CHN)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=HONGHU
+  retrieved: 2026-07-29
+- id: spacenews-honghu-2024
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "Chinese firm files plans for 10,000-satellite constellation"
+    (Hongqing Technology, ITU notification 24 May 2024, 10,000 satellites in
+    160 planes)
+  url: https://spacenews.com/chinese-firm-files-plans-for-10000-satellite-constellation/
+  date: 2024-05
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+- id: spacerg-minutes-126
+  grade: secondary
+  kind: presentation
+  title: >-
+    IRTF SPACE RG, minutes of the IETF 126 session, section 2 ("Hanwha
+    (~10,000)" in the list of filed or announced constellations)
+  url: https://datatracker.ietf.org/meeting/126/session/space
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: itu.date
+  claim: 'filed a notification with the ITU on May 24 [2024]'
+  claimed_by: spacenews-honghu-2024
+  registry_value: 'API/A received 8 September 2023, published 31 October 2023'
+  note: >-
+    The ITU record does not support the May 2024 filing date that has followed
+    this system through every subsequent write-up. What happened in April 2024
+    was the publication of API/B, the comments stage. The filing itself is
+    eight months older. The characterisation as a "notification" is also
+    wrong: no notification exists, only advance publication information, which
+    is the weakest stage.
+- field: name
+  claim: 'Hanwha (~10,000)'
+  claimed_by: spacerg-minutes-126
+  registry_value: 'Honghu-3 (China, 10,000), operator Hongqing Technology'
+  note: >-
+    Not a discrepancy in the deck, which has the name right, but in the SPACE
+    RG session minutes. The raw notes record "Hanwha 3 (China, 10,000)" and
+    the compiled minutes carry it forward as "Hanwha (~10,000)", dropping the
+    country. Hanwha is a South Korean group with no constellation of this
+    size; the system meant is Honghu-3. The minutes should be corrected.
+    Recorded here because a registry of this kind is exactly where such an
+    error should surface, and because it illustrates how a name mangled once
+    in a transcript propagates into every downstream summary.
+
+notes: >-
+  Provenance partially upgraded 2026-07-29: the ITU filing identity, stage and
+  dates now come from the Space Network List. The declared satellite count
+  does not, because it lives in BR IFIC 3008 (October 2023), which is outside
+  the roughly eighteen-month window in which BR IFICs can be downloaded
+  without a subscription. Closing that needs the BR IFIC DVD-ROM or a TIES
+  account. This is the clearest instance in the registry of the retention
+  window blocking an otherwise easy provenance upgrade.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

@@ -1,0 +1,140 @@
+name: Reliance Jio LEO constellation
+slug: reliance-jio
+family: reliance-jio
+aka:
+- Jio sovereign LEO constellation
+- Jio Space
+operator: Jio Platforms Limited
+parent: Reliance Industries Limited
+country: IN
+jurisdiction:
+- IN
+system_class: broadband
+status: licensed
+status_detail: >-
+  IN-SPACe approved the proposal on 17 July 2026, four days before the IETF
+  126 session, judging it technically sound. The approval enables the
+  Government of India to support the ITU filings and orbital rights the system
+  needs; those filings are not yet made. Nothing launched.
+status_asof: 2026-07
+services:
+- broadband
+- direct-to-device
+orbit_regimes:
+- LEO
+dual_use: dual
+
+filing:
+  authority: IN-SPACe
+  administration: IND
+  document: >-
+    IN-SPACe authorisation of the Jio Platforms LEO constellation proposal,
+    17 July 2026 (docket identifier not retrieved)
+  src: businessstandard-jio-2026
+  note: >-
+    IN-SPACe does not publish authorisations in a searchable public docket, so
+    the approval is known only through reporting. The ITU filings that would
+    give the system a citable international identity are still to be made,
+    with government support, which is part of what the approval grants.
+
+counts:
+  licensed:
+    value: 1600
+    asof: 2026-07-17
+    src: businessstandard-jio-2026
+    note: >-
+      Reported as "over 1,600". Recorded as licensed on the strength of the
+      IN-SPACe approval, with the caveat that the approval document has not
+      been read.
+  filed:
+    value: 1600
+    asof: 2026-07-17
+    src: businessstandard-jio-2026
+
+regulatory:
+- authority: IN-SPACe
+  country: IN
+  kind: license-grant
+  action: granted
+  date: 2026-07-17
+  satellites: 1600
+  scope: >-
+    Approval of Jio Platforms' proposal for a sovereign LEO constellation of
+    more than 1,600 satellites, assessed as technically sound and comparable
+    to Starlink and Kuiper. Reported throughput target of 4.5-5 Tbps against
+    Starlink's approved 600 Gbps and Kuiper's proposed 3 Tbps in India. The
+    approval enables Government of India support for the associated ITU
+    filings and orbital rights coordination.
+  src: businessstandard-jio-2026
+
+shells:
+- label: jio-leo
+  status: authorised
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: No orbital parameters published.
+  src: businessstandard-jio-2026
+
+isl: unknown
+
+target_completion: 2029
+target_completion_kind: operator-target
+launch:
+  providers:
+  - Not disclosed
+  cadence: >-
+    No launch provider disclosed. The sovereign framing makes ISRO the
+    presumption, but that is an inference and not recorded as fact.
+  src: york-ietf126
+
+sources:
+- id: businessstandard-jio-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    Business Standard, "Reliance Jio gets IN-SPACe approval for
+    1,600-satellite LEO network"
+  url: https://www.business-standard.com/companies/news/reliance-jio-gets-in-space-approval-for-1-600-satellite-leo-network-126071700270_1.html
+  date: 2026-07-17
+  retrieved: 2026-07-29
+- id: spacenews-jio-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "India's Jio lays out sovereign LEO constellation plan ahead of
+    IPO"
+  url: https://spacenews.com/indias-jio-lays-out-sovereign-leo-constellation-plan-ahead-of-ipo/
+  date: 2026
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: status
+  claim: 'Deployment "next 2-3 years" if approved; announced Jun 19 2026 at AGM'
+  claimed_by: york-ietf126
+  registry_value: 'Approved by IN-SPACe 17 July 2026'
+  note: >-
+    The deck's conditional was correct when written and was overtaken four
+    days before the session: IN-SPACe approved the proposal on 17 July 2026.
+    A good argument for a registry with dated `verified` fields over a slide
+    deck.
+
+notes: >-
+  Provenance gap: no primary source and no citable docket. IN-SPACe
+  authorisations are not published in a form comparable to FCC ICFS.
+  Carlos Martinez-Cagnazzo asked at IETF 126 who the proper authority is when
+  a company files, and Dan York used exactly this system as the example: the
+  Indian space agency approves, then the filing goes to the ITU. This record
+  captures that chain at the moment the first step completed and the second
+  had not yet begun, which makes it a useful teaching case for the draft.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

@@ -1,0 +1,244 @@
+name: Eutelsat OneWeb
+slug: eutelsat-oneweb
+family: oneweb
+aka:
+- OneWeb
+- WorldVu
+- OneWeb Ku/Ka NGSO FSS system
+operator: WorldVu Satellites Limited
+parent: Eutelsat Group (merged with OneWeb 2023)
+country: GB
+jurisdiction:
+- GB
+- US
+system_class: broadband
+status: operational
+status_detail: >-
+  First-generation constellation complete and in wholesale service. Authorised
+  by the United Kingdom; US market access granted by the FCC and modified in
+  2023 from 720 to 716 satellites. A requested expansion to 6,372 satellites
+  was deferred, not granted.
+status_asof: 2026-07
+services:
+- broadband
+- backhaul
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: G
+  file_number: SAT-MPL-20200526-00062
+  call_sign: S2963
+  document: DA 23-362
+  src: fcc-oneweb-2023
+  note: >-
+    The underlying authorisation is British, held by WorldVu Satellites
+    Limited. The file number recorded here is the US market access petition,
+    which is the citable public docket; the UK authorisation itself has not
+    been retrieved. `administration` is the ITU code for the United Kingdom.
+
+counts:
+  launched:
+    value: 660
+    asof: 2026-07
+    src: york-ietf126
+  licensed:
+    value: 716
+    asof: 2023-04-28
+    src: fcc-oneweb-2023
+    note: >-
+      Reduced from 720 to 716 in the 2023 modification. This is the figure for
+      which US market access is granted; the UK authorisation is assumed to
+      match but has not been read.
+  filed:
+    value: 6372
+    asof: 2023-04-28
+    src: fcc-oneweb-2023
+    note: >-
+      OneWeb's modification petition requested an expansion of the system to
+      6,372 satellites. The FCC granted the reduction to 716 and expressly
+      deferred consideration of the expansion. Under this registry's
+      convention filed is cumulative of everything requested, so the 6,372
+      stands here and only 716 is licensed.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  call_sign: S2963
+  document: FCC 17-77
+  action: granted
+  date: 2017
+  satellites: 720
+  scope: >-
+    Grant of OneWeb's April 2016 petition for declaratory ruling for US market
+    access for a 720-satellite constellation in 18 near-polar planes with 40
+    satellites per plane at approximately 1,200 km, 87.9 degrees inclination.
+    The petition triggered the NGSO processing round that Starlink, Telesat
+    and others later joined.
+  src: fcc-oneweb-2023
+- authority: FCC
+  country: US
+  kind: modification
+  file_number: SAT-MPL-20200526-00062
+  call_sign: S2963
+  document: DA 23-362
+  action: granted-in-part
+  date: 2023-04-28
+  satellites: 716
+  scope: >-
+    Order and Declaratory Ruling granting in part and deferring in part
+    (with SAT-APL-20210112-00007). Reduces the constellation from 720 to 716
+    satellites and changes the architecture from 40 satellites in each of 18
+    planes at 87.9 degrees to 49 satellites in each of 12 planes at 87.9
+    degrees plus 16 satellites in each of 8 planes at 55 degrees, with no
+    change to operational altitude. Consideration of the requested expansion
+    to 6,372 satellites is deferred.
+  src: fcc-oneweb-2023
+
+shells:
+- label: phase1-polar
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 1200
+  inclination_deg: 87.9
+  planes: 12
+  sats_per_plane: 49
+  satellites: 588
+  walker: S
+  code_status: unknown
+  code_note: >-
+    Phasing factor not in the order. The altitude is recorded as the
+    "approximate" 1,200 km stated in the FCC's description of the original
+    petition, and the modification states the operational altitude is
+    unchanged.
+  src: fcc-oneweb-2023
+- label: phase1-inclined
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 1200
+  inclination_deg: 55.0
+  planes: 8
+  sats_per_plane: 16
+  satellites: 128
+  walker: D
+  code_status: unknown
+  code_note: >-
+    The 55 degree "inclined satellites" added by the 2023 modification. The
+    order does not restate the altitude for this group; 1,200 km is carried
+    over from the statement that operational altitude is unchanged, and is
+    therefore an inference rather than a quoted value.
+  src: fcc-oneweb-2023
+- label: original-18x40
+  status: superseded
+  geometry_kind: walker
+  altitude_km: 1200
+  inclination_deg: 87.9
+  planes: 18
+  sats_per_plane: 40
+  satellites: 720
+  walker: S
+  code_status: unknown
+  code_note: >-
+    The configuration authorised in 2017 and superseded in 2023. Retained
+    because it is the configuration the constellation-code draft's example
+    table appears to be approximating, and because the NGSO processing round
+    it triggered was defined against it.
+  src: fcc-oneweb-2023
+
+spectrum:
+- Ku
+- Ka
+spectrum_detail: >-
+  10.7-12.7 GHz (space-to-Earth), 14-14.5 GHz (Earth-to-space), 17.8-18.6 GHz
+  (space-to-Earth), 18.8-19.3 GHz (space-to-Earth), 27.5-29.1 GHz
+  (Earth-to-space), 29.5-30 GHz (Earth-to-space).
+isl: none
+isl_detail: >-
+  No inter-satellite links in the first generation; the architecture is
+  bent-pipe through a dense gateway network.
+
+first_launch: 2019-02-27
+service_start: 2023
+launch:
+  providers:
+  - Arianespace
+  - SpaceX
+  - ISRO
+  vehicles:
+  - Soyuz
+  - Falcon 9
+  - LVM3
+  cadence: >-
+    Deployment completed after switching launch providers following the 2022
+    suspension of Soyuz launches.
+  src: york-ietf126
+
+sources:
+- id: fcc-oneweb-2023
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC Space Bureau, Order and Declaratory Ruling, DA 23-362 (WorldVu
+    Satellites Limited, petition to modify the US market access grant for the
+    OneWeb Ku- and Ka-band NGSO FSS system, IBFS SAT-MPL-20200526-00062 and
+    SAT-APL-20210112-00007, Call Sign S2963)
+  url: https://docs.fcc.gov/public/attachments/DA-23-362A1.pdf
+  date: 2023-04-28
+  retrieved: 2026-07-29
+- id: piraux-code-draft
+  grade: secondary
+  kind: academic
+  title: >-
+    draft-piraux-space-constellation-code-02, example table (OneWeb as
+    S:1200:87.9:672/12/11)
+  url: https://datatracker.ietf.org/doc/draft-piraux-space-constellation-code/
+  date: 2026-07
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: shells
+  claim: 'OneWeb: S:1200:87.9:672/12/11'
+  claimed_by: piraux-code-draft
+  registry_value: >-
+    588 satellites in 12 planes at 87.9 deg plus 128 in 8 planes at 55 deg
+    (authorised 2023); previously 720 in 18 planes at 87.9 deg (2017)
+  note: >-
+    The constellation-code draft's own example table does not match either
+    authorised configuration. Its 672/12 has the right plane count for the
+    current polar group but the wrong satellite count (672 against 588), and
+    it omits the 55 degree inclined group entirely. Worth correcting in the
+    draft, and a useful illustration of why examples in specifications need
+    the same provenance discipline as registry entries.
+- field: counts.filed
+  claim: '660 launched; 528 (Next) planned'
+  claimed_by: york-ietf126
+  registry_value: '716 licensed; 6,372 requested and deferred'
+  note: >-
+    The deck's 660 launched is consistent. Its "528 (Next)" refers to Eutelsat
+    Next, an announced successor system that needs its own record and does not
+    yet have one. What neither the deck nor most coverage mentions is the
+    deferred request for 6,372 satellites, which is nearly nine times the
+    authorised constellation and is the single largest unremarked number found
+    in this pass.
+
+notes: >-
+  Provenance gap: the UK authorisation held by WorldVu Satellites Limited has
+  not been retrieved, so the licensed figure recorded here is strictly the
+  number for which US market access is granted.
+  Eutelsat Next, the announced successor constellation, is not recorded and
+  needs its own record once a filing or a firm figure can be traced.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

@@ -1,0 +1,206 @@
+# Copy this file to data/constellations/<slug>.yaml and fill it in.
+# <slug> is the lowercase name with non-alphanumerics replaced by "-", and it
+# MUST match the `slug:` field below.
+#
+# ONE RECORD IS ONE AUTHORISATION. Starlink Gen1, Gen2 and Gen3 are three
+# files. Modifications, waivers and partial grants of the same authorisation
+# are entries in `regulatory:` below, not records of their own.
+#
+# Required: name, slug, family, operator, status, sources, verified, and
+# either `filing:` or `filing_absent:`.
+# Delete every line you cannot source. An empty field is better than a
+# laundered one.
+#
+# THE ONE RULE: any field asserting a fact carries `src:` naming an entry in
+# `sources:` below. CI rejects dangling references and unsourced counts.
+#
+# Field reference, allowed values and evidence grading: data/README.md
+
+# ---------------------------------------------------------------- identity --
+name: Constellation Name Gen1     # qualify it: the record is one authorisation
+slug: constellation-name-gen1
+family: constellation-name        # groups records of one commercial system
+aka:
+- Alternative or former name
+operator: Legal entity named on the authorisation, not the brand
+parent: Parent company or controlling body
+country: XX                      # ISO 3166-1 alpha-2, operator home
+jurisdiction:                    # administration(s) that licensed/filed
+- XX
+system_class: broadband          # see data/README.md
+status: announced                # operational | deploying | demonstrator |
+                                 # licensed | filed | announced | dormant |
+                                 # cancelled | retired
+status_detail: One line justifying the status value
+status_asof: 2026-07
+services:
+- broadband
+orbit_regimes:
+- LEO
+dual_use: civil                  # civil | military | dual | unknown
+
+# ------------------------------------------------------------------ filing --
+# The anchoring reference: the one document a reader opens to check this
+# record. Required, unless filing_absent: explains why none exists.
+filing:
+  authority: FCC
+  administration: USA            # ITU administration code, where applicable
+  file_number: SAT-LOA-00000000-00000
+  call_sign: S0000
+  document: FCC 00-00            # most recent order acting on this filing
+  src: source-id
+# filing_absent: >-
+#   Only for systems with genuinely no public filing (classified government
+#   systems, pre-application announcements). Not for "I did not look".
+
+supersedes: []                   # record slugs this authorisation replaces
+superseded_by: []                # excluded from roll-up totals when non-empty
+
+# ------------------------------------------------------------------ counts --
+# Four numbers that press coverage conflates. Keep them apart.
+# Every populated count needs value, asof and src.
+counts:
+  launched:                      # cumulative ever launched, incl. deorbited
+    value: 0
+    asof: 2026-07
+    src: source-id
+  in_orbit:                      # currently on orbit
+    value: 0
+    asof: 2026-07
+    src: source-id
+  licensed:                      # granted by a regulator (subset of filed)
+    value: 0
+    asof: 2026-07
+    src: source-id
+    breakdown:                   # optional; values must sum to the parent
+    - {label: 'Gen1', value: 0, src: source-id}
+  filed:                         # CUMULATIVE: everything ever requested under
+                                 # this filing, granted or not
+    value: 0
+    asof: 2026-07
+    src: source-id
+  announced:                     # stated publicly, no filing covers it
+    value: 0
+    asof: 2026-07
+    src: source-id
+
+# -------------------------------------------------------------- regulatory --
+regulatory:
+- authority: FCC                 # FCC | Ofcom | ANFR | BNetzA | IN-SPACe |
+                                 # MIIT | Roskomnadzor | ... | other
+  country: US
+  kind: license-grant            # application | license-grant | modification |
+                                 # waiver | public-notice | denial | termination
+  file_number: SAT-LOA-00000000-00000
+  call_sign: S0000
+  document: FCC 00-00
+  action: granted                # granted | granted-in-part | pending |
+                                 # deferred | dismissed | denied | withdrawn
+  date: 2026-01-01
+  satellites: 0
+  scope: What this act actually authorised or changed
+  milestones:
+  - {fraction: 0.5, count: 0, due: 2032-01-01, status: pending}
+  src: source-id
+
+itu:
+- administration: XXX            # ITU 3-letter administration code
+  network_name: NETWORK-1
+  stage: CR/C                    # API | CR/C | notification | in-force | expired
+  date: 2026-01-01
+  satellites: 0
+  src: source-id
+  note: Say so plainly if the SNS record has not actually been consulted
+
+# ------------------------------------- shells and constellation-code output --
+shells:
+- label: shell-1
+  generation: Gen1
+  status: proposed               # deployed | deploying | authorised |
+                                 # proposed | superseded | cancelled
+  geometry_kind: walker          # walker | envelope | sso-band | irregular |
+                                 # unknown
+  altitude_km: 550
+  inclination_deg: 53.0
+  planes: 72
+  sats_per_plane: 22
+  satellites: 1584               # must equal planes * sats_per_plane
+  walker: D                      # D | S | none
+  phasing: 39
+  code: 'D:550:53.0:1584/72/39'  # draft-piraux-space-constellation-code
+  code_status: assumed-phasing   # exact | assumed-phasing | derived |
+                                 # not-representable | unknown
+  code_note: Required when code_status is not-representable
+  # Required when code_status is assumed-phasing or derived: one entry per
+  # element of the code that did NOT come from the cited filing.
+  code_assumptions:
+  - element: phasing
+    value: 39
+    basis: Why this value, and where it came from if not the filing
+    src: source-id
+  code_src: source-id
+  src: source-id
+# For an envelope authorisation, record the bound and emit no code:
+# - label: shell-envelope
+#   status: authorised
+#   geometry_kind: envelope
+#   altitude_km: 340
+#   inclination_deg: 53.0
+#   max_planes: 72
+#   max_sats_per_plane: 144
+#   code_status: not-representable
+#   code_note: Why no single (T, P, F) triple describes this
+#   src: source-id
+
+constellation_code: 'D:550:53.0:1584/72/39'
+constellation_code_status: assumed-phasing
+
+# --------------------------------------------------------------- technical --
+spectrum:
+- Ku
+- Ka
+spectrum_detail: Exact ranges and directions, ideally quoting the grant
+isl: unknown                     # optical | rf | optical-planned | rf-planned |
+                                 # none | external | unknown
+isl_detail: Topology, capacity, degree
+sat_mass_kg: 0
+
+# -------------------------------------------------------------- deployment --
+first_launch: 2026-01-01
+service_start: 2026-01-01
+target_completion: 2032-01-01
+target_completion_kind: operator-target   # regulatory-milestone | operator-target
+launch:
+  providers:
+  - Provider
+  vehicles:
+  - Vehicle
+  contracted: 0
+  cadence: Demonstrated launches per year, with the observation window
+  src: source-id
+
+# --------------------------------------------------------------- provenance --
+sources:
+- id: source-id
+  grade: primary                 # primary | secondary — determined by kind
+  kind: fcc-order                # see the kind/grade table in data/README.md
+  title: Document title as it appears on the document
+  url: https://example.org/document.pdf
+  date: 2026-01-01               # date of the source itself
+  retrieved: 2026-07-29          # date a human actually opened it
+
+discrepancies:
+- field: counts.licensed
+  claim: What the widely circulated figure says
+  claimed_by: source-id
+  registry_value: What this registry records instead
+  note: Why they differ
+
+# ------------------------------------------------------------- housekeeping --
+notes: >-
+  Caveats, provenance gaps, acquisitions, anything a researcher should know
+  before using these numbers. Start a line with "Provenance gap:" where a
+  primary source exists but has not been consulted.
+added: 2026-07
+verified: 2026-07-29
+contributor: Name (affiliation)

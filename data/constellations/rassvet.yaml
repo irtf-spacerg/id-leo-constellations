@@ -1,0 +1,215 @@
+name: Rassvet
+slug: rassvet
+family: rassvet
+aka:
+- Dawn
+- Bureau 1440 Rassvet
+- RASSVET-1
+operator: Bureau 1440
+parent: X Holding / IKS Holding
+country: RU
+jurisdiction:
+- RU
+system_class: broadband
+status: deploying
+status_detail: >-
+  First 16 production satellites launched 23 March 2026 after an experimental
+  phase from 2023. Of the three ITU networks filed in 2022-2023, two were
+  suppressed at the operator's own administration's request in December 2025;
+  only RASSVET-1 remains on file.
+status_asof: 2026-07
+services:
+- broadband
+- direct-to-device
+orbit_regimes:
+- LEO
+dual_use: unknown
+
+filing:
+  authority: other
+  administration: RUS
+  file_number: 'CR/C 5975 (notice ID 123520004); API/A 13240'
+  document: BR IFIC 3042
+  src: itu-snl-rassvet-1
+  note: >-
+    Anchored on RASSVET-1, the only one of the three networks still on file.
+    RASSVET and RASSVET-2 were suppressed; see itu: below.
+
+counts:
+  launched:
+    value: 22
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      Includes experimental satellites from 2023 and the 16 production
+      satellites launched 23 March 2026. The deck gives "~21-22".
+  filed:
+    value: 1350
+    asof: 2023-01-10
+    src: itu-ific-3042
+    note: >-
+      Declared in the first modification of the RASSVET-1 coordination
+      request. The orbit table of BR IFIC 3042 lists 30 planes of 45
+      satellites at 500 km, 60 degrees, for notice 323520262.
+  announced:
+    value: 383
+    asof: 2026
+    src: wikipedia-bureau1440
+    note: >-
+      Company plan: 292 operational satellites by the end of 2030 out of 383
+      launched. Russia's Internet Access Infrastructure federal project
+      separately gives 156 in 2026, 292 in 2027 and 318 in 2028. None of these
+      matches the 1,350 declared to the ITU.
+
+itu:
+- administration: RUS
+  network_name: RASSVET-1
+  stage: CR/C
+  date: 2023-01-10
+  satellites: 1350
+  src: itu-snl-rassvet-1
+  note: >-
+    API/A 13240 and CR/C 5975 both received 10 January 2023; API/B 2286 and
+    CR/D 5024 followed. The coordination request was modified once, received
+    10 January 2023 and published in BR IFIC 3042 on 18 March 2025. Still on
+    file.
+- administration: RUS
+  network_name: RASSVET
+  stage: expired
+  date: 2025-12-29
+  src: itu-snl-rassvet
+  note: >-
+    SUPPRESSED. API/A 13109 and CR/C 5774, both originally received 2 June
+    2022, carry a suppression action received 29 December 2025 and published
+    in BR IFIC 3065 on 17 February 2026. In SNL Part B the ssn_rev code S
+    means suppression.
+- administration: RUS
+  network_name: RASSVET-2
+  stage: expired
+  date: 2025-12-29
+  src: itu-snl-rassvet-2
+  note: >-
+    SUPPRESSED. API/A 13241 and CR/C 5976, originally received 10 January
+    2023, carry a suppression action received 29 December 2025 and published
+    in BR IFIC 3065 on 17 February 2026.
+
+shells:
+- label: rassvet-1-500
+  status: proposed
+  geometry_kind: walker
+  altitude_km: 500
+  inclination_deg: 60.0
+  planes: 30
+  sats_per_plane: 45
+  satellites: 1350
+  code_status: unknown
+  code_note: >-
+    Phasing factor not in the ITU declaration. Note that the 500 km, 60 degree
+    geometry matches the orbit the March 2026 batch was launched into, which
+    is a rare case in this registry of the filing and the observed deployment
+    agreeing.
+  src: itu-ific-3042
+
+isl: unknown
+
+first_launch: 2023
+target_completion: 2030
+target_completion_kind: operator-target
+launch:
+  providers:
+  - Roscosmos
+  vehicles:
+  - Soyuz-2.1b
+  cadence: >-
+    Launching from Vostochny and Plesetsk. About 22 satellites in three years
+    against a 2030 target of 292 operational and an ITU declaration of 1,350.
+  src: york-ietf126
+
+sources:
+- id: itu-snl-rassvet-1
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network RASSVET-1 (notifying administration RUS)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=RASSVET-1
+  retrieved: 2026-07-29
+- id: itu-snl-rassvet
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network RASSVET (notifying administration RUS),
+    showing suppression of API/A 13109 and CR/C 5774
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=RASSVET
+  retrieved: 2026-07-29
+- id: itu-snl-rassvet-2
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network RASSVET-2 (notifying administration RUS),
+    showing suppression of API/A 13241 and CR/C 5976
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=RASSVET-2
+  retrieved: 2026-07-29
+- id: itu-ific-3042
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3042, non-GSO notice data for RASSVET-1,
+    notice ID 323520262 (tables non_geo and orbit of the published database)
+  url: https://www.itu.int/sns/ific10/ific3042.zip
+  date: 2025-03-18
+  retrieved: 2026-07-29
+- id: wikipedia-bureau1440
+  grade: secondary
+  kind: encyclopedia
+  title: Wikipedia, "Bureau 1440"
+  url: https://en.wikipedia.org/wiki/Bureau_1440
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts
+  claim: '318 ... or ... 924 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '1,350 declared to the ITU; 292-383 in company and federal plans'
+  note: >-
+    The deck offers two figures without choosing, which is honest. The
+    registry can now add a third that is documented: RASSVET-1's coordination
+    request declares 1,350 satellites. It matches none of the circulating
+    numbers, and it is larger than all of them, which is the usual direction.
+- field: itu
+  claim: 'Rassvet is scaling up; hundreds more ahead'
+  claimed_by: wikipedia-bureau1440
+  registry_value: >-
+    Two of the three Rassvet ITU networks were suppressed in December 2025
+  note: >-
+    A finding that no secondary source in this registry mentions. On
+    29 December 2025 the Russian administration suppressed both API/A and CR/C
+    for RASSVET and for RASSVET-2, published in BR IFIC 3065 in February 2026,
+    three weeks before the first production launch. Suppression is a
+    deliberate act by the notifying administration, not an expiry. It may be
+    consolidation onto RASSVET-1 rather than retreat, and this registry does
+    not claim to know which. What it does record is that the ITU footprint of
+    this system shrank from three networks to one at the moment the press
+    narrative was about expansion.
+
+notes: >-
+  Provenance upgraded 2026-07-29 from encyclopaedia and press to the ITU
+  filings and publication. See scripts/itu_query.sh.
+  Reporting on this system is heavily coloured by the war in Ukraine and by
+  its dual-use potential, in both directions. The ITU record is the one part
+  of the picture that is neutral and checkable, which is most of why this
+  round of work was worth doing.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

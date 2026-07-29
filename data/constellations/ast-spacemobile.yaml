@@ -1,0 +1,208 @@
+name: AST SpaceMobile
+slug: ast-spacemobile
+family: ast-spacemobile
+aka:
+- SpaceMobile
+- BlueBird
+- BlueWalker
+- FM-1 / FM-2
+operator: AST & Science, LLC
+parent: AST SpaceMobile, Inc.
+country: US
+jurisdiction:
+- US
+system_class: direct-to-device
+status: deploying
+status_detail: >-
+  Fully authorised for 248 satellites as of April 2026, including supplemental
+  coverage from space and direct-to-cell operations, with spectrum leases from
+  AT&T, Verizon and FirstNet granted the same day. A small number of
+  satellites are in orbit.
+status_asof: 2026-07
+services:
+- direct-to-device
+- broadband
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20200413-00034
+  call_sign: S3065
+  document: DA 26-391
+  src: fcc-ast-2026
+
+counts:
+  launched:
+    value: 9
+    asof: 2026-07
+    src: york-ietf126
+  licensed:
+    value: 248
+    asof: 2026-04-21
+    src: fcc-ast-2026
+    breakdown:
+    - {label: 'Previously authorised', value: 25, src: fcc-ast-2026}
+    - {label: 'Additional in DA 26-391', value: 223, src: fcc-ast-2026}
+  filed:
+    value: 248
+    asof: 2026-04-21
+    src: fcc-ast-2026
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20200413-00034
+  call_sign: S3065
+  document: DA 26-391
+  action: granted
+  date: 2026-04-21
+  satellites: 248
+  scope: >-
+    Authorisation and Order granting, with conditions, the application as
+    amended nine times (SAT-AMD-20200727-00088, SAT-AMD-20201028-00126,
+    SAT-AMD-20230717-00172, SAT-AMD-20240311-00053, SAT-MOD-20250612-00145,
+    SAT-AMD-20250718-00181, SAT-AMD-20250903-00248, SAT-MOD-20251205-00370,
+    SAT-AMD-20251211-00379, SAT-MOD-20260121-00037). Authority to deploy 223
+    additional LEO space stations, for 248 in total, and to perform SCS and
+    direct-to-cell operations plus feeder link and TT&C. Issued jointly by the
+    Space Bureau, Wireless Telecommunications Bureau, Office of Engineering
+    and Technology, and Public Safety and Homeland Security Bureau. SB Docket
+    No. 25-201.
+  src: fcc-ast-2026
+
+shells:
+- label: bb1-520
+  status: deployed
+  geometry_kind: irregular
+  planes: 1
+  sats_per_plane: 5
+  satellites: 5
+  inclination_deg: 53.0
+  code_status: not-representable
+  code_note: >-
+    The authorisation specifies an apogee of 520 km (+/- 30 km) and a perigee
+    of 515 km (+/- 30 km), with operations permitted down to 425 km. The
+    constellation code carries a single circular altitude and has no field for
+    apogee, perigee or a station-keeping tolerance, so the authorised orbit
+    cannot be expressed without discarding information.
+  src: fcc-ast-2026
+- label: bb2-520-6planes
+  status: authorised
+  geometry_kind: irregular
+  planes: 6
+  sats_per_plane: 4
+  inclination_deg: 53.0
+  code_status: not-representable
+  code_note: >-
+    22 satellites in 6 planes: not evenly divisible, so the code's requirement
+    that satellites be divisible by planes cannot be met. Apogee 520 km,
+    perigee 515 km. sats_per_plane recorded as the floor; the grant does not
+    state the distribution.
+  src: fcc-ast-2026
+- label: fm2-460
+  status: authorised
+  geometry_kind: irregular
+  satellites: 1
+  inclination_deg: 50.0
+  code_status: not-representable
+  code_note: >-
+    A single satellite at apogee and perigee 460 km (+/- 30 km), inclination
+    50 deg, under its own modification (SAT-MOD-20251205-00370).
+  src: fcc-ast-2026
+- label: main-690-685
+  status: authorised
+  geometry_kind: irregular
+  satellites: 192
+  inclination_deg: 53.0
+  code_status: not-representable
+  code_note: >-
+    192 satellites "operating each in 1 plane" at an apogee of 690 km and a
+    perigee of 685 km, inclination 53 deg, deployed at 530 km and raised. One
+    satellite per plane is a degenerate Walker configuration, and the orbit is
+    elliptical. Neither is expressible.
+  src: fcc-ast-2026
+- label: polar-685-680
+  status: authorised
+  geometry_kind: irregular
+  planes: 2
+  satellites: 28
+  sats_per_plane: 14
+  inclination_deg: 98.1318
+  code_status: not-representable
+  code_note: >-
+    28 satellites in 2 planes at apogee 685 km, perigee 680 km, inclination
+    98.1318 deg. Elliptical, and the inclination is specified to four decimal
+    places, which the code's float syntax can carry but which no other record
+    in this registry needs.
+  src: fcc-ast-2026
+
+spectrum:
+- V
+- S
+- L
+spectrum_detail: >-
+  V-band feeder links and TT&C in 37.5-42.0 GHz (space-to-Earth), 47.2-50.2
+  and 50.4-51.4 GHz (Earth-to-space) under the August 2024 grant. Service
+  links are supplemental coverage from space using terrestrial cellular
+  spectrum leased from AT&T and Verizon, plus FirstNet spectrum by agreement;
+  the leases were granted the same day as DA 26-391.
+isl: unknown
+
+first_launch: 2022-09-10
+launch:
+  providers:
+  - SpaceX
+  - Blue Origin
+  vehicles:
+  - Falcon 9
+  - New Glenn
+  src: york-ietf126
+
+sources:
+- id: fcc-ast-2026
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC, Authorization and Order, DA 26-391 (AST & Science, LLC, ICFS
+    SAT-LOA-20200413-00034 and amendments, Call Sign S3065, SB Docket 25-201)
+  url: https://docs.fcc.gov/public/attachments/DA-26-391A1.pdf
+  date: 2026-04-21
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.licensed
+  claim: '~100 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '248 licensed'
+  note: >-
+    The largest proportional gap found so far, and in the opposite direction
+    to most: the deck understates by roughly a factor of two and a half. The
+    248-satellite authorisation was granted on 21 April 2026, three months
+    before the talk. The "~100" figure appears to predate it.
+
+notes: >-
+  This record is the registry's worked example of orbital geometry that the
+  constellation code cannot express for a reason unrelated to phasing: every
+  authorised shell here is elliptical, with apogee and perigee stated
+  separately and a station-keeping tolerance attached. The code assumes a
+  single circular altitude. Four of the five shells also fail the code's
+  divisibility or plane-count assumptions independently.
+  AST's satellites are physically very large, which is why the constellation
+  size is small relative to its coverage ambition. Recording sat_mass_kg for
+  this system would be valuable and has not been done.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

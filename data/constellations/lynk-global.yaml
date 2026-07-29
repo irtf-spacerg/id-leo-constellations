@@ -1,0 +1,173 @@
+name: Lynk Global
+slug: lynk-global
+family: lynk-global
+aka:
+- Lynk Towers
+- Lynk the Everywhere Network
+operator: Lynk Global, Inc.
+parent: Lynk Global Holdings; SES investment and MEO-relay partnership reported
+country: US
+jurisdiction:
+- US
+system_class: direct-to-device
+status: deploying
+status_detail: >-
+  Licensed for ten satellites under the FCC's streamlined small space station
+  process and operating commercially in partner markets. The 2,000-satellite
+  figure in circulation has no authorisation behind it.
+status_asof: 2026-07
+services:
+- direct-to-device
+- messaging
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20210511-00064
+  call_sign: S3087
+  document: DA 22-969
+  src: fcc-lynk-2022
+
+counts:
+  launched:
+    value: 12
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      Exceeds the ten satellites authorised under DA 22-969. The difference is
+      presumably covered by earlier experimental or special temporary
+      authority, or by non-US licensing, neither of which has been checked.
+  licensed:
+    value: 10
+    asof: 2022-09-16
+    src: fcc-lynk-2022
+  filed:
+    value: 10
+    asof: 2022-09-16
+    src: fcc-lynk-2022
+  announced:
+    value: 2000
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      Long-term company ambition. No filing has been found for a constellation
+      of this size, so it is recorded as announced.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20210511-00064
+  call_sign: S3087
+  document: DA 22-969
+  action: granted
+  date: 2022-09-16
+  satellites: 10
+  scope: >-
+    Order and Authorization granting, with conditions, ten satellites (Lynk
+    Towers 1 through 10) under the streamlined small space station process of
+    47 CFR 25.122. Service links in portions of 617-960 MHz (space-to-Earth)
+    and 663-915 MHz (Earth-to-space) with earth stations outside the United
+    States; feeder links and in-band TT&C at 20.1-20.2 GHz (space-to-Earth)
+    and 29.9-30.0 GHz (Earth-to-space), contingent on Ka-band coordination;
+    backup TT&C at 2200-2290 and 2025-2110 MHz contingent on coordination with
+    federal systems. Resolved a petition to deny from Iridium and objections
+    from Hughes, and comments from Inmarsat, Kuiper and NRAO.
+  src: fcc-lynk-2022
+- authority: FCC
+  country: US
+  kind: modification
+  action: granted
+  date: 2025-04-29
+  scope: >-
+    Modification permitting supplemental coverage from space in the
+    845.1-845.3 MHz (Earth-to-space) and 890.1-890.3 MHz (space-to-Earth)
+    bands in Guam and the Northern Mariana Islands, enabling commercial
+    service with DOCOMO Pacific. Made Lynk the second direct-to-device
+    provider licensed for commercial service in the United States.
+  src: viasat-lynk-2025
+
+spectrum:
+- L
+- S
+- Ka
+spectrum_detail: >-
+  Service links in portions of 617-960 MHz (space-to-Earth) and 663-915 MHz
+  (Earth-to-space); 845.1-845.3 and 890.1-890.3 MHz for SCS in Guam and the
+  Northern Mariana Islands; feeder links and TT&C at 20.1-20.2 and
+  29.9-30.0 GHz; backup TT&C at 2200-2290 and 2025-2110 MHz.
+isl: none
+
+first_launch: 2022
+launch:
+  providers:
+  - SpaceX
+  vehicles:
+  - Falcon 9
+  cadence: Rideshare only.
+  src: york-ietf126
+
+sources:
+- id: fcc-lynk-2022
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC International Bureau, Order and Authorization, DA 22-969 (Lynk Global,
+    Inc., IBFS SAT-LOA-20210511-00064, Call Sign S3087)
+  url: https://docs.fcc.gov/public/attachments/DA-22-969A1.pdf
+  date: 2022-09-16
+  retrieved: 2026-07-29
+- id: viasat-lynk-2025
+  grade: secondary
+  kind: trade-press
+  title: >-
+    Via Satellite, "FCC Approves Lynk Direct-to-Device Service in Guam With
+    Docomo"
+  url: https://www.satellitetoday.com/connectivity/2025/05/01/fcc-approves-lynk-direct-to-device-service-in-guam-with-docomo/
+  date: 2025-05-01
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.licensed
+  claim: '2,000 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '10 licensed; 2,000 announced with no filing found'
+  note: >-
+    A factor of 200 between the circulating figure and the authorisation. This
+    is the sharpest illustration in the registry of why the columns must be
+    kept apart: both numbers are true statements about different things, and
+    putting them in one column labelled "planned" makes the smaller one
+    disappear.
+- field: counts.launched
+  claim: '12 launched'
+  claimed_by: york-ietf126
+  registry_value: '12 launched against 10 authorised'
+  note: >-
+    Recorded as-is, with the inconsistency visible. Resolving it needs a check
+    of Lynk's experimental and special temporary authority grants in ELS, which
+    has not been done.
+
+notes: >-
+  Provenance gap: the April 2025 modification is recorded from trade press;
+  the grant itself has not been retrieved, so it has no file number here.
+  Provenance gap: the 12-launched figure exceeds the 10 authorised and the
+  discrepancy has not been resolved against ELS records.
+  Note for the group: DA 22-969 resolves a petition to deny from Iridium and
+  comments from Kuiper and the NRAO. The direct-to-device band is contested by
+  incumbents and radio astronomy, which is a spectrum-governance thread worth
+  following in its own right.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

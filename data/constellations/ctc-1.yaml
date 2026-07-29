@@ -1,0 +1,138 @@
+name: CTC-1
+slug: ctc-1
+family: ctc
+aka:
+- China Radio Spectrum next-generation constellation 1
+operator: Institute of Radio Spectrum Utilization and Technological Innovation
+parent: Chinese state research institute
+country: CN
+jurisdiction:
+- CN
+system_class: other
+status: filed
+status_detail: >-
+  Advance publication information received by the ITU on 29 December 2025 and
+  published on 17 March 2026. API/A is the earliest and weakest stage of the
+  ITU process: it precedes the coordination request and confers no
+  coordination priority. Nothing launched and no deployment programme
+  identified.
+status_asof: 2026-07
+services:
+- other
+orbit_regimes:
+- LEO
+dual_use: unknown
+
+filing:
+  authority: other
+  administration: CHN
+  file_number: 'API/A 14285 (notice ID 125545446)'
+  document: BR IFIC 3067
+  src: itu-snl-CTC-1
+
+counts:
+  filed:
+    value: 96714
+    asof: 2025-12-29
+    src: itu-ific-3067
+    note: >-
+      Confirmed against the ITU publication itself: the orbit table of BR IFIC
+      3067 lists 3,660 orbital planes for this notice, and their per-plane
+      populations sum to exactly 96,714.
+
+itu:
+- administration: CHN
+  network_name: CTC-1
+  stage: API
+  date: 2025-12-29
+  satellites: 96714
+  src: itu-snl-CTC-1
+  note: >-
+    API/A 14285, notice ID 125545446, received 29 December 2025, published in
+    BR IFIC 3067 on 17 March 2026. No coordination request (CR/C) has been
+    filed, so the network is at the first of the three ITU stages.
+
+shells:
+- label: declared-3660-planes
+  status: proposed
+  geometry_kind: irregular
+  planes: 3660
+  satellites: 96714
+  code_status: not-representable
+  code_note: >-
+    3,660 orbital planes in one notice, spanning altitudes from 300 km to
+    1,280 km and inclinations from 21 to 98.7 degrees. Most planes carry 30
+    satellites; the 300 km / 88 degree group carries 79. This is not a
+    constellation in the sense the code models: it is a filing that blankets
+    the LEO shell space. 96,714 is not divisible by 3,660, and no single
+    (T, P, F) triple could describe it even if it were.
+  src: itu-ific-3067
+
+isl: unknown
+
+sources:
+- id: itu-snl-CTC-1
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network CTC-1 (notifying administration CHN)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=CTC-1
+  retrieved: 2026-07-29
+- id: itu-ific-3067
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3067, non-GSO notice data for CTC-1
+    (tables non_geo and orbit of the published database)
+  url: https://www.itu.int/sns/ific10/ific3067.zip
+  date: 2026-03-17
+  retrieved: 2026-07-29
+- id: spacenews-china-itu-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "China files ITU paperwork for megaconstellations totaling
+    nearly 200,000 satellites"
+  url: https://spacenews.com/china-files-itu-paperwork-for-megaconstellations-totaling-nearly-200000-satellites/
+  date: 2026-06
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '96,714 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '96,714 declared in API/A 14285'
+  note: >-
+    No longer a discrepancy: the deck's figure is exactly right, and this
+    registry can now say so from the ITU publication rather than take it on
+    trust. Retained as an entry because the deck marked the source as "no
+    confirmed official site", and the point of recording it is that the number
+    has since been confirmed. What the deck's "planned" column still cannot
+    convey is the stage: this is advance publication information, the first
+    and weakest of the three ITU steps.
+
+notes: >-
+  Upgraded from secondary to primary on 2026-07-29 by querying the ITU Space
+  Network List for the filing identity and then reading the declared orbit
+  data out of BR IFIC 3067 directly. See scripts/itu_query.sh, which
+  reproduces both steps.
+  CTC-1 and CTC-2 together account for about 193,000 of the roughly 200,000
+  satellites in the December 2025 Chinese filing wave, and therefore for a
+  large share of any global aggregate. A reader deciding how much weight to
+  put on a 2.3 million total should know that roughly 8 per cent of it comes
+  from two filings by a single research institute, with a stated purpose that
+  nobody has confirmed. Making that visible is the point of keeping the
+  record.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

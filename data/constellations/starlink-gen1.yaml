@@ -1,0 +1,301 @@
+name: Starlink Gen1
+slug: starlink-gen1
+family: starlink
+aka:
+- SpaceX NGSO Satellite System (first generation)
+- Starlink Ku/Ka
+operator: Space Exploration Holdings, LLC
+parent: Space Exploration Technologies Corp. (SpaceX)
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: operational
+status_detail: >-
+  Fully deployed and in commercial service. The shells recorded here are the
+  authorised configuration after the April 2021 third modification.
+status_asof: 2026-07
+services:
+- broadband
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-MOD-20200417-00037
+  call_sign: S2983
+  document: FCC 21-48
+  src: fcc-gen1-2021
+
+counts:
+  licensed:
+    value: 4408
+    asof: 2021-04-27
+    src: fcc-gen1-2021
+  filed:
+    value: 4409
+    asof: 2021-04-27
+    src: fcc-gen1-2021
+    note: >-
+      The third modification requested, and the Commission granted, a
+      reduction from 4,409 to 4,408. This is the rare case where the filed
+      figure exceeds the licensed figure because the operator asked for less,
+      not because the regulator granted less.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  document: 33 FCC Rcd 3391
+  action: granted
+  date: 2018
+  scope: >-
+    Original Gen1 authorisation for the Ku-/Ka-band NGSO system. Not read for
+    this record; cited as it appears in DA 26-113.
+  src: fcc-odc-pn-2026
+- authority: FCC
+  country: US
+  kind: modification
+  file_number: SAT-MOD-20200417-00037
+  call_sign: S2983
+  document: FCC 21-48
+  action: granted
+  date: 2021-04-27
+  satellites: 4408
+  scope: >-
+    Third modification. Reduced the constellation from 4,409 to 4,408
+    satellites and moved 2,814 satellites from the 1,100-1,300 km range to the
+    540-570 km range, giving the five-shell configuration recorded below.
+  src: fcc-gen1-2021
+- authority: FCC
+  country: US
+  kind: modification
+  file_number: SAT-MOD-20230215-00036
+  action: granted
+  date: 2024-08-16
+  scope: >-
+    Fourth modification. Not read for this record; cited as it appears in
+    DA 26-113. The authorised geometry may have moved since FCC 21-48.
+  src: fcc-odc-pn-2026
+- authority: FCC
+  country: US
+  kind: modification
+  file_number: SAT-MOD-20241104-00251
+  action: granted
+  date: 2025-03-17
+  scope: >-
+    "Swarm modification". Not read for this record; cited as it appears in
+    DA 26-113.
+  src: fcc-odc-pn-2026
+
+itu:
+- administration: NOR
+  network_name: STEAM-2
+  stage: notification
+  date: 2025-10-01
+  satellites: 1312
+  src: itu-ific-3062
+  note: >-
+    Notified by NORWAY, not by the United States. Part I-S received
+    1 October 2025, published in BR IFIC 3062 on 6 January 2026, notice ID
+    125500188: 118 planes totalling 1,312 satellites, at 540 km / 53.2 deg
+    (72 planes carrying one satellite each), 560 km / 97.6 deg (6 planes of 58
+    and 4 of 43) and 570 km / 70 deg (36 planes of 20).
+- administration: NOR
+  network_name: STEAM-2B
+  stage: notification
+  date: 2025-10-01
+  satellites: 1584
+  src: itu-ific-3062
+  note: >-
+    Part I-S, notice ID 125500189: 72 planes of 22 satellites at 550 km,
+    53 degrees. This is exactly the gen1-s1 shell below, which is the clearest
+    correspondence in the registry between an FCC authorisation and an ITU
+    notification.
+- administration: NOR
+  network_name: STEAM-1
+  stage: notification
+  date: 2026-04-27
+  src: itu-snl-steam
+  note: >-
+    API/A 9509 and CR/C 3739 received in 2014, the coordination request
+    modified seven times through 2023, notification Part I-S from 2020 with
+    one suppressed in February 2022, Part III-S in 2024 and 2025, and a
+    further Part I-S received 27 April 2026 published in BR IFIC 3076 on
+    21 July 2026. Satellite counts for this network were not read.
+
+shells:
+- label: gen1-s1
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 550
+  inclination_deg: 53.0
+  planes: 72
+  sats_per_plane: 22
+  satellites: 1584
+  walker: D
+  phasing: 39
+  code: 'D:550:53.0:1584/72/39'
+  code_status: assumed-phasing
+  code_assumptions:
+  - element: phasing
+    value: 39
+    basis: >-
+      Not stated in FCC 21-48, which gives only altitude, inclination, plane
+      count and satellites per plane. F=39 is the value in the example table
+      of draft-piraux-space-constellation-code and in the LEO networking
+      literature it draws on.
+    src: piraux-code-draft
+  - element: walker
+    value: D
+    basis: >-
+      Inferred from a 53 deg inclination with uniform plane spacing. The
+      filing does not use Walker terminology.
+    src: fcc-gen1-2021
+  code_src: piraux-code-draft
+  src: fcc-gen1-2021
+- label: gen1-s2
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 540
+  inclination_deg: 53.2
+  planes: 72
+  sats_per_plane: 22
+  satellites: 1584
+  walker: D
+  code_status: unknown
+  code_note: >-
+    Phasing factor not published, and no literature value to borrow as there
+    is for gen1-s1. No code emitted rather than a guessed one.
+  src: fcc-gen1-2021
+- label: gen1-s3
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 570
+  inclination_deg: 70.0
+  planes: 36
+  sats_per_plane: 20
+  satellites: 720
+  walker: D
+  code_status: unknown
+  src: fcc-gen1-2021
+- label: gen1-s4
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 560
+  inclination_deg: 97.6
+  planes: 6
+  sats_per_plane: 58
+  satellites: 348
+  walker: S
+  code_status: unknown
+  src: fcc-gen1-2021
+- label: gen1-s5
+  status: deployed
+  geometry_kind: irregular
+  altitude_km: 560
+  inclination_deg: 97.6
+  planes: 4
+  sats_per_plane: 43
+  satellites: 172
+  walker: S
+  code_status: not-representable
+  code_note: >-
+    Same altitude and inclination as gen1-s4. The two are distinct plane
+    groups within one physical shell; the code can only express them as two
+    "+"-joined shells, which loses the fact that they share a shell. 58 and 43
+    satellites per plane in 6 and 4 planes respectively is also not a Walker
+    pattern in any useful sense.
+  src: fcc-gen1-2021
+
+spectrum:
+- Ku
+- Ka
+spectrum_detail: >-
+  Ku- and Ka-band under the Gen1 authorisation. V-band capability was later
+  folded into the Gen2 licence rather than a separate constellation.
+isl: optical
+isl_detail: >-
+  Optical inter-satellite links from the v1.5 satellite onwards. DA 26-113
+  describes the result as a "high capacity (petabit) and high reliability
+  laser mesh". Degree and per-link capacity are not in the filings.
+
+first_launch: 2019-05-24
+service_start: 2020-10
+launch:
+  providers:
+  - SpaceX
+  vehicles:
+  - Falcon 9
+  src: fcc-gen1-2021
+
+sources:
+- id: itu-snl-steam
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    histories for satellite networks STEAM-1 and STEAM-2 (notifying
+    administration NOR)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=STEAM-2
+  retrieved: 2026-07-29
+- id: itu-ific-3062
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3062, non-GSO notice data for STEAM-2
+    (notice ID 125500188) and STEAM-2B (notice ID 125500189)
+  url: https://www.itu.int/sns/ific10/ific3062.zip
+  date: 2026-01-06
+  retrieved: 2026-07-29
+- id: fcc-gen1-2021
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC, Memorandum Opinion, Order and Authorization, FCC 21-48 (SpaceX Gen1
+    third modification, ICFS SAT-MOD-20200417-00037)
+  url: https://docs.fcc.gov/public/attachments/fcc-21-48a1.pdf
+  date: 2021-04-27
+  retrieved: 2026-07-29
+- id: fcc-odc-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice DA 26-113, "SpaceX's application for
+    Orbital Data Centers accepted for filing" (cites the Gen1 authorisation
+    and its later modifications)
+  url: https://docs.fcc.gov/public/attachments/DA-26-113A1.txt
+  date: 2026-02-04
+  retrieved: 2026-07-29
+- id: piraux-code-draft
+  grade: secondary
+  kind: academic
+  title: >-
+    draft-piraux-space-constellation-code-02, example table (Starlink shell 1
+    as D:550:53:1584/72/39)
+  url: https://datatracker.ietf.org/doc/draft-piraux-space-constellation-code/
+  date: 2026-07
+  retrieved: 2026-07-29
+
+notes: >-
+  The ITU networks behind Starlink are notified by Norway, not the United
+  States. SpaceX holds a US licence from the FCC and the international filings
+  that carry its spectrum are made by the Norwegian administration under the
+  names STEAM-1, STEAM-2 and STEAM-2B. Nothing improper about that, and it is
+  common practice, but it means a reader looking for Starlink under "USA" in
+  ITU records will not find it, and any jurisdiction-by-jurisdiction tally
+  built from ITU data will attribute the largest constellation in orbit to
+  Norway. This is the single most consequential thing found in the ITU pass.
+  Provenance gap: two later modifications (SAT-MOD-20230215-00036, granted
+  2024-08-16, and SAT-MOD-20241104-00251, granted 2025-03-17) are recorded
+  from a citation in DA 26-113 but have not been read. The authorised geometry
+  may have changed since FCC 21-48, so the shells here are the 2021
+  configuration and are marked as such by their src.
+  counts.launched is deliberately empty on this record: launch reporting does
+  not distinguish Gen1 from Gen2 spacecraft, so a per-authorisation launched
+  figure cannot be sourced. The family-level figure is on starlink-gen2.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

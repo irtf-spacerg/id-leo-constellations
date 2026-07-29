@@ -1,0 +1,233 @@
+name: Amazon Leo Gen1
+slug: amazon-leo-gen1
+family: amazon-leo
+aka:
+- Project Kuiper
+- Kuiper Gen1
+operator: Kuiper Systems LLC
+parent: Amazon.com, Inc.
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: deploying
+status_detail: >-
+  Production satellites launching since April 2025 and enterprise beta service
+  from 2025, but far short of the interim deployment milestone, which the FCC
+  waived in part with conditions in June 2026.
+status_asof: 2026-07
+services:
+- broadband
+- backhaul
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20190704-00057
+  call_sign: S3051
+  document: DA 26-553
+  src: fcc-kuiper-waiver-2026
+
+counts:
+  launched:
+    value: 398
+    asof: 2026-07
+    src: york-ietf126
+  licensed:
+    value: 3232
+    asof: 2026-06-05
+    src: fcc-kuiper-waiver-2026
+    note: >-
+      Reduced from the 3,236 originally authorised by a 2024 orbital
+      parameters modification.
+  filed:
+    value: 3236
+    asof: 2020-07-30
+    src: fcc-kuiper-waiver-2026
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20190704-00057
+  call_sign: S3051
+  document: FCC 20-102 (35 FCC Rcd 8324)
+  action: granted
+  date: 2020-07-30
+  satellites: 3236
+  scope: >-
+    Gen1 authorisation: 3,236 NGSO FSS satellites in the first Ku-/Ka-band
+    processing round, in three shells at 590 km / 33 deg (784 satellites,
+    28 planes), 610 km / 42 deg (1,296 satellites, 36 planes) and
+    630 km / 51.9 deg (1,156 satellites, 34 planes).
+  milestones:
+  - {fraction: 0.5, count: 1616, due: 2026-07-30, status: waived-in-part}
+  - {fraction: 1.0, count: 3232, due: 2029-07-30, status: pending}
+  src: fcc-kuiper-waiver-2026
+- authority: FCC
+  country: US
+  kind: modification
+  document: 39 FCC Rcd 2180 (SB 2024)
+  action: granted
+  date: 2024
+  satellites: 3232
+  scope: >-
+    Gen1 orbital parameters modification. Reduced the total number of
+    authorised space stations from 3,236 to 3,232.
+  src: fcc-kuiper-waiver-2026
+- authority: FCC
+  country: US
+  kind: waiver
+  file_number: SAT-MOD-20260129-00065
+  call_sign: S3051/3105
+  document: DA 26-553
+  action: granted-in-part
+  date: 2026-06-05
+  scope: >-
+    Amazon Leo applied on 30 January 2026 to extend the interim milestone by
+    24 months or, alternatively, to waive it. The Space Bureau granted a
+    limited waiver with conditions: it waived the section 25.161(a)(2)
+    automatic-termination cap and part of section 25.164(b)(2), while
+    temporarily demoting the spectral priority of satellites launched after
+    the July 2026 milestone date until the build rate improves. The 100 per
+    cent milestone of 30 July 2029 was not disturbed and the surety bond
+    obligation was not waived.
+  src: fcc-kuiper-waiver-2026
+
+shells:
+- label: gen1-s1
+  status: authorised
+  geometry_kind: walker
+  altitude_km: 590
+  inclination_deg: 33.0
+  planes: 28
+  sats_per_plane: 28
+  satellites: 784
+  walker: D
+  code_status: unknown
+  code_note: >-
+    Phasing factor not in the authorisation, and the ABNF makes it mandatory,
+    so no code can be emitted from the primary source alone.
+  src: fcc-kuiper-gen1-2020
+- label: gen1-s2
+  status: authorised
+  geometry_kind: walker
+  altitude_km: 610
+  inclination_deg: 42.0
+  planes: 36
+  sats_per_plane: 36
+  satellites: 1296
+  walker: D
+  code_status: unknown
+  src: fcc-kuiper-gen1-2020
+- label: gen1-s3
+  status: deploying
+  geometry_kind: walker
+  altitude_km: 630
+  inclination_deg: 51.9
+  planes: 34
+  sats_per_plane: 34
+  satellites: 1156
+  walker: D
+  code_status: unknown
+  code_note: First deployment phase (578 satellites) targets this shell.
+  src: fcc-kuiper-gen1-2020
+
+spectrum:
+- Ku
+- Ka
+- V
+spectrum_detail: >-
+  Ku-/Ka-band under the first Ku-/Ka-band processing round. V-band added to
+  the Gen1 authorisation on 10 February 2026 under the 2021 V-band processing
+  round grant (see amazon-leo-gen2), subject to the same Gen1 milestone
+  schedule.
+isl: optical
+isl_detail: >-
+  Optical inter-satellite links demonstrated on prototype satellites;
+  parameters not published in the filings.
+
+first_launch: 2023-10-06
+service_start: 2025
+target_completion: 2029-07-30
+target_completion_kind: regulatory-milestone
+launch:
+  providers:
+  - United Launch Alliance
+  - Arianespace
+  - Blue Origin
+  - SpaceX
+  cadence: >-
+    Amazon contracted the largest commercial launch procurement on record
+    across every provider except SpaceX, which was added later, but the
+    vehicles have not flown at the rate the milestones assume. This is the
+    proximate cause of the June 2026 waiver and the clearest case in the
+    registry of launch capacity, not capital or licensing, being the binding
+    constraint.
+  src: york-ietf126
+
+sources:
+- id: fcc-kuiper-gen1-2020
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC, Order and Authorization, FCC 20-102, 35 FCC Rcd 8324 (Kuiper Systems
+    LLC, ICFS SAT-LOA-20190704-00057)
+  url: https://fcc.report/IBFS/SAT-LOA-20190704-00057/2608982
+  date: 2020-07-30
+  retrieved: 2026-07-29
+- id: fcc-kuiper-waiver-2026
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC Space Bureau, Order, DA 26-553 (Kuiper Systems LLC, application for
+    extension or waiver of the milestone deadline, ICFS SAT-MOD-20260129-00065)
+  url: https://docs.fcc.gov/public/attachments/DA-26-553A1.pdf
+  date: 2026-06-05
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.licensed
+  claim: 'Gen1: 3,236, 2020'
+  claimed_by: york-ietf126
+  registry_value: '3,232 licensed (reduced from 3,236 in 2024); 3,236 filed'
+  note: >-
+    A four-satellite difference that matters only as a demonstration: the
+    authorised figure moved in 2024 and the commonly cited one did not.
+- field: regulatory.milestones
+  claim: 'Gen1 50% deadline waived Jun 2026'
+  claimed_by: york-ietf126
+  registry_value: >-
+    Limited waiver with conditions; spectral priority of post-milestone
+    satellites temporarily demoted; surety bond obligation not waived
+  note: >-
+    Reported variously as a clean waiver and as an extension to July 2027 or
+    July 2028. DA 26-553 grants neither: it waives specific provisions while
+    imposing spectrum-priority conditions designed to keep pressure on the
+    build rate. Press figures of "1,618 satellites by July 2026" are also
+    wrong; the order says 1,616.
+
+notes: >-
+  Amazon renamed Project Kuiper to Amazon Leo in 2026 and the FCC order adopts
+  the new name for both constellation and licensee, while the licensee of
+  record remains Kuiper Systems LLC.
+  Provenance gap: FCC 20-102 is cited through the fcc.report mirror of the
+  grant attachment rather than a docs.fcc.gov permanent URL, and the 2024
+  orbital parameters modification (39 FCC Rcd 2180) has not been read. The
+  shells recorded here are the 2020 configuration, so the current authorised
+  geometry may differ. This is why each shell carries its own src.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

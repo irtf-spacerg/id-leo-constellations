@@ -1,0 +1,130 @@
+name: Starlink Gen3
+slug: starlink-gen3
+family: starlink
+aka:
+- SpaceX third-generation Starlink system
+operator: Space Exploration Holdings, LLC
+parent: Space Exploration Technologies Corp. (SpaceX)
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: filed
+status_detail: >-
+  Application filed 6 July 2026; no grant. Nothing launched under this
+  authorisation. Deployment is predicated on Starship reaching operational
+  cadence at roughly 2,000 kg per satellite.
+status_asof: 2026-07
+services:
+- broadband
+orbit_regimes:
+- VLEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20260630-00264
+  src: viasat-gen3-2026
+
+counts:
+  filed:
+    value: 100000
+    asof: 2026-07-06
+    src: viasat-gen3-2026
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20260630-00264
+  action: pending
+  date: 2026-07-06
+  satellites: 100000
+  scope: >-
+    Application for up to 100,000 third-generation satellites in two groups of
+    very low Earth orbit shells, reported as 323-327.5 km and 473-477.5 km,
+    using the Ku-, Ka-, V- and E-band spectrum granted for Gen2 plus new
+    requests in W- and D-band between 92 and 275 GHz.
+  src: viasat-gen3-2026
+
+shells:
+- label: gen3-vleo-323
+  status: proposed
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Reported altitude band 323-327.5 km. No inclination, plane count or
+    per-plane population has been traced to a source good enough to record.
+  src: viasat-gen3-2026
+- label: gen3-vleo-473
+  status: proposed
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: Reported altitude band 473-477.5 km. Geometry otherwise unknown.
+  src: viasat-gen3-2026
+
+spectrum:
+- Ku
+- Ka
+- V
+- E
+- W
+- D
+spectrum_detail: >-
+  Reported as reusing the Ku/Ka/V/E-band spectrum granted for Gen2, plus
+  greenfield W- and D-band requests between 92 and 275 GHz. Not verified
+  against the application.
+sat_mass_kg: 2000
+
+launch:
+  providers:
+  - SpaceX
+  vehicles:
+  - Starship
+  cadence: >-
+    At roughly 2,000 kg per satellite, 100,000 satellites is on the order of
+    200,000 tonnes to orbit. The feasibility question is entirely a launch
+    question.
+  src: york-ietf126
+
+sources:
+- id: viasat-gen3-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    Via Satellite, "SpaceX Files for 100,000-Satellite Gen-3 Constellation"
+    (reports ICFS SAT-LOA-20260630-00264, filed 6 July 2026)
+  url: https://www.satellitetoday.com/connectivity/2026/07/09/spacex-files-for-100000-satellite-gen-3-constellation/
+  date: 2026-07-09
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: status
+  claim: '100,000 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '100,000 requested; application pending, not granted'
+  note: >-
+    The deck is explicit in its own small print that the filing is not yet
+    approved, which is to its credit. The registry keeps the distinction
+    structural rather than parenthetical: this record contributes 100,000 to
+    counts.filed and nothing to counts.licensed.
+
+notes: >-
+  Provenance gap: this record has no primary source. The file number,
+  satellite count, altitude bands and spectrum all come from trade press. The
+  application is public in ICFS and should be read; doing so would also settle
+  whether the request is for a genuinely new system or an amendment of the
+  Gen2 authorisation, which changes how the 100,000 should be aggregated.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

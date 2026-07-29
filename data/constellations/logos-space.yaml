@@ -1,0 +1,165 @@
+name: Logos Space
+slug: logos-space
+family: logos-space
+aka:
+- Logos Space Services, Inc.
+operator: Logos Space Services, Inc.
+parent: Logos Space Services, Inc.
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: licensed
+status_detail: >-
+  Granted in part by the FCC in early 2026 for K-, Q- and V-band operations,
+  with parts of the higher-frequency request deferred or denied. Nothing
+  launched.
+status_asof: 2026-07
+services:
+- broadband
+- government-secure
+- relay
+orbit_regimes:
+- LEO
+dual_use: dual
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20241030-00243
+  src: spacenews-logos-2026
+
+counts:
+  licensed:
+    value: 4178
+    asof: 2026-02
+    src: spacenews-logos-2026
+    note: >-
+      Disputed. See discrepancies: reports of the same grant give both 4,178
+      and 3,960. The registry records the higher figure because it matches the
+      number applied for, and flags the conflict rather than picking a winner.
+  filed:
+    value: 4178
+    asof: 2024-10-30
+    src: spacenews-logos-2026
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20241030-00243
+  action: pending
+  date: 2024-10-30
+  satellites: 4178
+  scope: >-
+    Application to construct, deploy and operate up to 4,178 NGSO satellites
+    in low Earth orbit across multiple orbital shells, providing fixed
+    satellite, inter-satellite and standard frequency and time signal-satellite
+    (SFTS) service to enterprise and government customers, plus in-space data
+    relay to satellite networks in lower orbits.
+  src: spacenews-logos-2026
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20241030-00243
+  action: granted-in-part
+  date: 2026-01-30
+  satellites: 4178
+  scope: >-
+    Partial grant clearing operations in K-, Q- and V-band spectrum with
+    conditions, while deferring and denying parts of the higher-frequency
+    request. Deployment required by 2035 to maintain the licence.
+  milestones:
+  - {fraction: 1.0, count: 4178, due: 2035, status: pending}
+  src: spacenews-logos-2026
+
+shells:
+- label: multi-shell
+  status: authorised
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Reported as spanning multiple orbital shells; no altitudes, inclinations,
+    plane counts or per-plane populations have been traced. The order itself
+    would give them.
+  src: spacenews-logos-2026
+
+spectrum:
+- K
+- Q
+- V
+spectrum_detail: >-
+  K-, Q- and V-band cleared with conditions; parts of the higher-frequency
+  request deferred or denied. Exact ranges not recorded.
+isl: rf-planned
+isl_detail: >-
+  Inter-satellite service is part of what was applied for, alongside in-space
+  data relay to satellites in lower orbits, which makes this system a
+  potential backhaul provider for orbital data centres rather than only a
+  broadband operator.
+
+target_completion: 2035
+target_completion_kind: regulatory-milestone
+
+sources:
+- id: spacenews-logos-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "FCC clears Logos to deploy more than 4,000 broadband
+    satellites" (reports ICFS SAT-LOA-20241030-00243, partial grant
+    30 January 2026)
+  url: https://spacenews.com/fcc-clears-logos-to-deploy-more-than-4000-broadband-satellites/
+  date: 2026-02
+  retrieved: 2026-07-29
+- id: satnews-logos-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SatNews, "FCC Authorizes Logos Space to Deploy 3,960-Satellite
+    Mega-Constellation for Enterprise Connectivity"
+  url: https://satnews.com/2026/02/05/fcc-authorizes-logos-space-to-deploy-3960-satellite-mega-constellation-for-enterprise-connectivity/
+  date: 2026-02-05
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.licensed
+  claim: '3,960 satellites authorised'
+  claimed_by: satnews-logos-2026
+  registry_value: '4,178 recorded, disputed'
+  note: >-
+    Two trade outlets reporting the same partial grant within a week give
+    4,178 and 3,960. The gap of 218 is consistent with a partial grant in
+    which some satellites were deferred alongside the deferred spectrum, in
+    which case 3,960 would be the licensed figure and 4,178 the filed one.
+    That is a hypothesis, not a finding. Because the registry cannot tell
+    which is which without the order, both counts currently carry 4,178 and
+    this note carries the doubt. Reading the order resolves it immediately.
+- field: counts.licensed
+  claim: '4,178 planned, FCC-approved'
+  claimed_by: york-ietf126
+  registry_value: '4,178, partial grant with deferrals and denials'
+  note: >-
+    The count matches. What the deck's "FCC-approved" does not convey is that
+    the grant is partial: parts of the spectrum request were deferred and
+    parts denied.
+
+notes: >-
+  Provenance gap: this record has no primary source. The FCC order granting in
+  part was not located at docs.fcc.gov during this pass, so the DA number is
+  unknown and the satellite count is unresolved between two secondary reports
+  that disagree. Reading the order would fix the count, the shells, the
+  spectrum ranges and the milestone in one go. This is the highest-value
+  outstanding lookup in the registry.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

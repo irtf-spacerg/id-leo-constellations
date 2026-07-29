@@ -1,0 +1,144 @@
+name: SpaceX Orbital Data Center System
+slug: spacex-orbital-data-center
+family: spacex-orbital-compute
+aka:
+- AI1
+- Starmind
+operator: Space Exploration Holdings, LLC
+parent: Space Exploration Technologies Corp. (SpaceX)
+country: US
+jurisdiction:
+- US
+system_class: orbital-compute
+status: filed
+status_detail: >-
+  Application filed 30 January 2026, accepted for filing 4 February 2026.
+  No grant. This single application is the largest contributor by far to every
+  circulating aggregate of planned satellites.
+status_asof: 2026-07
+services:
+- orbital-compute
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20260108-00016
+  call_sign: S00798
+  document: DA 26-113
+  src: fcc-odc-pn-2026
+
+counts:
+  filed:
+    value: 1000000
+    asof: 2026-02-04
+    src: fcc-odc-pn-2026
+    note: >-
+      The public notice says "up to one million satellites", twice, in those
+      words. It is a ceiling stated in the application, not a deployment plan.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20260108-00016
+  call_sign: S00798
+  action: pending
+  date: 2026-01-30
+  satellites: 1000000
+  scope: >-
+    Application for authority to launch and operate a new NGSO system of up to
+    one million satellites, the "SpaceX Orbital Data Center system", at
+    altitudes from 500 km to 2,000 km in 30 degree and sun-synchronous
+    inclinations, within orbital shells spanning up to 50 km each. Different
+    satellite hardware versions are planned across shells.
+  src: fcc-odc-pn-2026
+- authority: FCC
+  country: US
+  kind: public-notice
+  file_number: SAT-LOA-20260108-00016
+  document: DA 26-113
+  action: pending
+  date: 2026-02-04
+  scope: >-
+    Space Bureau accepts the application for filing and seeks comment.
+  src: fcc-odc-pn-2026
+
+shells:
+- label: odc-band
+  status: proposed
+  geometry_kind: sso-band
+  code_status: not-representable
+  code_note: >-
+    The application describes a *range*, not shells: altitudes from 500 km to
+    2,000 km, inclinations of 30 degrees and sun-synchronous, within shells
+    spanning up to 50 km each. No plane count, per-plane population or
+    phasing. Sun-synchronous orbits additionally carry a local time of the
+    ascending node, which the constellation code has no field for. Nothing
+    here is expressible as a Walker triple, and a registry that invented one
+    would be inventing the topology.
+  src: fcc-odc-pn-2026
+
+isl: optical
+isl_detail: >-
+  Optical inter-satellite links are the system's primary communications path.
+  Per the application, the links "will route traffic within the network and to
+  satellites in the Starlink constellation, via its high capacity (petabit)
+  and high reliability laser mesh, which in turn will transmit traffic to
+  authorized earth stations on the ground". The system therefore depends on
+  the Gen1 and Gen2 Starlink authorisations for its ground path, which is a
+  coupling between three separate licences worth noting.
+spectrum:
+- optical
+spectrum_detail: >-
+  Optical for user traffic; RF for telemetry, tracking and command only. The
+  public notice does not state the TT&C bands.
+
+sources:
+- id: fcc-odc-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice DA 26-113, "SpaceX's Application for
+    Orbital Data Centers Accepted for Filing and Comment Sought"
+    (ICFS SAT-LOA-20260108-00016, Call Sign S00798)
+  url: https://docs.fcc.gov/public/attachments/DA-26-113A1.txt
+  date: 2026-02-04
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.filed
+  claim: '1,198,120 satellites planned'
+  claimed_by: york-ietf126
+  registry_value: '1,000,000 requested (application ceiling)'
+  note: >-
+    The application, as described in the FCC's own acceptance notice, is for
+    "up to one million satellites". The slide's 1,198,120 is 198,120 higher
+    and no source for the difference has been found; it may aggregate a
+    separate filing or a tracker's arithmetic. This matters more than most
+    discrepancies in the registry because this one application accounts for
+    roughly half of the widely quoted 2.3 million aggregate, so a 198,120
+    error here is about 8 per cent of the headline number.
+
+notes: >-
+  Reported in the press as connected to the SpaceX/xAI merger. The application
+  itself is for a communications authorisation; the compute payload is not
+  what the FCC is licensing, which is worth remembering when reading the
+  filing as evidence about data-centre capacity.
+  Provenance gap: the application narrative and technical attachment
+  (Attachment A) are cited in DA 26-113 but have not been read directly. They
+  would give the shell structure, the satellite versions and the TT&C bands.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

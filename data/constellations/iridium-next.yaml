@@ -1,0 +1,191 @@
+name: Iridium NEXT
+slug: iridium-next
+family: iridium
+aka:
+- Iridium Certus
+- Iridium second generation
+operator: Iridium Constellation LLC
+parent: >-
+  Iridium Communications Inc. (acquisition by Rocket Lab Corporation announced
+  29 June 2026, ~USD 8.0bn, subject to FCC licence transfer consent; expected
+  to close mid-2027)
+country: US
+jurisdiction:
+- US
+system_class: direct-to-device
+status: operational
+status_detail: >-
+  Replacement constellation complete since 2019 and in commercial service.
+  One of the two original 1990s LEO operators still flying.
+status_asof: 2026-07
+services:
+- voice
+- messaging
+- iot
+- direct-to-device
+orbit_regimes:
+- LEO
+dual_use: dual
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-MOD-20131227-00148
+  call_sign: S2110
+  src: fcc-iridium-next-eng
+
+counts:
+  licensed:
+    value: 81
+    asof: 2013-12-27
+    src: fcc-iridium-next-eng
+    breakdown:
+    - {label: 'Replacement satellites', value: 66, src: fcc-iridium-next-eng}
+    - {label: 'In-orbit spares (one per plane)', value: 6,
+       src: fcc-iridium-next-eng}
+    - {label: 'Ground spares', value: 9, src: fcc-iridium-next-eng}
+    note: >-
+      The modification requests authority for up to 66 second-generation
+      replacement satellites, with six in-orbit spares deployed alongside them
+      and nine held as ground spares. Whether the FCC counts the ground spares
+      against the authorisation has not been checked, so 81 is the upper
+      reading and 75 the number actually flown.
+  launched:
+    value: 75
+    asof: 2019
+    src: york-ietf126
+    note: >-
+      Iridium NEXT satellites launched. The deck's 177 is the cumulative
+      figure across both generations since 1997 and belongs to a
+      first-generation record that does not yet exist.
+  filed:
+    value: 81
+    asof: 2013-12-27
+    src: fcc-iridium-next-eng
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: modification
+  file_number: SAT-MOD-20131227-00148
+  call_sign: S2110
+  action: granted
+  date: 2013
+  satellites: 81
+  scope: >-
+    Modification of the Big LEO MSS licence to launch and operate up to 66
+    second-generation replacement satellites to replenish, augment and enhance
+    the first-generation system, plus six in-orbit and nine ground spares.
+  src: fcc-iridium-next-eng
+
+shells:
+- label: iridium-walker-star
+  status: deployed
+  geometry_kind: walker
+  altitude_km: 780
+  inclination_deg: 86.4
+  planes: 6
+  sats_per_plane: 11
+  satellites: 66
+  walker: S
+  phasing: 1
+  code: 'S:780:86.4:66/6/1'
+  code_status: assumed-phasing
+  code_assumptions:
+  - element: phasing
+    value: 1
+    basis: >-
+      Not taken from the FCC engineering statement, which has not been read in
+      full. This is the value in the example table of
+      draft-piraux-space-constellation-code.
+    src: piraux-code-draft
+  - element: altitude_km
+    value: 780
+    basis: >-
+      From the constellation-code draft's example table, not from the filing.
+      The operational altitude is well established in the literature but is
+      recorded here as an assumption because the primary source consulted for
+      this record does not state it.
+    src: piraux-code-draft
+  - element: inclination_deg
+    value: 86.4
+    basis: As above, from the constellation-code draft's example table.
+    src: piraux-code-draft
+  code_src: piraux-code-draft
+  src: piraux-code-draft
+
+spectrum:
+- L
+- Ka
+spectrum_detail: >-
+  L-band service links; Ka-band feeder links and crosslinks. Exact ranges not
+  recorded; the engineering statement would give them.
+isl: rf
+isl_detail: >-
+  Ka-band inter-satellite links, four per satellite, in the classic
+  fore/aft/port/starboard arrangement of a Walker Star. Historically the only
+  operational crosslinked commercial LEO constellation, and the reference
+  design for much of the LEO routing literature.
+
+service_start: 1998
+launch:
+  providers:
+  - SpaceX
+  vehicles:
+  - Falcon 9
+  src: york-ietf126
+
+sources:
+- id: fcc-iridium-next-eng
+  grade: primary
+  kind: fcc-application
+  title: >-
+    Iridium NEXT Engineering Statement, attachment to ICFS
+    SAT-MOD-20131227-00148 (Iridium Constellation LLC, Call Sign S2110)
+  url: https://fcc.report/IBFS/SAT-MOD-20131227-00148/1031348.pdf
+  date: 2013-12-27
+  retrieved: 2026-07-29
+- id: piraux-code-draft
+  grade: secondary
+  kind: academic
+  title: >-
+    draft-piraux-space-constellation-code-02, example table (Iridium as
+    S:780:86.4:66/6/1)
+  url: https://datatracker.ietf.org/doc/draft-piraux-space-constellation-code/
+  date: 2026-07
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.launched
+  claim: '75 planned / 177 launched'
+  claimed_by: york-ietf126
+  registry_value: '81 authorised / 75 Iridium NEXT satellites launched'
+  note: >-
+    The deck's two numbers belong to different systems: 75 is the NEXT
+    constellation, 177 is the cumulative total since 1997 across both
+    generations, most of which have re-entered. The slide is explicit about
+    this in its footnote, which is more than most sources manage. The registry
+    handles it structurally by scoping the record to one authorisation.
+
+notes: >-
+  Provenance gap: the shell geometry on this record is sourced entirely to the
+  constellation-code draft, not to the filing. The Iridium NEXT engineering
+  statement is public and would give the authorised altitude, inclination and
+  plane structure directly; reading it would move three code_assumptions from
+  assumed to exact. This is the clearest single provenance upgrade available
+  in the registry right now.
+  Project Stardust, Iridium's announced direct-to-device layer, has no
+  authorisation identified and no satellite count and is therefore not
+  recorded. The deck notes it as "plus unknown number".
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

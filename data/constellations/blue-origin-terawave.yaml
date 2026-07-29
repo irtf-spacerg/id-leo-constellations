@@ -1,0 +1,112 @@
+name: Blue Origin TeraWave
+slug: blue-origin-terawave
+family: blue-origin
+aka:
+- Tera Wave
+operator: Blue Origin, LLC
+parent: Blue Origin, LLC
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: announced
+status_detail: >-
+  Announced January 2026, with deployment stated to begin Q4 2027. No FCC file
+  number has been retrieved for TeraWave itself, though it is referred to in
+  the Project Sunrise filing as the optical backbone that system depends on.
+status_asof: 2026-07
+services:
+- broadband
+- backhaul
+orbit_regimes:
+- LEO
+- MEO
+dual_use: civil
+
+filing_absent: >-
+  No filing reference retrieved. TeraWave is described in trade press as an
+  announced constellation and is referenced in Blue Origin's Project Sunrise
+  FCC application as the communications network Sunrise will relay through,
+  but no application or grant for TeraWave itself has been located in this
+  pass. It may well exist; this is a gap in our work, not a statement that
+  none exists.
+
+counts:
+  announced:
+    value: 5408
+    asof: 2026-03
+    src: spacenews-blue-sunrise-2026
+    note: >-
+      Reported alongside the Project Sunrise filing. The IETF 126 deck gives
+      5,348, with a breakdown of 5,310 LEO and 128 MEO that sums to 5,438.
+      Three mutually inconsistent figures; see discrepancies.
+
+shells:
+- label: leo-meo
+  status: proposed
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    Multi-orbit, with a LEO majority and a small MEO component. No altitudes,
+    inclinations or plane structure traced.
+  src: spacenews-blue-sunrise-2026
+
+isl: optical
+isl_detail: >-
+  Optical downlinks reported to provide up to 6 Tbps. TeraWave is the intended
+  optical backbone for Blue Origin's Project Sunrise orbital data centres,
+  which makes the two systems a coupled pair: Sunrise has no independent path
+  to the ground.
+
+target_completion: 2027
+target_completion_kind: operator-target
+launch:
+  providers:
+  - Blue Origin
+  vehicles:
+  - New Glenn
+  cadence: >-
+    In-house launch on New Glenn, which had flown twice as of the March 2026
+    Sunrise filing.
+  src: york-ietf126
+
+sources:
+- id: spacenews-blue-sunrise-2026
+  grade: secondary
+  kind: trade-press
+  title: SpaceNews, "Blue Origin joins the orbital data center race"
+  url: https://spacenews.com/blue-origin-joins-the-orbital-data-center-race/
+  date: 2026-03
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.announced
+  claim: '5,348 total; 5,310 LEO; 128 MEO'
+  claimed_by: york-ietf126
+  registry_value: '5,408 announced (also disputed)'
+  note: >-
+    The deck's own figures do not reconcile: 5,310 + 128 = 5,438, not 5,348.
+    Trade press reporting the Sunrise filing gives 5,408. Three numbers, no
+    filing, no way to choose between them. Recorded as 5,408 only because that
+    figure appears in reporting tied to a document, and flagged here so the
+    uncertainty is visible rather than averaged away.
+
+notes: >-
+  Provenance gap: no primary source and no filing reference. Everything here
+  is trade press and a conference slide, and the headline count is disputed
+  three ways. Locating a TeraWave application in ICFS would fix all of it.
+  Recorded despite that because Project Sunrise, which does have a filing,
+  depends on TeraWave for its ground path. A registry that carried Sunrise but
+  not TeraWave would hide the dependency.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

@@ -1,0 +1,14 @@
+# Site-wide settings used by scripts/build_site.py
+site_title: SPACERG Satellite Constellation Registry
+maintainer_email: space@irtf.org
+repo_url: https://github.com/irtf-spacerg/id-leo-constellations
+pages_url: https://irtf-spacerg.github.io/id-leo-constellations/registry/
+description: >-
+  A living registry of {n} announced, filed, licensed and operational satellite
+  constellations, with the filings behind the numbers, graded provenance for
+  every count, and constellation codes where the geometry is known. Maintained
+  by the IRTF Space Research Group.
+
+# Records not re-verified within this many months are flagged stale by the
+# build (a warning, never a failure).
+verify_ttl_months: 12

@@ -1,0 +1,143 @@
+name: Amazon Leo Gen2 and Polar
+slug: amazon-leo-gen2
+family: amazon-leo
+aka:
+- Kuiper Gen2
+- Amazon Leo Polar system
+- Amazon 2026 V-band Grant
+operator: Kuiper Systems LLC
+parent: Amazon.com, Inc.
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: licensed
+status_detail: >-
+  Authorised 10 February 2026 in the 2021 V-band processing round. Nothing
+  launched under this authorisation; the first milestone is six years out.
+status_asof: 2026-07
+services:
+- broadband
+- backhaul
+orbit_regimes:
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20211104-00145
+  call_sign: S3105
+  document: Grant Stamp, 10 February 2026 (Amazon 2026 V-band Grant)
+  src: fcc-kuiper-waiver-2026
+
+counts:
+  licensed:
+    value: 4504
+    asof: 2026-02-10
+    src: fcc-kuiper-waiver-2026
+    breakdown:
+    - {label: 'Gen2 system', value: 3212, src: fcc-kuiper-waiver-2026}
+    - {label: 'Polar system', value: 1292, src: fcc-kuiper-waiver-2026}
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20211104-00145
+  action: pending
+  date: 2021-11-04
+  scope: >-
+    Application in the 2021 V-band processing round (cut-off established by
+    Public Notice DA 21-941, 4 August 2021), later amended by
+    SAT-AMD-20250311-00068.
+  src: fcc-kuiper-waiver-2026
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20211104-00145
+  call_sign: S3105
+  action: granted-in-part
+  date: 2026-02-10
+  satellites: 4504
+  scope: >-
+    Grant stamp, granting in part, deferring in part, with conditions.
+    Authorises Gen1 operations in the 37.5-42.0 GHz and 42.0-42.5 GHz
+    (space-to-Earth, the latter outside the US and possessions only) and
+    47.2-52.0, 50.4-51.4 and 51.4-52.4 GHz (Earth-to-space) bands, and
+    authorises the Gen2 system (3,212 satellites) and the Polar system
+    (1,292 satellites) on a milestone schedule separate from Gen1's.
+  milestones:
+  - {fraction: 0.5, count: 2252, due: 2032-02-10, status: pending}
+  - {fraction: 1.0, count: 4504, due: 2035-02-10, status: pending}
+  src: fcc-kuiper-waiver-2026
+
+shells:
+- label: gen2-and-polar
+  status: authorised
+  geometry_kind: unknown
+  code_status: unknown
+  code_note: >-
+    The grant is known to this registry only through its citation in DA 26-553,
+    which gives the satellite counts and milestone dates but not the orbital
+    parameters. The Polar system's defining characteristic is its inclination,
+    which is exactly the field not yet recorded. Left empty rather than
+    inferred.
+  src: fcc-kuiper-waiver-2026
+
+spectrum:
+- V
+spectrum_detail: >-
+  37.5-42.0 GHz and 42.0-42.5 GHz space-to-Earth (the latter outside the US
+  and possessions only); 47.2-52.0, 50.4-51.4 and 51.4-52.4 GHz
+  Earth-to-space. Granted under the 2021 V-band processing round.
+
+target_completion: 2035-02-10
+target_completion_kind: regulatory-milestone
+
+sources:
+- id: fcc-kuiper-waiver-2026
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC Space Bureau, Order, DA 26-553 (Kuiper Systems LLC milestone waiver),
+    paragraph 3 and notes 7-8, which describe the 10 February 2026 V-band
+    grant and its milestone schedule
+  url: https://docs.fcc.gov/public/attachments/DA-26-553A1.pdf
+  date: 2026-06-05
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.licensed
+  claim: 'Gen2: +4,500, approved Feb 10, 2026'
+  claimed_by: york-ietf126
+  registry_value: '4,504 across two systems: Gen2 3,212 and Polar 1,292'
+  note: >-
+    The family total on the slide (7,736) is right. The breakdown is not:
+    the February 2026 grant covers two distinct systems with their own
+    milestone schedule, not a single increment to Gen1. Widely rounded to
+    "4,500" in the press. Splitting them matters because the Polar system is
+    a different orbital regime serving a different coverage problem.
+
+notes: >-
+  Provenance gap: this record is built entirely from the description of the
+  10 February 2026 grant contained in a *later* order (DA 26-553). The grant
+  stamp itself, under ICFS SAT-LOA-20211104-00145 and SAT-AMD-20250311-00068,
+  has not been read. Reading it would supply the orbital parameters for both
+  the Gen2 and Polar systems, which are the main gap in this record.
+  Note the source grading subtlety: DA 26-553 is a primary source, and it is
+  a primary source *for what it says*, which is the counts and the milestone
+  dates. It is not a source for the shell geometry, which it does not
+  discuss. A source's grade does not extend beyond its contents.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

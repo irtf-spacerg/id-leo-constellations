@@ -1,0 +1,219 @@
+name: Globalstar C-3
+slug: globalstar-c3
+family: globalstar
+aka:
+- Globalstar-C3 MSS System
+- Globalstar third generation
+- AST-NG-C-3
+operator: Globalstar France SAS
+parent: >-
+  Globalstar, Inc. (acquisition by Amazon.com, Inc. filed with the FCC
+  26 May 2026; pleading cycle open as of June 2026)
+country: US
+jurisdiction:
+- FR
+system_class: direct-to-device
+status: filed
+status_detail: >-
+  Licensed by France and notified to the ITU. US market access is sought
+  through a pending petition for declaratory ruling, not a US licence, so the
+  system has no FCC authorisation. Nothing launched.
+status_asof: 2026-07
+services:
+- voice
+- messaging
+- direct-to-device
+- iot
+orbit_regimes:
+- LEO
+- MEO
+dual_use: civil
+
+filing:
+  authority: other
+  administration: F
+  file_number: SAT-PDR-20250214-00047
+  call_sign: S3233
+  document: >-
+    Petition for Declaratory Ruling Granting Access to the U.S. Market for the
+    Globalstar-C3 MSS System; ITU network AST-NG-C-3
+  src: fcc-globalstar-amazon-2026
+  note: >-
+    Two instruments, deliberately not conflated. The ITU network AST-NG-C-3 is
+    notified by France and is recorded under itu: below. The file number here
+    is the US market access petition, which is what makes the system visible
+    in a searchable national docket. `authority` is "other" because the
+    licensing administration is France and the registry's authority enum has
+    no French satellite regulator entry; the French decision itself has not
+    been retrieved.
+
+counts:
+  licensed:
+    value: 48
+    asof: 2026-06-04
+    src: fcc-globalstar-amazon-2026
+    note: >-
+      The system as the FCC describes it: "48 NGSO satellites, licensed by the
+      Republic of France". This is the operational plan, not the size of the
+      ITU filing that backs it. See discrepancies.
+  filed:
+    value: 6221
+    asof: 2025-08-22
+    src: itu-ific-3069
+    note: >-
+      Declared in the ITU notification. The orbit table of BR IFIC 3069 lists
+      401 orbital planes for notice 325500157, and their per-plane populations
+      sum to 6,221. Recorded under filed rather than licensed because the
+      declaration is what was filed with the ITU, not what any regulator has
+      authorised anyone to operate.
+
+regulatory:
+- authority: other
+  country: FR
+  kind: license-grant
+  action: granted
+  date: 2025
+  satellites: 48
+  scope: >-
+    French authorisation of the Globalstar-C3 MSS system of 48 NGSO
+    satellites, held by Globalstar France SAS. The French decision itself has
+    not been retrieved; this entry records its existence as stated by the FCC.
+  src: fcc-globalstar-amazon-2026
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-PDR-20250214-00047
+  call_sign: S3233
+  action: pending
+  date: 2025-02-14
+  satellites: 48
+  scope: >-
+    Petition for declaratory ruling seeking access to the US market for the
+    Globalstar-C3 MSS system. Accepted for filing and placed on public notice
+    (Report No. SAT-01923). Still pending as of June 2026.
+  src: fcc-globalstar-amazon-2026
+- authority: FCC
+  country: US
+  kind: application
+  file_number: ITC-T/C-20260417-00114
+  document: DA 26-550, GN Docket No. 26-134
+  action: pending
+  date: 2026-05-26
+  scope: >-
+    Application by Globalstar and Amazon for consent to assign and transfer
+    control of all Globalstar space station, earth station and section 214
+    authorisations to Amazon. Accepted for filing 4 June 2026; petitions to
+    deny due 6 July 2026.
+  src: fcc-globalstar-amazon-2026
+
+itu:
+- administration: F
+  network_name: AST-NG-C-3
+  stage: notification
+  date: 2025-08-22
+  satellites: 6221
+  src: itu-snl-ast-ng-c-3
+  note: >-
+    Full filing chain in SNL Part B: API/A 9629 received 20 June 2016
+    (published WIC 2825, 2 August 2016); CR/C 4149 received the same day
+    (WIC 2837, 24 January 2017), modified three times through September 2022;
+    Resolution 49 due diligence 2422 in 2021; notification Part I-S, Part II-S
+    and Part III-S from December 2021 onward. The most recent act is a Part I-S
+    received 22 August 2025 and published in BR IFIC 3069 on 14 April 2026,
+    notice ID 325500157, which is the one read for the satellite count.
+
+shells:
+- label: declared-401-planes
+  status: proposed
+  geometry_kind: irregular
+  planes: 401
+  satellites: 6221
+  code_status: not-representable
+  code_note: >-
+    401 orbital planes at 680, 800, 1000, 1400 and 1414 km, at inclinations
+    stepped every two degrees from 60 to 90 plus sun-synchronous cases at
+    98.1, 98.5, 99.4 and 101.4 degrees, mostly 16 satellites per plane with a
+    few carrying 4 or 1. A single notice covering five altitudes and more than
+    twenty inclinations is not one Walker constellation and cannot be reduced
+    to a (T, P, F) triple. Note also that the 1400 and 1414 km groups are
+    above the LEO band this registry is mostly concerned with.
+  src: itu-ific-3069
+
+isl: unknown
+
+sources:
+- id: fcc-globalstar-amazon-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC, Public Notice DA 26-550, "Globalstar, Inc. and Amazon.com, Inc. Seek
+    FCC Consent and Approval of the Proposed Assignment and Transfer of
+    Control of Licenses and Authorizations Held by Globalstar to Amazon"
+    (GN Docket No. 26-134), notes 15-16
+  url: https://docs.fcc.gov/public/attachments/DA-26-550A1.pdf
+  date: 2026-06-04
+  retrieved: 2026-07-29
+- id: itu-snl-ast-ng-c-3
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network AST-NG-C-3 (notifying administration F)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=AST-NG-C-3
+  retrieved: 2026-07-29
+- id: itu-ific-3069
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3069, non-GSO notice data for AST-NG-C-3,
+    notice ID 325500157 (tables non_geo and orbit of the published database)
+  url: https://www.itu.int/sns/ific10/ific3069.zip
+  date: 2026-04-14
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts
+  claim: '1,946 satellites (C-3)'
+  claimed_by: york-ietf126
+  registry_value: >-
+    48 satellites as the FCC describes the system; 6,221 declared in the ITU
+    notification that backs it
+  note: >-
+    Three numbers for one system, all now documented. The FCC, in a public
+    notice issued six weeks before the talk, calls this "the Globalstar C-3
+    MSS system of 48 NGSO satellites, licensed by the Republic of France ...
+    pursuant to its AST-NG-C-3 filing at the ITU". Read the AST-NG-C-3 filing
+    and it declares 6,221 satellites across 401 planes. So the same instrument
+    supports a 48-satellite operational plan and a 6,221-satellite
+    international declaration, a ratio of about 130 to 1. The slide's 1,946
+    matches neither and its origin is still unknown.
+    This record is the registry's cleanest measurement of a general effect:
+    ITU declarations are envelopes staked out for coordination priority, and
+    reading them as deployment intentions overstates by orders of magnitude.
+    Any aggregate that sums ITU-declared figures alongside nationally
+    licensed ones is adding numbers that do not mean the same thing.
+
+notes: >-
+  Globalstar's operational second-generation service is a separate system and
+  has its own record, globalstar-hibleo. The deck's "97 launched" and
+  "~85 planned" belong there, not here.
+  This record is also the registry's worked example of the
+  flag-of-convenience pattern: a US operator's constellation licensed by a
+  European administration and reaching the US market through a declaratory
+  ruling rather than a licence. It is why `country` and `jurisdiction` are
+  separate fields.
+  Provenance gap: the French authorisation has not been retrieved, so the
+  48-satellite figure rests on the FCC's description of it rather than on the
+  French decision itself.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

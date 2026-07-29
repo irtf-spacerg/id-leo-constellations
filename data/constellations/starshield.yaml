@@ -1,0 +1,80 @@
+name: Starshield
+slug: starshield
+family: starshield
+aka:
+- NRO proliferated architecture (SpaceX-built element)
+operator: Space Exploration Technologies Corp. (SpaceX)
+parent: Space Exploration Technologies Corp. (SpaceX)
+country: US
+jurisdiction:
+- US
+system_class: government-military
+status: deploying
+status_detail: >-
+  Satellites are launching regularly on dedicated NRO missions, but the system
+  has no public authorisation, no published constellation size and no
+  published geometry. Status is inferred from launch reporting alone.
+status_asof: 2026-07
+services:
+- government-secure
+- military
+- relay
+orbit_regimes:
+- LEO
+dual_use: military
+
+filing_absent: >-
+  No public FCC or ITU filing identifies this system. It is procured and
+  operated under US government contracts, principally for the National
+  Reconnaissance Office's proliferated architecture, and US federal government
+  spectrum use is coordinated through NTIA rather than licensed by the FCC, so
+  no ICFS docket exists to point at. Everything in this record therefore rests
+  on launch reporting and catalogue observation. This is a structural
+  provenance limit, not an oversight, and it applies to classified systems in
+  every jurisdiction.
+
+counts:
+  launched:
+    value: 245
+    asof: 2026-07
+    src: york-ietf126
+  announced:
+    value: 1600
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      Recorded as announced rather than filed or licensed because no filing
+      has been identified that states a constellation size. The figure is
+      widely reported but not traceable to a document.
+
+isl: optical
+isl_detail: >-
+  Reported to use the same optical inter-satellite link hardware as Starlink
+  and to interoperate with the Starlink laser mesh. Not verifiable from a
+  public document.
+
+sources:
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+notes: >-
+  Kept in the registry with almost every field empty on purpose. A government
+  constellation of this size is a real consumer of orbital shells and spectrum
+  and a real contributor to conjunction and coordination load, and omitting it
+  because it is undocumented would understate the picture in exactly the
+  direction that is hardest to notice. What the record contributes is the
+  fact, stated in filing_absent, that no public filing exists.
+  Possible future primary sources: the UN Register of Objects Launched into
+  Outer Space (treaty-registry) gives launch-by-launch registrations with
+  orbital parameters, and NTIA spectrum certification records are partially
+  public. Neither has been checked.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

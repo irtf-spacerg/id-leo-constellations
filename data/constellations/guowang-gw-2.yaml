@@ -1,0 +1,173 @@
+name: Guowang GW-2
+slug: guowang-gw-2
+family: guowang
+aka:
+- GW-2
+- Guowang high shell
+- Xingwang
+- SatNet
+operator: China Satellite Network Group Co., Ltd. (China SatNet)
+parent: State-owned, established April 2021
+country: CN
+jurisdiction:
+- CN
+system_class: broadband
+status: deploying
+status_detail: >-
+  The higher of Guowang's two ITU networks, and the one being deployed. A
+  notification (Part I-S) received 7 November 2025 declares 1,728 satellites,
+  roughly a quarter of the figure in the earlier coordination request.
+status_asof: 2026-07
+services:
+- broadband
+- government-secure
+orbit_regimes:
+- LEO
+dual_use: unknown
+
+filing:
+  authority: other
+  administration: CHN
+  file_number: 'Part I-S (notice ID 125500219); CR/C 5486; API/A 12664'
+  document: BR IFIC 3064
+  src: itu-snl-gw-2
+
+counts:
+  launched:
+    value: 216
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      Family-level figure across both Guowang networks. Launch reporting does
+      not split them.
+  licensed:
+    value: 1728
+    asof: 2025-11-07
+    src: itu-ific-3064
+    note: >-
+      Notified to the ITU for recording in the Master International Frequency
+      Register. The orbit table of BR IFIC 3064 lists 48 planes of 36
+      satellites at 1,145 km, 50 degrees, for notice 125500219. Recorded as
+      licensed because notification is the stage at which an administration
+      declares assignments actually to be brought into use, which is the
+      closest ITU analogue to a national authorisation.
+  filed:
+    value: 6912
+    asof: 2023-05-16
+    src: spacenews-guowang-2026
+    note: >-
+      The figure in the coordination request, as reported. CR/C 5486 M2 was
+      published in BR IFIC 2996, which is outside the downloadable window, so
+      this one number could not be confirmed against the ITU publication and
+      remains secondary.
+
+itu:
+- administration: CHN
+  network_name: GW-2
+  stage: notification
+  date: 2025-11-07
+  satellites: 1728
+  src: itu-snl-gw-2
+  note: >-
+    API/A 12664 and CR/C 5486 received 11 September 2020, the coordination
+    request modified twice through May 2023. Notification Part I-S received
+    7 November 2025 and published in BR IFIC 3064 on 3 February 2026, notice
+    ID 125500219. A separate Part I-S and Part III-S in 2025 cover the
+    Jiamusi 4.5 m Q-band earth station.
+
+shells:
+- label: gw-2-1145
+  status: deploying
+  geometry_kind: walker
+  altitude_km: 1145
+  inclination_deg: 50.0
+  planes: 48
+  sats_per_plane: 36
+  satellites: 1728
+  code_status: unknown
+  code_note: >-
+    Phasing factor not in the ITU declaration. Altitude, inclination, plane
+    count and per-plane population are all from BR IFIC 3064, so this is the
+    best-documented Chinese shell in the registry.
+  src: itu-ific-3064
+
+isl: unknown
+
+first_launch: 2024-12
+launch:
+  providers:
+  - China Aerospace Science and Technology Corporation (CASC)
+  vehicles:
+  - Long March 5B
+  - Long March 8A
+  - Long March 12
+  - Long March 6A
+  cadence: >-
+    Roughly 216 satellites in about 18 months across both networks, against a
+    notified 1,728 for this one and a coordination request several times
+    larger. Reporting notes an intent to accelerate.
+  src: york-ietf126
+
+sources:
+- id: itu-snl-gw-2
+  grade: primary
+  kind: itu-filing
+  title: >-
+    ITU Radiocommunication Bureau, Space Network List (SNL) Part B, filing
+    history for satellite network GW-2 (notifying administration CHN)
+  url: https://www.itu.int/net/ITU-R/space/snl/bresult/radvance.asp?sel_satname=GW-2
+  retrieved: 2026-07-29
+- id: itu-ific-3064
+  grade: primary
+  kind: itu-publication
+  title: >-
+    ITU BR IFIC (Space Services) No. 3064, non-GSO notice data for GW-2,
+    notice ID 125500219 (tables non_geo and orbit of the published database)
+  url: https://www.itu.int/sns/ific10/ific3064.zip
+  date: 2026-02-03
+  retrieved: 2026-07-29
+- id: spacenews-guowang-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    SpaceNews, "China adds new satellites to Guowang constellation, eyes
+    accelerated launch rate"
+  url: https://spacenews.com/china-adds-new-satellites-to-guowang-constellation-eyes-accelerated-launch-rate/
+  date: 2026
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts
+  claim: '13,952 satellites planned (Guowang)'
+  claimed_by: york-ietf126
+  registry_value: >-
+    GW-2: 1,728 notified, 6,912 in the coordination request. GW-A59: 6,080.
+  note: >-
+    The interesting number here is not the disagreement with the deck but the
+    gap inside the ITU process itself. GW-2's coordination request covers a
+    reported 6,912 satellites; its notification, filed five years later,
+    declares 1,728. The same administration, the same network, a quarter of
+    the satellites. Coordination requests stake out spectrum; notifications
+    record what is actually to be operated. Treating the two as the same
+    quantity, which every aggregate figure in circulation does, overstates by
+    a factor of four on this network alone.
+
+notes: >-
+  Provenance upgraded 2026-07-29 from trade press to the ITU filing and
+  publication. See scripts/itu_query.sh.
+  Provenance gap: the CR/C figure of 6,912 could not be confirmed. Its
+  publication, BR IFIC 2996 of May 2023, is outside the roughly eighteen-month
+  window in which BR IFICs are downloadable without a subscription. Closing it
+  needs the BR IFIC DVD-ROM or a TIES account.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)

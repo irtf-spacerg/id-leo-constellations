@@ -1,0 +1,246 @@
+name: Starlink Gen2
+slug: starlink-gen2
+family: starlink
+aka:
+- SpaceX Gen2 NGSO Satellite System
+- Starlink V2 / V3
+operator: Space Exploration Holdings, LLC
+parent: Space Exploration Technologies Corp. (SpaceX)
+country: US
+jurisdiction:
+- US
+system_class: broadband
+status: deploying
+status_detail: >-
+  Deploying under a partial grant. Authorised for 15,000 of the 29,988
+  satellites requested; the Commission has expressly deferred action on the
+  remainder. Carries the direct-to-cell (supplemental coverage from space)
+  service.
+status_asof: 2026-07
+services:
+- broadband
+- direct-to-device
+orbit_regimes:
+- VLEO
+- LEO
+dual_use: civil
+
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20200526-00055
+  call_sign: S2992/3069
+  document: DA 26-36
+  src: fcc-gen2-2026
+
+counts:
+  launched:
+    value: 12612
+    asof: 2026-07
+    src: york-ietf126
+    note: >-
+      Family-level figure: cumulative Starlink launches across Gen1 and Gen2,
+      including deorbited and failed spacecraft. Launch reporting does not
+      split the two authorisations, so this cannot be attributed to Gen2
+      alone. Recorded here rather than duplicated on starlink-gen1.
+  licensed:
+    value: 15000
+    asof: 2026-01-09
+    src: fcc-gen2-2026
+    breakdown:
+    - {label: 'First partial grant (525/530/535 km)', value: 7500,
+       src: fcc-gen2-2022}
+    - {label: 'Second tranche', value: 7500, src: fcc-gen2-2026}
+  filed:
+    value: 29988
+    asof: 2022-12-01
+    src: fcc-gen2-2022
+    note: >-
+      SpaceX's preferred configuration as applied for: 29,988 satellites at
+      altitudes from 340 km to 614 km. 14,988 of these remain deferred.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20200526-00055
+  action: pending
+  date: 2020-05-26
+  satellites: 29988
+  scope: >-
+    Gen2 application, as amended by SAT-AMD-20210818-00105. 29,988 satellites
+    at altitudes from 340 km to 614 km.
+  src: fcc-gen2-2022
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20200526-00055
+  call_sign: S3069
+  document: FCC 22-91
+  action: granted-in-part
+  date: 2022-12-01
+  satellites: 7500
+  scope: >-
+    First partial grant: 7,500 satellites at 525 km / 53 deg, 530 km / 43 deg
+    and 535 km / 33 deg, roughly a quarter of the request. Action on the
+    remainder deferred.
+  milestones:
+  - {fraction: 0.5, count: 3750, due: 2028-12-01, status: pending}
+  - {fraction: 1.0, count: 7500, due: 2031-12-01, status: pending}
+  src: fcc-gen2-2022
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20200526-00055
+  call_sign: S2992/3069
+  document: DA 26-36
+  action: granted-in-part
+  date: 2026-01-09
+  satellites: 15000
+  scope: >-
+    Authorisation and Order on the Gen2 upgrade modification and amendment
+    (SAT-MOD-20241011-00224, SAT-AMD-20241017-00228). Authorises a second
+    tranche of 7,500 satellites for a total of 15,000; upgrades the satellite
+    form factor; adds Ku-, Ka-, V- and W-band frequencies and MSS as well as
+    FSS in certain bands; adds orbital shells and lowers the satellites at
+    525, 530 and 535 km into new shells; permits flexible deployment across
+    authorised shells. Requests for MSS outside the US in 1429-2690 MHz and
+    for 20.2-21.2 and 30.0-31.0 GHz, and for satellites beyond 15,000, are
+    deferred.
+  src: fcc-gen2-2026
+
+shells:
+- label: gen2-first-grant
+  status: superseded
+  geometry_kind: irregular
+  code_status: not-representable
+  code_note: >-
+    The December 2022 partial grant authorised 7,500 satellites across three
+    shells at 525 km / 53 deg, 530 km / 43 deg and 535 km / 33 deg without
+    stating a plane count or per-plane population, so no (T, P, F) triple
+    exists. DA 26-36 subsequently authorised lowering these satellites into
+    the 475-485 km shells.
+  src: fcc-gen2-2022
+- label: gen2-lower-72x144
+  status: authorised
+  geometry_kind: envelope
+  max_planes: 72
+  max_sats_per_plane: 144
+  code_status: not-representable
+  code_note: >-
+    Applies to the shells centred at 340 km / 53 deg, 345 km / 48 deg,
+    350 km / 38 deg, 355 km / 43 deg and 365 km / 28 or 32 deg. DA 26-36
+    authorises up to 72 planes per shell with up to 144 satellites per plane,
+    and separately permits SpaceX to "deploy satellites flexibly across
+    authorized orbital shells to meet customer demands". There is no single
+    (T, P, F) triple for any of these shells, and no fixed allocation of the
+    15,000 satellites among them: the licence describes a feasible set.
+  src: fcc-gen2-2026
+- label: gen2-mid-56x120
+  status: authorised
+  geometry_kind: envelope
+  max_planes: 56
+  max_sats_per_plane: 120
+  code_status: not-representable
+  code_note: >-
+    Applies to the shells centred at 480 km / 53 deg and 485 km / 43 deg.
+    Up to 56 planes per shell with up to 120 satellites per plane.
+  src: fcc-gen2-2026
+- label: gen2-other-authorised
+  status: authorised
+  geometry_kind: unknown
+  code_status: not-representable
+  code_note: >-
+    DA 26-36 also authorises shells at 360 km / 96.9 deg and 475 km / 28 or
+    32 deg, and continued operation at 525 km / 53 deg, 530 km / 43 deg and
+    535 km / 33 deg pending lowering. The order's plane/per-plane footnote
+    does not cover these, so even the envelope is unstated. The 365 km and
+    475 km inclinations are themselves conditional: 32 deg if the FAA permits
+    Starship launches from Boca Chica at that inclination, 28 deg otherwise.
+  src: fcc-gen2-2026
+
+spectrum:
+- Ku
+- Ka
+- V
+- W
+spectrum_detail: >-
+  Ku-, Ka-, V- and W-band per DA 26-36, plus 1980-2000 MHz and 2000-2020 MHz
+  (Earth-to-space) and 2180-2200 MHz (space-to-Earth) outside the United
+  States for up to 7,500 satellites. Requests for 20.2-21.2 GHz and
+  30.0-31.0 GHz were deferred.
+isl: optical
+isl_detail: >-
+  Optical inter-satellite links on all Gen2 satellites, forming the laser mesh
+  that DA 26-113 describes as petabit-capacity. Not specified in the grant.
+
+target_completion: 2031-12-01
+target_completion_kind: regulatory-milestone
+launch:
+  providers:
+  - SpaceX
+  vehicles:
+  - Falcon 9
+  - Starship
+  src: fcc-gen2-2026
+
+sources:
+- id: fcc-gen2-2022
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC, Order and Authorization, FCC 22-91 (SpaceX Gen2 NGSO system, first
+    partial grant, ICFS SAT-LOA-20200526-00055 and SAT-AMD-20210818-00105)
+  url: https://docs.fcc.gov/public/attachments/FCC-22-91A1.pdf
+  date: 2022-12-01
+  retrieved: 2026-07-29
+- id: fcc-gen2-2026
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC Space Bureau, Authorization and Order, DA 26-36 (SpaceX Gen2 upgrade
+    modification and second tranche of 7,500 satellites)
+  url: https://docs.fcc.gov/public/attachments/DA-26-36A1.pdf
+  date: 2026-01-09
+  retrieved: 2026-07-29
+- id: york-ietf126
+  grade: secondary
+  kind: presentation
+  title: >-
+    Dan York (Internet Society), "Beyond Starlink: Understanding the Coming
+    Waves of LEO Satellite Deployments", IRTF SPACE RG, IETF 126, Vienna
+  url: https://datatracker.ietf.org/meeting/126/materials/slides-126-space-york-beyond-starlink-understanding-the-coming-waves-of-leo-satellite-deployments-00
+  date: 2026-07-21
+  retrieved: 2026-07-29
+
+discrepancies:
+- field: counts.licensed
+  claim: '34,864 satellites planned (Starlink)'
+  claimed_by: york-ietf126
+  registry_value: >-
+    Gen1 4,408 licensed; Gen2 15,000 licensed of 29,988 filed. Family totals:
+    19,408 licensed, 34,396 filed.
+  note: >-
+    The slide aggregates the Gen1 authorisation with the full Gen2 *request*
+    rather than the Gen2 grant, and presents the result in a column labelled
+    "satellites planned". 4,408 + 29,988 = 34,396, which is 468 short of the
+    slide figure; the residual is unexplained. As of DA 26-36 the FCC has
+    authorised 15,000 Gen2 satellites and expressly deferred action on the
+    remaining 14,988.
+
+notes: >-
+  The ITU networks behind Starlink (STEAM-1, STEAM-2, STEAM-2B) are notified
+  by Norway, not the United States; the shells declared in the most recent
+  STEAM-2 notification match the Gen1 authorisation rather than this one, so
+  the ITU detail is recorded on starlink-gen1. No ITU network has yet been
+  identified that corresponds specifically to the Gen2 authorisation, which is
+  itself worth resolving.
+  This record is the registry's worked example of an envelope authorisation.
+  Three of its four shell entries are geometry_kind envelope or unknown and
+  emit no constellation code, because DA 26-36 bounds the geometry rather than
+  fixing it and lets SpaceX redistribute satellites between shells. Any
+  simulator that wants a concrete Gen2 topology must choose one point in that
+  feasible set, and should say which.
+added: 2026-07
+verified: 2026-07-29
+contributor: Juan A. Fraire (Inria)
