@@ -83,6 +83,13 @@ def classify(rec):
     have an application on a docket and no authorised figure, and calling that
     "announced" would understate it exactly as badly as calling a filing a
     plan overstates it.
+
+    The count reported for a rung is that rung's own quantity and nothing else.
+    Where the record does not carry it, the record is reported as having no
+    count rather than borrowing a different one. Substituting a neighbouring
+    column would print, say, an announcement figure under "authorised by a
+    national regulator", which is the exact conflation this registry exists to
+    take apart.
     """
     stages = itu_stages(rec)
     acts = [a for a in (rec.get("regulatory") or []) if isinstance(a, dict)]
@@ -90,23 +97,22 @@ def classify(rec):
     ann, launched = count(rec, "announced"), count(rec, "in_orbit")
     if launched is None:
         launched = count(rec, "launched")
-    best = next((v for v in (lic, filed, ann) if v is not None), None)
 
     if rec.get("status") in ("operational", "deploying", "demonstrator"):
         # Report what is up. The paper figure sits in the totals below; the
         # gap between the two is the point of the whole exercise.
         return "in_orbit", launched
     if any(a.get("action") in GRANTED for a in acts):
-        return "licensed", (lic if lic is not None else best)
+        return "licensed", lic
     if any(a.get("action") == "pending" for a in acts):
-        return "national_pending", (filed if filed is not None else best)
+        return "national_pending", filed
     if "notification" in stages or "in-force" in stages:
-        return "itu_notified", (filed if filed is not None else best)
+        return "itu_notified", filed
     if "CR/C" in stages:
-        return "itu_coordination", (filed if filed is not None else best)
+        return "itu_coordination", filed
     if "API" in stages:
-        return "itu_api", (filed if filed is not None else best)
-    return "announced", (ann if ann is not None else best)
+        return "itu_api", filed
+    return "announced", ann
 
 
 def main():
@@ -146,8 +152,12 @@ def main():
                         "records_without_count": buckets[k]["unknown"],
                         "slugs": buckets[k]["records"]}
                     for k, lbl in RUNGS},
-        "caveat": ("Floors, not estimates. Records with an unrecorded count "
-                   "contribute zero. Superseded records excluded."),
+        "caveat": ("Floors, not estimates. Each rung reports only its own "
+                   "quantity: the licensed rung counts licensed satellites, the "
+                   "pending rung counts satellites applied for, and so on. A "
+                   "record placed on a rung whose quantity it does not carry "
+                   "contributes zero and is counted in records_without_count. "
+                   "Superseded records excluded."),
     }
     if args.json:
         json.dump(out, sys.stdout, indent=1)

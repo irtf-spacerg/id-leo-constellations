@@ -98,6 +98,10 @@ SPECTRUM = {
 }
 COMPLETION_KINDS = {"regulatory-milestone", "operator-target"}
 COUNT_KEYS = ["launched", "in_orbit", "licensed", "filed", "announced"]
+# Shell fields that must be numbers: they are compared against the constellation
+# code and interpolated into the page.
+SHELL_NUMERIC = ("altitude_km", "inclination_deg", "planes", "sats_per_plane",
+                 "satellites", "phasing", "max_planes", "max_sats_per_plane")
 
 # A source's grade is a function of its kind, not a free choice.
 PRIMARY_KINDS = {
@@ -126,15 +130,46 @@ TOP_LEVEL_KEYS = {
 }
 
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-# draft-piraux-space-constellation-code ABNF, single shell
+# draft-piraux-space-constellation-code ABNF, single shell. Matched with
+# fullmatch(), because Python's "$" also matches before a trailing newline.
+# [0-9] rather than \d: the draft pins DIGIT = %x30-39, while \d also accepts
+# Arabic-Indic and fullwidth digits, which float() then silently converts.
 SHELL_CODE_RE = re.compile(
-    r"^(?P<walker>[DS]):(?P<alt>\d+(?:\.\d+)?):(?P<inc>\d+(?:\.\d+)?):"
-    r"(?P<t>\d+)/(?P<p>\d+)/(?P<f>\d+)(?::(?P<ma>\d+(?:\.\d+)?))?$"
+    r"(?P<walker>[DSds]):(?P<alt>[0-9]+(?:\.[0-9]+)?):(?P<inc>[0-9]+(?:\.[0-9]+)?):"
+    r"(?P<t>[0-9]+)/(?P<p>[0-9]+)/(?P<f>[0-9]+)(?::(?P<ma>[0-9]+(?:\.[0-9]+)?))?"
 )
 
 
 def _num(v):
     return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def _json_for_script(obj):
+    """Serialise for embedding inside an inline <script> element.
+
+    Escaping only "</" is not enough. An unbalanced "<!--" followed anywhere
+    later by "<script" drives the HTML tokeniser into script-data-double-escaped
+    state, in which the closing </script> no longer terminates the element and
+    the rest of the document is swallowed into the script; the page then renders
+    with no data and no console error. Escaping <, > and & removes every way out
+    of the script context, and the two Unicode line terminators are escaped for
+    parsers older than ES2019. All four are legal inside a JSON string.
+    """
+    out = json.dumps(obj, ensure_ascii=False, default=str)
+    for ch, esc in (("<", "\\u003c"), (">", "\\u003e"), ("&", "\\u0026"),
+                    ("\u2028", "\\u2028"), ("\u2029", "\\u2029")):
+        out = out.replace(ch, esc)
+    return out
+
+
+def _csv_safe(v):
+    """Neutralise spreadsheet formula injection on export."""
+    if v is None:
+        return ""
+    if _num(v):
+        return v
+    s = str(v)
+    return "'" + s if s[:1] in ("=", "+", "-", "@") else s
 
 
 def _months_between(then, now):
@@ -239,6 +274,8 @@ def check_counts(rec, ids, name, err):
                 err(f"{where}: missing '{k}' (every count needs a source)")
         if c.get("value") is not None and not _num(c.get("value")):
             err(f"{where}: 'value' must be a number")
+        elif _num(c.get("value")) and c["value"] < 0:
+            err(f"{where}: 'value' must not be negative, got {c['value']}")
         check_ref(c.get("src"), ids, where, err)
         bd = c.get("breakdown")
         if bd is None:
@@ -253,7 +290,7 @@ def check_counts(rec, ids, name, err):
                 continue
             total += b["value"]
             check_ref(b.get("src"), ids, f"{where}: breakdown[{j}]", err)
-        if _num(c.get("value")) and total != c["value"]:
+        if _num(c.get("value")) and abs(total - c["value"]) > 1e-9:
             err(f"{where}: breakdown sums to {total}, but value is {c['value']}")
 
     # filed is cumulative of everything requested, whatever the outcome, so a
@@ -310,30 +347,37 @@ def check_shell_code(sh, ids, where, err):
         return
     if not status:
         err(f"{where}: 'code' present without 'code_status'")
-    m = SHELL_CODE_RE.match(str(code))
+    m = SHELL_CODE_RE.fullmatch(str(code))
     if not m:
         err(f"{where}: '{code}' is not a valid constellation code "
             f"(draft-piraux-space-constellation-code ABNF)")
         return
     g = m.groupdict()
     t, p, f = int(g["t"]), int(g["p"]), int(g["f"])
-    if p == 0 or t % p:
+    if p == 0:
+        err(f"{where}: code '{code}': a shell needs at least one plane")
+    elif t % p:
         err(f"{where}: code '{code}': {t} satellites not divisible by {p} planes")
-    if not 0 <= f <= max(p - 1, 0):
+    elif not 0 <= f <= p - 1:
         err(f"{where}: code '{code}': phasing factor {f} outside [0, {p - 1}]")
     if not 0 <= float(g["inc"]) <= 180:
         err(f"{where}: code '{code}': inclination outside [0, 180]")
-    pairs = [("walker", g["walker"]), ("altitude_km", float(g["alt"])),
+    if g["ma"] is not None and not 0 <= float(g["ma"]) <= 360:
+        err(f"{where}: code '{code}': mean anomaly {g['ma']} outside [0, 360]")
+    pairs = [("walker", g["walker"].upper()), ("altitude_km", float(g["alt"])),
              ("inclination_deg", float(g["inc"])), ("satellites", t),
              ("planes", p), ("phasing", f)]
     for field, coded in pairs:
         have = sh.get(field)
         if have is None:
             continue
-        if field in ("altitude_km", "inclination_deg"):
-            if abs(float(have) - coded) > 1e-9:
+        if field == "walker":
+            if str(have) != str(coded):
                 err(f"{where}: code says {field}={coded}, record says {have}")
-        elif str(have) != str(coded):
+        elif not _num(have):
+            continue  # check_shells already reported the type error
+        elif abs(float(have) - float(coded)) > 1e-9:
+            # Numeric, so 1584.0 and 1584 agree rather than differing by str().
             err(f"{where}: code says {field}={coded}, record says {have}")
 
 
@@ -362,6 +406,14 @@ def check_shells(rec, ids, name, err):
         w = sh.get("walker")
         if w is not None and w not in WALKERS:
             err(f"{where}: unknown walker '{w}'")
+        # Type-check before anything reads these. They are interpolated into
+        # the page and compared against the shell code, so a string here is
+        # both a correctness bug and an escaping hazard.
+        for k in SHELL_NUMERIC:
+            if sh.get(k) is not None and not _num(sh[k]):
+                err(f"{where}: '{k}' must be a number, got {sh[k]!r}")
+            elif _num(sh.get(k)) and sh[k] < 0:
+                err(f"{where}: '{k}' must not be negative, got {sh[k]}")
         planes = sh.get("planes")
         spp = sh.get("sats_per_plane")
         sats = sh.get("satellites")
@@ -461,6 +513,26 @@ def load_records():
             err(f"{name}: duplicate name '{nm}' (also in {seen_names[nm]})")
         seen_names[nm] = name
 
+        # An unparseable date here is silently treated as "never stale", so the
+        # record would read as freshly verified for ever. Reject it instead.
+        for k in ("verified", "added", "status_asof"):
+            if rec.get(k) is not None and _as_date(rec[k]) is None:
+                err(f"{name}: '{k}' is not a date (want YYYY-MM-DD, YYYY-MM or "
+                    f"YYYY), got {rec[k]!r}")
+        # 'NO' (Norway) and 'ON' are YAML 1.1 booleans. Unquoted in a record
+        # they arrive here as bools and blow up the join in flatten().
+        if rec.get("country") is not None and not isinstance(rec["country"], str):
+            err(f"{name}: 'country' must be a quoted string, got "
+                f"{rec['country']!r} (quote it: country: \"NO\")")
+        jur = rec.get("jurisdiction")
+        if jur is not None:
+            if not isinstance(jur, list):
+                err(f"{name}: 'jurisdiction' must be a list")
+            else:
+                for j in jur:
+                    if not isinstance(j, str):
+                        err(f"{name}: jurisdiction entry must be a quoted "
+                            f"string, got {j!r}")
         if rec.get("status") and rec["status"] not in STATUSES:
             err(f"{name}: unknown status '{rec['status']}'")
         if rec.get("system_class") and rec["system_class"] not in SYSTEM_CLASSES:
@@ -498,7 +570,7 @@ def load_records():
         cc = rec.get("constellation_code")
         if cc:
             for part in str(cc).split("+"):
-                if not SHELL_CODE_RE.match(part):
+                if not SHELL_CODE_RE.fullmatch(part):
                     err(f"{name}: constellation_code segment '{part}' is not a "
                         f"valid constellation code")
 
@@ -507,7 +579,9 @@ def load_records():
 
     # Cross-record checks, once every slug is known.
     slugs = {r.get("slug") for r in records}
+    by_slug = {r.get("slug"): r for r in records}
     for r in records:
+        me = r.get("slug")
         for key in ("supersedes", "superseded_by"):
             v = r.get(key)
             if v is None:
@@ -516,9 +590,23 @@ def load_records():
                 errors.append(f"{r['_file']}: '{key}' must be a list of slugs")
                 continue
             for s in v:
-                if s not in slugs:
+                if s == me:
+                    errors.append(f"{r['_file']}: {key} references itself")
+                elif s not in slugs:
                     errors.append(f"{r['_file']}: {key} references unknown "
                                   f"record slug '{s}'")
+        # A superseded record is dropped from every total, so an unreciprocated
+        # or mutual claim silently deletes satellites from the headline figures.
+        for s in (r.get("superseded_by") or []):
+            if s in (r.get("supersedes") or []):
+                errors.append(f"{r['_file']}: '{s}' appears in both "
+                              f"'supersedes' and 'superseded_by'")
+                continue
+            other = by_slug.get(s)
+            if other is not None and me not in (other.get("supersedes") or []):
+                errors.append(
+                    f"{r['_file']}: declares superseded_by '{s}', but "
+                    f"'{s}' does not list '{me}' in its 'supersedes'")
     return records, errors, warnings
 
 
@@ -667,7 +755,7 @@ def build(records, cfg, ttl_months, today, artifact_out=None):
         w = csv.writer(fh)
         w.writerow(cols)
         for r in rows:
-            w.writerow(["" if r[c] is None else r[c] for c in cols])
+            w.writerow([_csv_safe(r[c]) for c in cols])
 
     print(f"  totals over {agg['records_counted']} non-superseded records: "
           f"{agg['total_launched']:,} launched, "
@@ -697,18 +785,19 @@ def build(records, cfg, ttl_months, today, artifact_out=None):
             if v not in (None, "", [], {}):
                 merged[k] = v
         page_rows.append(merged)
-    data_js = json.dumps({"records": page_rows, "aggregates": agg},
-                         ensure_ascii=False, default=str).replace("</", "<\\/")
+    data_js = _json_for_script({"records": page_rows, "aggregates": agg})
     body = (TEMPLATE.read_text()
             .replace("__MAINTAINER_EMAIL__", cfg["maintainer_email"])
             .replace("__REPO_URL__", cfg["repo_url"])
-            .replace("__BUILD_DATE__", today.isoformat())
-            .replace("const PAYLOAD = /*__DATA__*/{records: [], aggregates: {}};",
-                     f"const PAYLOAD = {data_js};"))
-    if "const PAYLOAD = /*__DATA__*/" in body:
-        raise SystemExit("site/template.html: the /*__DATA__*/ placeholder was not "
-                         "substituted; its surrounding line must match exactly "
-                         "'const PAYLOAD = /*__DATA__*/{records: [], aggregates: {}};'")
+            .replace("__BUILD_DATE__", today.isoformat()))
+    PLACEHOLDER = "const PAYLOAD = /*__DATA__*/{records: [], aggregates: {}};"
+    # Assert on the substitution itself. Testing for a leftover marker string
+    # both misses a renamed placeholder (silently publishing an empty page) and
+    # fires on a record that merely quotes the marker in its own text.
+    if PLACEHOLDER not in body:
+        raise SystemExit("site/template.html: the data placeholder line was not "
+                         f"found; it must match exactly {PLACEHOLDER!r}")
+    body = body.replace(PLACEHOLDER, f"const PAYLOAD = {data_js};")
     desc = cfg.get("description", "").replace("{n}", str(len(rows)))
     pages = cfg.get("pages_url", "").rstrip("/") + "/"
     title = cfg["site_title"]

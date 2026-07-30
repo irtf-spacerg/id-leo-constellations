@@ -436,13 +436,13 @@ function fmtShells(r) {
   if (!sh.length) return "";
   const rows = sh.map(s => {
     const geom = [
-      s.altitude_km != null ? `${s.altitude_km} km` : null,
-      s.inclination_deg != null ? `${s.inclination_deg}&deg;` : null,
-      s.planes != null ? `${s.planes} planes` : null,
-      s.sats_per_plane != null ? `${s.sats_per_plane}/plane` : null,
+      s.altitude_km != null ? `${esc(s.altitude_km)} km` : null,
+      s.inclination_deg != null ? `${esc(s.inclination_deg)}&deg;` : null,
+      s.planes != null ? `${esc(s.planes)} planes` : null,
+      s.sats_per_plane != null ? `${esc(s.sats_per_plane)}/plane` : null,
       s.satellites != null ? `${num(s.satellites)} sats` : null,
-      s.max_planes != null ? `&le;${s.max_planes} planes` : null,
-      s.max_sats_per_plane != null ? `&le;${s.max_sats_per_plane}/plane` : null,
+      s.max_planes != null ? `&le;${esc(s.max_planes)} planes` : null,
+      s.max_sats_per_plane != null ? `&le;${esc(s.max_sats_per_plane)}/plane` : null,
     ].filter(Boolean).join(" &middot; ");
     const code = s.code
       ? `<span class="code">${esc(s.code)}</span> <span class="sub" style="font-size:11.5px">${esc(s.code_status)}</span>`
@@ -514,7 +514,7 @@ function detail(r) {
     ["Inter-satellite links", r.isl], ["First launch", r.first_launch],
     ["Service start", r.service_start],
     ["Target completion", r.target_completion ? `${r.target_completion} (${r.target_completion_kind || "unstated basis"})` : ""],
-    ["Launch providers", r.launch_providers], ["Verified", r.verified + (r.stale === "yes" ? " &mdash; stale" : "")],
+    ["Launch providers", r.launch_providers], ["Verified", r.verified + (r.stale === "yes" ? " — stale" : "")],
   ].filter(([, v]) => v).map(([k, v]) => `<div class="dcell"><div class="dl">${k}</div><div class="dv">${esc(v)}</div></div>`).join("");
 
   return `<div class="dsec">
@@ -666,7 +666,10 @@ function showGrade() {
 srcKind.addEventListener("change", showGrade); showGrade();
 
 const sval = id => document.getElementById(id).value.trim();
-const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+// Fold accents first, so "Ñandú" yields "nandu" rather than "and". Names in a
+// non-Latin script still fold to nothing; checkRequired() catches that.
+const slugify = s => s.normalize("NFKD").replace(/[̀-ͯ]/g, "")
+  .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 const yq = s => "'" + String(s).replace(/'/g, "''") + "'";
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -678,9 +681,19 @@ function checkRequired() {
     el.classList.toggle("err", bad);
     if (bad) ok = false;
   });
-  document.getElementById("smsg").style.color = ok ? "" : "var(--bad)";
-  if (!ok) document.getElementById("smsg").textContent = "Fill the starred fields (with a valid source URL).";
-  return ok;
+  const msg = document.getElementById("smsg");
+  msg.style.color = ok ? "" : "var(--bad)";
+  if (!ok) { msg.textContent = "Fill the starred fields (with a valid source URL)."; return false; }
+  // A name in a non-Latin script folds to an empty slug, which would produce an
+  // unfilable record and a filename of just ".yaml".
+  if (!slugify(sval("s-name"))) {
+    document.getElementById("s-name").classList.add("err");
+    msg.style.color = "var(--bad)";
+    msg.textContent = "The name has no Latin letters or digits, so it yields no " +
+      "file name. Add a romanised form, e.g. \"Qianfan (千帆)\".";
+    return false;
+  }
+  return true;
 }
 
 function toYaml() {
@@ -688,12 +701,18 @@ function toYaml() {
   const SRC = "submitted";
   const L = [];
   L.push("name: " + yq(sval("s-name")));
-  L.push("slug: " + slug);
-  L.push("family: " + (sval("s-family") ? slugify(sval("s-family")) : slug));
+  // Every scalar below is quoted. Unquoted, a slug of "yes"/"null"/"12345" or a
+  // country of "NO" (Norway) is resolved by YAML as a boolean, null, an integer
+  // or a date, and the record either fails CI or breaks the build.
+  L.push("slug: " + yq(slug));
+  // slugify() can empty a family that was all punctuation; fall back to the slug
+  // rather than emitting "family: ''", which fails as a missing required field.
+  L.push("family: " + yq(slugify(sval("s-family")) || slug));
   L.push("operator: " + yq(sval("s-operator")));
   if (sval("s-country")) {
-    L.push("country: " + sval("s-country").toUpperCase());
-    L.push("jurisdiction:"); L.push("- " + sval("s-country").toUpperCase());
+    const cc = sval("s-country").toUpperCase();
+    L.push("country: " + yq(cc));
+    L.push("jurisdiction:"); L.push("- " + yq(cc));
   }
   L.push("system_class: " + document.getElementById("s-class").value);
   L.push("status: " + document.getElementById("s-status").value);
@@ -729,8 +748,8 @@ function toYaml() {
   L.push("  grade: " + KIND_GRADE[srcKind.value]);
   L.push("  kind: " + srcKind.value);
   L.push("  title: " + yq(sval("s-srctitle")));
-  L.push("  url: " + sval("s-srcurl"));
-  if (sval("s-srcdate")) L.push("  date: " + sval("s-srcdate"));
+  L.push("  url: " + yq(sval("s-srcurl")));
+  if (sval("s-srcdate")) L.push("  date: " + yq(sval("s-srcdate")));
   L.push("  retrieved: " + today());
   L.push("");
   if (sval("s-notes")) L.push("notes: " + yq(sval("s-notes").replace(/\s+/g, " ")));
@@ -775,15 +794,21 @@ document.getElementById("s-copy").addEventListener("click", async () => {
   m.textContent = "YAML copied. Commit it as data/constellations/" + slugify(sval("s-name")) + ".yaml in a pull request.";
 });
 
+function paintArrows() {
+  document.querySelectorAll("thead th.sortable").forEach(th => {
+    th.querySelector(".arr").textContent =
+      th.dataset.k === state.sortK ? (state.sortDir > 0 ? "↑" : "↓") : "";
+  });
+}
 document.querySelectorAll("thead th.sortable").forEach(th => {
   th.addEventListener("click", () => {
     const k = th.dataset.k;
     if (state.sortK === k) state.sortDir *= -1;
     else { state.sortK = k; state.sortDir = ["launched", "licensed", "filed", "announced"].includes(k) ? -1 : 1; }
-    document.querySelectorAll("thead th .arr").forEach(a => a.textContent = "");
-    th.querySelector(".arr").textContent = state.sortDir > 0 ? "↑" : "↓";
+    paintArrows();
     render();
   });
 });
+paintArrows();   // the table loads sorted by filed desc; say so
 render();
 </script>
