@@ -38,7 +38,25 @@ $(VENV):
 	python3 -m venv $(VENV)
 	$(VENV)/bin/pip install --quiet --upgrade pip pyyaml
 
-.PHONY: registry-check registry-site registry-serve registry-analyse registry-clean
+.PHONY: fmt fmt-wrap fmt-check registry-check registry-site registry-serve registry-analyse registry-clean
+
+# Lay the draft out one sentence per line. Idempotent, so it is safe after
+# every edit or from a hook. One sentence per line keeps review diffs to the
+# sentences that actually changed.
+#   make fmt                       the draft
+#   make fmt FILES="README.md"     something else (still sentence-per-line)
+#   make fmt-wrap FILES="README.md"  fixed-width instead
+#   make fmt-check                 exit 1 if a reflow is needed
+FILES ?=
+fmt:
+	python3 scripts/reflow.py --sentences $(FILES)
+
+fmt-wrap:
+	python3 scripts/reflow.py $(FILES)
+
+fmt-check:
+	python3 scripts/reflow.py --sentences --check $(FILES)
+
 registry-check: $(VENV)
 	$(PY) scripts/build_site.py --check
 
