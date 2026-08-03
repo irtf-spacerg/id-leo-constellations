@@ -2,7 +2,7 @@
 title: "A Registry of Announced, Filed and Deployed Satellite Constellations"
 abbrev: "Constellation Registry"
 category: info
-docname: draft-york-spacerg-constellation-registry-latest
+docname: draft-fraire-spacerg-constellation-registry-latest
 submissiontype: IRTF
 number:
 date:
@@ -24,13 +24,13 @@ venue:
 
 author:
  -
-    fullname: "Dan York"
-    organization: Internet Society
-    email: "york@isoc.org"
- -
     fullname: "Juan A. Fraire"
     organization: Inria
     email: "juan.fraire@inria.fr"
+ -
+    fullname: "Dan York"
+    organization: Internet Society
+    email: "york@isoc.org"
 
 normative:
 

@@ -6,9 +6,8 @@ Working area for the individual Internet-Draft of the same name, and for the
 SPACERG constellation registry that backs it.
 
 * [Registry page](https://irtf-spacerg.github.io/id-leo-constellations/registry/)
-* [Editor's Copy](https://irtf-spacerg.github.io/id-leo-constellations/#go.draft-york-spacerg-constellation-registry.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-york-spacerg-constellation-registry)
-* Authorship of the draft is provisional pending Dan York's agreement.
+* [Editor's Copy](https://irtf-spacerg.github.io/id-leo-constellations/#go.draft-fraire-spacerg-constellation-registry.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-fraire-spacerg-constellation-registry)
 
 ## What this is
 
@@ -44,8 +43,8 @@ regulatory commitment it has demonstrably reached:
 | Rung | Satellites | Records |
 |---|---:|---:|
 | In orbit | 14,585 | 12 |
-| Authorised by a national regulator | 10,818 | 6 |
-| Applied for, not granted | 1,360,800 | 7 |
+| Authorised by a national regulator | 10,330 | 6 |
+| Applied for, not granted | 1,365,905 | 8 |
 | ITU coordination request only | 6,080 | 1 |
 | ITU advance publication only | 206,092 | 4 |
 | Announced, no filing found | 5,408 | 2 |

@@ -45,7 +45,7 @@ import sys
 from pathlib import Path
 
 DEFAULT_WIDTH = 78
-DEFAULT_TARGET = "draft-york-spacerg-constellation-registry.md"
+DEFAULT_TARGET = "draft-fraire-spacerg-constellation-registry.md"
 
 SECTION_MARKER = re.compile(r"^---\s+\w")
 HEADING = re.compile(r"^#{1,6}\s")
