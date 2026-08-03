@@ -43,7 +43,7 @@
   "notes": "Contributed by Dan York on 29 July 2026, having been filed after his IETF 126 survey was presented. The first entry in the registry to come from the community rather than the initial sweep. Provenance gap: no primary source. The ICFS file number, the orbital parameters and the exact band edges all need the application itself. This record and globalstar-c3 will need reconciling if the Amazon acquisition of Globalstar completes: two systems, one spectrum position, one eventual owner. Whether the D2D constellation supersedes the C-3 plan or runs alongside it is not yet stated anywhere this registry has found.",
   "added": "2026-07",
   "verified": "2026-07-30",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -90,7 +90,7 @@
   "notes": "Amazon renamed Project Kuiper to Amazon Leo in 2026 and the FCC order adopts the new name for both constellation and licensee, while the licensee of record remains Kuiper Systems LLC. Provenance gap: FCC 20-102 is cited through the fcc.report mirror of the grant attachment rather than a docs.fcc.gov permanent URL, and the 2024 orbital parameters modification (39 FCC Rcd 2180) has not been read. The shells recorded here are the 2020 configuration, so the current authorised geometry may differ. This is why each shell carries its own src.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -137,7 +137,7 @@
   "notes": "Provenance gap: this record is built entirely from the description of the 10 February 2026 grant contained in a *later* order (DA 26-553). The grant stamp itself, under ICFS SAT-LOA-20211104-00145 and SAT-AMD-20250311-00068, has not been read. Reading it would supply the orbital parameters for both the Gen2 and Polar systems, which are the main gap in this record. Note the source grading subtlety: DA 26-553 is a primary source, and it is a primary source *for what it says*, which is the counts and the milestone dates. It is not a source for the shell geometry, which it does not discuss. A source's grade does not extend beyond its contents.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -184,7 +184,7 @@
   "notes": "This record is the registry's worked example of orbital geometry that the constellation code cannot express for a reason unrelated to phasing: every authorised shell here is elliptical, with apogee and perigee stated separately and a station-keeping tolerance attached. The code assumes a single circular altitude. Four of the five shells also fail the code's divisibility or plane-count assumptions independently. AST's satellites are physically very large, which is why the constellation size is small relative to its coverage ambition. Recording sat_mass_kg for this system would be valuable and has not been done.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -231,7 +231,7 @@
   "notes": "Provenance gap: no primary source, and the ICFS file number has not been retrieved. Reading the application would give the shell structure, the satellite design and the basis for the 51,600 figure, and reading NASA's objection would give the first documented instance in this registry of a federal science agency contesting a constellation filing on operational grounds. Both are worth doing.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -278,7 +278,7 @@
   "notes": "Provenance gap: no primary source and no filing reference. Everything here is trade press and a conference slide, and the headline count is disputed three ways. Locating a TeraWave application in ICFS would fix all of it. Recorded despite that because Project Sunrise, which does have a filing, depends on TeraWave for its ground path. A registry that carried Sunrise but not TeraWave would hide the dependency.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -325,7 +325,7 @@
   "notes": "Found by scanning the non-GSO tables of the downloaded BR IFICs for Chinese networks with large plane counts, while looking for something else. It appears in no secondary source consulted for this registry and was not in the IETF 126 survey. A 2,664-satellite filing by the largest mobile operator in the world is not a marginal entry, and the fact that it surfaced only by reading the ITU publication directly is the clearest argument this registry has for doing so routinely. The 251 km shell is worth attention on its own: 960 satellites in 960 separate planes at an altitude where drag is severe. Whether that is a serious deployment plan or a spectrum placeholder is exactly the question the API/A stage cannot answer.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -372,7 +372,7 @@
   "notes": "Provenance gap: no primary source and no file number. This record is worth keeping in view for a reason beyond its size. The company told the regulator that the satellite design is unfinished and that a modification will be needed before service. That is a filing made to hold a place in a processing round, stated as such, by the applicant. It is the cleanest documented instance in this registry of the mechanism Dan York and Nitinder Mohan discussed at IETF 126: filings as spectrum positioning rather than deployment commitments. Recording it as `filed` and never as `licensed` is exactly the distinction the registry exists to preserve.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -419,7 +419,7 @@
   "notes": "Upgraded from secondary to primary on 2026-07-29 by querying the ITU Space Network List for the filing identity and then reading the declared orbit data out of BR IFIC 3067 directly. See scripts/itu_query.sh, which reproduces both steps. CTC-1 and CTC-2 together account for about 193,000 of the roughly 200,000 satellites in the December 2025 Chinese filing wave, and therefore for a large share of any global aggregate. A reader deciding how much weight to put on a 2.3 million total should know that roughly 8 per cent of it comes from two filings by a single research institute, with a stated purpose that nobody has confirmed. Making that visible is the point of keeping the record.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -466,7 +466,7 @@
   "notes": "Upgraded from secondary to primary on 2026-07-29 by querying the ITU Space Network List for the filing identity and then reading the declared orbit data out of BR IFIC 3067 directly. See scripts/itu_query.sh, which reproduces both steps. CTC-1 and CTC-2 together account for about 193,000 of the roughly 200,000 satellites in the December 2025 Chinese filing wave, and therefore for a large share of any global aggregate. A reader deciding how much weight to put on a 2.3 million total should know that roughly 8 per cent of it comes from two filings by a single research institute, with a stated purpose that nobody has confirmed. Making that visible is the point of keeping the record.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -513,7 +513,7 @@
   "notes": "Provenance gap: the UK authorisation held by WorldVu Satellites Limited has not been retrieved, so the licensed figure recorded here is strictly the number for which US market access is granted. Eutelsat Next, the announced successor constellation, is not recorded and needs its own record once a filing or a firm figure can be traced.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -560,7 +560,7 @@
   "notes": "Globalstar's operational second-generation service is a separate system and has its own record, globalstar-hibleo. The deck's \"97 launched\" and \"~85 planned\" belong there, not here. This record is also the registry's worked example of the flag-of-convenience pattern: a US operator's constellation licensed by a European administration and reaching the US market through a declaratory ruling rather than a licence. It is why `country` and `jurisdiction` are separate fields. Provenance gap: the French authorisation has not been retrieved, so the 48-satellite figure rests on the FCC's description of it rather than on the French decision itself.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -607,7 +607,7 @@
   "notes": "Split from globalstar-c3 so that the operational system and the planned next-generation system are not conflated: they have different satellite counts, different licensing administrations and different regulatory states. The deck's \"~85 planned / 97 launched\" belongs here and its \"1,946 (C-3) / 0\" belongs on globalstar-c3. Provenance gap: no file numbers for either the HIBLEO-4 licence or the HIBLEO-X market access grant, and no orbital parameters. Exhibit A to the Amazon transfer application lists every Globalstar authorisation and would close most of this in one read. If the Amazon transaction completes, this system and Amazon Leo come under one owner, alongside Amazon's stated intention to file for a global direct-to-device system. Worth tracking as a concentration question rather than only a technical one.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -654,7 +654,7 @@
   "notes": "Provenance upgraded 2026-07-29 from trade press to the ITU filing and publication. See scripts/itu_query.sh. Provenance gap: the CR/C figure of 6,912 could not be confirmed. Its publication, BR IFIC 2996 of May 2023, is outside the roughly eighteen-month window in which BR IFICs are downloadable without a subscription. Closing it needs the BR IFIC DVD-ROM or a TIES account.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -701,7 +701,7 @@
   "notes": "Provenance upgraded 2026-07-29 from trade press to the ITU filing and publication. See scripts/itu_query.sh. Launch reporting does not split Guowang launches between the two networks, so counts.launched is recorded on guowang-gw-2 as a family-level figure rather than duplicated here.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -748,7 +748,7 @@
   "notes": "Provenance partially upgraded 2026-07-29: the ITU filing identity, stage and dates now come from the Space Network List. The declared satellite count does not, because it lives in BR IFIC 3008 (October 2023), which is outside the roughly eighteen-month window in which BR IFICs can be downloaded without a subscription. Closing that needs the BR IFIC DVD-ROM or a TIES account. This is the clearest instance in the registry of the retention window blocking an otherwise easy provenance upgrade.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -795,7 +795,7 @@
   "notes": "Provenance gap: the shell geometry on this record is sourced entirely to the constellation-code draft, not to the filing. The Iridium NEXT engineering statement is public and would give the authorised altitude, inclination and plane structure directly; reading it would move three code_assumptions from assumed to exact. This is the clearest single provenance upgrade available in the registry right now. Project Stardust, Iridium's announced direct-to-device layer, has no authorisation identified and no satellite count and is therefore not recorded. The deck notes it as \"plus unknown number\".",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -842,7 +842,7 @@
   "notes": "Provenance gap: no primary source. The concession contract itself, the Commission's programme documentation and the member state ITU filings that will carry the spectrum have none of them been consulted. IRIS2 is the registry's worked example of a system that does not fit the filing-centred model: it is a publicly procured programme whose defining instrument is a concession contract, whose spectrum will come through member state administrations, and whose satellite count is a design target rather than an authorised ceiling. Worth discussing whether the schema should carry a distinct instrument type for procured systems.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -889,7 +889,7 @@
   "notes": "Provenance upgraded 2026-07-29. The grant stamp itself is not a published document with a DA number, but the Space Bureau restates its terms in DA 26-552, which is citable and is used here. Provenance gap: the orbital shells are still unknown. The grant stamp and the underlying application would give them.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -936,7 +936,7 @@
   "notes": "Provenance gap: the April 2025 modification is recorded from trade press; the grant itself has not been retrieved, so it has no file number here. Provenance gap: the 12-launched figure exceeds the 10 authorised and the discrepancy has not been resolved against ELS records. Note for the group: DA 22-969 resolves a petition to deny from Iridium and comments from Kuiper and the NRAO. The direct-to-device band is contested by incumbents and radio astronomy, which is a spectrum-governance thread worth following in its own right.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -983,7 +983,7 @@
   "notes": "Provenance gap: no primary source, no file number, no precise filing date. Reading the application is the whole task on this record.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1030,7 +1030,7 @@
   "notes": "Included with an empty `counts` block on purpose. An announced programme from an operator of this size, with no stated constellation size, is a real category and the honest representation of it is absence. Writing a speculative number here would corrupt exactly the aggregate the registry is meant to make trustworthy. Provenance gap: the Google Research post describing the system design has been cited but not read in detail; it would give the cluster geometry and the power and thermal assumptions.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1077,7 +1077,7 @@
   "notes": "Provenance gap: this record still has no primary source, and after a systematic ITU search it is now the only major system in the registry in that position. See filing_absent for what was tried. The most likely routes in are: a Chinese-language source that gives the ITU designation directly; a full SNL export filtered by administration, which the ITU server currently returns a 500 for on date-range queries; or somebody in the group with access to the BR IFIC DVD-ROM, which would allow scanning publications outside the eighteen-month download window when the filing was most likely made. ASK THE LIST. This is a good first question to put to space@irtf.org once the registry is announced: a working constellation of 239 satellites whose ITU identity we cannot find is exactly the kind of gap a group is better at closing than an individual. This record is the registry's worked example of the non-US jurisdiction problem: for FCC-licensed systems the filing, the geometry, the milestones and the spectrum are all in a public docket, and for most others they are not. Any aggregate satellite count that treats a Chinese or Russian figure as equivalent evidence to an FCC grant is comparing unlike things, and the registry should make that visible rather than smooth it over.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1124,7 +1124,7 @@
   "notes": "Provenance upgraded 2026-07-29 from encyclopaedia and press to the ITU filings and publication. See scripts/itu_query.sh. Reporting on this system is heavily coloured by the war in Ukraine and by its dual-use potential, in both directions. The ITU record is the one part of the picture that is neutral and checkable, which is most of why this round of work was worth doing.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1171,7 +1171,7 @@
   "notes": "Provenance gap: no primary source and no citable docket. IN-SPACe authorisations are not published in a form comparable to FCC ICFS. Carlos Martinez-Cagnazzo asked at IETF 126 who the proper authority is when a company files, and Dan York used exactly this system as the example: the Indian space agency approves, then the filing goes to the ITU. This record captures that chain at the moment the first step completed and the second had not yet begun, which makes it a useful teaching case for the draft.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1218,7 +1218,7 @@
   "notes": "Reported in the press as connected to the SpaceX/xAI merger. The application itself is for a communications authorisation; the compute payload is not what the FCC is licensing, which is worth remembering when reading the filing as evidence about data-centre capacity. Provenance gap: the application narrative and technical attachment (Attachment A) are cited in DA 26-113 but have not been read directly. They would give the shell structure, the satellite versions and the TT&C bands.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1265,7 +1265,7 @@
   "notes": "Provenance gap: no primary source, no file number, no filing date. Worth noting for anyone modelling this system: repeating ground tracks are unusual among the constellations in this registry and change the contact pattern seen by a fixed ground station substantially. It is a good test case for the ground-station elements added in draft-piraux-space-constellation-code-02.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1312,7 +1312,7 @@
   "notes": "Provenance gap: this record has no primary source. Everything except the demonstrator launch rests on one trade-press report of the FCC application. The application itself (ICFS SAT-LOA-20260202-00073) is public and should be read; the accepted-for-filing public notice would also be a primary source for the date. Until then every number here is secondary and the record should be read as such. Kept in the registry despite the weak provenance because orbital data centre filings are a large and fast-growing share of the aggregate satellite count, and because this system as filed depends entirely on other operators' optical crosslinks - which is exactly the kind of coupling the group should be able to see.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1359,7 +1359,7 @@
   "notes": "The ITU networks behind Starlink are notified by Norway, not the United States. SpaceX holds a US licence from the FCC and the international filings that carry its spectrum are made by the Norwegian administration under the names STEAM-1, STEAM-2 and STEAM-2B. Nothing improper about that, and it is common practice, but it means a reader looking for Starlink under \"USA\" in ITU records will not find it, and any jurisdiction-by-jurisdiction tally built from ITU data will attribute the largest constellation in orbit to Norway. This is the single most consequential thing found in the ITU pass. Provenance gap: two later modifications (SAT-MOD-20230215-00036, granted 2024-08-16, and SAT-MOD-20241104-00251, granted 2025-03-17) are recorded from a citation in DA 26-113 but have not been read. The authorised geometry may have changed since FCC 21-48, so the shells here are the 2021 configuration and are marked as such by their src. counts.launched is deliberately empty on this record: launch reporting does not distinguish Gen1 from Gen2 spacecraft, so a per-authorisation launched figure cannot be sourced. The family-level figure is on starlink-gen2.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1406,7 +1406,7 @@
   "notes": "The ITU networks behind Starlink (STEAM-1, STEAM-2, STEAM-2B) are notified by Norway, not the United States; the shells declared in the most recent STEAM-2 notification match the Gen1 authorisation rather than this one, so the ITU detail is recorded on starlink-gen1. No ITU network has yet been identified that corresponds specifically to the Gen2 authorisation, which is itself worth resolving. This record is the registry's worked example of an envelope authorisation. Three of its four shell entries are geometry_kind envelope or unknown and emit no constellation code, because DA 26-36 bounds the geometry rather than fixing it and lets SpaceX redistribute satellites between shells. Any simulator that wants a concrete Gen2 topology must choose one point in that feasible set, and should say which.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1453,7 +1453,7 @@
   "notes": "Provenance gap: this record has no primary source. The file number, satellite count, altitude bands and spectrum all come from trade press. The application is public in ICFS and should be read; doing so would also settle whether the request is for a genuinely new system or an amendment of the Gen2 authorisation, which changes how the 100,000 should be aggregated.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1500,7 +1500,7 @@
   "notes": "Kept in the registry with almost every field empty on purpose. A government constellation of this size is a real consumer of orbital shells and spectrum and a real contributor to conjunction and coordination load, and omitting it because it is undocumented would understate the picture in exactly the direction that is hardest to notice. What the record contributes is the fact, stated in filing_absent, that no public filing exists. Possible future primary sources: the UN Register of Objects Launched into Outer Space (treaty-registry) gives launch-by-launch registrations with orbital parameters, and NTIA spectrum certification records are partially public. Neither has been checked.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  },
  {
@@ -1547,7 +1547,7 @@
   "notes": "Provenance gap: this record has no usable primary source for its counts. The FCC market access grant is cited by landing page rather than by document number and has not been read, and the ISED authorisation has not been located at all. This record is the registry's worked example of the non-US-but-Western jurisdiction problem, which sits between the FCC case and the Chinese case: the authorisation certainly exists and is not secret, but it is not published in a form that can be cited, so the best available evidence is the operator's own reporting. Any contributor with ISED experience could close this quickly.",
   "added": "2026-07",
   "verified": "2026-07-29",
-  "verified_age_months": 0,
+  "verified_age_months": 1,
   "stale": "no"
  }
 ]
