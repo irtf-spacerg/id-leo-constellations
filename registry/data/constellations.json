@@ -31,15 +31,17 @@
   "filing": {
    "authority": "FCC",
    "administration": "USA",
-   "document": "Kuiper Systems LLC application for the Amazon Leo direct-to-device system, filed 24 July 2026 (ICFS file number not retrieved)",
-   "src": "viasat-amazon-d2d-2026",
-   "note": "Filed six days before this record was written; the ICFS file number has not been retrieved and no FCC document has been read."
+   "file_number": "SAT-LOA-20260601-00224",
+   "call_sign": "S00917",
+   "document": "Kuiper Systems LLC, application for the Amazon Leo D2D System, filed 24 July 2026, status Pending Review",
+   "src": "fcc-sat-loa-20260601-00224",
+   "note": "The date in the file number is the ICFS series, and not the filing date: Schedule S records the filing at 2026-07-24 21:35:44."
   },
   "counts": {
    "filed": {
     "value": 5105,
     "asof": "2026-07-24",
-    "src": "viasat-amazon-d2d-2026"
+    "src": "fcc-sat-loa-20260601-00224"
    }
   },
   "regulatory": [
@@ -50,8 +52,8 @@
     "action": "pending",
     "date": "2026-07-24",
     "satellites": 5105,
-    "scope": "Application for authority to deploy up to 5,105 LEO satellites between 510 and 580 km, with operational lifetimes of about 6 to 8 years, using Globalstar's existing L-band (around 1.6 GHz) and S-band (around 2.4 GHz) allocations. Services stated as voice, messaging, mobile broadband, emergency calling and IoT including fleet tracking, to unmodified 4G and 5G handsets, no earlier than 2028.",
-    "src": "viasat-amazon-d2d-2026"
+    "scope": "Application for authority to launch and operate a non-geostationary system of 5,105 satellites providing mobile-satellite service, with an estimated operational lifetime of 7 years from launch. Schedule S states frequencies of 1427-2690 MHz in both directions, with the service described as SCS and flagged as non-conforming. Altitudes of 510 to 580 km, the Globalstar L- and S-band allocations specifically, and services to unmodified 4G and 5G handsets no earlier than 2028 are press-reported and are not stated in Schedule S.",
+    "src": "fcc-sat-loa-20260601-00224"
    }
   ],
   "shells": [
@@ -60,18 +62,27 @@
     "status": "proposed",
     "geometry_kind": "unknown",
     "code_status": "unknown",
-    "code_note": "Reported altitude range 510-580 km. No inclination, plane count or per-plane population traced; the application would give them.",
-    "src": "viasat-amazon-d2d-2026"
+    "code_note": "Schedule S declares one orbital plane and one simultaneously operating satellite for a 5,105-satellite system, so those fields carry no usable geometry. The parameters are in a separate attachment, \"Amazon Leo D2D Application - Orbital Parameters Attachment.zip\", which has not been opened. The 510-580 km altitude range is press-reported. No inclination, plane count or per-plane population is traced to the filing.",
+    "src": "fcc-sat-loa-20260601-00224"
    }
   ],
   "spectrum": [
    "L",
    "S"
   ],
-  "spectrum_detail": "Globalstar's existing L-band (around 1.6 GHz) and S-band (around 2.4 GHz) allocations. This is the first record in the registry where the spectrum rationale is an acquisition rather than a processing round: Amazon is buying the spectrum position along with the operator that holds it.",
+  "spectrum_detail": "Schedule S states a single band pair, 1427-2690 MHz, in both directions, which spans the L- and S-band allocations Globalstar holds. The filing describes the service as SCS and flags it as non-conforming. This is the first record in the registry where the spectrum rationale is an acquisition and not a processing round: Amazon is buying the spectrum position along with the operator that holds it.",
   "isl": "unknown",
   "target_completion_kind": "operator-target",
   "sources": [
+   {
+    "id": "fcc-sat-loa-20260601-00224",
+    "grade": "primary",
+    "kind": "fcc-application",
+    "title": "FCC ICFS, Kuiper Systems LLC, \"Amazon Leo D2D System\", application SAT-LOA-20260601-00224, call sign S00917: application summary and Schedule S",
+    "url": "https://fccprod.servicenowservices.com/icfs?id=ibfs_application_summary&number=SAT-LOA-20260601-00224",
+    "date": "2026-07-24",
+    "retrieved": "2026-08-03"
+   },
    {
     "id": "viasat-amazon-d2d-2026",
     "grade": "secondary",
@@ -99,9 +110,9 @@
     "retrieved": "2026-07-30"
    }
   ],
-  "notes": "Contributed by Dan York on 29 July 2026, having been filed after his IETF 126 survey was presented. The first entry in the registry to come from the community rather than the initial sweep. Provenance gap: no primary source. The ICFS file number, the orbital parameters and the exact band edges all need the application itself. This record and globalstar-c3 will need reconciling if the Amazon acquisition of Globalstar completes: two systems, one spectrum position, one eventual owner. Whether the D2D constellation supersedes the C-3 plan or runs alongside it is not yet stated anywhere this registry has found.",
+  "notes": "Contributed by Dan York on 29 July 2026, having been filed after his IETF 126 survey was presented. The first entry in the registry to come from the community rather than the initial sweep, and the first whose provenance was upgraded by a contributor: Dan supplied the ICFS file number on 3 August 2026, and the count, the band edges and the lifetime now come from Schedule S instead of trade press. Provenance gap: the orbital geometry is in an attachment, \"Amazon Leo D2D Application - Orbital Parameters Attachment.zip\", which has not been opened, and the public version of Exhibit C (technical attachment and ODAR) has not been read. A confidential version of Exhibit C is withheld, so some technical detail will not become public. This record and globalstar-c3 will need reconciling if the Amazon acquisition of Globalstar completes: two systems, one spectrum position, one eventual owner. Whether the D2D constellation supersedes the C-3 plan or runs alongside it is not yet stated anywhere this registry has found.",
   "added": "2026-07",
-  "verified": "2026-07-30",
+  "verified": "2026-08-03",
   "contributor": "Dan York (Internet Society), via correspondence"
  },
  {
