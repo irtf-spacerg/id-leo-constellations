@@ -21,6 +21,13 @@ export GHPAGES_BRANCH_TTL := 36500
 LIBDIR := lib
 -include $(LIBDIR)/main.mk
 
+# lib/deps.mk points BUNDLE_PATH at lib/.gems relative to the repo root, and
+# warns that it does so. Bundler resolves a relative BUNDLE_PATH against the
+# Gemfile's own directory, which is lib/, so it looks in lib/lib/.gems, finds
+# nothing, and every kramdown-rfc run dies on a missing gem. An absolute path
+# is unambiguous wherever it is read from.
+BUNDLE_PATH := $(CURDIR)/$(LIBDIR)/.gems
+
 .PHONY: setup
 setup:
 	@if [ -f $(LIBDIR)/main.mk ]; then \
@@ -36,12 +43,16 @@ setup:
 	fi
 
 # ---------------------------------------------------------------- registry --
-VENV := .venv
-PY   := $(VENV)/bin/python
+# Not named VENV/PY: lib/venv.mk uses both for the draft toolchain's own
+# virtualenv, and make variables are global no matter where they are assigned.
+# Overriding them here left `make` building the draft with `.venv/python`,
+# which does not exist, and defining a second recipe for the `.venv` target.
+RVENV := .venv
+RPY   := $(RVENV)/bin/python
 
-$(VENV):
-	python3 -m venv $(VENV)
-	$(VENV)/bin/pip install --quiet --upgrade pip pyyaml
+$(RVENV):
+	python3 -m venv $(RVENV)
+	$(RVENV)/bin/pip install --quiet --upgrade pip pyyaml
 
 .PHONY: fmt fmt-wrap fmt-check registry-check registry-site registry-serve registry-analyse registry-clean
 
@@ -62,17 +73,17 @@ fmt-wrap:
 fmt-check:
 	python3 scripts/reflow.py --sentences --check $(FILES)
 
-registry-check: $(VENV)
-	$(PY) scripts/build_site.py --check
+registry-check: $(RVENV)
+	$(RPY) scripts/build_site.py --check
 
-registry-site: $(VENV)
-	$(PY) scripts/build_site.py
+registry-site: $(RVENV)
+	$(RPY) scripts/build_site.py
 
 registry-serve: registry-site
 	cd public && python3 -m http.server 8000
 
-registry-analyse: $(VENV)
-	$(PY) scripts/analyse.py
+registry-analyse: $(RVENV)
+	$(RPY) scripts/analyse.py
 
 registry-clean:
-	rm -rf public $(VENV)
+	rm -rf public $(RVENV)
