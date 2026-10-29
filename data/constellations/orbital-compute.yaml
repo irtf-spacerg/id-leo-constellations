@@ -4,7 +4,7 @@ family: orbital-compute
 aka:
 - Orbital
 - Orbital Compute, Inc.
-operator: Orbital Compute, Inc.
+operator: Orbital Compute Inc.
 parent: Orbital Compute, Inc.
 country: US
 jurisdiction:
@@ -12,10 +12,10 @@ jurisdiction:
 system_class: orbital-compute
 status: filed
 status_detail: >-
-  Application filed with the FCC in 2026 for up to 100,000 satellites totalling
-  10 GW of compute. No grant, nothing launched, and the company is at
-  pre-seed funding scale.
-status_asof: 2026-07
+  Application filed with the FCC on 24 June 2026 and accepted for filing
+  31 July 2026, for up to 100,000 satellites totalling 10 GW of compute. No
+  grant, nothing launched, and the company is at pre-seed funding scale.
+status_asof: 2026-10
 services:
 - orbital-compute
 orbit_regimes:
@@ -25,35 +25,43 @@ dual_use: civil
 filing:
   authority: FCC
   administration: USA
-  document: >-
-    Orbital Compute application for a 100,000-satellite orbital data centre
-    system, filed 2026 (ICFS file number and exact date not retrieved)
-  src: broadbandbreakfast-orbital-2026
-  note: >-
-    Neither the ICFS file number nor the precise filing date has been
-    retrieved. This is the weakest filing anchor in the registry and should be
-    the first thing a contributor fixes on this record.
+  file_number: SAT-LOA-20260624-00251
+  call_sign: S00867
+  src: fcc-orbital-pn-2026
 
 counts:
   filed:
     value: 100000
-    asof: 2026
-    src: broadbandbreakfast-orbital-2026
+    asof: 2026-06-24
+    src: fcc-orbital-pn-2026
+    note: '"Up to 100,000 satellites" in the accepted-for-filing notice.'
 
 regulatory:
 - authority: FCC
   country: US
   kind: application
+  file_number: SAT-LOA-20260624-00251
+  call_sign: S00867
   action: pending
-  date: 2026
+  date: 2026-06-24
   satellites: 100000
   scope: >-
-    Application to deploy up to 100,000 satellites in low Earth orbit with a
-    cumulative 10 GW of compute capacity. Each satellite is described as a
-    high-density server rack of roughly 2 tonnes with a 100 kW solar array
-    around 100 m across, in sun-synchronous orbit at 500-850 km, using passive
-    radiative cooling.
-  src: broadbandbreakfast-orbital-2026
+    Application for a constellation of up to 100,000 satellites operating as a
+    distributed data centre in space, in sun-synchronous circular orbits at
+    altitudes between 500 km and 850 km, communicating with other commercial
+    LEO systems over optical inter-satellite links. Back-up TT&C requested at
+    18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with
+    waivers of sections 25.156, 25.157, 25.164, 25.165 and 25.114(a)(1).
+  src: fcc-orbital-pn-2026
+- authority: FCC
+  country: US
+  kind: public-notice
+  file_number: SAT-LOA-20260624-00251
+  document: Report No. SAT-02024
+  action: pending
+  date: 2026-07-31
+  scope: Space Bureau accepts the application for filing.
+  src: fcc-orbital-pn-2026
 
 shells:
 - label: sso-500-850
@@ -61,11 +69,18 @@ shells:
   geometry_kind: sso-band
   code_status: not-representable
   code_note: >-
-    Sun-synchronous orbits between 500 and 850 km. An altitude range, no
-    inclination, no plane count, no per-plane population, and a local time of
-    the ascending node that the code cannot express.
-  src: broadbandbreakfast-orbital-2026
+    Sun-synchronous circular orbits between 500 and 850 km. An altitude range,
+    no inclination, no plane count, no per-plane population, and a local time
+    of the ascending node that the code cannot express.
+  src: fcc-orbital-pn-2026
 
+spectrum:
+- Ka
+- optical
+spectrum_detail: >-
+  Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space)
+  requested for back-up TT&C, per the accepted-for-filing notice. No service
+  spectrum of its own.
 isl: external
 isl_detail: >-
   The system as described has no communications payload of its own for bulk
@@ -80,6 +95,24 @@ target_completion: 2028
 target_completion_kind: operator-target
 
 sources:
+- id: fcc-orbital-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice Report No. SAT-02024, "Applications
+    Accepted for Filing" (ICFS SAT-LOA-20260624-00251, Call Sign S00867)
+  url: https://docs.fcc.gov/public/attachments/DOC-424016A1.pdf
+  date: 2026-07-31
+  retrieved: 2026-10-29
+- id: orbital-release-2026
+  grade: secondary
+  kind: operator-web
+  title: >-
+    Orbital, press release announcing its FCC filing for a 100,000-satellite
+    orbital compute constellation
+  url: https://orbital.inc/press/orbital-100000-constellation.html
+  date: 2026-06-30
+  retrieved: 2026-10-29
 - id: broadbandbreakfast-orbital-2026
   grade: secondary
   kind: trade-press
@@ -103,7 +136,7 @@ discrepancies:
 - field: counts.filed
   claim: '100,000 planned; 2027 demo mission, 2028 first full-scale satellite'
   claimed_by: york-ietf126
-  registry_value: '100,000 requested; application pending'
+  registry_value: '100,000 requested 24 June 2026; application pending'
   note: >-
     Count agrees. Worth recording alongside it, because the registry's job is
     to make scale legible rather than to editorialise: 100,000 satellites at
@@ -113,8 +146,19 @@ discrepancies:
     arithmetic.
 
 notes: >-
-  Provenance gap: no primary source, no file number, no precise filing date.
-  Reading the application is the whole task on this record.
+  The filing anchor, date, count and orbits now rest on the FCC's
+  accepted-for-filing notice. The design figures come from the operator's own
+  release (orbital-release-2026): each satellite a single high-density rack
+  of roughly eight servers, powered by about 100 kW from its own solar arrays,
+  about 100 m across and about 2 tonnes, 10 GW of compute at full scale, a
+  single-GPU demonstration payload on a Falcon 9 in 2027 and the first
+  purpose-built satellite, Orbital-1, in 2028.
+  The 8 July 2026 petition for a programmatic environmental review of orbital
+  data centres does not name this application, which was accepted for filing
+  three weeks later; the petition asks to cover similar projects filed after
+  it.
+  Provenance gap: the application narrative and technical attachments have
+  not been read.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-10-29
 contributor: Juan A. Fraire (Inria)

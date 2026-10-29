@@ -71,8 +71,8 @@ AUTHORITIES = {
     "NTIA", "none", "other",
 }
 REG_KINDS = {
-    "application", "license-grant", "modification", "waiver", "public-notice",
-    "denial", "termination",
+    "application", "amendment", "license-grant", "modification", "waiver",
+    "public-notice", "petition", "comment", "denial", "termination",
 }
 REG_ACTIONS = {
     "granted", "granted-in-part", "pending", "deferred", "dismissed", "denied",
@@ -106,8 +106,8 @@ SHELL_NUMERIC = ("altitude_km", "inclination_deg", "planes", "sats_per_plane",
 # A source's grade is a function of its kind, not a free choice.
 PRIMARY_KINDS = {
     "itu-filing", "itu-publication", "fcc-order", "fcc-application",
-    "fcc-public-notice", "regulator-docket", "operator-technical",
-    "treaty-registry",
+    "fcc-public-notice", "fcc-pleading", "regulator-docket",
+    "operator-technical", "treaty-registry",
 }
 SECONDARY_KINDS = {
     "operator-web", "trade-press", "tracker", "encyclopedia", "academic",

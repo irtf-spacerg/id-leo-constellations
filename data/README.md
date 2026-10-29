@@ -265,8 +265,9 @@ makes a record auditable years later.
 regulatory:
   - authority: FCC              # see enum below
     country: US
-    kind: license-grant         # application | license-grant | modification |
-                                # waiver | public-notice | denial | termination
+    kind: license-grant         # application | amendment | license-grant |
+                                # modification | waiver | public-notice |
+                                # petition | comment | denial | termination
     file_number: SAT-LOA-20200526-00055
     call_sign: S2992/3069
     document: DA 26-36
@@ -290,6 +291,16 @@ regulatory:
 
 Add values by PR when a new administration appears; the enum lives in
 `scripts/build_site.py`.
+
+**`kind`** — what the act is. `amendment` is a change to an application
+still pending; `modification` is a change to a licence already granted.
+`petition` and `comment` are pleadings by parties other than the regulator:
+a `petition` asks the regulator to act (deny, defer, condition, or prepare an
+environmental review), and a `comment` covers comments, objections,
+oppositions and replies. Record them with `action: pending` until the
+regulator responds. A pleading changes no number, but it is part of whether a
+filing becomes an authorisation, and it often appears nowhere in press
+coverage.
 
 **`milestones`** matter more than target dates in press releases. A regulatory
 milestone is a hard, dated, enforceable obligation with a known consequence
@@ -541,6 +552,7 @@ technical documentation submitted to a regulator:
 | `fcc-order` | FCC or Space Bureau order, authorisation, grant stamp |
 | `fcc-application` | ICFS/IBFS application, amendment, modification as filed |
 | `fcc-public-notice` | Accepted-for-filing notices, processing round notices |
+| `fcc-pleading` | Petition, comment, opposition, reply or ex parte notice filed in an FCC proceeding, by the applicant or a third party |
 | `regulator-docket` | Any other national regulator's docket, licence or decision |
 | `operator-technical` | Technical narrative, Schedule S, ICD, orbital debris assessment attached to a filing |
 | `treaty-registry` | UN Register of Objects Launched into Outer Space |
@@ -557,6 +569,10 @@ but it must be marked, and it must not stand in for a filing that exists:
 | `academic` | Papers, including the constellation-code draft's own literature values |
 | `analyst` | Market research, consultancy reports |
 | `presentation` | Conference or meeting slides, including Dan York's IETF 126 deck |
+
+An `fcc-pleading` is primary for what the pleading itself says and asks for.
+When it describes someone else's application, cite that application or its
+public notice for the facts about it, where either can be reached.
 
 Note that `operator-web` is **secondary**. A number on a company's marketing
 page is not a filing; when the two disagree, the filing wins and the

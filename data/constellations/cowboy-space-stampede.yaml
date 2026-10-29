@@ -3,18 +3,21 @@ slug: cowboy-space-stampede
 family: cowboy-space
 aka:
 - Stampede
-operator: Cowboy Space
-parent: Cowboy Space (San Carlos, California)
+- Stampede NGSO System
+- Aetherflux
+operator: Cowboy Space Corp.
+parent: Cowboy Space Corp. (formerly Aetherflux), San Carlos, California
 country: US
 jurisdiction:
 - US
 system_class: orbital-compute
 status: filed
 status_detail: >-
-  Application filed 14 May 2026. The company states the satellite design is
+  Application filed 11 May 2026 and accepted for filing 12 June 2026; no
+  grant. The company is reported to state that the satellite design is
   unfinished and that a licence modification will be needed before service,
   which is unusually explicit about how provisional the filing is.
-status_asof: 2026-07
+status_asof: 2026-10
 services:
 - orbital-compute
 orbit_regimes:
@@ -24,32 +27,56 @@ dual_use: civil
 filing:
   authority: FCC
   administration: USA
-  document: >-
-    Cowboy Space application for the Stampede orbital data centre
-    constellation, filed 14 May 2026 (ICFS file number not retrieved)
-  src: spacenews-cowboy-2026
-  note: The ICFS file number has not been retrieved.
+  file_number: SAT-LOA-20260323-00135
+  call_sign: S00851
+  src: fcc-cowboy-pn-2026
 
 counts:
   filed:
     value: 20000
-    asof: 2026-05-14
-    src: spacenews-cowboy-2026
+    asof: 2026-05-11
+    src: fcc-cowboy-pn-2026
 
 regulatory:
 - authority: FCC
   country: US
   kind: application
+  file_number: SAT-LOA-20260323-00135
+  call_sign: S00851
   action: pending
-  date: 2026-05-14
+  date: 2026-05-11
   satellites: 20000
   scope: >-
-    Application for up to 20,000 orbital data centre satellites in dawn-dusk
-    sun-synchronous orbits in shells between 700 and 1,000 km. The application
-    provides few details because the satellite design is not finished, and
-    states that a licence modification will be required before service.
-    Launches are said to begin in 2028.
-  src: spacenews-cowboy-2026
+    Application for a constellation of 20,000 NGSO satellites operating as a
+    system of in-orbit data centres in dawn-dusk sun-synchronous orbits at
+    altitudes between 700 and 1,000 km. TT&C requested at 18.8-19.3 GHz
+    (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with waivers of
+    sections 25.155(b), 25.157(c), 25.164(b), 25.165, 2.106(a), 25.202(g)(1)
+    and 25.114(a)(1).
+  src: fcc-cowboy-pn-2026
+- authority: FCC
+  country: US
+  kind: public-notice
+  file_number: SAT-LOA-20260323-00135
+  document: Report No. SAT-02007
+  action: pending
+  date: 2026-06-12
+  scope: Space Bureau accepts the application for filing.
+  src: fcc-cowboy-pn-2026
+- authority: FCC
+  country: US
+  kind: petition
+  file_number: SAT-LOA-20260323-00135
+  action: pending
+  date: 2026-07-08
+  scope: >-
+    DarkSky International, Environment America and PEER petition the FCC to
+    prepare a programmatic environmental impact statement under NEPA covering
+    all pending orbital data centre applications (SpaceX, Starcloud, Blue
+    Origin, Cowboy Space), and to pause licensing until it is complete. In the
+    alternative the petition asks to be treated as a petition to deny each
+    application under 47 CFR 1.1313(a).
+  src: darksky-peis-petition-2026
 
 shells:
 - label: dawn-dusk-700-1000
@@ -62,14 +89,49 @@ shells:
     representation in the code. The dawn-dusk choice is the whole point of the
     design, since it maximises solar exposure, and it is precisely the
     parameter the notation cannot carry.
-  src: spacenews-cowboy-2026
+  src: fcc-cowboy-pn-2026
 
+spectrum:
+- Ka
+spectrum_detail: >-
+  Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space)
+  for TT&C, per the accepted-for-filing notice. No service bands are listed.
 isl: unknown
 
 first_launch: 2028
 target_completion_kind: operator-target
 
 sources:
+- id: fcc-cowboy-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice Report No. SAT-02007, "Applications
+    Accepted for Filing" (ICFS SAT-LOA-20260323-00135, Call Sign S00851)
+  url: https://docs.fcc.gov/public/attachments/DOC-422332A1.pdf
+  date: 2026-06-12
+  retrieved: 2026-10-29
+- id: cowboy-exparte-2026
+  grade: primary
+  kind: fcc-pleading
+  title: >-
+    Cowboy Space Corp., ex parte notice re Application for Stampede NGSO
+    System, Call Sign S00851, ICFS File No. SAT-LOA-20260323-00135, with
+    attached "Cowboy Space Overview Deck" (June 2026)
+  url: https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/a07b7e5fcfa187105791bf252f851cc0
+  date: 2026-06-23
+  retrieved: 2026-10-29
+- id: darksky-peis-petition-2026
+  grade: primary
+  kind: fcc-pleading
+  title: >-
+    DarkSky International, Environment America and Public Employees for
+    Environmental Responsibility, "Petition to Initiate Programmatic
+    Environmental Impact Statement on Orbital Data Center Applications",
+    submitted to the FCC (copy hosted by Earthjustice)
+  url: https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf
+  date: 2026-07-08
+  retrieved: 2026-10-29
 - id: spacenews-cowboy-2026
   grade: secondary
   kind: trade-press
@@ -92,21 +154,32 @@ discrepancies:
 - field: counts.filed
   claim: '20,000 planned; year started/planned operation unknown'
   claimed_by: york-ietf126
-  registry_value: '20,000 requested 14 May 2026; launches stated to begin 2028'
+  registry_value: >-
+    20,000 requested 11 May 2026, accepted for filing 12 June 2026; launches
+    stated to begin 2028
   note: >-
     Count agrees, and the registry can fill in the timeline the deck left
     blank.
 
 notes: >-
-  Provenance gap: no primary source and no file number.
+  Count, orbits, licensee name, file number and call sign now rest on the
+  FCC's accepted-for-filing notice. The ICFS file number carries the date
+  23 March 2026, seven weeks before the date filed; the notice gives 11 May
+  2026, which is the date used here. The former company name, Aetherflux, is
+  stated in the overview deck attached to the applicant's June 2026 ex parte
+  notice (cowboy-exparte-2026).
+  Provenance gap: the application itself has not been read. The statements
+  that the design is unfinished, that a modification will be needed before
+  service, and that launches begin in 2028 rest on SpaceNews.
   This record is worth keeping in view for a reason beyond its size. The
-  company told the regulator that the satellite design is unfinished and that
-  a modification will be needed before service. That is a filing made to hold
-  a place in a processing round, stated as such, by the applicant. It is the
-  cleanest documented instance in this registry of the mechanism Dan York and
-  Nitinder Mohan discussed at IETF 126: filings as spectrum positioning rather
-  than deployment commitments. Recording it as `filed` and never as
-  `licensed` is exactly the distinction the registry exists to preserve.
+  company is reported to have told the regulator that the satellite design is
+  unfinished and that a modification will be needed before service. That is a
+  filing made to hold a place in a processing round, stated as such, by the
+  applicant. It is the cleanest documented instance in this registry of the
+  mechanism Dan York and Nitinder Mohan discussed at IETF 126: filings as
+  spectrum positioning rather than deployment commitments. Recording it as
+  `filed` and never as `licensed` is exactly the distinction the registry
+  exists to preserve.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-10-29
 contributor: Juan A. Fraire (Inria)

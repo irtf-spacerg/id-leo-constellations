@@ -12,8 +12,10 @@ system_class: orbital-compute
 status: filed
 status_detail: >-
   One demonstrator on orbit (Starcloud-1, November 2025). The 88,000-satellite
-  system is an FCC application accepted for filing in March 2026; no grant.
-status_asof: 2026-07
+  system is an FCC application filed 4 February 2026 and accepted for filing
+  13 March 2026; no grant. A July 2026 petition asks the FCC to pause all
+  orbital data centre licensing.
+status_asof: 2026-10
 services:
 - orbital-compute
 orbit_regimes:
@@ -24,7 +26,8 @@ filing:
   authority: FCC
   administration: USA
   file_number: SAT-LOA-20260202-00073
-  src: spacenews-starcloud-2026
+  call_sign: S00803
+  src: fcc-starcloud-pn-2026
 
 counts:
   launched:
@@ -38,27 +41,51 @@ counts:
   filed:
     value: 88000
     asof: 2026-03-13
-    src: spacenews-starcloud-2026
+    src: fcc-starcloud-pn-2026
     note: >-
-      Requested in the application; nothing granted, so the whole figure is
-      filed and none of it licensed.
+      "Up to 88,000 satellites" in the accepted-for-filing notice; nothing
+      granted, so the whole figure is filed and none of it licensed.
 
 regulatory:
 - authority: FCC
   country: US
   kind: application
   file_number: SAT-LOA-20260202-00073
+  call_sign: S00803
   action: pending
-  date: 2026-02-02
+  date: 2026-02-04
   satellites: 88000
   scope: >-
-    Application to operate up to 88,000 orbital data centre satellites in a
-    select set of narrow orbital shells between 600 and 850 km, each up to
-    50 km thick, in dusk-dawn sun-synchronous orbits. Requests Ka-band
-    spectrum for telemetry, tracking and command on a non-interference basis
-    only; bulk data movement is to rely on optical inter-satellite links to
-    third-party broadband constellations. Accepted for filing 13 March 2026.
-  src: spacenews-starcloud-2026
+    Application for a constellation of up to 88,000 satellites operating as a
+    distributed data centre in space, in sun-synchronous orbit at altitudes
+    between 600 km and 850 km, communicating with other commercial LEO
+    systems over optical inter-satellite links. Back-up TT&C requested at
+    18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with
+    waivers of sections 25.156, 25.157, 25.164, 25.165 and 25.114(a)(1).
+  src: fcc-starcloud-pn-2026
+- authority: FCC
+  country: US
+  kind: public-notice
+  file_number: SAT-LOA-20260202-00073
+  document: Report No. SAT-01982
+  action: pending
+  date: 2026-03-13
+  scope: Space Bureau accepts the application for filing.
+  src: fcc-starcloud-pn-2026
+- authority: FCC
+  country: US
+  kind: petition
+  file_number: SAT-LOA-20260202-00073
+  action: pending
+  date: 2026-07-08
+  scope: >-
+    DarkSky International, Environment America and PEER petition the FCC to
+    prepare a programmatic environmental impact statement under NEPA covering
+    all pending orbital data centre applications (SpaceX, Starcloud, Blue
+    Origin, Cowboy Space), and to pause licensing until it is complete. In the
+    alternative the petition asks to be treated as a petition to deny each
+    application under 47 CFR 1.1313(a).
+  src: darksky-peis-petition-2026
 
 shells:
 - label: proposed-sso-band
@@ -79,9 +106,11 @@ spectrum:
 - Ka
 - optical
 spectrum_detail: >-
-  Ka-band requested for TT&C on a non-interference basis. No service spectrum
-  of its own: user data is to move over optical inter-satellite links to
-  Starlink, Amazon Leo and Blue Origin TeraWave.
+  Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space)
+  requested for back-up TT&C, per the accepted-for-filing notice; trade press
+  reports it as on a non-interference basis. No service spectrum of its own:
+  user data is to move over optical inter-satellite links to Starlink, Amazon
+  Leo and Blue Origin TeraWave.
 isl: optical
 isl_detail: >-
   External dependency. The system as filed has no independent path to the
@@ -93,6 +122,26 @@ isl_detail: >-
 first_launch: 2025-11-02
 
 sources:
+- id: fcc-starcloud-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice Report No. SAT-01982, "Applications
+    Accepted for Filing" (ICFS SAT-LOA-20260202-00073, Call Sign S00803)
+  url: https://docs.fcc.gov/public/attachments/DOC-419509A1.pdf
+  date: 2026-03-13
+  retrieved: 2026-10-29
+- id: darksky-peis-petition-2026
+  grade: primary
+  kind: fcc-pleading
+  title: >-
+    DarkSky International, Environment America and Public Employees for
+    Environmental Responsibility, "Petition to Initiate Programmatic
+    Environmental Impact Statement on Orbital Data Center Applications",
+    submitted to the FCC (copy hosted by Earthjustice)
+  url: https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf
+  date: 2026-07-08
+  retrieved: 2026-10-29
 - id: spacenews-starcloud-2026
   grade: secondary
   kind: trade-press
@@ -119,24 +168,24 @@ discrepancies:
   claimed_by: york-ietf126
   registry_value: '88,000 requested; application pending, no grant'
   note: >-
-    The figure agrees with the application as reported. The disagreement is
+    The figure agrees with the FCC's accepted-for-filing notice. The
+    disagreement is
     about the axis, not the number: an accepted-for-filing application
     establishes a place in a processing round, not an authorisation. This
     record therefore contributes 88,000 to counts.filed and nothing to
     counts.licensed.
 
 notes: >-
-  Provenance gap: this record has no primary source. Everything except the
-  demonstrator launch rests on one trade-press report of the FCC application.
-  The application itself (ICFS SAT-LOA-20260202-00073) is public and should be
-  read; the accepted-for-filing public notice would also be a primary source
-  for the date. Until then every number here is secondary and the record
-  should be read as such.
-  Kept in the registry despite the weak provenance because orbital data centre
-  filings are a large and fast-growing share of the aggregate satellite count,
-  and because this system as filed depends entirely on other operators'
-  optical crosslinks - which is exactly the kind of coupling the group should
-  be able to see.
+  The filing anchor, call sign, filing date and requested count now rest on
+  the FCC's accepted-for-filing notice. The notice gives 4 February 2026 as the
+  date filed, two days after the date carried in the file number.
+  Provenance gap: the application itself (ICFS SAT-LOA-20260202-00073) has not
+  been read. The shell description (narrow shells up to 50 km thick, dusk-dawn
+  local time) and the demonstrator launch still rest on trade press.
+  Orbital data centre filings are a large and fast-growing share of the
+  aggregate satellite count, and this system as filed depends entirely on
+  other operators' optical crosslinks, which is exactly the kind of coupling
+  the group should be able to see.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-10-29
 contributor: Juan A. Fraire (Inria)

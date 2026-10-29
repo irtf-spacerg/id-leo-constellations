@@ -89,8 +89,9 @@ regulatory:
 - authority: FCC                 # FCC | Ofcom | ANFR | BNetzA | IN-SPACe |
                                  # MIIT | Roskomnadzor | ... | other
   country: US
-  kind: license-grant            # application | license-grant | modification |
-                                 # waiver | public-notice | denial | termination
+  kind: license-grant            # application | amendment | license-grant |
+                                 # modification | waiver | public-notice |
+                                 # petition | comment | denial | termination
   file_number: SAT-LOA-00000000-00000
   call_sign: S0000
   document: FCC 00-00

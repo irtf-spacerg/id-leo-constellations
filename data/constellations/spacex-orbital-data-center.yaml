@@ -65,6 +65,20 @@ regulatory:
   scope: >-
     Space Bureau accepts the application for filing and seeks comment.
   src: fcc-odc-pn-2026
+- authority: FCC
+  country: US
+  kind: petition
+  file_number: SAT-LOA-20260108-00016
+  action: pending
+  date: 2026-07-08
+  scope: >-
+    DarkSky International, Environment America and PEER petition the FCC to
+    prepare a programmatic environmental impact statement under NEPA covering
+    all pending orbital data centre applications (SpaceX, Starcloud, Blue
+    Origin, Cowboy Space), and to pause licensing until it is complete. In the
+    alternative the petition asks to be treated as a petition to deny each
+    application under 47 CFR 1.1313(a).
+  src: darksky-peis-petition-2026
 
 shells:
 - label: odc-band
@@ -107,6 +121,17 @@ sources:
   url: https://docs.fcc.gov/public/attachments/DA-26-113A1.txt
   date: 2026-02-04
   retrieved: 2026-07-29
+- id: darksky-peis-petition-2026
+  grade: primary
+  kind: fcc-pleading
+  title: >-
+    DarkSky International, Environment America and Public Employees for
+    Environmental Responsibility, "Petition to Initiate Programmatic
+    Environmental Impact Statement on Orbital Data Center Applications",
+    submitted to the FCC (copy hosted by Earthjustice)
+  url: https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf
+  date: 2026-07-08
+  retrieved: 2026-10-29
 - id: mcdowell-conlist
   grade: secondary
   kind: tracker

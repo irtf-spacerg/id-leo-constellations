@@ -9,12 +9,12 @@ country: US
 jurisdiction:
 - US
 system_class: broadband
-status: announced
+status: filed
 status_detail: >-
-  Announced January 2026, with deployment stated to begin Q4 2027. No FCC file
-  number has been retrieved for TeraWave itself, though it is referred to in
-  the Project Sunrise filing as the optical backbone that system depends on.
-status_asof: 2026-07
+  Application filed 21 January 2026 and accepted for filing 27 February 2026;
+  no grant. Deployment stated to begin Q4 2027. Blue Origin's Project Sunrise
+  filing names TeraWave as the optical backbone that system depends on.
+status_asof: 2026-10
 services:
 - broadband
 - backhaul
@@ -23,23 +23,49 @@ orbit_regimes:
 - MEO
 dual_use: civil
 
-filing_absent: >-
-  No filing reference retrieved. TeraWave is described in trade press as an
-  announced constellation and is referenced in Blue Origin's Project Sunrise
-  FCC application as the communications network Sunrise will relay through,
-  but no application or grant for TeraWave itself has been located in this
-  pass. It may well exist; this is a gap in our work, not a statement that
-  none exists.
+filing:
+  authority: FCC
+  administration: USA
+  file_number: SAT-LOA-20260120-00033
+  call_sign: S00788
+  src: fcc-terawave-pn-2026
 
 counts:
-  announced:
+  filed:
     value: 5408
-    asof: 2026-03
-    src: spacenews-blue-sunrise-2026
+    asof: 2026-01-21
+    src: satellitetoday-terawave-2026
+    breakdown:
+    - {label: 'LEO', value: 5280, src: satellitetoday-terawave-2026}
+    - {label: 'MEO', value: 128, src: satellitetoday-terawave-2026}
     note: >-
-      Reported alongside the Project Sunrise filing. The IETF 126 deck gives
-      5,348, with a breakdown of 5,310 LEO and 128 MEO that sums to 5,438.
-      Three mutually inconsistent figures; see discrepancies.
+      The FCC's accepted-for-filing notice confirms the application but states
+      no satellite count. The figure is the one trade press reported with the
+      filing; the application itself would settle it.
+
+regulatory:
+- authority: FCC
+  country: US
+  kind: application
+  file_number: SAT-LOA-20260120-00033
+  call_sign: S00788
+  action: pending
+  date: 2026-01-21
+  scope: >-
+    Application for a licence to deploy and operate an NGSO FSS system in both
+    LEO and MEO, operating in the Q/V-, E-, S- and Ka-bands, with waivers of
+    sections 25.155(b), 25.257(c), 2.106(a), 25.146(a)(1), 25.112(a) and
+    25.114(c).
+  src: fcc-terawave-pn-2026
+- authority: FCC
+  country: US
+  kind: public-notice
+  file_number: SAT-LOA-20260120-00033
+  document: Report No. SAT-01978
+  action: pending
+  date: 2026-02-27
+  scope: Space Bureau accepts the application for filing.
+  src: fcc-terawave-pn-2026
 
 shells:
 - label: leo-meo
@@ -47,10 +73,24 @@ shells:
   geometry_kind: unknown
   code_status: unknown
   code_note: >-
-    Multi-orbit, with a LEO majority and a small MEO component. No altitudes,
-    inclinations or plane structure traced.
-  src: spacenews-blue-sunrise-2026
+    Multi-orbit, reported as 5,280 satellites in LEO and 128 in MEO. No
+    altitudes, inclinations or plane structure traced.
+  src: satellitetoday-terawave-2026
 
+spectrum:
+- Q
+- V
+- E
+- Ka
+- S
+- optical
+spectrum_detail: >-
+  Per the accepted-for-filing notice: 37.5-42.0 GHz and 71-76 GHz
+  (space-to-Earth); 47.2-50.2 GHz, 50.4-51.4 GHz and 81-86 GHz
+  (Earth-to-space); 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz
+  (Earth-to-space); 2200-2290 MHz (space-to-Earth) and 2025-2110 MHz
+  (Earth-to-space). Trade press reports Q/V-band for user links and E-band
+  for gateways.
 isl: optical
 isl_detail: >-
   Optical downlinks reported to provide up to 6 Tbps. TeraWave is the intended
@@ -71,6 +111,24 @@ launch:
   src: york-ietf126
 
 sources:
+- id: fcc-terawave-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice Report No. SAT-01978, "Applications
+    Accepted for Filing" (ICFS SAT-LOA-20260120-00033, Call Sign S00788)
+  url: https://docs.fcc.gov/public/attachments/DOC-419052A1.pdf
+  date: 2026-02-27
+  retrieved: 2026-10-29
+- id: satellitetoday-terawave-2026
+  grade: secondary
+  kind: trade-press
+  title: >-
+    Via Satellite (Satellite Today), "Blue Origin Reveals TeraWave LEO/MEO
+    Constellation Out of the Blue"
+  url: https://www.satellitetoday.com/connectivity/2026/01/21/blue-origin-reveals-terawave-leo-meo-constellation-out-of-the-blue
+  date: 2026-01-21
+  retrieved: 2026-10-29
 - id: spacenews-blue-sunrise-2026
   grade: secondary
   kind: trade-press
@@ -89,24 +147,26 @@ sources:
   retrieved: 2026-07-29
 
 discrepancies:
-- field: counts.announced
+- field: counts.filed
   claim: '5,348 total; 5,310 LEO; 128 MEO'
   claimed_by: york-ietf126
-  registry_value: '5,408 announced (also disputed)'
+  registry_value: '5,408 filed (5,280 LEO and 128 MEO), as reported with the filing'
   note: >-
     The deck's own figures do not reconcile: 5,310 + 128 = 5,438, not 5,348.
-    Trade press reporting the Sunrise filing gives 5,408. Three numbers, no
-    filing, no way to choose between them. Recorded as 5,408 only because that
-    figure appears in reporting tied to a document, and flagged here so the
-    uncertainty is visible rather than averaged away.
+    Satellite Today's report of the January 2026 application gives 5,280 LEO
+    and 128 MEO, which sums to 5,408 and agrees with the SpaceNews figure
+    (spacenews-blue-sunrise-2026). The FCC notice states no count, so the
+    application itself remains the tie-breaker.
 
 notes: >-
-  Provenance gap: no primary source and no filing reference. Everything here
-  is trade press and a conference slide, and the headline count is disputed
-  three ways. Locating a TeraWave application in ICFS would fix all of it.
-  Recorded despite that because Project Sunrise, which does have a filing,
-  depends on TeraWave for its ground path. A registry that carried Sunrise but
-  not TeraWave would hide the dependency.
+  Until October 2026 this record carried `filing_absent:` because no
+  application had been located. The application is SAT-LOA-20260120-00033,
+  call sign S00788, accepted for filing on 27 February 2026, so the record
+  now anchors on it and sits on the pending-application rung.
+  Provenance gap: the application narrative and Schedule S have not been read.
+  The satellite count and the LEO/MEO split rest on trade press, and the shell
+  structure is untraced. Third-party mirrors of ICFS show a September 2026
+  amendment, SAT-AMD-20260905-00360, which has not been read.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-10-29
 contributor: Juan A. Fraire (Inria)

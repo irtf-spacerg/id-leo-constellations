@@ -42,14 +42,14 @@ regulatory commitment it has demonstrably reached:
 
 | Rung | Satellites | Records |
 |---|---:|---:|
-| In orbit | 14,585 | 12 |
+| In orbit | 14,586 | 13 |
 | Authorised by a national regulator | 10,330 | 6 |
-| Applied for, not granted | 1,365,905 | 8 |
+| Applied for, not granted | 1,371,313 | 9 |
 | ITU coordination request only | 6,080 | 1 |
 | ITU advance publication only | 206,092 | 4 |
-| Announced, no filing found | 5,408 | 2 |
+| Announced, no filing found | 0 | 0 |
 
-Of roughly 1.64 million satellites described as planned, under one per cent
+Of roughly 1.65 million satellites described as planned, under one per cent
 are in orbit and about two per cent are covered by a national licence with
 milestones and a bond behind it. Eighty-three per cent sit in applications no
 regulator has granted, and a further thirteen per cent at the weakest ITU

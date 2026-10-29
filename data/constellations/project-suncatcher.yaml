@@ -9,13 +9,14 @@ country: US
 jurisdiction:
 - US
 system_class: orbital-compute
-status: announced
+status: demonstrator
 status_detail: >-
   A research programme, announced November 2025, to put Google TPUs in orbit.
-  Two prototype satellites are to be built and operated by Planet Labs for an
-  in-orbit demonstration in early 2027. No constellation size has been stated
-  and no filing has been identified.
-status_asof: 2026-07
+  One prototype satellite, developed with Planet, launched on 1 October 2026
+  on SpaceX Transporter-18 and was reported healthy and in calibration on
+  20 October. A two-satellite optical-link test is planned for 2027. No
+  constellation size has been stated and no filing has been identified.
+status_asof: 2026-10
 services:
 - orbital-compute
 orbit_regimes:
@@ -23,12 +24,20 @@ orbit_regimes:
 dual_use: civil
 
 filing_absent: >-
-  No filing identified. The programme is presented as research with a
-  two-satellite demonstration, and the demonstration satellites are to be
-  built and operated by Planet Labs, so any near-term spectrum authority would
-  most likely sit under Planet's existing licences rather than a new Google
-  filing. There is nothing yet to file for: no constellation size has been
-  announced.
+  No filing identified for a Suncatcher constellation, and there is nothing
+  yet to file for: no constellation size has been announced. The prototype in
+  orbit was developed with Planet Labs, so its spectrum authority most likely
+  sits under Planet's licences rather than a new Google filing; that
+  authorisation has not been identified (see notes).
+
+counts:
+  launched:
+    value: 1
+    asof: 2026-10-20
+    src: planet-firstlight-2026
+    note: >-
+      The TPU prototype, launched 1 October 2026 on Transporter-18. It is a
+      test article; no constellation satellite has flown.
 
 shells:
 - label: compute-cluster
@@ -48,18 +57,39 @@ shells:
 isl: optical
 isl_detail: >-
   Optical inter-satellite links are central to the concept, used to distribute
-  machine-learning workloads across a tightly spaced cluster. Validating them
-  is one of the stated goals of the 2027 demonstration.
+  machine-learning workloads across a tightly spaced cluster. The 2026
+  prototype tests TPUs only; validating the links is the goal of the
+  two-satellite test planned for 2027.
 
-first_launch: 2027
+first_launch: 2026-10-01
 target_completion_kind: operator-target
 launch:
   providers:
-  - Planet Labs
-  cadence: Two prototype satellites planned for early 2027.
-  src: dcd-suncatcher-2025
+  - SpaceX
+  vehicles:
+  - Falcon 9
+  cadence: >-
+    One prototype on the Transporter-18 rideshare, 1 October 2026; two
+    satellites planned for 2027 to test laser links.
+  src: google-suncatcher-2026
 
 sources:
+- id: planet-firstlight-2026
+  grade: secondary
+  kind: operator-web
+  title: >-
+    Planet, "Sharing First Light Images From Tanager-2 and SuperDove Flock 4J"
+  url: https://www.planet.com/pulse/sharing-first-light-images-from-tanager-2-and-superdove-flock-4j/
+  date: 2026-10-20
+  retrieved: 2026-10-29
+- id: google-suncatcher-2026
+  grade: secondary
+  kind: operator-web
+  title: >-
+    Google, "Behind Project Suncatcher, our moonshot to put AI in space"
+  url: https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/
+  date: 2026-09-24
+  retrieved: 2026-10-29
 - id: dcd-suncatcher-2025
   grade: secondary
   kind: trade-press
@@ -93,21 +123,26 @@ discrepancies:
 - field: counts
   claim: '? satellites planned; 2027 prototype?'
   claimed_by: york-ietf126
-  registry_value: 'No count; two demonstration satellites in early 2027'
+  registry_value: >-
+    No constellation count; one prototype launched 1 October 2026, two
+    satellites planned for 2027
   note: >-
     The deck records the count as a question mark, which is right. This
-    registry does the same by leaving `counts` empty rather than writing zero,
-    and adds the one firm number available: two prototypes.
+    registry does the same by recording no constellation figure rather than
+    writing zero. The prototype flew earlier than the deck's 2027.
 
 notes: >-
-  Included with an empty `counts` block on purpose. An announced programme
-  from an operator of this size, with no stated constellation size, is a real
+  Counts carry only the launched prototype. An announced programme from an
+  operator of this size, with no stated constellation size, is a real
   category and the honest representation of it is absence. Writing a
   speculative number here would corrupt exactly the aggregate the registry is
-  meant to make trustworthy.
-  Provenance gap: the Google Research post describing the system design has
-  been cited but not read in detail; it would give the cluster geometry and
-  the power and thermal assumptions.
+  meant to make trustworthy. The `demonstrator` status places this record on
+  the in-orbit rung with one satellite, which is all it has.
+  Provenance gap: the FCC authority under which the prototype operates
+  (presumably a Planet licence or modification) has not been identified, and
+  the Google Research post describing the system design has been cited but
+  not read in detail; it would give the cluster geometry and the power and
+  thermal assumptions.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-10-29
 contributor: Juan A. Fraire (Inria)

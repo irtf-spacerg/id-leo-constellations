@@ -12,9 +12,11 @@ jurisdiction:
 system_class: orbital-compute
 status: filed
 status_detail: >-
-  Application filed 19 March 2026; no grant. NASA filed an objection in May
-  2026. Nothing launched.
-status_asof: 2026-07
+  Application filed 19 March 2026, accepted for filing 17 April 2026, amended
+  18 September 2026; no grant. NASA filed an objection in May 2026, and a
+  July 2026 petition asks the FCC to pause all orbital data centre licensing.
+  Nothing launched.
+status_asof: 2026-10
 services:
 - orbital-compute
 orbit_regimes:
@@ -24,39 +26,49 @@ dual_use: civil
 filing:
   authority: FCC
   administration: USA
-  document: >-
-    Blue Origin application for the Project Sunrise orbital data center
-    system, filed 19 March 2026 (ICFS file number not retrieved)
-  src: geekwire-sunrise-2026
-  note: >-
-    The application is public and its filing date is consistently reported,
-    but its ICFS file number has not been retrieved in this pass. Recorded as
-    a document description so the record still anchors on a specific,
-    findable act.
+  file_number: SAT-LOA-20260310-00118
+  call_sign: S00830
+  src: fcc-sunrise-pn-2026
 
 counts:
   filed:
     value: 51600
-    asof: 2026-03-19
-    src: geekwire-sunrise-2026
+    asof: 2026-09-18
+    src: fcc-sunrise-pn-2026
+    note: >-
+      "Up to 51,600 satellites" in the accepted-for-filing notice. The
+      September 2026 amendment restates N = 51,600 in its interference
+      analysis and leaves the satellite count unchanged.
 
 regulatory:
 - authority: FCC
   country: US
   kind: application
+  file_number: SAT-LOA-20260310-00118
+  call_sign: S00830
   action: pending
   date: 2026-03-19
   satellites: 51600
   scope: >-
-    Application for up to 51,600 orbital data centre satellites in
-    sun-synchronous orbits between 500 km and 1,800 km, with between 300 and
-    1,000 satellites per orbital plane. Ka-band requested for telemetry,
-    tracking and command; user data to move over optical inter-satellite links
-    into Blue Origin's TeraWave network and thence to the ground.
-  src: geekwire-sunrise-2026
+    Application for up to 51,600 satellites ("Project Sunrise") operating as a
+    data centre in space, in circular sun-synchronous orbits between 500 km
+    and 1,800 km, with approximately 300 to 1,000 satellites per orbital
+    plane. TT&C requested at 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz
+    (Earth-to-space), with waivers of sections 25.155(b), 25.157(c), 25.164,
+    25.165, 25.112(a) and 25.114(c).
+  src: fcc-sunrise-pn-2026
 - authority: FCC
   country: US
-  kind: application
+  kind: public-notice
+  file_number: SAT-LOA-20260310-00118
+  document: Report No. SAT-01992
+  action: pending
+  date: 2026-04-17
+  scope: Space Bureau accepts the application for filing.
+  src: fcc-sunrise-pn-2026
+- authority: FCC
+  country: US
+  kind: comment
   action: pending
   date: 2026-05
   scope: >-
@@ -64,6 +76,36 @@ regulatory:
     read; NASA objections to large constellations have historically concerned
     conjunction risk with science missions and with the ISS.
   src: satnews-nasa-sunrise-2026
+- authority: FCC
+  country: US
+  kind: petition
+  file_number: SAT-LOA-20260310-00118
+  action: pending
+  date: 2026-07-08
+  scope: >-
+    DarkSky International, Environment America and PEER petition the FCC to
+    prepare a programmatic environmental impact statement under NEPA covering
+    all pending orbital data centre applications (SpaceX, Starcloud, Blue
+    Origin, Cowboy Space), and to pause licensing until it is complete. In the
+    alternative the petition asks to be treated as a petition to deny each
+    application under 47 CFR 1.1313(a).
+  src: darksky-peis-petition-2026
+- authority: FCC
+  country: US
+  kind: amendment
+  file_number: SAT-LOA-20260310-00118
+  call_sign: S00830
+  action: pending
+  date: 2026-09-18
+  satellites: 51600
+  scope: >-
+    Replaces the dual-horn/omnidirectional antennas with high-gain directional
+    parabolic antennas (0.85 m and 0.65 m reflectors) for TT&C and
+    communications at 18.8-19.3 GHz and 28.6-29.1 GHz, with a revised
+    Schedule S and a waiver request under 25.114(c). Constellation
+    architecture, shells, planes, satellite count and payload are stated to
+    be unchanged.
+  src: bo-sunrise-amd-2026
 
 shells:
 - label: sso-500-1800
@@ -79,22 +121,55 @@ shells:
     per-plane figure: 1,000 satellites in a single plane is two orders of
     magnitude beyond anything in the operational shells in this registry, and
     worth flagging to anyone modelling intra-plane topology.
-  src: geekwire-sunrise-2026
+  src: fcc-sunrise-pn-2026
 
 spectrum:
 - Ka
 - optical
 spectrum_detail: >-
-  Ka-band for TT&C only. No service spectrum of its own; user traffic is to
-  travel by optical link into TeraWave.
+  Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space).
+  The accepted-for-filing notice lists these bands for TT&C; the September
+  2026 amendment describes them as carrying both TT&C and communications
+  through the new directional antenna. Bulk user traffic is to travel by
+  optical link into TeraWave.
 isl: external
 isl_detail: >-
-  Optical links into Blue Origin's own TeraWave constellation, which is itself
-  only announced and has no filing reference in this registry. The compute
-  system's path to the ground therefore depends on a system whose existence is
-  not yet documented in a docket.
+  Optical links into Blue Origin's own TeraWave constellation, which has its
+  own pending FCC application (SAT-LOA-20260120-00033) and no grant. The
+  compute system's path to the ground therefore depends on a second
+  authorisation that does not yet exist.
 
 sources:
+- id: fcc-sunrise-pn-2026
+  grade: primary
+  kind: fcc-public-notice
+  title: >-
+    FCC Space Bureau, Public Notice Report No. SAT-01992, "Applications
+    Accepted for Filing" (ICFS SAT-LOA-20260310-00118, Call Sign S00830)
+  url: https://docs.fcc.gov/public/attachments/DOC-420864A1.pdf
+  date: 2026-04-17
+  retrieved: 2026-10-29
+- id: bo-sunrise-amd-2026
+  grade: primary
+  kind: fcc-application
+  title: >-
+    Blue Origin, LLC, "Amendment of Application to Launch and Operate the Blue
+    Origin Orbital Data Center System", Application Amendment with Technical
+    Annex (File No. SAT-LOA-20260310-00118, Call Sign S00830)
+  url: https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/9b738697cf538b10ade47d642f851cb1
+  date: 2026-09-18
+  retrieved: 2026-10-29
+- id: darksky-peis-petition-2026
+  grade: primary
+  kind: fcc-pleading
+  title: >-
+    DarkSky International, Environment America and Public Employees for
+    Environmental Responsibility, "Petition to Initiate Programmatic
+    Environmental Impact Statement on Orbital Data Center Applications",
+    submitted to the FCC (copy hosted by Earthjustice)
+  url: https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf
+  date: 2026-07-08
+  retrieved: 2026-10-29
 - id: geekwire-sunrise-2026
   grade: secondary
   kind: trade-press
@@ -132,12 +207,15 @@ discrepancies:
     to whether the filing becomes an authorisation.
 
 notes: >-
-  Provenance gap: no primary source, and the ICFS file number has not been
-  retrieved. Reading the application would give the shell structure, the
-  satellite design and the basis for the 51,600 figure, and reading NASA's
-  objection would give the first documented instance in this registry of a
-  federal science agency contesting a constellation filing on operational
-  grounds. Both are worth doing.
+  The filing anchor, count and orbits now rest on the FCC's accepted-for-filing
+  notice and on the September 2026 amendment, both primary.
+  Provenance gap: the original application narrative and Technical Annex have
+  not been read; they would give the shell and plane structure behind the
+  500-1,800 km range. NASA's objection has not been read either, and it would
+  be the first documented instance in this registry of a federal science
+  agency contesting a constellation filing on operational grounds. The
+  amendment's own ICFS number is not printed on the document; an ICFS link
+  found through a tracker gives SAT-AMD-20260917-00370, not confirmed here.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-10-29
 contributor: Juan A. Fraire (Inria)
