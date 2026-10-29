@@ -691,8 +691,8 @@
   ],
   "system_class": "orbital-compute",
   "status": "filed",
-  "status_detail": "Application filed 19 March 2026; no grant. NASA filed an objection in May 2026. Nothing launched.",
-  "status_asof": "2026-07",
+  "status_detail": "Application filed 19 March 2026, accepted for filing 17 April 2026, amended 18 September 2026; no grant. NASA filed an objection in May 2026, and a July 2026 petition asks the FCC to pause all orbital data centre licensing. Nothing launched.",
+  "status_asof": "2026-10",
   "services": [
    "orbital-compute"
   ],
@@ -703,15 +703,16 @@
   "filing": {
    "authority": "FCC",
    "administration": "USA",
-   "document": "Blue Origin application for the Project Sunrise orbital data center system, filed 19 March 2026 (ICFS file number not retrieved)",
-   "src": "geekwire-sunrise-2026",
-   "note": "The application is public and its filing date is consistently reported, but its ICFS file number has not been retrieved in this pass. Recorded as a document description so the record still anchors on a specific, findable act."
+   "file_number": "SAT-LOA-20260310-00118",
+   "call_sign": "S00830",
+   "src": "fcc-sunrise-pn-2026"
   },
   "counts": {
    "filed": {
     "value": 51600,
-    "asof": "2026-03-19",
-    "src": "geekwire-sunrise-2026"
+    "asof": "2026-09-18",
+    "src": "fcc-sunrise-pn-2026",
+    "note": "\"Up to 51,600 satellites\" in the accepted-for-filing notice. The September 2026 amendment restates N = 51,600 in its interference analysis and leaves the satellite count unchanged."
    }
   },
   "regulatory": [
@@ -719,20 +720,55 @@
     "authority": "FCC",
     "country": "US",
     "kind": "application",
+    "file_number": "SAT-LOA-20260310-00118",
+    "call_sign": "S00830",
     "action": "pending",
     "date": "2026-03-19",
     "satellites": 51600,
-    "scope": "Application for up to 51,600 orbital data centre satellites in sun-synchronous orbits between 500 km and 1,800 km, with between 300 and 1,000 satellites per orbital plane. Ka-band requested for telemetry, tracking and command; user data to move over optical inter-satellite links into Blue Origin's TeraWave network and thence to the ground.",
-    "src": "geekwire-sunrise-2026"
+    "scope": "Application for up to 51,600 satellites (\"Project Sunrise\") operating as a data centre in space, in circular sun-synchronous orbits between 500 km and 1,800 km, with approximately 300 to 1,000 satellites per orbital plane. TT&C requested at 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with waivers of sections 25.155(b), 25.157(c), 25.164, 25.165, 25.112(a) and 25.114(c).",
+    "src": "fcc-sunrise-pn-2026"
    },
    {
     "authority": "FCC",
     "country": "US",
-    "kind": "application",
+    "kind": "public-notice",
+    "file_number": "SAT-LOA-20260310-00118",
+    "document": "Report No. SAT-01992",
+    "action": "pending",
+    "date": "2026-04-17",
+    "scope": "Space Bureau accepts the application for filing.",
+    "src": "fcc-sunrise-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "comment",
     "action": "pending",
     "date": "2026-05",
     "scope": "NASA filed an objection to the application. The grounds have not been read; NASA objections to large constellations have historically concerned conjunction risk with science missions and with the ISS.",
     "src": "satnews-nasa-sunrise-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "petition",
+    "file_number": "SAT-LOA-20260310-00118",
+    "action": "pending",
+    "date": "2026-07-08",
+    "scope": "DarkSky International, Environment America and PEER petition the FCC to prepare a programmatic environmental impact statement under NEPA covering all pending orbital data centre applications (SpaceX, Starcloud, Blue Origin, Cowboy Space), and to pause licensing until it is complete. In the alternative the petition asks to be treated as a petition to deny each application under 47 CFR 1.1313(a).",
+    "src": "darksky-peis-petition-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "amendment",
+    "file_number": "SAT-LOA-20260310-00118",
+    "call_sign": "S00830",
+    "action": "pending",
+    "date": "2026-09-18",
+    "satellites": 51600,
+    "scope": "Replaces the dual-horn/omnidirectional antennas with high-gain directional parabolic antennas (0.85 m and 0.65 m reflectors) for TT&C and communications at 18.8-19.3 GHz and 28.6-29.1 GHz, with a revised Schedule S and a waiver request under 25.114(c). Constellation architecture, shells, planes, satellite count and payload are stated to be unchanged.",
+    "src": "bo-sunrise-amd-2026"
    }
   ],
   "shells": [
@@ -743,17 +779,44 @@
     "max_sats_per_plane": 1000,
     "code_status": "not-representable",
     "code_note": "Sun-synchronous orbits from 500 to 1,800 km with 300 to 1,000 satellites per plane. Both the altitude and the per-plane population are ranges, so there is no (T, P, F) triple. Sun-synchronous orbits also carry a local time of the ascending node that the code cannot express. Note the per-plane figure: 1,000 satellites in a single plane is two orders of magnitude beyond anything in the operational shells in this registry, and worth flagging to anyone modelling intra-plane topology.",
-    "src": "geekwire-sunrise-2026"
+    "src": "fcc-sunrise-pn-2026"
    }
   ],
   "spectrum": [
    "Ka",
    "optical"
   ],
-  "spectrum_detail": "Ka-band for TT&C only. No service spectrum of its own; user traffic is to travel by optical link into TeraWave.",
+  "spectrum_detail": "Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space). The accepted-for-filing notice lists these bands for TT&C; the September 2026 amendment describes them as carrying both TT&C and communications through the new directional antenna. Bulk user traffic is to travel by optical link into TeraWave.",
   "isl": "external",
-  "isl_detail": "Optical links into Blue Origin's own TeraWave constellation, which is itself only announced and has no filing reference in this registry. The compute system's path to the ground therefore depends on a system whose existence is not yet documented in a docket.",
+  "isl_detail": "Optical links into Blue Origin's own TeraWave constellation, which has its own pending FCC application (SAT-LOA-20260120-00033) and no grant. The compute system's path to the ground therefore depends on a second authorisation that does not yet exist.",
   "sources": [
+   {
+    "id": "fcc-sunrise-pn-2026",
+    "grade": "primary",
+    "kind": "fcc-public-notice",
+    "title": "FCC Space Bureau, Public Notice Report No. SAT-01992, \"Applications Accepted for Filing\" (ICFS SAT-LOA-20260310-00118, Call Sign S00830)",
+    "url": "https://docs.fcc.gov/public/attachments/DOC-420864A1.pdf",
+    "date": "2026-04-17",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "bo-sunrise-amd-2026",
+    "grade": "primary",
+    "kind": "fcc-application",
+    "title": "Blue Origin, LLC, \"Amendment of Application to Launch and Operate the Blue Origin Orbital Data Center System\", Application Amendment with Technical Annex (File No. SAT-LOA-20260310-00118, Call Sign S00830)",
+    "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/9b738697cf538b10ade47d642f851cb1",
+    "date": "2026-09-18",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "darksky-peis-petition-2026",
+    "grade": "primary",
+    "kind": "fcc-pleading",
+    "title": "DarkSky International, Environment America and Public Employees for Environmental Responsibility, \"Petition to Initiate Programmatic Environmental Impact Statement on Orbital Data Center Applications\", submitted to the FCC (copy hosted by Earthjustice)",
+    "url": "https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf",
+    "date": "2026-07-08",
+    "retrieved": "2026-10-29"
+   },
    {
     "id": "geekwire-sunrise-2026",
     "grade": "secondary",
@@ -791,9 +854,9 @@
     "note": "Count and date both agree with the reporting. The registry adds only that NASA has objected, which the deck does not mention and which is material to whether the filing becomes an authorisation."
    }
   ],
-  "notes": "Provenance gap: no primary source, and the ICFS file number has not been retrieved. Reading the application would give the shell structure, the satellite design and the basis for the 51,600 figure, and reading NASA's objection would give the first documented instance in this registry of a federal science agency contesting a constellation filing on operational grounds. Both are worth doing.",
+  "notes": "The filing anchor, count and orbits now rest on the FCC's accepted-for-filing notice and on the September 2026 amendment, both primary. Provenance gap: the original application narrative and Technical Annex have not been read; they would give the shell and plane structure behind the 500-1,800 km range. NASA's objection has not been read either, and it would be the first documented instance in this registry of a federal science agency contesting a constellation filing on operational grounds. The amendment's own ICFS number is not printed on the document; an ICFS link found through a tracker gives SAT-AMD-20260917-00370, not confirmed here.",
   "added": "2026-07",
-  "verified": "2026-07-29",
+  "verified": "2026-10-29",
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
@@ -810,9 +873,9 @@
    "US"
   ],
   "system_class": "broadband",
-  "status": "announced",
-  "status_detail": "Announced January 2026, with deployment stated to begin Q4 2027. No FCC file number has been retrieved for TeraWave itself, though it is referred to in the Project Sunrise filing as the optical backbone that system depends on.",
-  "status_asof": "2026-07",
+  "status": "filed",
+  "status_detail": "Application filed 21 January 2026 and accepted for filing 27 February 2026; no grant. Deployment stated to begin Q4 2027. Blue Origin's Project Sunrise filing names TeraWave as the optical backbone that system depends on.",
+  "status_asof": "2026-10",
   "services": [
    "broadband",
    "backhaul"
@@ -822,25 +885,76 @@
    "MEO"
   ],
   "dual_use": "civil",
-  "filing_absent": "No filing reference retrieved. TeraWave is described in trade press as an announced constellation and is referenced in Blue Origin's Project Sunrise FCC application as the communications network Sunrise will relay through, but no application or grant for TeraWave itself has been located in this pass. It may well exist; this is a gap in our work, not a statement that none exists.",
+  "filing": {
+   "authority": "FCC",
+   "administration": "USA",
+   "file_number": "SAT-LOA-20260120-00033",
+   "call_sign": "S00788",
+   "src": "fcc-terawave-pn-2026"
+  },
   "counts": {
-   "announced": {
+   "filed": {
     "value": 5408,
-    "asof": "2026-03",
-    "src": "spacenews-blue-sunrise-2026",
-    "note": "Reported alongside the Project Sunrise filing. The IETF 126 deck gives 5,348, with a breakdown of 5,310 LEO and 128 MEO that sums to 5,438. Three mutually inconsistent figures; see discrepancies."
+    "asof": "2026-01-21",
+    "src": "satellitetoday-terawave-2026",
+    "breakdown": [
+     {
+      "label": "LEO",
+      "value": 5280,
+      "src": "satellitetoday-terawave-2026"
+     },
+     {
+      "label": "MEO",
+      "value": 128,
+      "src": "satellitetoday-terawave-2026"
+     }
+    ],
+    "note": "The FCC's accepted-for-filing notice confirms the application but states no satellite count. The figure is the one trade press reported with the filing; the application itself would settle it."
    }
   },
+  "regulatory": [
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "application",
+    "file_number": "SAT-LOA-20260120-00033",
+    "call_sign": "S00788",
+    "action": "pending",
+    "date": "2026-01-21",
+    "scope": "Application for a licence to deploy and operate an NGSO FSS system in both LEO and MEO, operating in the Q/V-, E-, S- and Ka-bands, with waivers of sections 25.155(b), 25.257(c), 2.106(a), 25.146(a)(1), 25.112(a) and 25.114(c).",
+    "src": "fcc-terawave-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "public-notice",
+    "file_number": "SAT-LOA-20260120-00033",
+    "document": "Report No. SAT-01978",
+    "action": "pending",
+    "date": "2026-02-27",
+    "scope": "Space Bureau accepts the application for filing.",
+    "src": "fcc-terawave-pn-2026"
+   }
+  ],
   "shells": [
    {
     "label": "leo-meo",
     "status": "proposed",
     "geometry_kind": "unknown",
     "code_status": "unknown",
-    "code_note": "Multi-orbit, with a LEO majority and a small MEO component. No altitudes, inclinations or plane structure traced.",
-    "src": "spacenews-blue-sunrise-2026"
+    "code_note": "Multi-orbit, reported as 5,280 satellites in LEO and 128 in MEO. No altitudes, inclinations or plane structure traced.",
+    "src": "satellitetoday-terawave-2026"
    }
   ],
+  "spectrum": [
+   "Q",
+   "V",
+   "E",
+   "Ka",
+   "S",
+   "optical"
+  ],
+  "spectrum_detail": "Per the accepted-for-filing notice: 37.5-42.0 GHz and 71-76 GHz (space-to-Earth); 47.2-50.2 GHz, 50.4-51.4 GHz and 81-86 GHz (Earth-to-space); 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space); 2200-2290 MHz (space-to-Earth) and 2025-2110 MHz (Earth-to-space). Trade press reports Q/V-band for user links and E-band for gateways.",
   "isl": "optical",
   "isl_detail": "Optical downlinks reported to provide up to 6 Tbps. TeraWave is the intended optical backbone for Blue Origin's Project Sunrise orbital data centres, which makes the two systems a coupled pair: Sunrise has no independent path to the ground.",
   "target_completion": 2027,
@@ -856,6 +970,24 @@
    "src": "york-ietf126"
   },
   "sources": [
+   {
+    "id": "fcc-terawave-pn-2026",
+    "grade": "primary",
+    "kind": "fcc-public-notice",
+    "title": "FCC Space Bureau, Public Notice Report No. SAT-01978, \"Applications Accepted for Filing\" (ICFS SAT-LOA-20260120-00033, Call Sign S00788)",
+    "url": "https://docs.fcc.gov/public/attachments/DOC-419052A1.pdf",
+    "date": "2026-02-27",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "satellitetoday-terawave-2026",
+    "grade": "secondary",
+    "kind": "trade-press",
+    "title": "Via Satellite (Satellite Today), \"Blue Origin Reveals TeraWave LEO/MEO Constellation Out of the Blue\"",
+    "url": "https://www.satellitetoday.com/connectivity/2026/01/21/blue-origin-reveals-terawave-leo-meo-constellation-out-of-the-blue",
+    "date": "2026-01-21",
+    "retrieved": "2026-10-29"
+   },
    {
     "id": "spacenews-blue-sunrise-2026",
     "grade": "secondary",
@@ -877,16 +1009,16 @@
   ],
   "discrepancies": [
    {
-    "field": "counts.announced",
+    "field": "counts.filed",
     "claim": "5,348 total; 5,310 LEO; 128 MEO",
     "claimed_by": "york-ietf126",
-    "registry_value": "5,408 announced (also disputed)",
-    "note": "The deck's own figures do not reconcile: 5,310 + 128 = 5,438, not 5,348. Trade press reporting the Sunrise filing gives 5,408. Three numbers, no filing, no way to choose between them. Recorded as 5,408 only because that figure appears in reporting tied to a document, and flagged here so the uncertainty is visible rather than averaged away."
+    "registry_value": "5,408 filed (5,280 LEO and 128 MEO), as reported with the filing",
+    "note": "The deck's own figures do not reconcile: 5,310 + 128 = 5,438, not 5,348. Satellite Today's report of the January 2026 application gives 5,280 LEO and 128 MEO, which sums to 5,408 and agrees with the SpaceNews figure (spacenews-blue-sunrise-2026). The FCC notice states no count, so the application itself remains the tie-breaker."
    }
   ],
-  "notes": "Provenance gap: no primary source and no filing reference. Everything here is trade press and a conference slide, and the headline count is disputed three ways. Locating a TeraWave application in ICFS would fix all of it. Recorded despite that because Project Sunrise, which does have a filing, depends on TeraWave for its ground path. A registry that carried Sunrise but not TeraWave would hide the dependency.",
+  "notes": "Until October 2026 this record carried `filing_absent:` because no application had been located. The application is SAT-LOA-20260120-00033, call sign S00788, accepted for filing on 27 February 2026, so the record now anchors on it and sits on the pending-application rung. Provenance gap: the application narrative and Schedule S have not been read. The satellite count and the LEO/MEO split rest on trade press, and the shell structure is untraced. Third-party mirrors of ICFS show a September 2026 amendment, SAT-AMD-20260905-00360, which has not been read.",
   "added": "2026-07",
-  "verified": "2026-07-29",
+  "verified": "2026-10-29",
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
@@ -1057,18 +1189,20 @@
   "slug": "cowboy-space-stampede",
   "family": "cowboy-space",
   "aka": [
-   "Stampede"
+   "Stampede",
+   "Stampede NGSO System",
+   "Aetherflux"
   ],
-  "operator": "Cowboy Space",
-  "parent": "Cowboy Space (San Carlos, California)",
+  "operator": "Cowboy Space Corp.",
+  "parent": "Cowboy Space Corp. (formerly Aetherflux), San Carlos, California",
   "country": "US",
   "jurisdiction": [
    "US"
   ],
   "system_class": "orbital-compute",
   "status": "filed",
-  "status_detail": "Application filed 14 May 2026. The company states the satellite design is unfinished and that a licence modification will be needed before service, which is unusually explicit about how provisional the filing is.",
-  "status_asof": "2026-07",
+  "status_detail": "Application filed 11 May 2026 and accepted for filing 12 June 2026; no grant. The company is reported to state that the satellite design is unfinished and that a licence modification will be needed before service, which is unusually explicit about how provisional the filing is.",
+  "status_asof": "2026-10",
   "services": [
    "orbital-compute"
   ],
@@ -1079,15 +1213,15 @@
   "filing": {
    "authority": "FCC",
    "administration": "USA",
-   "document": "Cowboy Space application for the Stampede orbital data centre constellation, filed 14 May 2026 (ICFS file number not retrieved)",
-   "src": "spacenews-cowboy-2026",
-   "note": "The ICFS file number has not been retrieved."
+   "file_number": "SAT-LOA-20260323-00135",
+   "call_sign": "S00851",
+   "src": "fcc-cowboy-pn-2026"
   },
   "counts": {
    "filed": {
     "value": 20000,
-    "asof": "2026-05-14",
-    "src": "spacenews-cowboy-2026"
+    "asof": "2026-05-11",
+    "src": "fcc-cowboy-pn-2026"
    }
   },
   "regulatory": [
@@ -1095,11 +1229,34 @@
     "authority": "FCC",
     "country": "US",
     "kind": "application",
+    "file_number": "SAT-LOA-20260323-00135",
+    "call_sign": "S00851",
     "action": "pending",
-    "date": "2026-05-14",
+    "date": "2026-05-11",
     "satellites": 20000,
-    "scope": "Application for up to 20,000 orbital data centre satellites in dawn-dusk sun-synchronous orbits in shells between 700 and 1,000 km. The application provides few details because the satellite design is not finished, and states that a licence modification will be required before service. Launches are said to begin in 2028.",
-    "src": "spacenews-cowboy-2026"
+    "scope": "Application for a constellation of 20,000 NGSO satellites operating as a system of in-orbit data centres in dawn-dusk sun-synchronous orbits at altitudes between 700 and 1,000 km. TT&C requested at 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with waivers of sections 25.155(b), 25.157(c), 25.164(b), 25.165, 2.106(a), 25.202(g)(1) and 25.114(a)(1).",
+    "src": "fcc-cowboy-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "public-notice",
+    "file_number": "SAT-LOA-20260323-00135",
+    "document": "Report No. SAT-02007",
+    "action": "pending",
+    "date": "2026-06-12",
+    "scope": "Space Bureau accepts the application for filing.",
+    "src": "fcc-cowboy-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "petition",
+    "file_number": "SAT-LOA-20260323-00135",
+    "action": "pending",
+    "date": "2026-07-08",
+    "scope": "DarkSky International, Environment America and PEER petition the FCC to prepare a programmatic environmental impact statement under NEPA covering all pending orbital data centre applications (SpaceX, Starcloud, Blue Origin, Cowboy Space), and to pause licensing until it is complete. In the alternative the petition asks to be treated as a petition to deny each application under 47 CFR 1.1313(a).",
+    "src": "darksky-peis-petition-2026"
    }
   ],
   "shells": [
@@ -1109,13 +1266,44 @@
     "geometry_kind": "sso-band",
     "code_status": "not-representable",
     "code_note": "Dawn-dusk sun-synchronous shells between 700 and 1,000 km. Altitude range, no plane structure, and a local time of the ascending node with no representation in the code. The dawn-dusk choice is the whole point of the design, since it maximises solar exposure, and it is precisely the parameter the notation cannot carry.",
-    "src": "spacenews-cowboy-2026"
+    "src": "fcc-cowboy-pn-2026"
    }
   ],
+  "spectrum": [
+   "Ka"
+  ],
+  "spectrum_detail": "Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space) for TT&C, per the accepted-for-filing notice. No service bands are listed.",
   "isl": "unknown",
   "first_launch": 2028,
   "target_completion_kind": "operator-target",
   "sources": [
+   {
+    "id": "fcc-cowboy-pn-2026",
+    "grade": "primary",
+    "kind": "fcc-public-notice",
+    "title": "FCC Space Bureau, Public Notice Report No. SAT-02007, \"Applications Accepted for Filing\" (ICFS SAT-LOA-20260323-00135, Call Sign S00851)",
+    "url": "https://docs.fcc.gov/public/attachments/DOC-422332A1.pdf",
+    "date": "2026-06-12",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "cowboy-exparte-2026",
+    "grade": "primary",
+    "kind": "fcc-pleading",
+    "title": "Cowboy Space Corp., ex parte notice re Application for Stampede NGSO System, Call Sign S00851, ICFS File No. SAT-LOA-20260323-00135, with attached \"Cowboy Space Overview Deck\" (June 2026)",
+    "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/a07b7e5fcfa187105791bf252f851cc0",
+    "date": "2026-06-23",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "darksky-peis-petition-2026",
+    "grade": "primary",
+    "kind": "fcc-pleading",
+    "title": "DarkSky International, Environment America and Public Employees for Environmental Responsibility, \"Petition to Initiate Programmatic Environmental Impact Statement on Orbital Data Center Applications\", submitted to the FCC (copy hosted by Earthjustice)",
+    "url": "https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf",
+    "date": "2026-07-08",
+    "retrieved": "2026-10-29"
+   },
    {
     "id": "spacenews-cowboy-2026",
     "grade": "secondary",
@@ -1140,13 +1328,13 @@
     "field": "counts.filed",
     "claim": "20,000 planned; year started/planned operation unknown",
     "claimed_by": "york-ietf126",
-    "registry_value": "20,000 requested 14 May 2026; launches stated to begin 2028",
+    "registry_value": "20,000 requested 11 May 2026, accepted for filing 12 June 2026; launches stated to begin 2028",
     "note": "Count agrees, and the registry can fill in the timeline the deck left blank."
    }
   ],
-  "notes": "Provenance gap: no primary source and no file number. This record is worth keeping in view for a reason beyond its size. The company told the regulator that the satellite design is unfinished and that a modification will be needed before service. That is a filing made to hold a place in a processing round, stated as such, by the applicant. It is the cleanest documented instance in this registry of the mechanism Dan York and Nitinder Mohan discussed at IETF 126: filings as spectrum positioning rather than deployment commitments. Recording it as `filed` and never as `licensed` is exactly the distinction the registry exists to preserve.",
+  "notes": "Count, orbits, licensee name, file number and call sign now rest on the FCC's accepted-for-filing notice. The ICFS file number carries the date 23 March 2026, seven weeks before the date filed; the notice gives 11 May 2026, which is the date used here. The former company name, Aetherflux, is stated in the overview deck attached to the applicant's June 2026 ex parte notice (cowboy-exparte-2026). Provenance gap: the application itself has not been read. The statements that the design is unfinished, that a modification will be needed before service, and that launches begin in 2028 rest on SpaceNews. This record is worth keeping in view for a reason beyond its size. The company is reported to have told the regulator that the satellite design is unfinished and that a modification will be needed before service. That is a filing made to hold a place in a processing round, stated as such, by the applicant. It is the cleanest documented instance in this registry of the mechanism Dan York and Nitinder Mohan discussed at IETF 126: filings as spectrum positioning rather than deployment commitments. Recording it as `filed` and never as `licensed` is exactly the distinction the registry exists to preserve.",
   "added": "2026-07",
-  "verified": "2026-07-29",
+  "verified": "2026-10-29",
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
@@ -2914,7 +3102,7 @@
    "Orbital",
    "Orbital Compute, Inc."
   ],
-  "operator": "Orbital Compute, Inc.",
+  "operator": "Orbital Compute Inc.",
   "parent": "Orbital Compute, Inc.",
   "country": "US",
   "jurisdiction": [
@@ -2922,8 +3110,8 @@
   ],
   "system_class": "orbital-compute",
   "status": "filed",
-  "status_detail": "Application filed with the FCC in 2026 for up to 100,000 satellites totalling 10 GW of compute. No grant, nothing launched, and the company is at pre-seed funding scale.",
-  "status_asof": "2026-07",
+  "status_detail": "Application filed with the FCC on 24 June 2026 and accepted for filing 31 July 2026, for up to 100,000 satellites totalling 10 GW of compute. No grant, nothing launched, and the company is at pre-seed funding scale.",
+  "status_asof": "2026-10",
   "services": [
    "orbital-compute"
   ],
@@ -2934,15 +3122,16 @@
   "filing": {
    "authority": "FCC",
    "administration": "USA",
-   "document": "Orbital Compute application for a 100,000-satellite orbital data centre system, filed 2026 (ICFS file number and exact date not retrieved)",
-   "src": "broadbandbreakfast-orbital-2026",
-   "note": "Neither the ICFS file number nor the precise filing date has been retrieved. This is the weakest filing anchor in the registry and should be the first thing a contributor fixes on this record."
+   "file_number": "SAT-LOA-20260624-00251",
+   "call_sign": "S00867",
+   "src": "fcc-orbital-pn-2026"
   },
   "counts": {
    "filed": {
     "value": 100000,
-    "asof": 2026,
-    "src": "broadbandbreakfast-orbital-2026"
+    "asof": "2026-06-24",
+    "src": "fcc-orbital-pn-2026",
+    "note": "\"Up to 100,000 satellites\" in the accepted-for-filing notice."
    }
   },
   "regulatory": [
@@ -2950,11 +3139,24 @@
     "authority": "FCC",
     "country": "US",
     "kind": "application",
+    "file_number": "SAT-LOA-20260624-00251",
+    "call_sign": "S00867",
     "action": "pending",
-    "date": 2026,
+    "date": "2026-06-24",
     "satellites": 100000,
-    "scope": "Application to deploy up to 100,000 satellites in low Earth orbit with a cumulative 10 GW of compute capacity. Each satellite is described as a high-density server rack of roughly 2 tonnes with a 100 kW solar array around 100 m across, in sun-synchronous orbit at 500-850 km, using passive radiative cooling.",
-    "src": "broadbandbreakfast-orbital-2026"
+    "scope": "Application for a constellation of up to 100,000 satellites operating as a distributed data centre in space, in sun-synchronous circular orbits at altitudes between 500 km and 850 km, communicating with other commercial LEO systems over optical inter-satellite links. Back-up TT&C requested at 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with waivers of sections 25.156, 25.157, 25.164, 25.165 and 25.114(a)(1).",
+    "src": "fcc-orbital-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "public-notice",
+    "file_number": "SAT-LOA-20260624-00251",
+    "document": "Report No. SAT-02024",
+    "action": "pending",
+    "date": "2026-07-31",
+    "scope": "Space Bureau accepts the application for filing.",
+    "src": "fcc-orbital-pn-2026"
    }
   ],
   "shells": [
@@ -2963,16 +3165,39 @@
     "status": "proposed",
     "geometry_kind": "sso-band",
     "code_status": "not-representable",
-    "code_note": "Sun-synchronous orbits between 500 and 850 km. An altitude range, no inclination, no plane count, no per-plane population, and a local time of the ascending node that the code cannot express.",
-    "src": "broadbandbreakfast-orbital-2026"
+    "code_note": "Sun-synchronous circular orbits between 500 and 850 km. An altitude range, no inclination, no plane count, no per-plane population, and a local time of the ascending node that the code cannot express.",
+    "src": "fcc-orbital-pn-2026"
    }
   ],
+  "spectrum": [
+   "Ka",
+   "optical"
+  ],
+  "spectrum_detail": "Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space) requested for back-up TT&C, per the accepted-for-filing notice. No service spectrum of its own.",
   "isl": "external",
   "isl_detail": "The system as described has no communications payload of its own for bulk data and relies on third-party optical relay through Starlink or Kuiper. Together with Starcloud and Blue Origin's Project Sunrise, that makes three separate orbital data centre proposals in this registry whose ground path depends on constellations they do not operate, none of which has published an interconnection interface.",
   "sat_mass_kg": 2000,
   "target_completion": 2028,
   "target_completion_kind": "operator-target",
   "sources": [
+   {
+    "id": "fcc-orbital-pn-2026",
+    "grade": "primary",
+    "kind": "fcc-public-notice",
+    "title": "FCC Space Bureau, Public Notice Report No. SAT-02024, \"Applications Accepted for Filing\" (ICFS SAT-LOA-20260624-00251, Call Sign S00867)",
+    "url": "https://docs.fcc.gov/public/attachments/DOC-424016A1.pdf",
+    "date": "2026-07-31",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "orbital-release-2026",
+    "grade": "secondary",
+    "kind": "operator-web",
+    "title": "Orbital, press release announcing its FCC filing for a 100,000-satellite orbital compute constellation",
+    "url": "https://orbital.inc/press/orbital-100000-constellation.html",
+    "date": "2026-06-30",
+    "retrieved": "2026-10-29"
+   },
    {
     "id": "broadbandbreakfast-orbital-2026",
     "grade": "secondary",
@@ -2997,13 +3222,13 @@
     "field": "counts.filed",
     "claim": "100,000 planned; 2027 demo mission, 2028 first full-scale satellite",
     "claimed_by": "york-ietf126",
-    "registry_value": "100,000 requested; application pending",
+    "registry_value": "100,000 requested 24 June 2026; application pending",
     "note": "Count agrees. Worth recording alongside it, because the registry's job is to make scale legible rather than to editorialise: 100,000 satellites at the stated 2 tonnes each is roughly 200,000 tonnes to orbit, from a company with reported pre-seed funding of USD 5 million and no launch vehicle of its own. Both facts are in the record; the reader can do the arithmetic."
    }
   ],
-  "notes": "Provenance gap: no primary source, no file number, no precise filing date. Reading the application is the whole task on this record.",
+  "notes": "The filing anchor, date, count and orbits now rest on the FCC's accepted-for-filing notice. The design figures come from the operator's own release (orbital-release-2026): each satellite a single high-density rack of roughly eight servers, powered by about 100 kW from its own solar arrays, about 100 m across and about 2 tonnes, 10 GW of compute at full scale, a single-GPU demonstration payload on a Falcon 9 in 2027 and the first purpose-built satellite, Orbital-1, in 2028. The 8 July 2026 petition for a programmatic environmental review of orbital data centres does not name this application, which was accepted for filing three weeks later; the petition asks to cover similar projects filed after it. Provenance gap: the application narrative and technical attachments have not been read.",
   "added": "2026-07",
-  "verified": "2026-07-29",
+  "verified": "2026-10-29",
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
@@ -3020,9 +3245,9 @@
    "US"
   ],
   "system_class": "orbital-compute",
-  "status": "announced",
-  "status_detail": "A research programme, announced November 2025, to put Google TPUs in orbit. Two prototype satellites are to be built and operated by Planet Labs for an in-orbit demonstration in early 2027. No constellation size has been stated and no filing has been identified.",
-  "status_asof": "2026-07",
+  "status": "demonstrator",
+  "status_detail": "A research programme, announced November 2025, to put Google TPUs in orbit. One prototype satellite, developed with Planet, launched on 1 October 2026 on SpaceX Transporter-18 and was reported healthy and in calibration on 20 October. A two-satellite optical-link test is planned for 2027. No constellation size has been stated and no filing has been identified.",
+  "status_asof": "2026-10",
   "services": [
    "orbital-compute"
   ],
@@ -3030,7 +3255,15 @@
    "LEO"
   ],
   "dual_use": "civil",
-  "filing_absent": "No filing identified. The programme is presented as research with a two-satellite demonstration, and the demonstration satellites are to be built and operated by Planet Labs, so any near-term spectrum authority would most likely sit under Planet's existing licences rather than a new Google filing. There is nothing yet to file for: no constellation size has been announced.",
+  "filing_absent": "No filing identified for a Suncatcher constellation, and there is nothing yet to file for: no constellation size has been announced. The prototype in orbit was developed with Planet Labs, so its spectrum authority most likely sits under Planet's licences rather than a new Google filing; that authorisation has not been identified (see notes).",
+  "counts": {
+   "launched": {
+    "value": 1,
+    "asof": "2026-10-20",
+    "src": "planet-firstlight-2026",
+    "note": "The TPU prototype, launched 1 October 2026 on Transporter-18. It is a test article; no constellation satellite has flown."
+   }
+  },
   "shells": [
    {
     "label": "compute-cluster",
@@ -3042,17 +3275,38 @@
    }
   ],
   "isl": "optical",
-  "isl_detail": "Optical inter-satellite links are central to the concept, used to distribute machine-learning workloads across a tightly spaced cluster. Validating them is one of the stated goals of the 2027 demonstration.",
-  "first_launch": 2027,
+  "isl_detail": "Optical inter-satellite links are central to the concept, used to distribute machine-learning workloads across a tightly spaced cluster. The 2026 prototype tests TPUs only; validating the links is the goal of the two-satellite test planned for 2027.",
+  "first_launch": "2026-10-01",
   "target_completion_kind": "operator-target",
   "launch": {
    "providers": [
-    "Planet Labs"
+    "SpaceX"
    ],
-   "cadence": "Two prototype satellites planned for early 2027.",
-   "src": "dcd-suncatcher-2025"
+   "vehicles": [
+    "Falcon 9"
+   ],
+   "cadence": "One prototype on the Transporter-18 rideshare, 1 October 2026; two satellites planned for 2027 to test laser links.",
+   "src": "google-suncatcher-2026"
   },
   "sources": [
+   {
+    "id": "planet-firstlight-2026",
+    "grade": "secondary",
+    "kind": "operator-web",
+    "title": "Planet, \"Sharing First Light Images From Tanager-2 and SuperDove Flock 4J\"",
+    "url": "https://www.planet.com/pulse/sharing-first-light-images-from-tanager-2-and-superdove-flock-4j/",
+    "date": "2026-10-20",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "google-suncatcher-2026",
+    "grade": "secondary",
+    "kind": "operator-web",
+    "title": "Google, \"Behind Project Suncatcher, our moonshot to put AI in space\"",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/",
+    "date": "2026-09-24",
+    "retrieved": "2026-10-29"
+   },
    {
     "id": "dcd-suncatcher-2025",
     "grade": "secondary",
@@ -3086,13 +3340,13 @@
     "field": "counts",
     "claim": "? satellites planned; 2027 prototype?",
     "claimed_by": "york-ietf126",
-    "registry_value": "No count; two demonstration satellites in early 2027",
-    "note": "The deck records the count as a question mark, which is right. This registry does the same by leaving `counts` empty rather than writing zero, and adds the one firm number available: two prototypes."
+    "registry_value": "No constellation count; one prototype launched 1 October 2026, two satellites planned for 2027",
+    "note": "The deck records the count as a question mark, which is right. This registry does the same by recording no constellation figure rather than writing zero. The prototype flew earlier than the deck's 2027."
    }
   ],
-  "notes": "Included with an empty `counts` block on purpose. An announced programme from an operator of this size, with no stated constellation size, is a real category and the honest representation of it is absence. Writing a speculative number here would corrupt exactly the aggregate the registry is meant to make trustworthy. Provenance gap: the Google Research post describing the system design has been cited but not read in detail; it would give the cluster geometry and the power and thermal assumptions.",
+  "notes": "Counts carry only the launched prototype. An announced programme from an operator of this size, with no stated constellation size, is a real category and the honest representation of it is absence. Writing a speculative number here would corrupt exactly the aggregate the registry is meant to make trustworthy. The `demonstrator` status places this record on the in-orbit rung with one satellite, which is all it has. Provenance gap: the FCC authority under which the prototype operates (presumably a Planet licence or modification) has not been identified, and the Google Research post describing the system design has been cited but not read in detail; it would give the cluster geometry and the power and thermal assumptions.",
   "added": "2026-07",
-  "verified": "2026-07-29",
+  "verified": "2026-10-29",
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
@@ -3582,6 +3836,16 @@
     "date": "2026-02-04",
     "scope": "Space Bureau accepts the application for filing and seeks comment.",
     "src": "fcc-odc-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "petition",
+    "file_number": "SAT-LOA-20260108-00016",
+    "action": "pending",
+    "date": "2026-07-08",
+    "scope": "DarkSky International, Environment America and PEER petition the FCC to prepare a programmatic environmental impact statement under NEPA covering all pending orbital data centre applications (SpaceX, Starcloud, Blue Origin, Cowboy Space), and to pause licensing until it is complete. In the alternative the petition asks to be treated as a petition to deny each application under 47 CFR 1.1313(a).",
+    "src": "darksky-peis-petition-2026"
    }
   ],
   "shells": [
@@ -3609,6 +3873,15 @@
     "url": "https://docs.fcc.gov/public/attachments/DA-26-113A1.txt",
     "date": "2026-02-04",
     "retrieved": "2026-07-29"
+   },
+   {
+    "id": "darksky-peis-petition-2026",
+    "grade": "primary",
+    "kind": "fcc-pleading",
+    "title": "DarkSky International, Environment America and Public Employees for Environmental Responsibility, \"Petition to Initiate Programmatic Environmental Impact Statement on Orbital Data Center Applications\", submitted to the FCC (copy hosted by Earthjustice)",
+    "url": "https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf",
+    "date": "2026-07-08",
+    "retrieved": "2026-10-29"
    },
    {
     "id": "mcdowell-conlist",
@@ -3774,8 +4047,8 @@
   ],
   "system_class": "orbital-compute",
   "status": "filed",
-  "status_detail": "One demonstrator on orbit (Starcloud-1, November 2025). The 88,000-satellite system is an FCC application accepted for filing in March 2026; no grant.",
-  "status_asof": "2026-07",
+  "status_detail": "One demonstrator on orbit (Starcloud-1, November 2025). The 88,000-satellite system is an FCC application filed 4 February 2026 and accepted for filing 13 March 2026; no grant. A July 2026 petition asks the FCC to pause all orbital data centre licensing.",
+  "status_asof": "2026-10",
   "services": [
    "orbital-compute"
   ],
@@ -3787,7 +4060,8 @@
    "authority": "FCC",
    "administration": "USA",
    "file_number": "SAT-LOA-20260202-00073",
-   "src": "spacenews-starcloud-2026"
+   "call_sign": "S00803",
+   "src": "fcc-starcloud-pn-2026"
   },
   "counts": {
    "launched": {
@@ -3799,8 +4073,8 @@
    "filed": {
     "value": 88000,
     "asof": "2026-03-13",
-    "src": "spacenews-starcloud-2026",
-    "note": "Requested in the application; nothing granted, so the whole figure is filed and none of it licensed."
+    "src": "fcc-starcloud-pn-2026",
+    "note": "\"Up to 88,000 satellites\" in the accepted-for-filing notice; nothing granted, so the whole figure is filed and none of it licensed."
    }
   },
   "regulatory": [
@@ -3809,11 +4083,33 @@
     "country": "US",
     "kind": "application",
     "file_number": "SAT-LOA-20260202-00073",
+    "call_sign": "S00803",
     "action": "pending",
-    "date": "2026-02-02",
+    "date": "2026-02-04",
     "satellites": 88000,
-    "scope": "Application to operate up to 88,000 orbital data centre satellites in a select set of narrow orbital shells between 600 and 850 km, each up to 50 km thick, in dusk-dawn sun-synchronous orbits. Requests Ka-band spectrum for telemetry, tracking and command on a non-interference basis only; bulk data movement is to rely on optical inter-satellite links to third-party broadband constellations. Accepted for filing 13 March 2026.",
-    "src": "spacenews-starcloud-2026"
+    "scope": "Application for a constellation of up to 88,000 satellites operating as a distributed data centre in space, in sun-synchronous orbit at altitudes between 600 km and 850 km, communicating with other commercial LEO systems over optical inter-satellite links. Back-up TT&C requested at 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space), with waivers of sections 25.156, 25.157, 25.164, 25.165 and 25.114(a)(1).",
+    "src": "fcc-starcloud-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "public-notice",
+    "file_number": "SAT-LOA-20260202-00073",
+    "document": "Report No. SAT-01982",
+    "action": "pending",
+    "date": "2026-03-13",
+    "scope": "Space Bureau accepts the application for filing.",
+    "src": "fcc-starcloud-pn-2026"
+   },
+   {
+    "authority": "FCC",
+    "country": "US",
+    "kind": "petition",
+    "file_number": "SAT-LOA-20260202-00073",
+    "action": "pending",
+    "date": "2026-07-08",
+    "scope": "DarkSky International, Environment America and PEER petition the FCC to prepare a programmatic environmental impact statement under NEPA covering all pending orbital data centre applications (SpaceX, Starcloud, Blue Origin, Cowboy Space), and to pause licensing until it is complete. In the alternative the petition asks to be treated as a petition to deny each application under 47 CFR 1.1313(a).",
+    "src": "darksky-peis-petition-2026"
    }
   ],
   "shells": [
@@ -3830,11 +4126,29 @@
    "Ka",
    "optical"
   ],
-  "spectrum_detail": "Ka-band requested for TT&C on a non-interference basis. No service spectrum of its own: user data is to move over optical inter-satellite links to Starlink, Amazon Leo and Blue Origin TeraWave.",
+  "spectrum_detail": "Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space) requested for back-up TT&C, per the accepted-for-filing notice; trade press reports it as on a non-interference basis. No service spectrum of its own: user data is to move over optical inter-satellite links to Starlink, Amazon Leo and Blue Origin TeraWave.",
   "isl": "optical",
   "isl_detail": "External dependency. The system as filed has no independent path to the ground for bulk data and relies on crosslinks into constellations operated by other companies, none of which has published an interconnection interface. This is a governance and interoperability question for the group as much as a technical one.",
   "first_launch": "2025-11-02",
   "sources": [
+   {
+    "id": "fcc-starcloud-pn-2026",
+    "grade": "primary",
+    "kind": "fcc-public-notice",
+    "title": "FCC Space Bureau, Public Notice Report No. SAT-01982, \"Applications Accepted for Filing\" (ICFS SAT-LOA-20260202-00073, Call Sign S00803)",
+    "url": "https://docs.fcc.gov/public/attachments/DOC-419509A1.pdf",
+    "date": "2026-03-13",
+    "retrieved": "2026-10-29"
+   },
+   {
+    "id": "darksky-peis-petition-2026",
+    "grade": "primary",
+    "kind": "fcc-pleading",
+    "title": "DarkSky International, Environment America and Public Employees for Environmental Responsibility, \"Petition to Initiate Programmatic Environmental Impact Statement on Orbital Data Center Applications\", submitted to the FCC (copy hosted by Earthjustice)",
+    "url": "https://earthjustice.org/wp-content/uploads/2026/07/2026.07.08-petition-for-programmatic-eis.pdf",
+    "date": "2026-07-08",
+    "retrieved": "2026-10-29"
+   },
    {
     "id": "spacenews-starcloud-2026",
     "grade": "secondary",
@@ -3860,12 +4174,12 @@
     "claim": "88,000 satellites planned",
     "claimed_by": "york-ietf126",
     "registry_value": "88,000 requested; application pending, no grant",
-    "note": "The figure agrees with the application as reported. The disagreement is about the axis, not the number: an accepted-for-filing application establishes a place in a processing round, not an authorisation. This record therefore contributes 88,000 to counts.filed and nothing to counts.licensed."
+    "note": "The figure agrees with the FCC's accepted-for-filing notice. The disagreement is about the axis, not the number: an accepted-for-filing application establishes a place in a processing round, not an authorisation. This record therefore contributes 88,000 to counts.filed and nothing to counts.licensed."
    }
   ],
-  "notes": "Provenance gap: this record has no primary source. Everything except the demonstrator launch rests on one trade-press report of the FCC application. The application itself (ICFS SAT-LOA-20260202-00073) is public and should be read; the accepted-for-filing public notice would also be a primary source for the date. Until then every number here is secondary and the record should be read as such. Kept in the registry despite the weak provenance because orbital data centre filings are a large and fast-growing share of the aggregate satellite count, and because this system as filed depends entirely on other operators' optical crosslinks - which is exactly the kind of coupling the group should be able to see.",
+  "notes": "The filing anchor, call sign, filing date and requested count now rest on the FCC's accepted-for-filing notice. The notice gives 4 February 2026 as the date filed, two days after the date carried in the file number. Provenance gap: the application itself (ICFS SAT-LOA-20260202-00073) has not been read. The shell description (narrow shells up to 50 km thick, dusk-dawn local time) and the demonstrator launch still rest on trade press. Orbital data centre filings are a large and fast-growing share of the aggregate satellite count, and this system as filed depends entirely on other operators' optical crosslinks, which is exactly the kind of coupling the group should be able to see.",
   "added": "2026-07",
-  "verified": "2026-07-29",
+  "verified": "2026-10-29",
   "contributor": "Juan A. Fraire (Inria)"
  },
  {
