@@ -3,7 +3,7 @@
  "records_counted": 33,
  "records_with_primary_source": 26,
  "total_launched": 14587,
- "total_licensed": 35753,
+ "total_licensed": 1035753,
  "total_filed": 1648090,
  "total_announced": 19836,
  "totals_are_floors": true,
@@ -18,9 +18,9 @@
  ],
  "note": "Totals are floors, not estimates. They sum only what is recorded and sourced; records with an unrecorded count contribute zero. 7 of 33 records have no filed figure, so total_filed understates by an unknown amount, and a family's licensed total may exceed its filed total for that reason. Superseded records are excluded.",
  "filed_by_status": {
-  "filed": 1589706,
+  "filed": 589706,
   "deploying": 41744,
-  "licensed": 5778,
+  "licensed": 1005778,
   "operational": 10862,
   "demonstrator": 0
  },
@@ -141,7 +141,7 @@
   },
   "spacex-orbital-compute": {
    "records": 1,
-   "licensed": 0,
+   "licensed": 1000000,
    "filed": 1000000,
    "filed_is_floor": false
   },
