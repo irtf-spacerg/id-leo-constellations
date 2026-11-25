@@ -463,7 +463,7 @@ function fmtRegulatory(r) {
   if (!reg.length) return "";
   const rows = reg.map(a => {
     const ms = (a.milestones || []).map(m =>
-      `${Math.round((m.fraction || 0) * 100)}% ${m.count != null ? "(" + num(m.count) + ") " : ""}by ${esc(m.due)}${m.status ? " &mdash; " + esc(m.status) : ""}`).join("; ");
+      `${m.fraction != null ? Math.round(m.fraction * 100) + "% " : ""}${m.count != null ? "(" + num(m.count) + ") " : ""}by ${esc(m.due)}${m.status ? " &mdash; " + esc(m.status) : ""}`).join("; ");
     return `<li><b>${esc(a.authority)}</b> <span class="mono" style="font-size:12px">${esc(a.kind)} &middot; ${esc(a.action)}</span>
       ${a.date ? `<span class="sub" style="font-size:12px"> &middot; ${esc(a.date)}</span>` : ""}
       ${a.document ? `<span class="sub" style="font-size:12px"> &middot; ${esc(a.document)}</span>` : ""}

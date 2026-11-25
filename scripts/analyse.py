@@ -39,8 +39,9 @@ RUNGS = [
 ]
 RUNG_NOTE = {
     "in_orbit": "Hardware exists and is operating.",
-    "licensed": "A regulator has granted authority, with milestones and, in "
-                "the FCC's case, a surety bond behind it.",
+    "licensed": "A regulator has granted authority, normally with deployment "
+                "milestones behind it. The FCC's 2026 part 100 rules can "
+                "waive the surety bond.",
     "national_pending": "An application is on a regulator's docket. It can be "
                         "granted in part, deferred or denied, and several in "
                         "this registry already have been.",

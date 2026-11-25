@@ -159,8 +159,11 @@ rung the system has demonstrably reached, and justify it in `status_detail`:
 | `retired` | Deliberately deorbited or superseded after a service life. |
 
 The `filed` / `licensed` distinction is the single most important axis in this
-registry. The largest numbers in circulation, including most of the mass in
-the widely quoted 2.3 million aggregate, sit at `filed` or below.
+registry. Until November 2026 the largest numbers in circulation, including
+most of the mass in the widely quoted 2.3 million aggregate, sat at `filed` or
+below. The FCC's grant of SpaceX's one-million-satellite orbital data centre
+system then moved the largest of them to `licensed`; the scope of that
+licence is backup and emergency TT&C radio for those satellites.
 
 **`services`** — one or more of:
 
@@ -304,8 +307,11 @@ coverage.
 
 **`milestones`** matter more than target dates in press releases. A regulatory
 milestone is a hard, dated, enforceable obligation with a known consequence
-for failure (in the FCC's case, reduction of the authorisation to the number
-actually in orbit, plus forfeiture of the surety bond). Recording milestones
+for failure. Under the FCC's part 25 rules that meant reduction of the
+authorisation to the number actually in orbit, plus forfeiture of the surety
+bond. Under the part 100 schedule the FCC applied from 2026 (first seen here
+in DA 26-1273), a missed milestone makes the authorisation null and void, and
+the bond can be waived. Recording milestones
 lets a reader see when a paper constellation must either fly or shrink.
 
 ## ITU block

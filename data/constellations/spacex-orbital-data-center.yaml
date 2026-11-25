@@ -10,12 +10,15 @@ country: US
 jurisdiction:
 - US
 system_class: orbital-compute
-status: filed
+status: licensed
 status_detail: >-
-  Application filed 30 January 2026, accepted for filing 4 February 2026.
-  No grant. This single application is the largest contributor by far to every
-  circulating aggregate of planned satellites.
-status_asof: 2026-07
+  Authorised 25 November 2026 for 1,000,000 satellites (DA 26-1273, granted in
+  part and deferred in part), on an application filed 30 January 2026. Nothing
+  launched. The grant covers backup and emergency Ka-band TT&C only, and
+  satellites above 600 km need a further modification application before they
+  can be deployed. This single authorisation outweighs every other licence in
+  the registry combined.
+status_asof: 2026-11
 services:
 - orbital-compute
 orbit_regimes:
@@ -27,10 +30,19 @@ filing:
   administration: USA
   file_number: SAT-LOA-20260108-00016
   call_sign: S00798
-  document: DA 26-113
-  src: fcc-odc-pn-2026
+  document: DA 26-1273
+  src: fcc-odc-order-2026
 
 counts:
+  licensed:
+    value: 1000000
+    asof: 2026-11-25
+    src: fcc-odc-order-2026
+    note: >-
+      The grant covers "a constellation of 1,000,000 NGSO satellites", and its
+      deployment milestones are computed on that maximum. Deployment above
+      600 km, where four of the six nominal shells sit, is conditioned on a
+      further modification application with a final debris mitigation plan.
   filed:
     value: 1000000
     asof: 2026-02-04
@@ -69,6 +81,17 @@ regulatory:
   country: US
   kind: petition
   file_number: SAT-LOA-20260108-00016
+  action: denied
+  date: 2026-03-06
+  scope: >-
+    Petitions to deny by Kuiper Systems LLC (Amazon Leo), Viasat Inc. and the
+    American Astronomical Society, on interference, orbital debris, the
+    milestone waiver and astronomy. All three denied in DA 26-1273.
+  src: fcc-odc-order-2026
+- authority: FCC
+  country: US
+  kind: petition
+  file_number: SAT-LOA-20260108-00016
   action: pending
   date: 2026-07-08
   scope: >-
@@ -77,23 +100,99 @@ regulatory:
     all pending orbital data centre applications (SpaceX, Starcloud, Blue
     Origin, Cowboy Space), and to pause licensing until it is complete. In the
     alternative the petition asks to be treated as a petition to deny each
-    application under 47 CFR 1.1313(a).
+    application under 47 CFR 1.1313(a). DA 26-1273 dismisses the NEPA
+    arguments on this application's record, citing the Commission's October
+    2026 NEPA Order (FCC 26-64), without naming this petition.
   src: darksky-peis-petition-2026
+- authority: FCC
+  country: US
+  kind: license-grant
+  file_number: SAT-LOA-20260108-00016
+  call_sign: S00798
+  document: DA 26-1273
+  action: granted-in-part
+  date: 2026-11-25
+  satellites: 1000000
+  scope: >-
+    Memorandum Opinion and Order and Authorization, by the Chief of the Space
+    Bureau on delegated authority. Authorises backup and emergency TT&C (Space
+    Operation Service) at 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz
+    (Earth-to-space), unprotected and non-interference, for a constellation of
+    1,000,000 NGSO satellites in 50 km shells between 500 and 1,002 km at
+    30-degree and sun-synchronous inclinations. Waives the processing round
+    rules (25.156, 25.157), the surety bond (25.165) and the Schedule S limits
+    (25.114(a)(1)), and on the Bureau's own motion the U.S. Table (2.106(a)).
+    Replaces the part 25 milestones with the new part 100 schedule. Defers the
+    request to dispose of satellites other than by atmospheric re-entry, and
+    makes deployment above 600 km wait on a modification application with a
+    final debris mitigation plan. Environmental and optical-astronomy
+    objections are dismissed as outside the Commission's authority. Fifteen-
+    year term from the first satellite in orbit; semi-annual reporting on
+    conjunctions, re-entries and deployed satellites.
+  milestones:
+  - {count: 1, due: 2033-11-25, status: pending}
+  - {fraction: 0.1, count: 100000, due: 2035-11-25, status: pending}
+  - {fraction: 0.5, count: 500000, due: 2038-11-25, status: pending}
+  - {fraction: 1.0, count: 1000000, due: 2040-11-25, status: pending}
+  src: fcc-odc-order-2026
 
 shells:
-- label: odc-band
-  status: proposed
-  geometry_kind: sso-band
+- label: leo-30-550
+  status: authorised
+  geometry_kind: unknown
   code_status: not-representable
   code_note: >-
-    The application describes a *range*, not shells: altitudes from 500 km to
-    2,000 km, inclinations of 30 degrees and sun-synchronous, within shells
-    spanning up to 50 km each. No plane count, per-plane population or
-    phasing. Sun-synchronous orbits additionally carry a local time of the
-    ascending node, which the constellation code has no field for. Nothing
-    here is expressible as a Walker triple, and a registry that invented one
-    would be inventing the topology.
-  src: fcc-odc-pn-2026
+    Nominal operational shell 550-568 km at 26-32 degrees. An altitude band
+    and an inclination range, with no per-shell population, plane count or
+    phasing. Below 600 km, so deployable under the grant as it stands.
+  src: fcc-odc-order-2026
+- label: sso-565
+  status: authorised
+  geometry_kind: sso-band
+  inclination_deg: 97.7
+  code_status: not-representable
+  code_note: >-
+    Nominal operational shell 565-585 km at 97.7 degrees (sun-synchronous). No
+    per-shell population, plane count or phasing, and a local time of the
+    ascending node the code cannot express. Below 600 km.
+  src: fcc-odc-order-2026
+- label: leo-30-686
+  status: authorised
+  geometry_kind: unknown
+  inclination_deg: 30.0
+  code_status: not-representable
+  code_note: >-
+    Nominal operational shell 686-718 km at 30 degrees. Above 600 km:
+    deployment waits on a modification application with a final debris
+    mitigation plan.
+  src: fcc-odc-order-2026
+- label: sso-707
+  status: authorised
+  geometry_kind: sso-band
+  inclination_deg: 97.2
+  code_status: not-representable
+  code_note: >-
+    Nominal operational shell 707-744 km at 97.2 degrees (sun-synchronous).
+    Above 600 km: deployment waits on a modification application.
+  src: fcc-odc-order-2026
+- label: leo-30-946
+  status: authorised
+  geometry_kind: unknown
+  inclination_deg: 30.0
+  code_status: not-representable
+  code_note: >-
+    Nominal operational shell 946-978 km at 30 degrees. Above 600 km:
+    deployment waits on a modification application.
+  src: fcc-odc-order-2026
+- label: sso-967
+  status: authorised
+  geometry_kind: sso-band
+  inclination_deg: 99.4
+  code_status: not-representable
+  code_note: >-
+    Nominal operational shell 967-1,002 km at 99.4 degrees (sun-synchronous).
+    Above 600 km: deployment waits on a modification application.
+  src: fcc-odc-order-2026
 
 isl: optical
 isl_detail: >-
@@ -103,14 +202,34 @@ isl_detail: >-
   and high reliability laser mesh, which in turn will transmit traffic to
   authorized earth stations on the ground". The system therefore depends on
   the Gen1 and Gen2 Starlink authorisations for its ground path, which is a
-  coupling between three separate licences worth noting.
+  coupling between three separate licences worth noting. The grant adds that
+  any backup Ka-band contact is to go to gateways within the Gen1 and Gen2
+  envelope.
 spectrum:
+- Ka
 - optical
 spectrum_detail: >-
-  Optical for user traffic; RF for telemetry, tracking and command only. The
-  public notice does not state the TT&C bands.
+  Ka-band 18.8-19.3 GHz (space-to-Earth) and 28.6-29.1 GHz (Earth-to-space)
+  for backup and emergency TT&C only, on an unprotected and non-interference
+  basis, under a waiver of the U.S. Table (DA 26-1273). SpaceX states it does
+  not plan to use the Ka-band except for limited emergency operations;
+  communications are optical.
+
+target_completion: 2040-11-25
+target_completion_kind: regulatory-milestone
 
 sources:
+- id: fcc-odc-order-2026
+  grade: primary
+  kind: fcc-order
+  title: >-
+    FCC Space Bureau, Memorandum Opinion and Order and Authorization, DA
+    26-1273, "Space Exploration Holdings LLC, Application for Launch and
+    Operating Authority for the SpaceX Orbital Data Center System" (ICFS
+    SAT-LOA-20260108-00016, Call Sign S00798)
+  url: https://docs.fcc.gov/public/attachments/DA-26-1273A1.pdf
+  date: 2026-11-25
+  retrieved: 2026-11-25
 - id: fcc-odc-pn-2026
   grade: primary
   kind: fcc-public-notice
@@ -155,28 +274,36 @@ discrepancies:
 - field: counts.filed
   claim: '1,198,120 satellites planned'
   claimed_by: york-ietf126
-  registry_value: '1,000,000 requested (application ceiling)'
+  registry_value: '1,000,000 requested; 1,000,000 authorised 25 November 2026'
   note: >-
     The application, as described in the FCC's own acceptance notice, is for
-    "up to one million satellites". The 1,198,120 figure is Jonathan
-    McDowell's, from his constellation list, as Dan York confirmed on
-    29 July 2026. The registry could not locate that specific entry on the
-    page on 30 July 2026 and so cannot say how the figure was derived; it may
-    aggregate shells or filings that the FCC's summary rounds. This matters
-    more than most discrepancies here because the application accounts for
-    roughly half of the widely quoted 2.3 million aggregate, so a 198,120
-    difference is about 8 per cent of the headline number. Resolving it
-    properly needs the application's own Attachment A rather than either
-    summary.
+    "up to one million satellites", and DA 26-1273 authorises exactly
+    1,000,000. The 1,198,120 figure is Jonathan McDowell's, from his
+    constellation list, as Dan York confirmed on 29 July 2026. The registry
+    could not locate that specific entry on the page on 30 July 2026 and so
+    cannot say how the figure was derived. The grant lists six nominal shells
+    without per-shell counts, so it does not explain the difference either.
+    This matters more than most discrepancies here because the application
+    accounts for roughly half of the widely quoted 2.3 million aggregate, so a
+    198,120 difference is about 8 per cent of the headline number.
 
 notes: >-
-  Reported in the press as connected to the SpaceX/xAI merger. The application
-  itself is for a communications authorisation; the compute payload is not
-  what the FCC is licensing, which is worth remembering when reading the
-  filing as evidence about data-centre capacity.
-  Provenance gap: the application narrative and technical attachment
-  (Attachment A) are cited in DA 26-113 but have not been read directly. They
-  would give the shell structure, the satellite versions and the TT&C bands.
+  Reported in the press as connected to the SpaceX/xAI merger. The grant is a
+  radio authorisation only: backup and emergency Ka-band TT&C in the Space
+  Operation Service. The compute payload and the optical links that carry the
+  system's traffic are outside what the FCC licenses, which is worth
+  remembering when reading the grant as evidence about data-centre capacity.
+  The grant applies the new part 100 deployment schedule (Space Modernization
+  Report and Order, FCC 26-47) in place of the part 25 milestones, with the
+  surety bond waived: one satellite by 25 November 2033, 10 per cent by 2035,
+  half by 2038 and all by 2040, or the authorisation becomes void. SpaceX
+  first asked to waive milestones altogether and withdrew that request on
+  19 October 2026. The licensed count therefore carries milestones but no
+  bond, and its first milestone is a single satellite seven years out.
+  The order dates the application 30 January 2026 in the grant and 20 January
+  2026 in a footnote; this record uses 30 January, which matches DA 26-113.
+  Provenance gap: the application narrative, its Attachment A and SpaceX's
+  letter of 29 May 2026 that gives the nominal shells have not been read.
 added: 2026-07
-verified: 2026-07-29
+verified: 2026-11-25
 contributor: Juan A. Fraire (Inria)
